@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %}{{ SITENAME }}{% endblock %} {% block content %}
+<section class="hero">
+  <div class="container">
+    <h1>{{ SITENAME }}</h1>
+    {% if SITEDESCRIPTION %}
+    <p class="hero-tagline">{{ SITEDESCRIPTION }}</p>
+    {% endif %}
+    <a href="{{ SITEURL }}/catalogo/" class="btn btn-primary">Ver catálogo</a>
+  </div>
+</section>
+
+<section class="latest-posts">
+  <div class="container">
+    <h2 class="section-title">Últimas publicaciones</h2>
+    {% set blog_articles = articles | rejectattr('product') | list %} {% if blog_articles %}
+    <div class="posts-list">
+      {% for article in blog_articles %}
+      <article class="post-card">
+        <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+        <p class="post-meta">
+          <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+          &mdash; <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        </p>
+        <p>{{ article.summary }}</p>
+        <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Leer más →</a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No hay publicaciones aún.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

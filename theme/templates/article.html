@@ -1,0 +1,132 @@
+{% extends "base.html" %} {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %} {% block description %}{{ article.summary }}{% endblock %} {% block content %}
+<div class="container">
+  {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.image %} {% if article.auto_gallery %} {% set support_images =
+  article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
+  article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %}
+  <article class="product-detail">
+    <div class="product-detail-img">
+      {% if main_image %}
+      <div class="product-main-media">
+        <img id="product-main-image" src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }}" />
+        <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
+        <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+      </div>
+      {% else %}
+      <div class="product-img-placeholder large">Sin imagen</div>
+      {% endif %} {% if support_images %}
+      <div class="product-thumbs" aria-label="Imágenes de apoyo">
+        {% for support_image_raw in support_images %} {% set support_image = support_image_raw | trim %} {% if support_image and support_image != main_image %}
+        <button class="product-thumb" type="button" data-image="{{ SITEURL }}/{{ support_image }}" aria-label="Ver imagen {{ loop.index }} de {{ article.title }}">
+          <img src="{{ SITEURL }}/{{ support_image }}" alt="{{ article.title }} - apoyo {{ loop.index }}" loading="lazy" />
+        </button>
+        {% endif %} {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="product-detail-info">
+      <h1>{{ article.title }}</h1>
+      {% if article.price %}
+      <p class="product-price large">{{ article.price }}</p>
+      {% endif %}
+      <div class="product-detail-content">{{ article.content }}</div>
+
+      <div class="related-actions">
+        {% if article.category %}
+        <a href="{{ SITEURL }}/{{ article.category.url }}" class="btn btn-outline">Ver otros de {{ article.category }}</a>
+        {% endif %} {% if article.tags %}
+        <div class="related-tags">
+          {% for tag in article.tags %}
+          <a href="{{ SITEURL }}/{{ tag.url }}" class="btn btn-tag">Más con #{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if CONTACT_EMAIL %}
+      <a href="mailto:{{ CONTACT_EMAIL }}?subject=Consulta sobre {{ article.title }}" class="btn btn-primary btn-lg">Consultar disponibilidad</a>
+      {% endif %}
+    </div>
+  </article>
+
+  {% else %} {# ---- Vista estándar para artículos de blog ---- #}
+  <article class="blog-post">
+    <header class="post-header">
+      <h1>{{ article.title }}</h1>
+      <p class="post-meta">
+        Publicado el <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time> por <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a> en
+        <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+      </p>
+    </header>
+    <div class="post-content">{{ article.content }}</div>
+    {% if article.tags %}
+    <footer class="post-footer">
+      <p class="tags">Etiquetas: {% for tag in article.tags %} <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>{% if not loop.last %}, {% endif %} {% endfor %}</p>
+    </footer>
+    {% endif %}
+  </article>
+  {% endif %}
+
+  <a href="javascript:history.back()" class="back-link">← Volver</a>
+</div>
+{% if article.product and main_image %}
+<script>
+  (function () {
+    const mainImage = document.getElementById("product-main-image");
+    if (!mainImage) return;
+
+    const prevButton = document.querySelector(".product-nav.prev");
+    const nextButton = document.querySelector(".product-nav.next");
+    const thumbs = Array.from(document.querySelectorAll(".product-thumb"));
+    const normalize = (url) => new URL(url, window.location.href).href;
+
+    const imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+
+    let currentIndex = imageList.findIndex((image) => normalize(image) === normalize(mainImage.src));
+    if (currentIndex < 0) currentIndex = 0;
+
+    const setActiveThumb = (imageUrl) => {
+      thumbs.forEach((thumb) => {
+        const thumbImage = thumb.getAttribute("data-image");
+        const isActive = thumbImage && normalize(thumbImage) === normalize(imageUrl);
+        thumb.classList.toggle("active", !!isActive);
+      });
+    };
+
+    const setImageByIndex = (index) => {
+      if (!imageList.length) return;
+      currentIndex = (index + imageList.length) % imageList.length;
+      const nextImage = imageList[currentIndex];
+      mainImage.src = nextImage;
+      setActiveThumb(nextImage);
+    };
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const newImage = thumb.getAttribute("data-image");
+        if (!newImage) return;
+        const index = imageList.findIndex((image) => normalize(image) === normalize(newImage));
+        if (index >= 0) {
+          setImageByIndex(index);
+          return;
+        }
+        mainImage.src = newImage;
+        setActiveThumb(newImage);
+      });
+    });
+
+    if (prevButton) {
+      prevButton.addEventListener("click", () => setImageByIndex(currentIndex - 1));
+    }
+    if (nextButton) {
+      nextButton.addEventListener("click", () => setImageByIndex(currentIndex + 1));
+    }
+
+    if (imageList.length <= 1) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+    }
+
+    setActiveThumb(mainImage.src);
+  })();
+</script>
+{% endif %} {% endblock %}

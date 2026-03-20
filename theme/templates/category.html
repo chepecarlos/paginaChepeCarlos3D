@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %}{{ category }} — {{ SITENAME }}{% endblock %} {% block content %}
+<div class="container">
+  <h1 class="section-title">Categoría: {{ category }}</h1>
+  {% set productos = articles | selectattr('product') | list %} {% if productos %}
+  <div class="product-grid">
+    {% for product in productos %}
+    <article class="product-card">
+      <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
+        {% if product.image %}
+        <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
+        {% else %}
+        <div class="product-img-placeholder">
+          <span>Sin imagen</span>
+        </div>
+        {% endif %}
+      </a>
+      <div class="product-body">
+        <h2 class="product-title">
+          <a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a>
+        </h2>
+        <p class="product-meta">
+          <a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a>
+        </p>
+        {% if product.price %}
+        <p class="product-price">{{ product.price }}</p>
+        {% endif %}
+        <p class="product-desc">{{ product.summary }}</p>
+        {% if product.tags %}
+        <p class="product-tags">
+          {% for tag in product.tags %}
+          <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </p>
+        {% endif %}
+        <a href="{{ SITEURL }}/{{ product.url }}" class="btn btn-primary">Ver detalles</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="posts-list">
+    {% for article in articles %}
+    <article class="post-card">
+      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+      <p class="post-meta">
+        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+      </p>
+      <p>{{ article.summary }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

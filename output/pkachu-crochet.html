@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<p>Monitor curvo VA de 27 pulgadas, 144Hz y 1ms de tiempo de respuesta para gaming y trabajo profesional.</p>" />
+    <title>Pikachu Estilo Crochet — Migueleño3D</title>
+    <link rel="stylesheet" href="/theme/css/style.css" />
+  </head>
+  <body>
+    <header id="site-header">
+      <div class="container">
+        <a href="/" class="brand">Migueleño3D</a>
+        <nav id="main-nav">
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/catalogo/">Catálogo</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content"><div class="container">
+         <article class="product-detail">
+    <div class="product-detail-img">
+      <div class="product-main-media">
+        <img id="product-main-image" src="/images/productos/pikachu-crochet/01_Pikachu.png" alt="Pikachu Estilo Crochet" />
+        <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
+        <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+      </div>
+       <div class="product-thumbs" aria-label="Imágenes de apoyo">
+             <button class="product-thumb" type="button" data-image="/images/productos/pikachu-crochet/02_Pikachu.png" aria-label="Ver imagen 2 de Pikachu Estilo Crochet">
+          <img src="/images/productos/pikachu-crochet/02_Pikachu.png" alt="Pikachu Estilo Crochet - apoyo 2" loading="lazy" />
+        </button>
+           <button class="product-thumb" type="button" data-image="/images/productos/pikachu-crochet/03_Pikachu.png" aria-label="Ver imagen 3 de Pikachu Estilo Crochet">
+          <img src="/images/productos/pikachu-crochet/03_Pikachu.png" alt="Pikachu Estilo Crochet - apoyo 3" loading="lazy" />
+        </button>
+           <button class="product-thumb" type="button" data-image="/images/productos/pikachu-crochet/04_Pikachu.png" aria-label="Ver imagen 4 de Pikachu Estilo Crochet">
+          <img src="/images/productos/pikachu-crochet/04_Pikachu.png" alt="Pikachu Estilo Crochet - apoyo 4" loading="lazy" />
+        </button>
+           <button class="product-thumb" type="button" data-image="/images/productos/pikachu-crochet/05_Pikachu.png" aria-label="Ver imagen 5 de Pikachu Estilo Crochet">
+          <img src="/images/productos/pikachu-crochet/05_Pikachu.png" alt="Pikachu Estilo Crochet - apoyo 5" loading="lazy" />
+        </button>
+           <button class="product-thumb" type="button" data-image="/images/productos/pikachu-crochet/06_Pikachu.png" aria-label="Ver imagen 6 de Pikachu Estilo Crochet">
+          <img src="/images/productos/pikachu-crochet/06_Pikachu.png" alt="Pikachu Estilo Crochet - apoyo 6" loading="lazy" />
+        </button>
+           <button class="product-thumb" type="button" data-image="/images/productos/pikachu-crochet/07_Pikachu.png" aria-label="Ver imagen 7 de Pikachu Estilo Crochet">
+          <img src="/images/productos/pikachu-crochet/07_Pikachu.png" alt="Pikachu Estilo Crochet - apoyo 7" loading="lazy" />
+        </button>
+       </div>
+    </div>
+    <div class="product-detail-info">
+      <h1>Pikachu Estilo Crochet</h1>
+      <p class="product-price large">$15.00</p>
+      <div class="product-detail-content"><h2>Descripción</h2>
+<p>El Monitor Curvo 27" 144Hz ofrece una experiencia visual inmersiva con panel VA que garantiza colores vivos y negros profundos. Ideal tanto para gaming competitivo como para diseño gráfico.</p>
+<h2>Características</h2>
+<ul>
+<li><strong>Panel:</strong> VA curvo 1500R</li>
+<li><strong>Tamaño:</strong> 27 pulgadas</li>
+<li><strong>Resolución:</strong> 2560 × 1440 (QHD)</li>
+<li><strong>Refresco:</strong> 144 Hz</li>
+<li><strong>Tiempo de respuesta:</strong> 1 ms (MPRT)</li>
+<li><strong>HDR:</strong> HDR10</li>
+<li><strong>Puertos:</strong> 2× HDMI 2.0, 1× DisplayPort 1.4, 2× USB-A</li>
+<li><strong>Garantía:</strong> 3 años (panel sin píxeles muertos)</li>
+</ul>
+<h2>Ergonomía</h2>
+<p>Soporte ajustable en altura (±120 mm), inclinación (−5° / +20°) y rotación (±30°).</p></div>
+
+      <div class="related-actions">
+        <a href="/category/pokemon.html" class="btn btn-outline">Ver otros de Pokemon</a>
+         <div class="related-tags">
+          <a href="/tag/producto.html" class="btn btn-tag">Más con #producto</a>
+          <a href="/tag/crochet.html" class="btn btn-tag">Más con #crochet</a>
+          <a href="/tag/amigurumi.html" class="btn btn-tag">Más con #amigurumi</a>
+          <a href="/tag/pokemon.html" class="btn btn-tag">Más con #pokemon</a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+
+  <a href="javascript:history.back()" class="back-link">← Volver</a>
+</div>
+<script>
+  (function () {
+    const mainImage = document.getElementById("product-main-image");
+    if (!mainImage) return;
+
+    const prevButton = document.querySelector(".product-nav.prev");
+    const nextButton = document.querySelector(".product-nav.next");
+    const thumbs = Array.from(document.querySelectorAll(".product-thumb"));
+    const normalize = (url) => new URL(url, window.location.href).href;
+
+    const imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+
+    let currentIndex = imageList.findIndex((image) => normalize(image) === normalize(mainImage.src));
+    if (currentIndex < 0) currentIndex = 0;
+
+    const setActiveThumb = (imageUrl) => {
+      thumbs.forEach((thumb) => {
+        const thumbImage = thumb.getAttribute("data-image");
+        const isActive = thumbImage && normalize(thumbImage) === normalize(imageUrl);
+        thumb.classList.toggle("active", !!isActive);
+      });
+    };
+
+    const setImageByIndex = (index) => {
+      if (!imageList.length) return;
+      currentIndex = (index + imageList.length) % imageList.length;
+      const nextImage = imageList[currentIndex];
+      mainImage.src = nextImage;
+      setActiveThumb(nextImage);
+    };
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const newImage = thumb.getAttribute("data-image");
+        if (!newImage) return;
+        const index = imageList.findIndex((image) => normalize(image) === normalize(newImage));
+        if (index >= 0) {
+          setImageByIndex(index);
+          return;
+        }
+        mainImage.src = newImage;
+        setActiveThumb(newImage);
+      });
+    });
+
+    if (prevButton) {
+      prevButton.addEventListener("click", () => setImageByIndex(currentIndex - 1));
+    }
+    if (nextButton) {
+      nextButton.addEventListener("click", () => setImageByIndex(currentIndex + 1));
+    }
+
+    if (imageList.length <= 1) {
+      if (prevButton) prevButton.disabled = true;
+      if (nextButton) nextButton.disabled = true;
+    }
+
+    setActiveThumb(mainImage.src);
+  })();
+</script>
+ </main>
+
+    <footer id="site-footer">
+      <div class="container">
+        <p>© Migueleño3D — Todos los derechos reservados</p>
+      </div>
+    </footer>
+  </body>
+</html>

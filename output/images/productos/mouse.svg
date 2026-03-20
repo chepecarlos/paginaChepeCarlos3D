@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e2e8f0"/>
+      <stop offset="100%" style="stop-color:#94a3b8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="600" height="400" fill="url(#bg)"/>
+
+  <!-- Resplandor suave -->
+  <ellipse cx="300" cy="220" rx="130" ry="130" fill="url(#glow)"/>
+
+  <!-- Sombra del mouse -->
+  <ellipse cx="300" cy="340" rx="80" ry="14" fill="#000" opacity="0.35"/>
+
+  <!-- Cuerpo del mouse -->
+  <path d="M230,200 Q230,100 300,90 Q370,100 370,200 L360,300 Q360,330 300,330 Q240,330 240,300 Z"
+        fill="url(#body)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- División L/R click -->
+  <line x1="300" y1="90" x2="300" y2="210" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Scroll wheel -->
+  <rect x="289" y="118" width="22" height="46" rx="11" fill="#64748b" stroke="#475569" stroke-width="1"/>
+  <rect x="293" y="122" width="14" height="38" rx="7" fill="#38bdf8" opacity="0.7"/>
+  <!-- Líneas del scroll -->
+  <line x1="293" y1="135" x2="307" y2="135" stroke="#0ea5e9" stroke-width="1.5"/>
+  <line x1="293" y1="141" x2="307" y2="141" stroke="#0ea5e9" stroke-width="1.5"/>
+  <line x1="293" y1="147" x2="307" y2="147" stroke="#0ea5e9" stroke-width="1.5"/>
+  <line x1="293" y1="153" x2="307" y2="153" stroke="#0ea5e9" stroke-width="1.5"/>
+
+  <!-- Luz LED inferior -->
+  <ellipse cx="300" cy="290" rx="18" ry="5" fill="#38bdf8" opacity="0.6"/>
+
+  <!-- Botones laterales -->
+  <rect x="228" y="220" width="10" height="22" rx="5" fill="#94a3b8" stroke="#64748b" stroke-width="1"/>
+  <rect x="228" y="248" width="10" height="22" rx="5" fill="#94a3b8" stroke="#64748b" stroke-width="1"/>
+
+  <!-- Cable USB-C -->
+  <path d="M300,90 Q300,60 300,40" stroke="#475569" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M285,40 L315,40" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Brillo en el cuerpo -->
+  <path d="M248,170 Q255,130 285,115" stroke="white" stroke-width="2.5" fill="none" opacity="0.35" stroke-linecap="round"/>
+
+  <!-- Etiqueta -->
+  <text x="300" y="375" font-family="system-ui, sans-serif" font-size="15" fill="#94a3b8" text-anchor="middle" letter-spacing="3">MOUSE INALÁMBRICO ERGONÓMICO</text>
+</svg>

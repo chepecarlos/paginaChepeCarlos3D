@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ DEFAULT_LANG }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" />
+    {% block head_extra %}{% endblock %}
+  </head>
+  <body>
+    <header id="site-header">
+      <div class="container">
+        <a href="{{ SITEURL }}/" class="brand">{{ SITENAME }}</a>
+        <nav id="main-nav">
+          <ul>
+            <li><a href="{{ SITEURL }}/">Inicio</a></li>
+            <li><a href="{{ SITEURL }}/catalogo/">Catálogo</a></li>
+            {% for p in pages %}
+            <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">{% block content %}{% endblock %}</main>
+
+    <footer id="site-footer">
+      <div class="container">
+        <p>© {{ SITENAME }} — Todos los derechos reservados</p>
+      </div>
+    </footer>
+  </body>
+</html>
