@@ -1,10 +1,12 @@
-{% extends "base.html" %} {% block title %}Categorías — {{ SITENAME }}{% endblock %} {% block content %}
+{% extends "base.html" %} {% block title %}Categorías de Productos — {{ SITENAME }}{% endblock %} {% block content %}
 <div class="container">
-  <h1 class="section-title">Categorías</h1>
+  <h1 class="section-title">Categorías de Productos</h1>
+  {% set ns = namespace(items=[]) %} {% for cat, articles in categories %} {% set product_articles = articles | selectattr('product') | list %} {% if product_articles %} {% set ns.items = ns.items +
+  [{'cat': cat, 'count': product_articles | count}] %} {% endif %} {% endfor %}
   <ul class="categories-list">
-    {% for cat, articles in categories | sort(attribute=0) %}
+    {% for item in ns.items | sort(attribute='count', reverse=true) %}
     <li>
-      <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }} ({{ articles | count }})</a>
+      <a href="{{ SITEURL }}/{{ item.cat.url }}">{{ item.cat }} ({{ item.count }})</a>
     </li>
     {% endfor %}
   </ul>

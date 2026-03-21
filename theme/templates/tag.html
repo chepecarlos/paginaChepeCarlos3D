@@ -23,9 +23,7 @@
         </p>
         {% if product.price %}
         <p class="product-price">{{ product.price }}</p>
-        {% endif %}
-        <p class="product-desc">{{ product.summary }}</p>
-        {% if product.tags %}
+        {% endif %} {% if product.tags %}
         <p class="product-tags">
           {% for product_tag in product.tags %}
           <a href="{{ SITEURL }}/{{ product_tag.url }}" class="tag">{{ product_tag }}</a>

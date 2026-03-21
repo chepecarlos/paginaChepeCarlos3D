@@ -1,10 +1,12 @@
-{% extends "base.html" %} {% block title %}Todas las etiquetas — {{ SITENAME }}{% endblock %} {% block content %}
+{% extends "base.html" %} {% block title %}Tags de Productos — {{ SITENAME }}{% endblock %} {% block content %}
 <div class="container">
-  <h1 class="section-title">Etiquetas</h1>
+  <h1 class="section-title">Tags de Productos</h1>
+  {% set ns = namespace(items=[]) %} {% for tag, articles in tags %} {% set product_articles = articles | selectattr('product') | list %} {% if product_articles %} {% set ns.items = ns.items +
+  [{'tag': tag, 'count': product_articles | count}] %} {% endif %} {% endfor %}
   <ul class="tags-cloud">
-    {% for tag, articles in tags | sort(attribute=0) %}
+    {% for item in ns.items | sort(attribute='count', reverse=true) %}
     <li>
-      <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }} ({{ articles | count }})</a>
+      <a href="{{ SITEURL }}/{{ item.tag.url }}" class="tag">{{ item.tag }} ({{ item.count }})</a>
     </li>
     {% endfor %}
   </ul>
