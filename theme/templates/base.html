@@ -23,15 +23,46 @@
             {% endfor %}
           </ul>
         </nav>
-        <form class="nav-search" role="search" action="{{ SITEURL }}/buscar/" method="get" autocomplete="off">
-          <input type="search" name="q" placeholder="Buscar producto…" aria-label="Buscar productos" class="nav-search-input" />
-          <button type="submit" class="nav-search-btn" aria-label="Buscar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-        </form>
+        <div class="nav-actions">
+          {% if SOCIAL_LINKS %}
+          <div class="nav-socials" aria-label="Redes sociales">
+            {% if SOCIAL_LINKS.get("instagram") %}
+            <a href="{{ SOCIAL_LINKS.get('instagram') }}" class="nav-social-btn" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+              </svg>
+            </a>
+            {% endif %} {% if SOCIAL_LINKS.get("tiktok") %}
+            <a href="{{ SOCIAL_LINKS.get('tiktok') }}" class="nav-social-btn" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M15.1 4c.4 2 1.6 3.2 3.6 3.4v2.4c-1.3 0-2.4-.3-3.5-.9v5.4c0 2.8-2.3 5.1-5.1 5.1S5 17.1 5 14.3s2.3-5.1 5.1-5.1c.3 0 .6 0 .9.1v2.5a2.6 2.6 0 0 0-.9-.2c-1.4 0-2.6 1.2-2.6 2.7S8.6 17 10 17s2.6-1.1 2.6-2.6V4h2.5z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            {% endif %} {% if SOCIAL_LINKS.get("facebook") %}
+            <a href="{{ SOCIAL_LINKS.get('facebook') }}" class="nav-social-btn" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.24-1.46 1.5-1.46h1.6V5.03c-.3-.03-1.1-.09-2-.09-2.7 0-4.5 1.64-4.5 4.66V11H7.5v3h2.7v8h3.3z" fill="currentColor" />
+              </svg>
+            </a>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          <form class="nav-search" role="search" action="{{ SITEURL }}/buscar/" method="get" autocomplete="off">
+            <input type="search" name="q" placeholder="Buscar producto…" aria-label="Buscar productos" class="nav-search-input" />
+            <button type="submit" class="nav-search-btn" aria-label="Buscar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </header>
 

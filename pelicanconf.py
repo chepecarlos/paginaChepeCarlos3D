@@ -33,6 +33,14 @@ TEMPLATE_PAGES = {
 # Número de WhatsApp para cotizaciones (formato: 50369737593)
 WHATSAPP_NUMBER = "50369737593"  # Modifica con tu número de WhatsApp
 
+# Redes sociales en barra principal
+# Completa cada URL para mostrar su botón en el header
+SOCIAL_LINKS = {
+    "instagram": "https://www.instagram.com/chepecarlos3d",
+    "tiktok": "https://www.tiktok.com/@chepecarlos3d",
+    "facebook": "https://www.facebook.com/profile.php?id=61559249050146",
+}
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None

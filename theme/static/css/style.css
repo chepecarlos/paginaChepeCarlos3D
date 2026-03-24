@@ -91,6 +91,45 @@ img { max-width: 100%; height: auto; display: block; }
     text-decoration: none;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-socials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-social-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    border: 0;
+    background: rgba(255,255,255,0.08);
+    text-decoration: none;
+    transition: transform var(--transition), color var(--transition), background var(--transition);
+}
+
+.nav-social-btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    color: #ffffff;
+    background: rgba(255,255,255,0.16);
+}
+
+.nav-social-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
 /* ============================================================
    Botones
    ============================================================ */
@@ -732,6 +771,8 @@ mark {
     }
     #site-header .container { height: auto; flex-direction: column; padding: 16px 24px; gap: 12px; }
     #main-nav ul { flex-wrap: wrap; justify-content: center; }
+    .nav-actions { width: 100%; justify-content: center; flex-wrap: wrap; }
+    .nav-socials { justify-content: center; }
     .related-actions .btn-outline { width: 100%; }
     .contact-actions { flex-direction: column; }
     .contact-actions .btn { width: 100%; }
