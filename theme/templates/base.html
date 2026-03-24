@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ DEFAULT_LANG }}">
+<html lang="{{ DEFAULT_LANG }}" {% if WHATSAPP_NUMBER %}data-whatsapp-number="{{ WHATSAPP_NUMBER }}" {% endif %}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,5 +42,14 @@
         <p>© {{ SITENAME }} — Todos los derechos reservados</p>
       </div>
     </footer>
+
+    {% if WHATSAPP_NUMBER %}
+    <!-- Botón flotante WhatsApp -->
+    <button id="whatsapp-floating-btn" class="whatsapp-floating-btn" aria-label="Contactar por WhatsApp">
+      <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="WhatsApp" class="whatsapp-floating-icon" />
+    </button>
+
+    <script src="{{ SITEURL }}/theme/js/whatsapp-floating.js"></script>
+    {% endif %}
   </body>
 </html>

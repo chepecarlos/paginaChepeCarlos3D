@@ -658,6 +658,43 @@ mark {
 }
 
 /* ============================================================
+   Botón Flotante WhatsApp
+   ============================================================ */
+.whatsapp-floating-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transition: all var(--transition);
+    z-index: 999;
+}
+
+.whatsapp-floating-btn:hover {
+    background: #22c559;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-floating-btn:active {
+    transform: scale(0.95);
+}
+
+.whatsapp-floating-icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 768px) {
@@ -677,6 +714,12 @@ mark {
     .nav-search-input { width: 160px; }
     .nav-search-input:focus { width: 160px; }
     .search-form-hero { flex-direction: column; }
+    .whatsapp-floating-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+    }
 }
 
 @media (max-width: 480px) {
