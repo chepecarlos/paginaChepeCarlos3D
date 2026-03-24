@@ -423,6 +423,35 @@ img { max-width: 100%; height: auto; display: block; }
     gap: 8px;
 }
 
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn-whatsapp {
+    background: #25d366;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #1ebe5d;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+.btn-whatsapp:hover {
+    background: #1ebe5d;
+    color: #ffffff;
+}
+
+.btn-whatsapp-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+}
+
 /* ============================================================
    Blog Post (artículo)
    ============================================================ */
@@ -643,6 +672,8 @@ mark {
     #site-header .container { height: auto; flex-direction: column; padding: 16px 24px; gap: 12px; }
     #main-nav ul { flex-wrap: wrap; justify-content: center; }
     .related-actions .btn-outline { width: 100%; }
+    .contact-actions { flex-direction: column; }
+    .contact-actions .btn { width: 100%; }
     .nav-search-input { width: 160px; }
     .nav-search-input:focus { width: 160px; }
     .search-form-hero { flex-direction: column; }

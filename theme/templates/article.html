@@ -28,6 +28,19 @@
       {% if article.price %}
       <p class="product-price large">{{ article.price }}</p>
       {% endif %}
+
+      <div class="contact-actions">
+        {% if WHATSAPP_NUMBER %} {% set wa_number = WHATSAPP_NUMBER | replace('+', '') | replace(' ', '') | replace('-', '') | replace('(', '') | replace(')', '') %} {% set product_link = SITEURL ~
+        '/' ~ article.url if SITEURL else article.url %} {% set wa_message = "Hola, quiero preguntar de este producto: " ~ article.title ~ " " ~ product_link %}
+        <a href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+          <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="WhatsApp" class="btn-whatsapp-icon" />
+          <span>Cotizar por WhatsApp</span>
+        </a>
+        {% endif %} {% if CONTACT_EMAIL %}
+        <a href="mailto:{{ CONTACT_EMAIL }}?subject=Consulta sobre {{ article.title }}" class="btn btn-outline btn-lg">✉️ Consultar disponibilidad</a>
+        {% endif %}
+      </div>
+
       <div class="product-detail-content">{{ article.content }}</div>
 
       <div class="related-actions">
@@ -41,10 +54,6 @@
         </div>
         {% endif %}
       </div>
-
-      {% if CONTACT_EMAIL %}
-      <a href="mailto:{{ CONTACT_EMAIL }}?subject=Consulta sobre {{ article.title }}" class="btn btn-primary btn-lg">Consultar disponibilidad</a>
-      {% endif %}
     </div>
   </article>
 
