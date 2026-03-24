@@ -276,6 +276,19 @@ img { max-width: 100%; height: auto; display: block; }
     letter-spacing: 0.04em;
 }
 
+.product-category-detail {
+    display: block;
+    text-align: center;
+    margin: 0 auto 12px;
+    font-size: 0.92rem;
+    border: 0;
+    text-decoration: none;
+}
+
+.product-category-detail:hover {
+    text-decoration: underline;
+}
+
 .product-tags {
     display: flex;
     gap: 6px;
@@ -402,6 +415,11 @@ img { max-width: 100%; height: auto; display: block; }
     font-size: 2rem;
     font-weight: 800;
     margin-bottom: 16px;
+    text-align: center;
+}
+
+.product-detail-info > .product-price.large {
+    text-align: center;
 }
 .product-detail-content {
     margin: 24px 0;
@@ -428,6 +446,12 @@ img { max-width: 100%; height: auto; display: block; }
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 16px;
+    justify-content: center;
+}
+
+.product-detail-info .related-actions > a.btn-outline {
+    align-self: center;
+    text-align: center;
 }
 
 .btn-whatsapp {

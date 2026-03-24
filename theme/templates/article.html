@@ -25,7 +25,9 @@
     </div>
     <div class="product-detail-info">
       <h1>{{ article.title }}</h1>
-      {% if article.price %}
+      {% if article.category %}
+      <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
+      {% endif %} {% if article.price %}
       <p class="product-price large">{{ article.price }}</p>
       {% endif %}
 
@@ -44,12 +46,10 @@
       <div class="product-detail-content">{{ article.content }}</div>
 
       <div class="related-actions">
-        {% if article.category %}
-        <a href="{{ SITEURL }}/{{ article.category.url }}" class="btn btn-outline">Ver otros de {{ article.category }}</a>
-        {% endif %} {% if article.tags %}
+        {% if article.tags %}
         <div class="related-tags">
           {% for tag in article.tags %}
-          <a href="{{ SITEURL }}/{{ tag.url }}" class="btn btn-tag">Más con #{{ tag }}</a>
+          <a href="{{ SITEURL }}/{{ tag.url }}" class="btn btn-tag">#{{ tag }}</a>
           {% endfor %}
         </div>
         {% endif %}
