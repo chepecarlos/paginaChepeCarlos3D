@@ -1,0 +1,116 @@
+{% extends "base.html" %} {% block title %}Buscar productos — {{ SITENAME }}{% endblock %} {% block description %}Busca entre todos los productos disponibles en {{ SITENAME }}{% endblock %} {% block
+content %}
+<section class="search-page">
+  <div class="container">
+    <h1 class="search-page-title">Buscar productos</h1>
+
+    <form class="search-form-hero" id="search-form-hero" role="search" autocomplete="off">
+      <input type="search" id="search-query" class="search-input-hero" placeholder="Escribe el nombre, categoría o etiqueta del producto…" aria-label="Buscar productos" autofocus />
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <div id="search-results" class="search-results-list">
+      <p class="search-hint">Escribe algo para buscar entre los productos disponibles.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const SEARCH_INDEX = [
+    {% for article in articles %}
+    {
+      "title": {{ article.title | tojson }},
+      "url": "{{ SITEURL }}/{{ article.url }}",
+      "summary": {{ (article.summary or "") | striptags | truncate(160) | tojson }},
+      "category": {{ article.category.name | tojson }},
+      "categoryUrl": "{{ SITEURL }}/{{ article.category.url }}",
+      "image": {% if article.image %}"{{ SITEURL }}/{{ article.image }}"{% else %}null{% endif %},
+      "price": {% if article.price %}{{ article.price | tojson }}{% else %}null{% endif %},
+      "tags": [{% for tag in article.tags %}{"name": {{ tag.name | tojson }}, "url": "{{ SITEURL }}/{{ tag.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ];
+
+  const input     = document.getElementById('search-query');
+  const resultsEl = document.getElementById('search-results');
+  const form      = document.getElementById('search-form-hero');
+
+  function escape(text) {
+    return text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function highlight(text, q) {
+    const safe = escape(text);
+    const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return safe.replace(re, '<mark>$1</mark>');
+  }
+
+  function renderCard(item, q) {
+    const img = item.image
+      ? '<img src="' + item.image + '" alt="' + escape(item.title) + '" loading="lazy" />'
+      : '<div class="product-img-placeholder"><span>Sin imagen</span></div>';
+
+    const price = item.price
+      ? '<p class="product-price">' + escape(item.price) + '</p>'
+      : '';
+
+    const tags = item.tags.length
+      ? '<p class="product-tags">' + item.tags.map(t =>
+          '<a href="' + t.url + '" class="tag">' + escape(t.name) + '</a>'
+        ).join('') + '</p>'
+      : '';
+
+    return (
+      '<article class="product-card">' +
+        '<a href="' + item.url + '" class="product-img-wrap">' + img + '</a>' +
+        '<div class="product-body">' +
+          '<h2 class="product-title"><a href="' + item.url + '">' + highlight(item.title, q) + '</a></h2>' +
+          '<p class="product-meta"><a href="' + item.categoryUrl + '" class="product-category">' + escape(item.category) + '</a></p>' +
+          price + tags +
+          '<a href="' + item.url + '" class="btn btn-primary">Ver detalles</a>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function renderResults(query) {
+    const q = query.trim();
+    if (q.length < 2) {
+      resultsEl.innerHTML = '<p class="search-hint">Escribe al menos 2 caracteres para buscar.</p>';
+      return;
+    }
+    const ql = q.toLowerCase();
+    const matches = SEARCH_INDEX.filter(item =>
+      item.title.toLowerCase().includes(ql) ||
+      item.summary.toLowerCase().includes(ql) ||
+      item.category.toLowerCase().includes(ql) ||
+      item.tags.some(t => t.name.toLowerCase().includes(ql))
+    );
+    if (matches.length === 0) {
+      resultsEl.innerHTML = '<p class="search-none">Sin resultados para "<strong>' + escape(q) + '</strong>".</p>';
+      return;
+    }
+    const count = '<p class="search-count">' + matches.length + ' resultado' + (matches.length !== 1 ? 's' : '') + ' para "<strong>' + escape(q) + '</strong>"</p>';
+    const grid = '<div class="product-grid">' + matches.map(item => renderCard(item, q)).join('') + '</div>';
+    resultsEl.innerHTML = count + grid;
+  }
+
+  input.addEventListener('input', () => {
+    const val = input.value;
+    const url = new URL(window.location);
+    if (val.trim()) url.searchParams.set('q', val.trim());
+    else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+    renderResults(val);
+  });
+
+  form.addEventListener('submit', e => e.preventDefault());
+
+  // Leer query de la URL al cargar
+  const initialQ = new URLSearchParams(window.location.search).get('q') || '';
+  if (initialQ) {
+    input.value = initialQ;
+    renderResults(initialQ);
+  }
+</script>
+{% endblock %}

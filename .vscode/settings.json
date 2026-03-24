@@ -1,0 +1,14 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "make": true,
+    "/^source \\.venv/bin/activate && make clean && make html$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "/^source \\.venv/bin/activate && make html$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "pelican": true
+  }
+}

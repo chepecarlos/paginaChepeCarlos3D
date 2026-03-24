@@ -1,5 +1,5 @@
 AUTHOR = "ChepeCarlos"
-SITENAME = "Migueleño3D"
+SITENAME = "ChepeCarlos3D"
 SITEDESCRIPTION = "Productos de calidad para tu día a día"
 SITEURL = ""
 
@@ -23,6 +23,7 @@ PLUGINS = ["auto_gallery"]
 # → accesible en /catalogo/index.html
 TEMPLATE_PAGES = {
     "catalog.html": "catalogo/index.html",
+    "search.html": "buscar/index.html",
 }
 
 # Email de contacto (se muestra en páginas de producto)
