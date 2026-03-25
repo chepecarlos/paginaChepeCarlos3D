@@ -1,7 +1,9 @@
+import os
+
 AUTHOR = "ChepeCarlos"
 SITENAME = "ChepeCarlos3D"
 SITEDESCRIPTION = "Productos de calidad para tu día a día"
-SITEURL = "http://127.0.0.1:8000/"
+SITEURL = os.getenv("SITEURL", "http://127.0.0.1:8000/").rstrip("/")
 
 PATH = "content"
 
@@ -27,8 +29,7 @@ TEMPLATE_PAGES = {
 }
 
 # Email de contacto (se muestra en páginas de producto)
-# Descomenta y modifica para activarlo:
-# CONTACT_EMAIL = 'ventas@tuemprendimiento.com'
+# CONTACT_EMAIL = "ventas@chepecarlos3d.com" # por el momento no busco venden por email, talves el futuro
 
 # Número de WhatsApp para cotizaciones (formato: 50369737593)
 WHATSAPP_NUMBER = "50369737593"  # Modifica con tu número de WhatsApp

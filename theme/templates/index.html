@@ -1,34 +1,123 @@
-{% extends "base.html" %} {% block title %}{{ SITENAME }}{% endblock %} {% block content %}
-<section class="hero">
-  <div class="container">
-    <h1>{{ SITENAME }}</h1>
-    {% if SITEDESCRIPTION %}
-    <p class="hero-tagline">{{ SITEDESCRIPTION }}</p>
-    {% endif %}
-    <a href="{{ SITEURL }}/catalogo/" class="btn btn-primary">Ver catálogo</a>
+{% extends "base.html" %} {% block title %}{{ SITENAME }} — Figuras artesanales de crochet{% endblock %} {% block description %}Figuras artesanales de crochet inspiradas en anime y cultura pop. Hechas
+a mano y personalizadas para ti.{% endblock %} {% block content %}
+
+<!-- ── HERO PRINCIPAL ───────────────────────────────────────── -->
+<section class="hero-main">
+  <div class="hero-main-content container">
+    <span class="hero-kicker">Hecho a mano · Anime · Gaming</span>
+    <h1 class="hero-title">Cada pieza,<br /><em>una historia tejida</em></h1>
+    <p class="hero-sub">Figuras artesanales de crochet inspiradas en anime y cultura pop. Únicas, personalizadas para ti.</p>
+    <div class="hero-actions">
+      <a href="{{ SITEURL }}/catalogo/" class="btn btn-accent btn-lg">Ver catálogo</a>
+      {% if WHATSAPP_NUMBER %}
+      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hola%2C%20me%20interesa%20conocer%20sus%20productos" class="btn btn-hero-outline btn-lg" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      {% endif %}
+    </div>
   </div>
 </section>
 
-<section class="latest-posts">
+<!-- ── BARRA DE BENEFICIOS ───────────────────────────────── -->
+<section class="brand-bar" aria-label="Nuestras ventajas">
   <div class="container">
-    <h2 class="section-title">Últimas publicaciones</h2>
-    {% set blog_articles = articles | rejectattr('product') | list %} {% if blog_articles %}
-    <div class="posts-list">
-      {% for article in blog_articles %}
-      <article class="post-card">
-        <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
-        <p class="post-meta">
-          <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-          &mdash; <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-        </p>
-        <p>{{ article.summary }}</p>
-        <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Leer más →</a>
+    <div class="brand-bar-inner">
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F9F6;</span><span>Tejido a mano</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x2728;</span><span>Personalizable</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4E6;</span><span>Envíos a todo El Salvador</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4AC;</span><span>Atención por WhatsApp</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CATEGORÍAS ───────────────────────────────────────────── -->
+{% if categories %}
+<section class="home-categories-section">
+  <div class="container">
+    <h2 class="section-title-home">Explora por colección</h2>
+    <div class="home-categories">
+      {% for cat, cat_articles in categories %} {% set prods = cat_articles | selectattr('product') | list %} {% if prods %} {% set fp = prods[0] %}
+      <a href="{{ SITEURL }}/{{ cat.url }}" class="home-cat-card">
+        {% if fp.image %}
+        <div class="home-cat-img" style="background-image: url('{{ SITEURL }}/{{ fp.image }}')"></div>
+        {% else %}
+        <div class="home-cat-img home-cat-img-empty"></div>
+        {% endif %}
+        <div class="home-cat-body">
+          <span class="home-cat-name">{{ cat }}</span>
+          <span class="home-cat-cta">Ver →</span>
+        </div>
+      </a>
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ── PIEZAS DESTACADAS ──────────────────────────────────── -->
+{% set productos = articles | selectattr('product') | list %} {% if productos %}
+<section class="home-featured-section">
+  <div class="container">
+    <h2 class="section-title-home">Piezas destacadas</h2>
+    <div class="product-grid">
+      {% for product in productos[:6] %}
+      <article class="product-card">
+        <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
+          {% if product.image %}
+          <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
+          {% else %}
+          <div class="product-img-placeholder"><span>Sin imagen</span></div>
+          {% endif %}
+        </a>
+        <div class="product-body">
+          <h2 class="product-title"><a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a></h2>
+          <p class="product-meta"><a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a></p>
+          {% if product.price %}
+          <p class="product-price">{{ product.price }}</p>
+          {% endif %}
+          <a href="{{ SITEURL }}/{{ product.url }}" class="btn btn-primary">Ver detalles</a>
+        </div>
       </article>
       {% endfor %}
     </div>
-    {% else %}
-    <p>No hay publicaciones aún.</p>
-    {% endif %}
+    <div class="home-featured-cta">
+      <a href="{{ SITEURL }}/catalogo/" class="btn btn-outline">Ver catálogo completo &rarr;</a>
+    </div>
   </div>
 </section>
+
+<!-- ── MOSAICO VISUAL ───────────────────────────────────────── -->
+{% set img_products = productos | selectattr('image') | list %} {% if img_products %}
+<section class="social-section">
+  <div class="container">
+    <div class="social-section-header">
+      <h2 class="section-title-home">Nuestros trabajos</h2>
+      {% if SOCIAL_LINKS and SOCIAL_LINKS.get('instagram') %}
+      <a href="{{ SOCIAL_LINKS.get('instagram') }}" target="_blank" rel="noopener" class="social-ig-link">Seguir en Instagram &nearr;</a>
+      {% endif %}
+    </div>
+    <div class="social-mosaic">
+      {% for product in img_products[:6] %}
+      <a href="{{ SITEURL }}/{{ product.url }}" class="social-mosaic-item">
+        <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %} {% endif %}
+
+<!-- ── CTA FINAL ────────────────────────────────────────────── -->
+<section class="home-cta-section">
+  <div class="container">
+    <div class="home-cta-inner">
+      <h2>&iquest;Tienes algo en mente?</h2>
+      <p>Cuéntanos qué personaje o diseño te gustaría tener. Hacemos piezas personalizadas con mucho cuidado y detalle.</p>
+      {% if WHATSAPP_NUMBER %}
+      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hola%2C%20quiero%20una%20pieza%20personalizada" class="btn btn-accent btn-lg" target="_blank" rel="noopener"
+        >Pedir mi pieza personalizada &rarr;</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</section>
+
 {% endblock %}

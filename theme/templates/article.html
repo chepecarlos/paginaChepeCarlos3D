@@ -54,6 +54,34 @@
         </div>
         {% endif %}
       </div>
+
+      <section class="product-assurance" aria-label="Beneficios del producto">
+        <div class="assurance-grid">
+          <article class="assurance-card">
+            <span class="assurance-label">Envios</span>
+            <h2>Enviamos a todo El Salvador</h2>
+            <p>Coordinamos entregas y envios a nivel nacional para que recibas tu pedido donde lo necesites.</p>
+          </article>
+          <article class="assurance-card">
+            <span class="assurance-label">Personalizacion</span>
+            <h2>Podemos crear tu version</h2>
+            <p>Adaptamos colores, detalles o personajes segun disponibilidad para que tu pieza se sienta mas tuya.</p>
+          </article>
+          <article class="assurance-card assurance-card-cta">
+            <span class="assurance-label">Atencion rapida</span>
+            <h2>Te respondemos por WhatsApp</h2>
+            <p>Consulta disponibilidad, tiempos de elaboracion y cotizaciones de forma directa y rapida.</p>
+          </article>
+        </div>
+
+        {% if WHATSAPP_NUMBER %}
+        <div class="product-promo">
+          <h2>Listo para pedir o personalizar tu pieza?</h2>
+          <p>Escribenos y te ayudamos a confirmar disponibilidad, precio y tiempo estimado.</p>
+          <a href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}" class="btn btn-accent btn-lg" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        </div>
+        {% endif %}
+      </section>
     </div>
   </article>
 
