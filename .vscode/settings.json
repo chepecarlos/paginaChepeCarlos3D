@@ -9,6 +9,11 @@
       "approve": true,
       "matchCommandLine": true
     },
-    "pelican": true
+    "pelican": true,
+    "/^source \\.venv/bin/activate && pelican content -o output -s pelicanconf\\.py$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "mv": true
   }
 }

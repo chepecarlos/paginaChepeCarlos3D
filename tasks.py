@@ -1,6 +1,7 @@
 import os
 import shlex
 import shutil
+import subprocess
 import sys
 import datetime
 
@@ -42,18 +43,21 @@ def clean(c):
 @task
 def build(c):
     """Build local version of site"""
+    run_prebuild()
     pelican_run("-s {settings_base}".format(**CONFIG))
 
 
 @task
 def rebuild(c):
     """`build` with the delete switch"""
+    run_prebuild()
     pelican_run("-d -s {settings_base}".format(**CONFIG))
 
 
 @task
 def regenerate(c):
     """Automatically regenerate site upon file modification"""
+    run_prebuild()
     pelican_run("-r -s {settings_base}".format(**CONFIG))
 
 
@@ -90,7 +94,9 @@ def reserve(c):
 @task
 def preview(c):
     """Build production version of site"""
+    run_prebuild()
     pelican_run("-s {settings_publish}".format(**CONFIG))
+
 
 @task
 def livereload(c):
@@ -134,6 +140,7 @@ def livereload(c):
 @task
 def publish(c):
     """Publish to production via rsync"""
+    run_prebuild()
     pelican_run("-s {settings_publish}".format(**CONFIG))
     c.run(
         'rsync --delete --exclude ".DS_Store" -pthrvz -c '
@@ -142,6 +149,7 @@ def publish(c):
             CONFIG["deploy_path"].rstrip("/") + "/", **CONFIG
         )
     )
+
 
 @task
 def gh_pages(c):
@@ -153,6 +161,11 @@ def gh_pages(c):
         "{deploy_path} -p".format(**CONFIG)
     )
 
+
 def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
     pelican_main(shlex.split(cmd))
+
+
+def run_prebuild():
+    subprocess.run([sys.executable, "scripts/sync_instagram_feed.py"], check=True)

@@ -94,13 +94,7 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
       <a href="{{ SOCIAL_LINKS.get('instagram') }}" target="_blank" rel="noopener" class="social-ig-link">Seguir en Instagram &nearr;</a>
       {% endif %}
     </div>
-    <div class="social-mosaic">
-      {% for product in img_products[:6] %}
-      <a href="{{ SITEURL }}/{{ product.url }}" class="social-mosaic-item">
-        <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
-      </a>
-      {% endfor %}
-    </div>
+    <div class="social-mosaic">{% include "partials/instagram_feed_items.html" %}</div>
   </div>
 </section>
 {% endif %} {% endif %}

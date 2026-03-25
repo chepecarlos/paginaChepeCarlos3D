@@ -1,4 +1,4 @@
-PY?=
+PY?=$(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 PELICAN?=pelican
 PELICANOPTS=
 
@@ -34,6 +34,9 @@ help:
 	@echo 'Makefile for a pelican Web site                                           '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
+	@echo '   make instagram-feed                sync del feed local al sitio        '
+	@echo '   make instagram-feed-urls           descarga imagenes desde post_url    '
+	@echo '   make instagram-feed-build          sync + build local completo         '
 	@echo '   make html                           (re)generate the web site          '
 	@echo '   make clean                          remove the generated files         '
 	@echo '   make regenerate                     regenerate files upon modification '
@@ -48,7 +51,17 @@ help:
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
 	@echo '                                                                          '
 
-html:
+instagram-feed:
+	"$(PY)" scripts/sync_instagram_feed.py
+
+instagram-feed-urls:
+	"$(PY)" scripts/sync_instagram_feed.py --mode manual_urls
+
+prebuild: instagram-feed
+
+instagram-feed-build: clean instagram-feed html
+
+html: prebuild
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 
 clean:
@@ -69,7 +82,7 @@ devserver:
 devserver-global:
 	"$(PELICAN)" -lr "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b 0.0.0.0
 
-publish:
+publish: prebuild
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
 
 github: publish
@@ -77,4 +90,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: html help clean regenerate serve serve-global devserver devserver-global publish github
+.PHONY: instagram-feed instagram-feed-urls prebuild instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
