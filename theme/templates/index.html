@@ -1,18 +1,23 @@
-{% extends "base.html" %} {% block title %}{{ SITENAME }} — Figuras artesanales de crochet{% endblock %} {% block description %}Figuras artesanales de crochet inspiradas en anime y cultura pop. Hechas
-a mano y personalizadas para ti.{% endblock %} {% block content %}
+{% extends "base.html" %} {% import "partials/messages.html" as shared with context %} {% set MSG = shared.MSG %} {% block title %}{{ SITENAME }} — Impresion 3D y fabricacion digital{% endblock %} {% block description %}{{ MSG.site_description }}{% endblock %} {% block content %}
 
 <!-- ── HERO PRINCIPAL ───────────────────────────────────────── -->
 <section class="hero-main">
   <div class="hero-main-content container">
-    <span class="hero-kicker">Hecho a mano · Anime · Gaming</span>
-    <h1 class="hero-title">Cada pieza,<br /><em>una historia tejida</em></h1>
-    <p class="hero-sub">Figuras artesanales de crochet inspiradas en anime y cultura pop. Únicas, personalizadas para ti.</p>
+    <span class="hero-kicker">{{ MSG.hero_kicker }}</span>
+    <h1 class="hero-title">{{ MSG.hero_title_line1 }}<br /><em>{{ MSG.hero_title_line2 }}</em></h1>
+    <p class="hero-sub">{{ MSG.hero_sub }}</p>
     <div class="hero-actions">
-      <a href="{{ SITEURL }}/catalogo/" class="btn btn-accent btn-lg">Ver catálogo</a>
+      <a href="{{ SITEURL }}/catalogo/" class="btn btn-accent btn-lg">{{ MSG.hero_catalog_cta }}</a>
       {% if WHATSAPP_NUMBER %}
-      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hola%2C%20me%20interesa%20conocer%20sus%20productos" class="btn btn-hero-outline btn-lg" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hola%2C%20me%20interesa%20conocer%20sus%20productos" class="btn btn-hero-outline btn-lg" target="_blank" rel="noopener">{{ MSG.hero_whatsapp_cta }}</a>
       {% endif %}
     </div>
+  </div>
+</section>
+
+<section class="home-message-strip" aria-label="Mensaje de marca">
+  <div class="container">
+    <p>{{ MSG.site_description }} {{ MSG.personalization_note }}</p>
   </div>
 </section>
 
@@ -20,10 +25,10 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
 <section class="brand-bar" aria-label="Nuestras ventajas">
   <div class="container">
     <div class="brand-bar-inner">
-      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F9F6;</span><span>Tejido a mano</span></div>
-      <div class="brand-bar-item"><span class="brand-bar-icon">&#x2728;</span><span>Personalizable</span></div>
-      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4E6;</span><span>Envíos a todo El Salvador</span></div>
-      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4AC;</span><span>Atención por WhatsApp</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4E6;</span><span>{{ MSG.benefit_shipping }}</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x2728;</span><span>{{ MSG.benefit_quality }}</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4CD;</span><span>{{ MSG.benefit_local }}</span></div>
+      <div class="brand-bar-item"><span class="brand-bar-icon">&#x1F4AC;</span><span>{{ MSG.benefit_contact }}</span></div>
     </div>
   </div>
 </section>
@@ -32,7 +37,7 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
 {% if categories %}
 <section class="home-categories-section">
   <div class="container">
-    <h2 class="section-title-home">Explora por colección</h2>
+    <h2 class="section-title-home">{{ MSG.categories_title }}</h2>
     <div class="home-categories">
       {% for cat, cat_articles in categories %} {% set prods = cat_articles | selectattr('product') | list %} {% if prods %} {% set fp = prods[0] %}
       <a href="{{ SITEURL }}/{{ cat.url }}" class="home-cat-card">
@@ -56,7 +61,7 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
 {% set productos = articles | selectattr('product') | list %} {% if productos %}
 <section class="home-featured-section">
   <div class="container">
-    <h2 class="section-title-home">Piezas destacadas</h2>
+    <h2 class="section-title-home">{{ MSG.featured_title }}</h2>
     <div class="product-grid">
       {% for product in productos[:6] %}
       <article class="product-card">
@@ -64,7 +69,7 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
           {% if product.image %}
           <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
           {% else %}
-          <div class="product-img-placeholder"><span>Sin imagen</span></div>
+          <div class="product-img-placeholder"><span>{{ MSG.product_no_image }}</span></div>
           {% endif %}
         </a>
         <div class="product-body">
@@ -89,7 +94,7 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
 <section class="social-section">
   <div class="container">
     <div class="social-section-header">
-      <h2 class="section-title-home">Nuestros trabajos</h2>
+      <h2 class="section-title-home">{{ MSG.gallery_title }}</h2>
       {% if SOCIAL_LINKS and SOCIAL_LINKS.get('instagram') %}
       <a href="{{ SOCIAL_LINKS.get('instagram') }}" target="_blank" rel="noopener" class="social-ig-link">Seguir en Instagram &nearr;</a>
       {% endif %}
@@ -103,11 +108,11 @@ a mano y personalizadas para ti.{% endblock %} {% block content %}
 <section class="home-cta-section">
   <div class="container">
     <div class="home-cta-inner">
-      <h2>&iquest;Tienes algo en mente?</h2>
-      <p>Cuéntanos qué personaje o diseño te gustaría tener. Hacemos piezas personalizadas con mucho cuidado y detalle.</p>
+      <h2>{{ MSG.cta_title }}</h2>
+      <p>{{ MSG.cta_text }}</p>
       {% if WHATSAPP_NUMBER %}
-      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hola%2C%20quiero%20una%20pieza%20personalizada" class="btn btn-accent btn-lg" target="_blank" rel="noopener"
-        >Pedir mi pieza personalizada &rarr;</a
+      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hola%2C%20quiero%20cotizar%20una%20pieza%203D%20personalizada" class="btn btn-accent btn-lg" target="_blank" rel="noopener"
+        >{{ MSG.cta_button }} &rarr;</a
       >
       {% endif %}
     </div>

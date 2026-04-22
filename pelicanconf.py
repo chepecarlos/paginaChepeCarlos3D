@@ -2,7 +2,7 @@ import os
 
 AUTHOR = "ChepeCarlos"
 SITENAME = "ChepeCarlos3D"
-SITEDESCRIPTION = "Productos de calidad para tu día a día"
+SITEDESCRIPTION = "Impresion 3D y fabricacion digital en San Miguel, El Salvador. Piezas geek y personalizadas con acabado profesional."
 SITEURL = os.getenv("SITEURL", "http://127.0.0.1:8000/").rstrip("/")
 
 PATH = "content"

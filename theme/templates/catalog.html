@@ -1,8 +1,8 @@
-{% extends "base.html" %} {% block title %}Catálogo de Productos — {{ SITENAME }}{% endblock %} {% block content %}
+{% extends "base.html" %} {% import "partials/messages.html" as shared with context %} {% set MSG = shared.MSG %} {% block title %}{{ MSG.catalog_title }} — {{ SITENAME }}{% endblock %} {% block content %}
 <section class="catalog-hero">
   <div class="container">
-    <h1>Catálogo de Productos</h1>
-    <p>Explora toda nuestra colección</p>
+    <h1>{{ MSG.catalog_title }}</h1>
+    <p>{{ MSG.catalog_subtitle }}</p>
   </div>
 </section>
 
@@ -17,7 +17,7 @@
           <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
           {% else %}
           <div class="product-img-placeholder">
-            <span>Sin imagen</span>
+            <span>{{ MSG.product_no_image }}</span>
           </div>
           {% endif %}
         </a>
@@ -44,8 +44,8 @@
     </div>
     {% else %}
     <div class="empty-catalog">
-      <p>No hay productos en el catálogo aún.</p>
-      <p>Agrega archivos en <code>content/productos/</code> para que aparezcan aquí.</p>
+      <p>{{ MSG.catalog_empty_title }}</p>
+      <p>{{ MSG.catalog_empty_hint }}</p>
     </div>
     {% endif %}
   </div>

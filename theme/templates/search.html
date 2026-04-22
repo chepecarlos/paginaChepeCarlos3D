@@ -1,16 +1,16 @@
-{% extends "base.html" %} {% block title %}Buscar productos — {{ SITENAME }}{% endblock %} {% block description %}Busca entre todos los productos disponibles en {{ SITENAME }}{% endblock %} {% block
+{% extends "base.html" %} {% import "partials/messages.html" as shared with context %} {% set MSG = shared.MSG %} {% block title %}{{ MSG.search_page_title }} — {{ SITENAME }}{% endblock %} {% block description %}Busca entre todos los productos disponibles en {{ SITENAME }}{% endblock %} {% block
 content %}
 <section class="search-page">
   <div class="container">
-    <h1 class="search-page-title">Buscar productos</h1>
+    <h1 class="search-page-title">{{ MSG.search_page_title }}</h1>
 
     <form class="search-form-hero" id="search-form-hero" role="search" autocomplete="off">
-      <input type="search" id="search-query" class="search-input-hero" placeholder="Escribe el nombre, categoría o etiqueta del producto…" aria-label="Buscar productos" autofocus />
-      <button type="submit" class="btn btn-primary">Buscar</button>
+      <input type="search" id="search-query" class="search-input-hero" placeholder="{{ MSG.search_page_placeholder }}" aria-label="{{ MSG.search_page_title }}" autofocus />
+      <button type="submit" class="btn btn-primary">{{ MSG.search_button }}</button>
     </form>
 
     <div id="search-results" class="search-results-list">
-      <p class="search-hint">Escribe algo para buscar entre los productos disponibles.</p>
+      <p class="search-hint">{{ MSG.search_initial_hint }}</p>
     </div>
   </div>
 </section>
@@ -34,6 +34,13 @@ content %}
   const input     = document.getElementById('search-query');
   const resultsEl = document.getElementById('search-results');
   const form      = document.getElementById('search-form-hero');
+  const MSG = {
+    noImage: {{ MSG.product_no_image | tojson }},
+    detailCta: {{ MSG.search_result_details | tojson }},
+    minChars: {{ MSG.search_min_chars | tojson }},
+    noResultsPrefix: {{ MSG.search_no_results_prefix | tojson }},
+    countSuffix: {{ MSG.search_count_suffix | tojson }}
+  };
 
   function escape(text) {
     return text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -48,7 +55,7 @@ content %}
   function renderCard(item, q) {
     const img = item.image
       ? '<img src="' + item.image + '" alt="' + escape(item.title) + '" loading="lazy" />'
-      : '<div class="product-img-placeholder"><span>Sin imagen</span></div>';
+      : '<div class="product-img-placeholder"><span>' + escape(MSG.noImage) + '</span></div>';
 
     const price = item.price
       ? '<p class="product-price">' + escape(item.price) + '</p>'
@@ -67,7 +74,7 @@ content %}
           '<h2 class="product-title"><a href="' + item.url + '">' + highlight(item.title, q) + '</a></h2>' +
           '<p class="product-meta"><a href="' + item.categoryUrl + '" class="product-category">' + escape(item.category) + '</a></p>' +
           price + tags +
-          '<a href="' + item.url + '" class="btn btn-primary">Ver detalles</a>' +
+          '<a href="' + item.url + '" class="btn btn-primary">' + escape(MSG.detailCta) + '</a>' +
         '</div>' +
       '</article>'
     );
@@ -76,7 +83,7 @@ content %}
   function renderResults(query) {
     const q = query.trim();
     if (q.length < 2) {
-      resultsEl.innerHTML = '<p class="search-hint">Escribe al menos 2 caracteres para buscar.</p>';
+      resultsEl.innerHTML = '<p class="search-hint">' + escape(MSG.minChars) + '</p>';
       return;
     }
     const ql = q.toLowerCase();
@@ -87,10 +94,10 @@ content %}
       item.tags.some(t => t.name.toLowerCase().includes(ql))
     );
     if (matches.length === 0) {
-      resultsEl.innerHTML = '<p class="search-none">Sin resultados para "<strong>' + escape(q) + '</strong>".</p>';
+      resultsEl.innerHTML = '<p class="search-none">' + escape(MSG.noResultsPrefix) + ' "<strong>' + escape(q) + '</strong>".</p>';
       return;
     }
-    const count = '<p class="search-count">' + matches.length + ' resultado' + (matches.length !== 1 ? 's' : '') + ' para "<strong>' + escape(q) + '</strong>"</p>';
+    const count = '<p class="search-count">' + matches.length + ' ' + escape(MSG.countSuffix) + (matches.length !== 1 ? 's' : '') + ' para "<strong>' + escape(q) + '</strong>"</p>';
     const grid = '<div class="product-grid">' + matches.map(item => renderCard(item, q)).join('') + '</div>';
     resultsEl.innerHTML = count + grid;
   }

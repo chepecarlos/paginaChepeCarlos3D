@@ -1,3 +1,5 @@
+{% import "partials/messages.html" as shared with context %}
+{% set MSG = shared.MSG %}
 <!doctype html>
 <html lang="{{ DEFAULT_LANG }}" {% if WHATSAPP_NUMBER %}data-whatsapp-number="{{ WHATSAPP_NUMBER }}" {% endif %}>
   <head>
@@ -66,7 +68,7 @@
           {% endif %}
 
           <form class="nav-search" role="search" action="{{ SITEURL }}/buscar/" method="get" autocomplete="off">
-            <input type="search" name="q" placeholder="Buscar producto…" aria-label="Buscar productos" class="nav-search-input" />
+            <input type="search" name="q" placeholder="{{ MSG.search_nav_placeholder }}" aria-label="{{ MSG.search_page_title }}" class="nav-search-input" />
             <button type="submit" class="nav-search-btn" aria-label="Buscar">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8" />
@@ -85,7 +87,7 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="{{ SITEURL }}/" class="footer-brand-name">{{ SITENAME }}</a>
-            <p>Figuras artesanales de crochet inspiradas en anime y cultura pop. Hechas con amor y detalle.</p>
+            <p>{{ MSG.site_footer_blurb }}</p>
             {% if SOCIAL_LINKS %}
             <div class="footer-socials">
               {% if SOCIAL_LINKS.get("instagram") %}
@@ -139,7 +141,7 @@
             <h3>Contacto</h3>
             <ul>
               {% if WHATSAPP_NUMBER %}
-              <li><a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" rel="noopener">WhatsApp</a></li>
+              <li><a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" rel="noopener">{{ MSG.whatsapp_button }}</a></li>
               {% endif %} {% if CONTACT_EMAIL %}
               <li><a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a></li>
               {% endif %}
@@ -154,8 +156,8 @@
 
     {% if WHATSAPP_NUMBER %}
     <!-- Botón flotante WhatsApp -->
-    <button id="whatsapp-floating-btn" class="whatsapp-floating-btn" aria-label="Contactar por WhatsApp">
-      <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="WhatsApp" class="whatsapp-floating-icon" />
+    <button id="whatsapp-floating-btn" class="whatsapp-floating-btn" aria-label="{{ MSG.whatsapp_label }}">
+      <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="{{ MSG.whatsapp_button }}" class="whatsapp-floating-icon" />
     </button>
 
     <script src="{{ SITEURL }}/theme/js/whatsapp-floating.js"></script>
