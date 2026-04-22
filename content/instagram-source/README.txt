@@ -8,7 +8,12 @@ Modos soportados:
   - Opcional: `image_url` para forzar imagen manual si falla la extraccion automatica.
   - Ejecuta `make instagram-feed-urls`.
 
-2. local_files (compatibilidad):
+2. profile_latest (experimental pero util):
+  - En `feed.json`, define `mode: profile_latest` y agrega `username` con el usuario publico.
+  - Tambien puedes ejecutarlo directo con `make instagram-feed-latest USERNAME=chepecarlos3d`.
+  - El script consulta el endpoint web publico del perfil, reconstruye los `post_url` recientes y descarga sus imagenes.
+
+3. local_files (compatibilidad):
   - En `feed.json`, define `mode: local_files` y usa `image` con archivos locales.
   - Ejecuta `make instagram-feed`.
 
@@ -26,4 +31,13 @@ Ejemplo mode manual_urls:
       "post_url": "https://www.instagram.com/p/XXXXXXXXXXX/"
     }
   ]
+}
+
+Ejemplo mode profile_latest:
+
+{
+  "mode": "profile_latest",
+  "username": "chepecarlos3d",
+  "max_items": 6,
+  "items": []
 }

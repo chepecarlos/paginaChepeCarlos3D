@@ -24,6 +24,7 @@ MAX_ITEMS = 6
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
 HTTP_TIMEOUT = 30
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36"
+INSTAGRAM_APP_ID = "936619743392459"
 
 
 def fetch_text(url: str) -> str:
@@ -40,6 +41,36 @@ def fetch_text(url: str) -> str:
             return response.read().decode(charset, errors="replace")
     except urllib.error.URLError as error:
         raise ValueError(f"No se pudo leer la URL {url}: {error}") from error
+
+
+def fetch_json(url: str, extra_headers: dict[str, str] | None = None) -> dict:
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json",
+        "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
+    }
+    if extra_headers:
+        headers.update(extra_headers)
+
+    request = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(request, timeout=HTTP_TIMEOUT) as response:
+            charset = response.headers.get_content_charset() or "utf-8"
+            payload = response.read().decode(charset, errors="replace")
+    except urllib.error.HTTPError as error:
+        if error.code == 429:
+            raise ValueError(
+                "Instagram limito temporalmente el acceso al perfil publico (HTTP 429). "
+                "Espera unos minutos o usa el modo manual_urls con post_url."
+            ) from error
+        raise ValueError(f"No se pudo leer la URL {url}: HTTP {error.code}") from error
+    except urllib.error.URLError as error:
+        raise ValueError(f"No se pudo leer la URL {url}: {error}") from error
+
+    try:
+        return json.loads(payload)
+    except json.JSONDecodeError as error:
+        raise ValueError(f"La URL {url} no devolvio JSON valido.") from error
 
 
 def post_media_url(post_url: str) -> str:
@@ -82,6 +113,72 @@ def resolve_image_url_from_post(post_url: str) -> str:
         f"No se pudo extraer og:image desde el post {post_url}. "
         "Prueba agregando image_url manualmente en feed.json."
     )
+
+
+def fetch_profile_latest_items(username: str, max_items: int) -> list[dict]:
+    if not username:
+        raise ValueError("Debes indicar 'username' en feed.json o usar --username.")
+
+    api_url = (
+        "https://www.instagram.com/api/v1/users/web_profile_info/"
+        f"?username={urllib.parse.quote(username)}"
+    )
+    data = fetch_json(api_url, extra_headers={"X-IG-App-ID": INSTAGRAM_APP_ID})
+
+    user = data.get("data", {}).get("user")
+    if not isinstance(user, dict):
+        raise ValueError(
+            "Instagram no devolvio datos del perfil. Verifica si el username es publico y correcto."
+        )
+
+    timeline = user.get("edge_owner_to_timeline_media", {})
+    edges = timeline.get("edges", []) if isinstance(timeline, dict) else []
+    if not isinstance(edges, list) or not edges:
+        raise ValueError(
+            "Instagram no devolvio publicaciones recientes para ese perfil."
+        )
+
+    items = []
+    for edge in edges:
+        node = edge.get("node", {}) if isinstance(edge, dict) else {}
+        shortcode = str(node.get("shortcode") or "").strip()
+        if not shortcode:
+            continue
+
+        caption_edges = (
+            node.get("edge_media_to_caption", {}).get("edges", [])
+            if isinstance(node.get("edge_media_to_caption"), dict)
+            else []
+        )
+        caption_text = ""
+        if caption_edges:
+            caption_node = caption_edges[0].get("node", {})
+            if isinstance(caption_node, dict):
+                caption_text = str(caption_node.get("text") or "").strip()
+
+        title = _title_from_caption(caption_text, f"Trabajo destacado {len(items) + 1}")
+        items.append(
+            {
+                "index": len(items) + 1,
+                "post_url": f"https://www.instagram.com/p/{shortcode}/",
+                "image_url": post_media_url(
+                    f"https://www.instagram.com/p/{shortcode}/"
+                ),
+                "title": title,
+                "alt": title,
+                "url": f"https://www.instagram.com/p/{shortcode}/",
+            }
+        )
+
+        if len(items) >= max_items:
+            break
+
+    if not items:
+        raise ValueError(
+            "No se pudieron construir publicaciones desde el perfil indicado."
+        )
+
+    return items
 
 
 def detect_extension(url: str, content_type: str | None = None) -> str:
@@ -146,7 +243,12 @@ def discover_source_images() -> list[Path]:
 
 def load_manifest() -> dict:
     if not SOURCE_MANIFEST.exists():
-        return {"mode": "local_files", "max_items": MAX_ITEMS, "items": []}
+        return {
+            "mode": "local_files",
+            "max_items": MAX_ITEMS,
+            "username": "",
+            "items": [],
+        }
 
     with SOURCE_MANIFEST.open("r", encoding="utf-8") as file_handle:
         data = json.load(file_handle)
@@ -163,12 +265,14 @@ def load_manifest() -> dict:
         return {
             "mode": mode,
             "max_items": max_items,
+            "username": str(data.get("username") or "").strip(),
             "items": items,
         }
     elif isinstance(data, list):
         return {
             "mode": "local_files",
             "max_items": MAX_ITEMS,
+            "username": "",
             "items": data,
         }
     else:
@@ -375,11 +479,15 @@ def main() -> int:
     )
     parser.add_argument(
         "--mode",
-        choices=["local_files", "manual_urls"],
+        choices=["local_files", "manual_urls", "profile_latest"],
         help="Modo de origen de publicaciones",
     )
     parser.add_argument(
         "--max-items", type=int, help="Cantidad maxima de publicaciones a procesar"
+    )
+    parser.add_argument(
+        "--username",
+        help="Username publico de Instagram para obtener publicaciones recientes",
     )
     args = parser.parse_args()
 
@@ -387,13 +495,16 @@ def main() -> int:
         config = load_manifest()
         mode = args.mode or config.get("mode", "local_files")
         max_items = args.max_items or int(config.get("max_items", MAX_ITEMS))
+        username = (args.username or config.get("username") or "").strip()
         max_items = max(1, min(max_items, MAX_ITEMS))
 
         raw_items = config.get("items", [])
         if not isinstance(raw_items, list):
             raise ValueError("La clave 'items' debe contener una lista.")
 
-        if mode == "manual_urls":
+        if mode == "profile_latest":
+            items = fetch_profile_latest_items(username, max_items)
+        elif mode == "manual_urls":
             items = normalize_url_items(raw_items, max_items)
         else:
             items = normalize_items(raw_items, max_items)

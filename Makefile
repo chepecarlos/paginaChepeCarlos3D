@@ -36,6 +36,7 @@ help:
 	@echo 'Usage:                                                                    '
 	@echo '   make instagram-feed                sync del feed local al sitio        '
 	@echo '   make instagram-feed-urls           descarga imagenes desde post_url    '
+	@echo '   make instagram-feed-latest USERNAME=... trae ultimos posts del perfil  '
 	@echo '   make instagram-feed-build          sync + build local completo         '
 	@echo '   make html                           (re)generate the web site          '
 	@echo '   make clean                          remove the generated files         '
@@ -56,6 +57,9 @@ instagram-feed:
 
 instagram-feed-urls:
 	"$(PY)" scripts/sync_instagram_feed.py --mode manual_urls
+
+instagram-feed-latest:
+	"$(PY)" scripts/sync_instagram_feed.py --mode profile_latest --username "$(USERNAME)"
 
 prebuild: instagram-feed
 
@@ -90,4 +94,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: instagram-feed instagram-feed-urls prebuild instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
+.PHONY: instagram-feed instagram-feed-urls instagram-feed-latest prebuild instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
