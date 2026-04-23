@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Pelican generated site
+output/
