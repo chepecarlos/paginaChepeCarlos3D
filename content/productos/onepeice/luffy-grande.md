@@ -7,7 +7,7 @@ Slug: luffy-grande
 Price: $27.00
 Image: images/productos/onepiece/luffy-grande/01_Luffy.png
 GalleryDir: images/productos/onepiece/luffy-grande/
-Summary: Figura artesanal estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
+Summary: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
 
 ## Descripción
 

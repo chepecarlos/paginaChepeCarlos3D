@@ -15,6 +15,7 @@ Figura amigurumi de Pikachu elaborada de forma artesanal en estilo crochet. Cada
 
 ## Características
 
+- **Tamaño:** Altura 10 cm
 - **Material:** Hilo suave de alta calidad
 - **Tecnica:** Tejido a mano (amigurumi)
 - **Uso:** Decoracion, regalo o coleccion
