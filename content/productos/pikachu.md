@@ -3,27 +3,26 @@ Date: 2026-01-15
 Category: Pokemon
 Tags: producto, crochet, amigurumi, pokemon, anime
 Product: true
-Slug: pkachu-crochet
+Slug: pikachu-crochet
 Price: $15.00
 Image: images/productos/pikachu-crochet/01_Pikachu.png
 GalleryDir: images/productos/pikachu-crochet/
-Summary: Monitor curvo VA de 27 pulgadas, 144Hz y 1ms de tiempo de respuesta para gaming y trabajo profesional.
+Summary: Amigurumi de Pikachu tejido a mano con acabados limpios, ideal para regalo o coleccion.
 
 ## Descripción
 
-El Monitor Curvo 27" 144Hz ofrece una experiencia visual inmersiva con panel VA que garantiza colores vivos y negros profundos. Ideal tanto para gaming competitivo como para diseño gráfico.
+Figura amigurumi de Pikachu elaborada de forma artesanal en estilo crochet. Cada pieza se produce a mano, por lo que el resultado mantiene un look unico y especial para fans de Pokemon.
 
 ## Características
 
-- **Panel:** VA curvo 1500R
-- **Tamaño:** 27 pulgadas
-- **Resolución:** 2560 × 1440 (QHD)
-- **Refresco:** 144 Hz
-- **Tiempo de respuesta:** 1 ms (MPRT)
-- **HDR:** HDR10
-- **Puertos:** 2× HDMI 2.0, 1× DisplayPort 1.4, 2× USB-A
-- **Garantía:** 3 años (panel sin píxeles muertos)
+- **Material:** Hilo suave de alta calidad
+- **Tecnica:** Tejido a mano (amigurumi)
+- **Uso:** Decoracion, regalo o coleccion
+- **Acabado:** Detalles faciales bordados
+- **Tiempo de preparacion:** 2 a 4 dias habiles
 
-## Ergonomía
+## Recomendaciones
 
-Soporte ajustable en altura (±120 mm), inclinación (−5° / +20°) y rotación (±30°).
+- Evitar humedad directa y sol intenso para conservar el color.
+- Limpiar con pano suave y seco.
+- Si deseas personalizacion de color o tamano, solicita cotizacion por WhatsApp.

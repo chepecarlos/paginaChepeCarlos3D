@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        SITEURL: ${SITEURL:-}
+        INSTAGRAM_SYNC: ${INSTAGRAM_SYNC:-0}
+    ports:
+      - "8000:80"
+    restart: unless-stopped
