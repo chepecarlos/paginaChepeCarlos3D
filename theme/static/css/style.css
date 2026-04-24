@@ -700,7 +700,7 @@ img {
    ============================================================ */
 .product-detail {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 48px;
     align-items: start;
     padding: 48px 0;
@@ -708,10 +708,17 @@ img {
 
 .product-detail-img {
     position: relative;
+    min-width: 0;
+}
+
+.product-detail-info {
+    min-width: 0;
 }
 
 .product-main-media {
     position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
 }
 
 .product-detail-img img {
@@ -720,6 +727,103 @@ img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    transform-origin: center center;
+    transition: transform var(--transition);
+}
+
+.product-main-media.zoomed img {
+    transform: scale(1.9);
+}
+
+.product-main-media.is-zoomable {
+    cursor: zoom-in;
+}
+
+.product-main-media.zoomed {
+    cursor: zoom-out;
+}
+
+.product-lightbox-trigger {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    background: rgba(2, 13, 25, 0.65);
+    color: var(--color-white);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.product-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(2, 8, 20, 0.9);
+}
+
+.product-lightbox.is-open {
+    display: flex;
+}
+
+.product-lightbox-content {
+    position: relative;
+    width: min(96vw, 980px);
+}
+
+.product-lightbox-image {
+    width: 100%;
+    max-height: 84vh;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #0b1220;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.42);
+}
+
+.product-lightbox-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(2, 13, 25, 0.9);
+    color: var(--color-white);
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.product-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(2, 13, 25, 0.75);
+    color: var(--color-white);
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.product-lightbox-nav.prev {
+    left: 12px;
+}
+
+.product-lightbox-nav.next {
+    right: 12px;
 }
 
 .product-nav {
@@ -799,6 +903,10 @@ img {
 .product-thumb.active {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 2px rgba(6, 133, 135, 0.3);
+}
+
+.product-thumbs::-webkit-scrollbar {
+    height: 0;
 }
 
 .product-detail-info h1 {
@@ -1654,6 +1762,53 @@ mark {
         grid-template-columns: 1fr;
     }
 
+    .product-thumbs {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+
+    .product-lightbox-content {
+        width: 100%;
+    }
+
+    .product-lightbox-image {
+        max-height: 78vh;
+    }
+
+    .product-lightbox-close {
+        top: 10px;
+        right: 10px;
+    }
+        padding-bottom: 6px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .product-thumb {
+        flex: 0 0 86px;
+        scroll-snap-align: start;
+    }
+
+    .product-main-media.is-zoomable::after {
+        content: "Toque para ampliar";
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        background: rgba(15, 23, 42, 0.68);
+        color: var(--color-white);
+        font-size: 0.72rem;
+        line-height: 1;
+        padding: 7px 9px;
+        border-radius: 999px;
+        pointer-events: none;
+    }
+
+    .product-main-media.zoomed::after {
+        content: "Toque para reducir";
+    }
+
     .product-nav {
         width: 46px;
         height: 46px;
@@ -1782,10 +1937,6 @@ mark {
 
     .product-grid {
         grid-template-columns: 1fr;
-    }
-
-    .product-thumbs {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .nav-search {

@@ -8,6 +8,7 @@
       {% if main_image %}
       <div class="product-main-media">
         <img id="product-main-image" src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }}" />
+        <button class="product-lightbox-trigger" type="button" aria-label="Ver imagen en grande">⤢</button>
         <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
         <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>
       </div>
@@ -111,10 +112,33 @@
     const mainImage = document.getElementById("product-main-image");
     if (!mainImage) return;
 
+    const media = document.querySelector(".product-main-media");
     const prevButton = document.querySelector(".product-nav.prev");
     const nextButton = document.querySelector(".product-nav.next");
+    const lightboxTrigger = document.querySelector(".product-lightbox-trigger");
     const thumbs = Array.from(document.querySelectorAll(".product-thumb"));
     const normalize = (url) => new URL(url, window.location.href).href;
+    const mobileMedia = window.matchMedia("(max-width: 768px)");
+
+    let lightboxOpen = false;
+    let lightboxImage = null;
+    let lightboxRoot = null;
+
+    let zoomed = false;
+
+    const disableZoom = () => {
+      if (!media) return;
+      zoomed = false;
+      media.classList.remove("zoomed");
+    };
+
+    const syncZoomAvailability = () => {
+      if (!media) return;
+      media.classList.toggle("is-zoomable", mobileMedia.matches);
+      if (!mobileMedia.matches) {
+        disableZoom();
+      }
+    };
 
     const imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
 
@@ -133,8 +157,59 @@
       if (!imageList.length) return;
       currentIndex = (index + imageList.length) % imageList.length;
       const nextImage = imageList[currentIndex];
+      disableZoom();
       mainImage.src = nextImage;
+      if (lightboxImage) {
+        lightboxImage.src = nextImage;
+      }
       setActiveThumb(nextImage);
+    };
+
+    const closeLightbox = () => {
+      if (!lightboxRoot) return;
+      lightboxOpen = false;
+      lightboxRoot.classList.remove("is-open");
+      document.body.style.overflow = "";
+    };
+
+    const openLightbox = () => {
+      if (!lightboxRoot || !lightboxImage) return;
+      lightboxOpen = true;
+      lightboxImage.src = imageList[currentIndex] || mainImage.src;
+      lightboxRoot.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    };
+
+    const buildLightbox = () => {
+      if (lightboxRoot) return;
+
+      lightboxRoot = document.createElement("div");
+      lightboxRoot.className = "product-lightbox";
+      lightboxRoot.innerHTML = `
+        <div class="product-lightbox-content" role="dialog" aria-modal="true" aria-label="Vista ampliada del producto">
+          <button type="button" class="product-lightbox-close" aria-label="Cerrar imagen">✕</button>
+          <button type="button" class="product-lightbox-nav prev" aria-label="Imagen anterior">&#10094;</button>
+          <img class="product-lightbox-image" src="" alt="${mainImage.alt || "Imagen del producto"}" />
+          <button type="button" class="product-lightbox-nav next" aria-label="Imagen siguiente">&#10095;</button>
+        </div>
+      `;
+
+      document.body.appendChild(lightboxRoot);
+      lightboxImage = lightboxRoot.querySelector(".product-lightbox-image");
+
+      const lightboxClose = lightboxRoot.querySelector(".product-lightbox-close");
+      const lightboxPrev = lightboxRoot.querySelector(".product-lightbox-nav.prev");
+      const lightboxNext = lightboxRoot.querySelector(".product-lightbox-nav.next");
+
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightboxPrev.addEventListener("click", () => setImageByIndex(currentIndex - 1));
+      lightboxNext.addEventListener("click", () => setImageByIndex(currentIndex + 1));
+
+      lightboxRoot.addEventListener("click", (event) => {
+        if (event.target === lightboxRoot) {
+          closeLightbox();
+        }
+      });
     };
 
     thumbs.forEach((thumb) => {
@@ -146,6 +221,7 @@
           setImageByIndex(index);
           return;
         }
+        disableZoom();
         mainImage.src = newImage;
         setActiveThumb(newImage);
       });
@@ -158,11 +234,52 @@
       nextButton.addEventListener("click", () => setImageByIndex(currentIndex + 1));
     }
 
+    if (lightboxTrigger) {
+      buildLightbox();
+      lightboxTrigger.addEventListener("click", () => {
+        disableZoom();
+        openLightbox();
+      });
+    }
+
     if (imageList.length <= 1) {
       if (prevButton) prevButton.disabled = true;
       if (nextButton) nextButton.disabled = true;
     }
 
+    if (media) {
+      mainImage.addEventListener("click", () => {
+        if (!mobileMedia.matches) return;
+        zoomed = !zoomed;
+        media.classList.toggle("zoomed", zoomed);
+      });
+
+      media.addEventListener("click", (event) => {
+        if (!zoomed || event.target === mainImage) return;
+        disableZoom();
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightboxOpen) return;
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+      if (event.key === "ArrowLeft") {
+        setImageByIndex(currentIndex - 1);
+      }
+      if (event.key === "ArrowRight") {
+        setImageByIndex(currentIndex + 1);
+      }
+    });
+
+    if (mobileMedia.addEventListener) {
+      mobileMedia.addEventListener("change", syncZoomAvailability);
+    } else if (mobileMedia.addListener) {
+      mobileMedia.addListener(syncZoomAvailability);
+    }
+
+    syncZoomAvailability();
     setActiveThumb(mainImage.src);
   })();
 </script>
