@@ -1,13 +1,14 @@
-Title: Pikachu Estilo Crochet
+titulo: Pikachu Estilo Crochet
+fecha: 2026-01-15
 Date: 2026-01-15
-Category: Pokemon
-Tags: producto, crochet, amigurumi, pokemon, anime
-Product: true
-Slug: pikachu-crochet
-Price: $15.00
-Image: images/productos/pikachu-crochet/01_Pikachu.png
-GalleryDir: images/productos/pikachu-crochet/
-Summary: Amigurumi de Pikachu tejido a mano con acabados limpios, ideal para regalo o coleccion.
+categoria: Pokemon
+etiquetas: producto, crochet, amigurumi, pokemon, anime
+producto: true
+slug: pikachu-crochet
+precio: $15.00
+imagen: images/productos/pikachu-crochet/01_Pikachu.png
+galeria: images/productos/pikachu-crochet/
+resumen: Amigurumi de Pikachu tejido a mano con acabados limpios, ideal para regalo o coleccion.
 
 ## Descripción
 

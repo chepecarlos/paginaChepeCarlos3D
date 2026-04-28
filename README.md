@@ -2,6 +2,12 @@
 
 Sitio estatico con Pelican para catalogo y contenido de ChepeCarlos3D.
 
+## Guia rapida de productos
+
+Para crear productos con atributos en espanol o ingles, revisa:
+
+- [GUIA_PRODUCTOS.md](GUIA_PRODUCTOS.md)
+
 ## Docker para Dokploy
 
 Este repositorio incluye una dockerizacion multi-stage:

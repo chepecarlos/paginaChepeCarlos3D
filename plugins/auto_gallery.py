@@ -1,9 +1,42 @@
 from pathlib import Path
+from datetime import datetime
 
 from pelican import signals
 
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".svg", ".avif", ".gif"}
+
+
+# Canonical field names used by templates plus Spanish aliases for content editing.
+METADATA_ALIASES = {
+    "title": ("titulo",),
+    "category": ("categoria",),
+    "tags": ("etiquetas",),
+    "summary": ("resumen",),
+    "description": ("descripcion",),
+    "image": ("imagen",),
+    "price": ("precio",),
+    "product": ("producto",),
+    "gallerydir": ("directorio_galeria", "gallery_dir", "galeria"),
+    "slug": ("slug_es",),
+    "date": ("fecha",),
+    "modified": ("modificado",),
+    "author": ("autor",),
+    "lang": ("idioma",),
+}
+
+
+SAFE_DIRECT_ATTR_FIELDS = {
+    "title",
+    "summary",
+    "description",
+    "image",
+    "price",
+    "product",
+    "gallerydir",
+    "slug",
+    "lang",
+}
 
 
 def _meta_value(article, *names):
@@ -19,6 +52,47 @@ def _meta_value(article, *names):
             return value
 
     return None
+
+
+def _resolve_aliases(metadata, *names):
+    for name in names:
+        value = metadata.get(name)
+        if value not in (None, ""):
+            return value
+
+        for alias in METADATA_ALIASES.get(name, ()):
+            alias_value = metadata.get(alias)
+            if alias_value not in (None, ""):
+                return alias_value
+
+    return None
+
+
+def normalize_bilingual_metadata(content):
+    metadata = getattr(content, "metadata", None)
+    if not metadata:
+        return
+
+    for canonical_name, aliases in METADATA_ALIASES.items():
+        value = _resolve_aliases(metadata, canonical_name)
+        if value in (None, ""):
+            continue
+
+        if canonical_name in ("date", "modified") and isinstance(value, str):
+            # Pelican expects datetime-like values for ordering.
+            try:
+                value = datetime.fromisoformat(value.strip())
+            except ValueError:
+                pass
+
+        metadata[canonical_name] = value
+        if canonical_name in SAFE_DIRECT_ATTR_FIELDS:
+            setattr(content, canonical_name, value)
+
+        # Keep aliases in metadata so both styles can be used safely.
+        for alias in aliases:
+            if metadata.get(alias) in (None, ""):
+                metadata[alias] = value
 
 
 def _normalize(path_value):
@@ -74,4 +148,5 @@ def enrich_articles_with_auto_gallery(generator):
 
 
 def register():
+    signals.content_object_init.connect(normalize_bilingual_metadata)
     signals.article_generator_finalized.connect(enrich_articles_with_auto_gallery)
