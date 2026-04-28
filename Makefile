@@ -1,6 +1,7 @@
 PY?=$(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 PELICAN?=$(if $(wildcard .venv/bin/pelican),.venv/bin/pelican,pelican)
 PELICANOPTS=
+UV?=uv
 
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
@@ -34,6 +35,8 @@ help:
 	@echo 'Makefile for a pelican Web site                                           '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
+	@echo '   make install                        instala dependencias con uv        '
+	@echo '   make install-frozen                 instala exacto desde uv.lock       '
 	@echo '   make instagram-feed                sync del feed local al sitio        '
 	@echo '   make instagram-feed-urls           descarga imagenes desde post_url    '
 	@echo '   make instagram-feed-latest USERNAME=... trae ultimos posts del perfil  '
@@ -54,6 +57,12 @@ help:
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
 	@echo '                                                                          '
+
+install:
+	"$(UV)" sync
+
+install-frozen:
+	"$(UV)" sync --frozen
 
 instagram-feed:
 	"$(PY)" scripts/sync_instagram_feed.py
@@ -125,4 +134,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: instagram-feed instagram-feed-urls instagram-feed-latest prebuild optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
+.PHONY: install install-frozen instagram-feed instagram-feed-urls instagram-feed-latest prebuild optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
