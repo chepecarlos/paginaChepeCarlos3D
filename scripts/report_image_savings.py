@@ -50,7 +50,9 @@ def iter_source_images(source_root: Path, formats: Iterable[str]) -> list[Path]:
     ]
 
 
-def source_to_target(source_file: Path, source_images_dir: Path, dest_images_dir: Path) -> Path:
+def source_to_target(
+    source_file: Path, source_images_dir: Path, dest_images_dir: Path
+) -> Path:
     rel_to_images = source_file.relative_to(source_images_dir)
     return (dest_images_dir / rel_to_images).with_suffix(".webp")
 
@@ -109,7 +111,9 @@ def main() -> int:
             totals.missing_optimized += 1
 
     if totals.optimized_files == 0:
-        print("No hay archivos optimizados para comparar. Ejecuta primero make optimize-images")
+        print(
+            "No hay archivos optimizados para comparar. Ejecuta primero make optimize-images"
+        )
         return 0
 
     absolute_saved = totals.source_bytes - totals.optimized_bytes
@@ -122,7 +126,9 @@ def main() -> int:
     print(f"- Imagenes fuente: {totals.source_files}")
     print(f"- Imagenes optimizadas encontradas: {totals.optimized_files}")
     print(f"- Imagenes sin optimizar: {totals.missing_optimized}")
-    print(f"- Peso original total: {human_size(totals.source_bytes)} ({totals.source_bytes} bytes)")
+    print(
+        f"- Peso original total: {human_size(totals.source_bytes)} ({totals.source_bytes} bytes)"
+    )
     print(
         f"- Peso optimizado total: {human_size(totals.optimized_bytes)} "
         f"({totals.optimized_bytes} bytes)"
