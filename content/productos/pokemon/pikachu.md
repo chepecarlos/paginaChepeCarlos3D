@@ -1,6 +1,5 @@
 titulo: Pikachu Estilo Crochet
 fecha: 2026-01-15
-Date: 2026-01-15
 categoria: Pokemon
 etiquetas: producto, crochet, amigurumi, pokemon, anime
 producto: true

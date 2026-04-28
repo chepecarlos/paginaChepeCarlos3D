@@ -1,6 +1,5 @@
 titulo: Cruz imagen Jesus
 fecha: 2026-04-24
-Date: 2026-04-24
 categoria: religiosas
 etiquetas: jesus, colgar
 producto: true

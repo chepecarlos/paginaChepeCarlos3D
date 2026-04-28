@@ -68,6 +68,52 @@ def _resolve_aliases(metadata, *names):
     return None
 
 
+def _normalize_reader_metadata(reader, metadata):
+    if not metadata:
+        return metadata
+
+    normalized = dict(metadata)
+    for canonical_name, aliases in METADATA_ALIASES.items():
+        value = _resolve_aliases(normalized, canonical_name)
+        if value in (None, ""):
+            continue
+
+        try:
+            processed_value = reader.process_metadata(canonical_name, value)
+        except Exception:
+            processed_value = value
+
+        normalized[canonical_name] = processed_value
+        for alias in aliases:
+            if normalized.get(alias) in (None, ""):
+                normalized[alias] = processed_value
+
+    return normalized
+
+
+def _build_bilingual_reader(reader_class):
+    if getattr(reader_class, "_bilingual_alias_support", False):
+        return reader_class
+
+    class BilingualReader(reader_class):
+        _bilingual_alias_support = True
+
+        def read(self, source_path):
+            content, metadata = super().read(source_path)
+            metadata = _normalize_reader_metadata(self, metadata)
+            return content, metadata
+
+    BilingualReader.__name__ = f"Bilingual{reader_class.__name__}"
+    return BilingualReader
+
+
+def register_reader_aliases(readers):
+    for extension, reader_class in list(readers.reader_classes.items()):
+        if reader_class is None:
+            continue
+        readers.reader_classes[extension] = _build_bilingual_reader(reader_class)
+
+
 def normalize_bilingual_metadata(content):
     metadata = getattr(content, "metadata", None)
     if not metadata:
@@ -241,6 +287,7 @@ def enrich_articles_with_auto_gallery(generator):
 
 
 def register():
+    signals.readers_init.connect(register_reader_aliases)
     signals.content_object_init.connect(normalize_bilingual_metadata)
     signals.article_generator_finalized.connect(enrich_articles_with_auto_gallery)
     signals.generator_init.connect(_register_template_helpers)

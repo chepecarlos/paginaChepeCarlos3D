@@ -9,8 +9,8 @@ etiquetas: etiqueta1, etiqueta2, etiqueta3
 producto: true
 slug: nombre-del-producto
 precio: $0.00
-imagen: images/productos/categoria/nombre-del-producto/01_principal.png
-galeria: images/productos/categoria/nombre-del-producto/
+imagen: categoria/nombre-del-producto/01_principal.png
+galeria: categoria/nombre-del-producto/
 resumen: Descripcion corta para tarjetas de catalogo y buscador.
 
 ## Descripcion
@@ -38,5 +38,5 @@ Escribe aqui la descripcion completa del producto.
 4. Regenera el sitio con:
 
 ```bash
-source .venv/bin/activate && make html
+source .venv/bin/activate && make devserver
 ```
