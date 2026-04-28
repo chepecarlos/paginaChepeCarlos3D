@@ -1,5 +1,5 @@
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 
 from pelican import signals
 
@@ -102,6 +102,73 @@ def _normalize(path_value):
     return text.lstrip("/")
 
 
+def normalize_media_path(path_value):
+    if not path_value:
+        return ""
+    return _normalize(path_value)
+
+
+def _is_external_or_data_url(path_value):
+    return path_value.startswith(("http://", "https://", "data:", "//"))
+
+
+def resolve_optimized_image_path(path_value, settings):
+    if not path_value:
+        return path_value
+
+    normalized = normalize_media_path(path_value)
+    if not normalized or _is_external_or_data_url(normalized):
+        return path_value
+
+    source_dir = normalize_media_path(
+        settings.get("IMAGE_OPTIMIZATION_SOURCE_DIR", "images")
+    )
+    dest_dir = normalize_media_path(
+        settings.get("IMAGE_OPTIMIZATION_DEST_DIR", "images_opt")
+    )
+    optimize_enabled = settings.get("IMAGE_OPTIMIZATION_ENABLED", True)
+
+    if not optimize_enabled:
+        return normalized
+
+    source_prefix = f"{source_dir}/"
+    if not normalized.startswith(source_prefix):
+        return normalized
+
+    suffix = Path(normalized[len(source_prefix) :]).with_suffix(".webp")
+    optimized_rel = normalize_media_path(Path(dest_dir) / suffix)
+
+    content_root = Path(settings.get("PATH", "content")).resolve()
+    optimized_fs = content_root / optimized_rel
+    if optimized_fs.exists():
+        return optimized_rel
+
+    return normalized
+
+
+def _attach_helpers_to_env(env, settings):
+    def _resolve_image(path_value):
+        return resolve_optimized_image_path(path_value, settings)
+
+    def _resolve_gallery(paths):
+        if not paths:
+            return []
+        return [_resolve_image(item) for item in paths]
+
+    env.filters["optimized_image"] = _resolve_image
+    env.filters["optimized_gallery"] = _resolve_gallery
+    env.globals["resolve_image"] = _resolve_image
+    env.globals["resolve_gallery"] = _resolve_gallery
+
+
+def _register_template_helpers(generator):
+    env = getattr(generator, "env", None)
+    if env is None:
+        return
+    settings = getattr(generator, "settings", {})
+    _attach_helpers_to_env(env, settings)
+
+
 def _discover_images(content_root, gallery_dir):
     gallery_path = (content_root / _normalize(gallery_dir)).resolve()
     if not gallery_path.exists() or not gallery_path.is_dir():
@@ -150,3 +217,4 @@ def enrich_articles_with_auto_gallery(generator):
 def register():
     signals.content_object_init.connect(normalize_bilingual_metadata)
     signals.article_generator_finalized.connect(enrich_articles_with_auto_gallery)
+    signals.generator_init.connect(_register_template_helpers)

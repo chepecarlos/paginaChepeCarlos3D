@@ -42,7 +42,7 @@
       {% for cat, cat_articles in categories %} {% set prods = cat_articles | selectattr('product') | list %} {% if prods %} {% set fp = prods[0] %}
       <a href="{{ SITEURL }}/{{ cat.url }}" class="home-cat-card">
         {% if fp.image %}
-        <div class="home-cat-img" style="background-image: url('{{ SITEURL }}/{{ fp.image }}')"></div>
+        <div class="home-cat-img" style="background-image: url('{{ SITEURL }}/{{ resolve_image(fp.image) }}')"></div>
         {% else %}
         <div class="home-cat-img home-cat-img-empty"></div>
         {% endif %}
@@ -67,7 +67,7 @@
       <article class="product-card">
         <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
           {% if product.image %}
-          <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
           {% else %}
           <div class="product-img-placeholder"><span>{{ MSG.product_no_image }}</span></div>
           {% endif %}

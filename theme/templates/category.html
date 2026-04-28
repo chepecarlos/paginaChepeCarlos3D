@@ -7,7 +7,7 @@
     <article class="product-card">
       <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
         {% if product.image %}
-        <img src="{{ SITEURL }}/{{ product.image }}" alt="{{ product.title }}" loading="lazy" />
+        <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
         {% else %}
         <div class="product-img-placeholder">
           <span>Sin imagen</span>

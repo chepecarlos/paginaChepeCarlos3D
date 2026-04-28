@@ -47,3 +47,47 @@ SITEURL=http://localhost:8000 INSTAGRAM_SYNC=0 docker compose up --build
 ```
 
 Luego abre `http://localhost:8000`.
+
+## Pipeline de imagenes optimizadas
+
+El sitio conserva los originales en `content/images/` y genera versiones WebP en `content/images_opt/`.
+
+- Calidad por defecto: `72` (rango sugerido 70-75).
+- Modo incremental por defecto: solo reprocesa imagenes nuevas o modificadas.
+- Modo completo: usa `--force` para reprocesar todo.
+
+### Comandos utiles
+
+```bash
+# Optimizar solo cambios (incremental)
+make optimize-images
+
+# Reprocesar todo
+make optimize-images-force
+
+# Ver reporte de ahorro total (original vs WebP)
+make optimize-images-report
+```
+
+Tambien se ejecuta automaticamente en `make html` y en tareas Invoke (`build`, `rebuild`, `regenerate`, `preview`, `publish`).
+
+### Configuracion
+
+En `pelicanconf.py`:
+
+- `IMAGE_OPTIMIZATION_ENABLED`
+- `IMAGE_OPTIMIZATION_QUALITY`
+- `IMAGE_OPTIMIZATION_SOURCE_DIR`
+- `IMAGE_OPTIMIZATION_DEST_DIR`
+- `IMAGE_OPTIMIZATION_PRODUCTS_SUBDIR`
+- `IMAGE_OPTIMIZATION_FORMATS`
+
+### Fallback automatico
+
+Las plantillas intentan usar `images_opt/*.webp` cuando existe archivo optimizado. Si no existe, usan la imagen original sin romper rutas.
+
+### Troubleshooting
+
+- Si no se genera WebP, verifica que `Pillow` este instalado.
+- Si una imagen no tiene version optimizada, el sitio mostrara automaticamente la original.
+- El pipeline no borra ni muta archivos originales en `content/images/`.

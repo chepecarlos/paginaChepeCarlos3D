@@ -167,5 +167,49 @@ def pelican_run(cmd):
     pelican_main(shlex.split(cmd))
 
 
-def run_prebuild():
+def run_image_optimization(force_image_optimization=False):
+    if SETTINGS.get("IMAGE_OPTIMIZATION_ENABLED", True):
+        source_dir = SETTINGS.get("IMAGE_OPTIMIZATION_SOURCE_DIR", "images")
+        dest_dir = SETTINGS.get("IMAGE_OPTIMIZATION_DEST_DIR", "images_opt")
+        products_subdir = SETTINGS.get(
+            "IMAGE_OPTIMIZATION_PRODUCTS_SUBDIR", "productos"
+        )
+        quality = str(SETTINGS.get("IMAGE_OPTIMIZATION_QUALITY", 72))
+        formats = SETTINGS.get("IMAGE_OPTIMIZATION_FORMATS", [".jpg", ".jpeg", ".png"])
+
+        if isinstance(formats, (list, tuple, set)):
+            formats = ",".join(str(item) for item in formats)
+        else:
+            formats = str(formats)
+
+        optimize_command = [
+            sys.executable,
+            "scripts/optimize_images.py",
+            "--content-path",
+            SETTINGS.get("PATH", "content"),
+            "--source-dir",
+            source_dir,
+            "--dest-dir",
+            dest_dir,
+            "--products-subdir",
+            products_subdir,
+            "--quality",
+            quality,
+            "--formats",
+            formats,
+        ]
+        if force_image_optimization:
+            optimize_command.append("--force")
+
+        subprocess.run(optimize_command, check=True)
+
+
+def run_prebuild(force_image_optimization=False):
     subprocess.run([sys.executable, "scripts/sync_instagram_feed.py"], check=True)
+    run_image_optimization(force_image_optimization=force_image_optimization)
+
+
+@task
+def optimize_images(c, force=False):
+    """Run image optimization pipeline standalone"""
+    run_image_optimization(force_image_optimization=force)

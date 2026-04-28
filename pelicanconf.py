@@ -15,7 +15,15 @@ DEFAULT_LANG = "es"
 THEME = "theme"
 
 # Rutas de contenido
-STATIC_PATHS = ["images"]
+STATIC_PATHS = ["images", "images_opt"]
+
+# Pipeline de optimizacion de imagenes (fuente original intacta)
+IMAGE_OPTIMIZATION_ENABLED = True
+IMAGE_OPTIMIZATION_QUALITY = 72
+IMAGE_OPTIMIZATION_SOURCE_DIR = "images"
+IMAGE_OPTIMIZATION_DEST_DIR = "images_opt"
+IMAGE_OPTIMIZATION_PRODUCTS_SUBDIR = "productos"
+IMAGE_OPTIMIZATION_FORMATS = [".jpg", ".jpeg", ".png"]
 
 # Plugins locales
 PLUGIN_PATHS = ["plugins"]

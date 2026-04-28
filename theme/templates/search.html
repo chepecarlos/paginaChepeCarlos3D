@@ -24,7 +24,7 @@ content %}
       "summary": {{ (article.summary or "") | striptags | truncate(160) | tojson }},
       "category": {{ article.category.name | tojson }},
       "categoryUrl": "{{ SITEURL }}/{{ article.category.url }}",
-      "image": {% if article.image %}"{{ SITEURL }}/{{ article.image }}"{% else %}null{% endif %},
+      "image": {% if article.image %}"{{ SITEURL }}/{{ resolve_image(article.image) }}"{% else %}null{% endif %},
       "price": {% if article.price %}{{ article.price | tojson }}{% else %}null{% endif %},
       "tags": [{% for tag in article.tags %}{"name": {{ tag.name | tojson }}, "url": "{{ SITEURL }}/{{ tag.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]
     }{% if not loop.last %},{% endif %}
