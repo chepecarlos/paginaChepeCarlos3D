@@ -6,8 +6,8 @@ etiquetas: producto, crochet, amigurumi, pokemon, anime
 producto: true
 slug: pikachu-crochet
 precio: $15.00
-imagen: images/productos/pikachu-crochet/01_Pikachu.png
-galeria: images/productos/pikachu-crochet/
+imagen: pikachu-crochet/01_Pikachu.png
+galeria: pikachu-crochet/
 resumen: Amigurumi de Pikachu tejido a mano con acabados limpios, ideal para regalo o coleccion.
 
 ## Descripción

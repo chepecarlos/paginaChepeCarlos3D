@@ -6,8 +6,8 @@ etiquetas: jesus, colgar
 producto: true
 slug: cruz-jesus
 precio: $5.00
-imagen: images/productos/cruz-jesus/cruz-jesus-01.png
-galeria: images/productos/cruz-jesus
+imagen: cruz-jesus/cruz-jesus-01.png
+galeria: cruz-jesus
 ## Descripción
 
 

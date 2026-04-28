@@ -52,8 +52,8 @@ Tags: crochet, amigurumi, anime
 Product: true
 Slug: pikachu-crochet
 Price: $15.00
-Image: images/productos/pikachu-crochet/01_Pikachu.png
-GalleryDir: images/productos/pikachu-crochet/
+Image: pikachu-crochet/01_Pikachu.png
+GalleryDir: pikachu-crochet/
 Summary: Amigurumi tejido a mano, ideal para regalo o coleccion.
 ```
 
@@ -68,8 +68,8 @@ etiquetas: jesus, colgar
 producto: true
 slug: cruz-jesus
 precio: $5.00
-imagen: images/productos/religiosas/cruz-jesus/01_Cruz.png
-galeria: images/productos/religiosas/cruz-jesus/
+imagen: religiosas/cruz-jesus/01_Cruz.png
+galeria: religiosas/cruz-jesus/
 resumen: Cruz decorativa impresa en 3D para colgar.
 ```
 

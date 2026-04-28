@@ -120,6 +120,10 @@ def resolve_optimized_image_path(path_value, settings):
     if not normalized or _is_external_or_data_url(normalized):
         return path_value
 
+    # Aplicar lógica de rutas cortas para productos
+    if "images/productos/" not in normalized and not normalized.startswith("images/"):
+        normalized = f"images/productos/{normalized}"
+
     source_dir = normalize_media_path(
         settings.get("IMAGE_OPTIMIZATION_SOURCE_DIR", "images")
     )
@@ -169,8 +173,28 @@ def _register_template_helpers(generator):
     _attach_helpers_to_env(env, settings)
 
 
+def _resolve_gallery_dir(gallery_dir):
+    """
+    Resuelve la ruta del directorio de galería.
+    Si no contiene 'images/productos/', lo agrega automáticamente.
+    Esto permite usar rutas cortas como 'onepiece/luffy-grande/'
+    en lugar de 'images/productos/onepiece/luffy-grande/'
+    """
+    normalized = _normalize(gallery_dir)
+    if not normalized or _is_external_or_data_url(normalized):
+        return normalized
+
+    # Si ya contiene la ruta completa, devolverla tal cual
+    if "images/productos/" in normalized:
+        return normalized
+
+    # Si no contiene la ruta, agregarla automáticamente
+    return f"images/productos/{normalized}"
+
+
 def _discover_images(content_root, gallery_dir):
-    gallery_path = (content_root / _normalize(gallery_dir)).resolve()
+    resolved_dir = _resolve_gallery_dir(gallery_dir)
+    gallery_path = (content_root / resolved_dir).resolve()
     if not gallery_path.exists() or not gallery_path.is_dir():
         return []
 
@@ -197,7 +221,9 @@ def enrich_articles_with_auto_gallery(generator):
 
         main_image = _meta_value(article, "image")
         if main_image:
-            main_image = _normalize(main_image)
+            # Resolver rutas cortas en la imagen principal
+            resolved_main = _resolve_gallery_dir(main_image)
+            main_image = _normalize(resolved_main)
 
         if main_image and main_image in discovered_images:
             ordered_images = [main_image] + [
