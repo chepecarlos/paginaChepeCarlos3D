@@ -2,8 +2,8 @@
 <div class="container">
   {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.image %} {% if article.auto_gallery %} {% set support_images =
   article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
-  article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %}
-  {% if main_image %} {% set main_image = resolve_image(main_image) %} {% endif %}
+  article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %} {% if main_image %} {% set main_image =
+  resolve_image(main_image) %} {% endif %}
   <article class="product-detail">
     <div class="product-detail-img">
       {% if main_image %}
@@ -17,7 +17,11 @@
       <div class="product-img-placeholder large">Sin imagen</div>
       {% endif %} {% if support_images %}
       <div class="product-thumbs" aria-label="Imágenes de apoyo">
-        {% for support_image_raw in support_images %} {% set support_image = support_image_raw | trim %} {% set support_image_resolved = resolve_image(support_image) %} {% if support_image_resolved and support_image_resolved != main_image %}
+        <button class="product-thumb active" type="button" data-image="{{ SITEURL }}/{{ main_image }}" aria-label="Ver imagen principal de {{ article.title }}">
+          <img src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }} - principal" loading="lazy" />
+        </button>
+        {% for support_image_raw in support_images %} {% set support_image = support_image_raw | trim %} {% set support_image_resolved = resolve_image(support_image) %} {% if support_image_resolved
+        and support_image_resolved != main_image %}
         <button class="product-thumb" type="button" data-image="{{ SITEURL }}/{{ support_image_resolved }}" aria-label="Ver imagen {{ loop.index }} de {{ article.title }}">
           <img src="{{ SITEURL }}/{{ support_image_resolved }}" alt="{{ article.title }} - apoyo {{ loop.index }}" loading="lazy" />
         </button>
@@ -151,6 +155,9 @@
         const thumbImage = thumb.getAttribute("data-image");
         const isActive = thumbImage && normalize(thumbImage) === normalize(imageUrl);
         thumb.classList.toggle("active", !!isActive);
+        if (isActive) {
+          thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        }
       });
     };
 
