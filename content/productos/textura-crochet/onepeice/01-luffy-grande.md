@@ -1,10 +1,10 @@
 titulo: Luffy Estilo Crochet Grande
 fecha: 2026-01-15
-categoria: OnePiece
+categoria: onepiece
 etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: luffy-grande
-precio: $27.00
+precio: $28.00
 imagen: onepiece/luffy-grande/01_Luffy.png
 galeria: onepiece/luffy-grande/
 resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
