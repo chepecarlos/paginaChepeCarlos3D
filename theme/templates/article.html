@@ -1,4 +1,26 @@
-{% extends "base.html" %} {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %} {% block description %}{{ article.summary }}{% endblock %} {% block content %}
+{% extends "base.html" %} {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %} {% block description %}{{ article.summary }}{% endblock %}
+
+{%- block og_image -%}
+  {%- if article.product -%}
+    {%- set _og_img = article.image -%}
+    {%- if not _og_img and article.auto_gallery -%}
+      {%- set _og_img = article.auto_gallery[0] -%}
+    {%- elif not _og_img and article.gallery -%}
+      {%- set _og_img = article.gallery.split(',')[0] | trim -%}
+    {%- endif -%}
+    {%- if _og_img -%}
+      {{- SITEURL ~ '/' ~ resolve_image(_og_img) -}}
+    {%- else -%}
+      {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}}
+    {%- endif -%}
+  {%- else -%}
+    {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}}
+  {%- endif -%}
+{%- endblock -%}
+
+{%- block twitter_image -%}{{ self.og_image() }}{%- endblock -%}
+
+{% block content %}
 <div class="container">
   {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.image %} {% if article.auto_gallery %} {% set support_images =
   article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
