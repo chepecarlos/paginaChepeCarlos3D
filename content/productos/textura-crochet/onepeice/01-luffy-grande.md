@@ -11,18 +11,11 @@ resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente pre
 
 ## Descripción
 
-Amigurumi de Luffy en formato grande, tejido a mano y pensado para quienes desean una pieza protagonista en su coleccion. Ideal para decorar escritorio, repisa o espacio gamer.
+El espíritu del futuro Rey de los Piratas llega en una increíble impresión 3D de Luffy estilo crochet con cabeza articular! ⚓🍖
+Con detalles definidos y un acabado impecable, esta pieza captura la energía, determinación y carisma del capitán más querido del anime 💪✨.
 
 ## Características
 
-- **Material:** Hilo premium con relleno suave
-- **Tamano:** Formato grande para exhibicion
-- **Tecnica:** Tejido artesanal tipo amigurumi
-- **Detalles:** Rasgos y vestimenta inspirados en el personaje
-- **Produccion:** 3 a 5 dias habiles
-
-## Recomendaciones
-
-- Evitar lavado en maquina.
-- Limpiar a mano con pano humedo y secado a sombra.
-- Para pedidos personalizados, consultar disponibilidad por WhatsApp.
+- **Altura:** 17 cm.
+- **Flexibilidad:** Cuello completamente articulable.
+- **Personalización:** Añade el nombre que desees en su sombrero por un extra de $1.50.
