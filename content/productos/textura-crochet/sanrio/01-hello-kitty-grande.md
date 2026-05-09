@@ -5,7 +5,7 @@ etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: hello-kitty-grande
 precio: $28.00
-imagen: sanrio/hello-kitty-grande/01_HelloKitty.png
+imagen: sanrio/hello-kitty-grande/01_Kitty.png
 galeria: sanrio/hello-kitty-grande/
 resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de Sanrio.
 
