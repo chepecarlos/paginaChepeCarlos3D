@@ -682,6 +682,152 @@ img {
     width: 100%;
 }
 
+.catalog-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding: 20px 24px;
+    background: var(--color-light);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+}
+
+.filter-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-gray);
+    padding-top: 9px;
+    min-width: 70px;
+    flex-shrink: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-tag.is-active {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.btn-tag.is-active:hover {
+    background: var(--color-primary-h);
+    border-color: var(--color-primary-h);
+    color: var(--color-white);
+}
+
+.catalog-no-results {
+    text-align: center;
+    padding: 48px 0;
+    color: var(--color-gray);
+    font-size: 1.05rem;
+}
+
+/* Price range slider */
+.filter-group-price {
+    align-items: center;
+}
+
+.price-range-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+.price-range-display {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-dark);
+}
+
+.price-range-sep {
+    color: var(--color-gray);
+    font-weight: 400;
+}
+
+.price-range-slider {
+    position: relative;
+    height: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.price-range-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+}
+
+.price-range-fill {
+    position: absolute;
+    height: 4px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.price-slider {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    pointer-events: none;
+}
+
+.price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 3px solid var(--color-white);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    pointer-events: all;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.price-slider::-webkit-slider-thumb:hover {
+    background: var(--color-primary-h);
+    transform: scale(1.15);
+}
+
+.price-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 3px solid var(--color-white);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    pointer-events: all;
+    cursor: pointer;
+}
+
 .empty-catalog {
     text-align: center;
     padding: 64px 0;

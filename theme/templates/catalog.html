@@ -8,13 +8,55 @@
 
 <section class="catalog-section">
   <div class="container">
-    {% set productos = articles | selectattr('product') | list %} {% if productos %}
-    <div class="product-grid">
+    {% set productos = articles | selectattr('product') | list %}
+    {% if productos %}
+
+    {% set cat_ns = namespace(list=[]) %}
+    {% for p in productos %}
+      {% set cat_str = p.category | string %}
+      {% if cat_str not in cat_ns.list %}
+        {% set cat_ns.list = cat_ns.list + [cat_str] %}
+      {% endif %}
+    {% endfor %}
+
+    <div class="catalog-filters">
+      <div class="filter-group">
+        <span class="filter-label">Categoría</span>
+        <div class="filter-buttons" id="filter-category">
+          <button class="btn btn-tag is-active" data-filter="all">Todos</button>
+          {% for cat in cat_ns.list | sort %}
+          <button class="btn btn-tag" data-filter="{{ cat }}">{{ cat }}</button>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="filter-group filter-group-price">
+        <span class="filter-label">Precio</span>
+        <div class="price-range-wrap">
+          <div class="price-range-display">
+            <span id="price-min-label">$0</span>
+            <span class="price-range-sep">—</span>
+            <span id="price-max-label">$30+</span>
+          </div>
+          <div class="price-range-slider">
+            <div class="price-range-track"></div>
+            <div class="price-range-fill" id="price-range-fill"></div>
+            <input type="range" id="price-slider-min" min="0" max="30" value="0" step="1" class="price-slider" aria-label="Precio mínimo" />
+            <input type="range" id="price-slider-max" min="0" max="30" value="30" step="1" class="price-slider" aria-label="Precio máximo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-grid" id="product-grid">
       {% for product in productos %}
-      <article class="product-card">
+      <article class="product-card"
+               data-category="{{ product.category | string }}"
+               data-price="{{ product.price | replace('$', '') | replace(' ', '') if product.price else '0' }}">
         <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
           {% if product.image %}
           <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
+          {% elif product.auto_gallery %}
+          <img src="{{ SITEURL }}/{{ resolve_image(product.auto_gallery[0]) }}" alt="{{ product.title }}" loading="lazy" />
           {% else %}
           <div class="product-img-placeholder">
             <span>{{ MSG.product_no_image }}</span>
@@ -30,7 +72,8 @@
           </p>
           {% if product.price %}
           <p class="product-price">{{ product.price }}</p>
-          {% endif %} {% if product.tags %}
+          {% endif %}
+          {% if product.tags %}
           <p class="product-tags">
             {% for tag in product.tags %}
             <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
@@ -42,6 +85,9 @@
       </article>
       {% endfor %}
     </div>
+
+    <p class="catalog-no-results" id="no-results" hidden>No hay productos para este filtro.</p>
+
     {% else %}
     <div class="empty-catalog">
       <p>{{ MSG.catalog_empty_title }}</p>
@@ -50,4 +96,84 @@
     {% endif %}
   </div>
 </section>
+
+{% if productos %}
+<script>
+  (function () {
+    const PRICE_MAX = 30;
+
+    const grid = document.getElementById("product-grid");
+    const noResults = document.getElementById("no-results");
+    const sliderMin = document.getElementById("price-slider-min");
+    const sliderMax = document.getElementById("price-slider-max");
+    const fill = document.getElementById("price-range-fill");
+    const minLabel = document.getElementById("price-min-label");
+    const maxLabel = document.getElementById("price-max-label");
+
+    if (!grid) return;
+
+    let activeCat = "all";
+    let activeMin = 0;
+    let activeMax = 9999;
+
+    function applyFilters() {
+      const cards = grid.querySelectorAll(".product-card");
+      let visible = 0;
+      cards.forEach(function (card) {
+        const cat = card.dataset.category;
+        const price = parseFloat(card.dataset.price) || 0;
+        const catMatch = activeCat === "all" || cat === activeCat;
+        const priceMatch = price >= activeMin && price <= activeMax;
+        const show = catMatch && priceMatch;
+        card.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+      noResults.hidden = visible > 0;
+    }
+
+    function updateSliderFill() {
+      const minVal = parseInt(sliderMin.value);
+      const maxVal = parseInt(sliderMax.value);
+      const minPct = (minVal / PRICE_MAX) * 100;
+      const maxPct = (maxVal / PRICE_MAX) * 100;
+      fill.style.left = minPct + "%";
+      fill.style.width = (maxPct - minPct) + "%";
+      minLabel.textContent = "$" + minVal;
+      maxLabel.textContent = maxVal >= PRICE_MAX ? "$" + PRICE_MAX + "+" : "$" + maxVal;
+      activeMin = minVal;
+      activeMax = maxVal >= PRICE_MAX ? 9999 : maxVal;
+    }
+
+    sliderMin.addEventListener("input", function () {
+      if (parseInt(sliderMin.value) > parseInt(sliderMax.value)) {
+        sliderMin.value = sliderMax.value;
+      }
+      sliderMin.style.zIndex = parseInt(sliderMin.value) >= PRICE_MAX - 1 ? 5 : 3;
+      updateSliderFill();
+      applyFilters();
+    });
+
+    sliderMax.addEventListener("input", function () {
+      if (parseInt(sliderMax.value) < parseInt(sliderMin.value)) {
+        sliderMax.value = sliderMin.value;
+      }
+      updateSliderFill();
+      applyFilters();
+    });
+
+    document.getElementById("filter-category").addEventListener("click", function (e) {
+      const btn = e.target.closest("button[data-filter]");
+      if (!btn) return;
+      document.querySelectorAll("#filter-category button").forEach(function (b) {
+        b.classList.remove("is-active");
+      });
+      btn.classList.add("is-active");
+      activeCat = btn.dataset.filter;
+      applyFilters();
+    });
+
+    updateSliderFill();
+  })();
+</script>
+{% endif %}
 {% endblock %}
