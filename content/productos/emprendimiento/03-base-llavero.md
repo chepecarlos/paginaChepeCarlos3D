@@ -1,12 +1,10 @@
 titulo: Base para llaveros
 fecha: 2026-05-14
-categoria: base
-etiquetas: base, display, llaveros, pulseras
+categoria: emprendimiento
+etiquetas: base, display, llaveros, pulseras, emprendimiento
 producto: true
 slug: base-llavero
 precio: ???
-imagen: alcancia/mariobros/alcancia-hongito/Hongito_01.png
-galeria: alcancia/mariobros/alcancia-hongito
 resumen: Base impresa 3D tipo base para colgar tus llaveros, pulseras e incluso cadenas de tu preferencia.
 
 ## Descripción
