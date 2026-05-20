@@ -9,6 +9,7 @@ precio: $20.00
 imagen: dragon-ball/goku/01_Goku.png
 galeria: dragon-ball/goku/
 resumen: Figura impresa 3D con estilo Goku en version grande, con excelente presencia para coleccionistas de Dragon Ball.
+id_dolibarr: 25
 
 ## Descripción
 

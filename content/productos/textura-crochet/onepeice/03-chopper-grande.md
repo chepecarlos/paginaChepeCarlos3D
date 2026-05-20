@@ -8,6 +8,7 @@ precio: $28.00
 imagen: onepiece/chopper-grande/01_Chopper.png
 galeria: onepiece/chopper-grande/
 resumen: Figura impresa 3D con estilo Chopper en version grande, con excelente presencia para coleccionistas de One Piece.
+id_dolibarr: 20
 
 ## Descripción
 

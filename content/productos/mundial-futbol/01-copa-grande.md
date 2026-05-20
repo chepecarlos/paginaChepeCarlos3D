@@ -8,6 +8,7 @@ precio: $35.00
 imagen: copa-mundial/copa-mundial-real/01_CopaMundial.png
 galeria: copa-mundial/copa-mundial-real/
 resumen: Figura impresa 3D con estilo Goku en version grande, con excelente presencia para coleccionistas de Dragon Ball.
+id_dolibarr: 27
 
 ## Descripción
 

@@ -8,6 +8,7 @@ precio: $13.00
 imagen: alcancia/mariobros/alcancia-hongito/Hongito_01.png
 galeria: alcancia/mariobros/alcancia-hongito
 resumen: Figura impresa 3D con estilo de Honguito de Mario Bros, con excelente presencia para coleccionistas y ahorradores de la franquicia.
+id_dolibarr: 29
 
 ## Descripción
 
