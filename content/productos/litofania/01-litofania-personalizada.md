@@ -1,12 +1,12 @@
 titulo: Litofania Personalizada con Base
 fecha: 2026-05-1
 categoria: litofania
-etiquetas: litofania
+etiquetas: litofania, foto
 producto: true
 slug: litofania-personalizada
 precio: $15
-imagen: alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_01.png
-galeria: alcancia/minecraft/alcancia-creeper/
+imagen: litofania/litofania-personalizada/IMG-20260520-WA0015.jpg
+galeria: litofania/litofania-personalizada/
 resumen: Litofania impresa 3D con estilo de Abraham Lincoln
 id_dolibarr: 28
 
