@@ -23,6 +23,7 @@ class Counters:
     processed: int = 0
     skipped: int = 0
     errors: int = 0
+    deleted: int = 0
 
 
 def normalize_relpath(path_value: str | Path) -> str:
@@ -116,6 +117,37 @@ def should_process(
     )
 
 
+def cleanup_orphaned_webp(
+    dest_images_dir: Path,
+    source_images_dir: Path,
+    products_subdir: str,
+    formats: tuple[str, ...],
+    state: Dict[str, dict],
+) -> int:
+    dest_root = dest_images_dir / normalize_relpath(products_subdir)
+    if not dest_root.exists():
+        return 0
+
+    deleted = 0
+    for webp_file in sorted(dest_root.rglob("*.webp")):
+        rel = webp_file.relative_to(dest_images_dir)
+        source_base = (source_images_dir / rel).with_suffix("")
+        source_exists = any(source_base.with_suffix(ext).exists() for ext in formats)
+
+        if not source_exists:
+            webp_file.unlink()
+            deleted += 1
+            print(f"[limpieza] Eliminado: {rel}")
+            for ext in formats:
+                state.pop(normalize_relpath(source_base.with_suffix(ext)), None)
+
+    for dirpath in sorted(dest_root.rglob("*"), reverse=True):
+        if dirpath.is_dir() and not any(dirpath.iterdir()):
+            dirpath.rmdir()
+
+    return deleted
+
+
 def optimize_image(source_file: Path, target_file: Path, quality: int) -> None:
     target_file.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source_file) as image:
@@ -184,12 +216,17 @@ def main() -> int:
             counters.errors += 1
             print(f"[ERROR] {source_file}: {exc}", file=sys.stderr)
 
+    counters.deleted = cleanup_orphaned_webp(
+        dest_images_dir, source_images_dir, args.products_subdir, formats, state
+    )
+
     save_state(state_file, state)
 
     print(
         "Resumen: "
         f"procesadas={counters.processed} "
         f"omitidas={counters.skipped} "
+        f"eliminadas={counters.deleted} "
         f"errores={counters.errors}"
     )
 
