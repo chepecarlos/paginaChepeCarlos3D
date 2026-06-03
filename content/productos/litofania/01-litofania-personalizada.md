@@ -5,7 +5,7 @@ etiquetas: litofania, foto
 producto: true
 slug: litofania-personalizada
 precio: $15
-imagen: litofania/litofania-personalizada/IMG-20260520-WA0015.jpg
+imagen: litofania/litofania-personalizada/Litofania_01.jpg
 galeria: litofania/litofania-personalizada/
 resumen: Litofania impresa 3D con estilo de Abraham Lincoln
 id_dolibarr: 28
