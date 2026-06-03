@@ -7,6 +7,7 @@ slug: cruz-jesus
 precio: $5.00
 imagen: cruz-jesus/cruz-jesus-01.png
 galeria: cruz-jesus
+id_dolibarr: 4
 ## Descripción
 
 

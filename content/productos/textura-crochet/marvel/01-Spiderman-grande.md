@@ -8,6 +8,7 @@ precio: $28.00
 imagen: marvel/spiderman-grande/01_Spiderman.png
 galeria: marvel/spiderman-grande/
 resumen: Figura impresa 3D con estilo Spider-Man en version grande, con excelente presencia para coleccionistas de Marvel.
+id_dolibarr: 23
 
 ## Descripción
 

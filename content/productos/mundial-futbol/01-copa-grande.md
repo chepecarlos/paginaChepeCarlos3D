@@ -5,9 +5,10 @@ etiquetas: fifa, deporte, copa
 producto: true
 slug: copa-mundial-grande
 precio: $35.00
-imagen: copa-mundial/copa-mundial-real/01_CopaMundial.png
+imagen: copa-mundial/copa-mundial-real/IMG-20260508-WA0045.jpg
 galeria: copa-mundial/copa-mundial-real/
 resumen: Figura impresa 3D con estilo Goku en version grande, con excelente presencia para coleccionistas de Dragon Ball.
+id_dolibarr: 27
 
 ## Descripción
 
