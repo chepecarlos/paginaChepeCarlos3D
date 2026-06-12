@@ -702,13 +702,62 @@ img {
     padding: 24px 20px;
 }
 
+/* ── Barra móvil (oculta en desktop) ── */
+.mobile-filter-bar {
+    display: none;
+}
+
+/* Sección de ordenamiento: solo visible dentro del drawer móvil */
+.mobile-sort-section {
+    display: none;
+}
+
+/* ── Drawer overlay ── */
+.filter-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 200;
+}
+
+/* ── Drag handle del drawer (solo visible en móvil) ── */
+.drawer-handle {
+    display: none;
+    width: 40px;
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+    margin: 0 auto 16px;
+}
+
+/* ── Botón de cerrar sidebar (oculto en desktop) ── */
+.sidebar-close-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--color-gray);
+    line-height: 1;
+}
+
+.sidebar-close-btn:hover {
+    color: var(--color-dark);
+}
+
 .sidebar-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .sidebar-title {
@@ -2021,14 +2070,113 @@ mark {
         grid-template-columns: 1fr 1fr;
     }
 
+    /* ── Barra móvil ── */
+    .mobile-filter-bar {
+        display: flex;
+        align-items: stretch;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        margin-bottom: 20px;
+        background: var(--color-white);
+    }
+
+    .mobile-filter-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: none;
+        border: none;
+        padding: 14px 16px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        font-family: inherit;
+        color: var(--color-dark);
+        cursor: pointer;
+    }
+
+    .mobile-filter-btn:hover {
+        background: var(--color-light);
+    }
+
+    .mobile-filter-badge {
+        background: var(--color-primary);
+        color: var(--color-white);
+        font-size: 0.72rem;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 1px 7px;
+        line-height: 1.6;
+    }
+
+    .mobile-bar-divider {
+        width: 1px;
+        background: var(--color-border);
+        flex-shrink: 0;
+    }
+
+    .mobile-sort-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        padding: 14px 18px;
+        color: var(--color-dark);
+        cursor: pointer;
+    }
+
+    .mobile-sort-btn:hover {
+        background: var(--color-light);
+    }
+
+    /* ── Sidebar como drawer deslizable ── */
     .catalog-layout {
-        flex-direction: column;
-        gap: 20px;
+        display: block;
     }
 
     .catalog-sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
         width: 100%;
-        position: static;
+        max-height: 82vh;
+        overflow-y: auto;
+        border-radius: 20px 20px 0 0;
+        border: none;
+        padding: 16px 20px 32px;
+        box-shadow: 0 -6px 32px rgba(0, 0, 0, 0.18);
+        z-index: 201;
+        transform: translateY(105%);
+        visibility: hidden;
+        transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
+                    visibility 0s linear 0.32s;
+    }
+
+    .catalog-sidebar.is-open {
+        transform: translateY(0);
+        visibility: visible;
+        transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
+                    visibility 0s linear 0s;
+    }
+
+    .drawer-handle {
+        display: block;
+    }
+
+    .sidebar-close-btn {
+        display: flex;
+    }
+
+    .catalog-toolbar {
+        display: none;
+    }
+
+    .mobile-sort-section {
+        display: block;
     }
 
     .product-detail {

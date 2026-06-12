@@ -19,12 +19,48 @@
       {% endif %}
     {% endfor %}
 
+    {# Barra móvil: solo visible en pantallas pequeñas #}
+    <div class="mobile-filter-bar">
+      <button class="mobile-filter-btn" id="mobile-filter-open">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        Filtros
+        <span class="mobile-filter-badge" id="mobile-filter-badge" hidden>0</span>
+      </button>
+      <div class="mobile-bar-divider"></div>
+      <button class="mobile-sort-btn" id="mobile-sort-open" aria-label="Ordenar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l4-4 4 4"/><path d="M16 18l-4 4-4-4"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+      </button>
+    </div>
+    <div class="filter-drawer-overlay" id="filter-drawer-overlay" hidden></div>
+
     <div class="catalog-layout">
 
-      <aside class="catalog-sidebar">
+      <aside class="catalog-sidebar" id="catalog-sidebar">
+        <div class="drawer-handle" aria-hidden="true"></div>
         <div class="sidebar-header">
           <h3 class="sidebar-title">Filtrar por</h3>
-          <button id="clear-filters" class="clear-filters-btn" hidden>Borrar filtros <span aria-hidden="true">×</span></button>
+          <div class="sidebar-header-actions">
+            <button id="clear-filters" class="clear-filters-btn" hidden>Borrar filtros <span aria-hidden="true">×</span></button>
+            <button class="sidebar-close-btn" id="sidebar-close" aria-label="Cerrar filtros">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="sidebar-section mobile-sort-section">
+          <button class="sidebar-section-toggle" aria-expanded="true" data-target="section-sort">
+            <span class="sidebar-section-label">Ordenar por</span>
+            <span class="toggle-icon" aria-hidden="true">−</span>
+          </button>
+          <div class="sidebar-section-content" id="section-sort">
+            <div class="filter-buttons" id="filter-sort-mobile">
+              <button class="btn btn-tag is-active" data-sort="date-desc">Lo más nuevo</button>
+              <button class="btn btn-tag" data-sort="price-asc">Precio ↑</button>
+              <button class="btn btn-tag" data-sort="price-desc">Precio ↓</button>
+              <button class="btn btn-tag" data-sort="name-asc">Nombre A→Z</button>
+              <button class="btn btn-tag" data-sort="name-desc">Nombre Z→A</button>
+            </div>
+          </div>
         </div>
 
         <div class="sidebar-section">
@@ -147,6 +183,9 @@
     const maxLabel = document.getElementById("price-max-label");
     const countEl = document.getElementById("catalog-count");
     const clearBtn = document.getElementById("clear-filters");
+    const sidebar = document.getElementById("catalog-sidebar");
+    const overlay = document.getElementById("filter-drawer-overlay");
+    const mobileBadge = document.getElementById("mobile-filter-badge");
 
     if (!grid) return;
 
@@ -157,28 +196,48 @@
 
     const defaultOrder = Array.from(grid.querySelectorAll(".product-card"));
 
+    /* ── Drawer móvil ── */
+    function openDrawer() {
+      sidebar.classList.add("is-open");
+      overlay.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDrawer() {
+      sidebar.classList.remove("is-open");
+      overlay.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("mobile-filter-open").addEventListener("click", openDrawer);
+    document.getElementById("sidebar-close").addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+
+    document.getElementById("mobile-sort-open").addEventListener("click", openDrawer);
+
+    /* ── Badge de filtros activos ── */
+    function updateMobileBadge() {
+      let count = 0;
+      if (activeCat !== "all") count++;
+      if (activeMin > 0) count++;
+      if (activeMax < 9999) count++;
+      mobileBadge.hidden = count === 0;
+      mobileBadge.textContent = count;
+    }
+
+    /* ── Ordenamiento ── */
     function sortCards() {
       const cards = Array.from(grid.querySelectorAll(".product-card"));
       if (activeSort === "date-desc") {
-        cards.sort(function (a, b) {
-          return b.dataset.date.localeCompare(a.dataset.date);
-        });
+        cards.sort(function (a, b) { return b.dataset.date.localeCompare(a.dataset.date); });
       } else if (activeSort === "name-asc") {
-        cards.sort(function (a, b) {
-          return a.dataset.name.localeCompare(b.dataset.name, "es");
-        });
+        cards.sort(function (a, b) { return a.dataset.name.localeCompare(b.dataset.name, "es"); });
       } else if (activeSort === "name-desc") {
-        cards.sort(function (a, b) {
-          return b.dataset.name.localeCompare(a.dataset.name, "es");
-        });
+        cards.sort(function (a, b) { return b.dataset.name.localeCompare(a.dataset.name, "es"); });
       } else if (activeSort === "price-asc") {
-        cards.sort(function (a, b) {
-          return (parseFloat(a.dataset.price) || 0) - (parseFloat(b.dataset.price) || 0);
-        });
+        cards.sort(function (a, b) { return (parseFloat(a.dataset.price) || 0) - (parseFloat(b.dataset.price) || 0); });
       } else if (activeSort === "price-desc") {
-        cards.sort(function (a, b) {
-          return (parseFloat(b.dataset.price) || 0) - (parseFloat(a.dataset.price) || 0);
-        });
+        cards.sort(function (a, b) { return (parseFloat(b.dataset.price) || 0) - (parseFloat(a.dataset.price) || 0); });
       } else {
         defaultOrder.forEach(function (card) { grid.appendChild(card); });
         return;
@@ -186,6 +245,7 @@
       cards.forEach(function (card) { grid.appendChild(card); });
     }
 
+    /* ── Filtros ── */
     function updateClearBtn() {
       const hasFilter = activeCat !== "all" || activeMin > 0 || activeMax < 9999;
       clearBtn.hidden = !hasFilter;
@@ -197,17 +257,14 @@
       cards.forEach(function (card) {
         const cat = card.dataset.category;
         const price = parseFloat(card.dataset.price) || 0;
-        const catMatch = activeCat === "all" || cat === activeCat;
-        const priceMatch = price >= activeMin && price <= activeMax;
-        const show = catMatch && priceMatch;
+        const show = (activeCat === "all" || cat === activeCat) && price >= activeMin && price <= activeMax;
         card.style.display = show ? "" : "none";
         if (show) visible++;
       });
       noResults.hidden = visible > 0;
-      if (countEl) {
-        countEl.textContent = visible + " producto" + (visible !== 1 ? "s" : "");
-      }
+      if (countEl) countEl.textContent = visible + " producto" + (visible !== 1 ? "s" : "");
       updateClearBtn();
+      updateMobileBadge();
     }
 
     clearBtn.addEventListener("click", function () {
@@ -224,10 +281,8 @@
     function updateSliderFill() {
       const minVal = parseInt(sliderMin.value);
       const maxVal = parseInt(sliderMax.value);
-      const minPct = (minVal / PRICE_MAX) * 100;
-      const maxPct = (maxVal / PRICE_MAX) * 100;
-      fill.style.left = minPct + "%";
-      fill.style.width = (maxPct - minPct) + "%";
+      fill.style.left = (minVal / PRICE_MAX * 100) + "%";
+      fill.style.width = ((maxVal - minVal) / PRICE_MAX * 100) + "%";
       minLabel.textContent = "$" + minVal;
       maxLabel.textContent = maxVal >= PRICE_MAX ? "$" + PRICE_MAX + "+" : "$" + maxVal;
       activeMin = minVal;
@@ -235,18 +290,14 @@
     }
 
     sliderMin.addEventListener("input", function () {
-      if (parseInt(sliderMin.value) > parseInt(sliderMax.value)) {
-        sliderMin.value = sliderMax.value;
-      }
+      if (parseInt(sliderMin.value) > parseInt(sliderMax.value)) sliderMin.value = sliderMax.value;
       sliderMin.style.zIndex = parseInt(sliderMin.value) >= PRICE_MAX - 1 ? 5 : 3;
       updateSliderFill();
       applyFilters();
     });
 
     sliderMax.addEventListener("input", function () {
-      if (parseInt(sliderMax.value) < parseInt(sliderMin.value)) {
-        sliderMax.value = sliderMin.value;
-      }
+      if (parseInt(sliderMax.value) < parseInt(sliderMin.value)) sliderMax.value = sliderMin.value;
       updateSliderFill();
       applyFilters();
     });
@@ -254,9 +305,7 @@
     document.getElementById("filter-category").addEventListener("click", function (e) {
       const btn = e.target.closest("button[data-filter]");
       if (!btn) return;
-      document.querySelectorAll("#filter-category button").forEach(function (b) {
-        b.classList.remove("is-active");
-      });
+      document.querySelectorAll("#filter-category button").forEach(function (b) { b.classList.remove("is-active"); });
       btn.classList.add("is-active");
       activeCat = btn.dataset.filter;
       applyFilters();
@@ -264,11 +313,26 @@
 
     document.getElementById("sort-select").addEventListener("change", function () {
       activeSort = this.value;
+      syncMobileSort(activeSort);
       sortCards();
       applyFilters();
     });
 
-    updateSliderFill();
+    function syncMobileSort(val) {
+      document.querySelectorAll("#filter-sort-mobile button").forEach(function (b) {
+        b.classList.toggle("is-active", b.dataset.sort === val);
+      });
+    }
+
+    document.getElementById("filter-sort-mobile").addEventListener("click", function (e) {
+      const btn = e.target.closest("button[data-sort]");
+      if (!btn) return;
+      activeSort = btn.dataset.sort;
+      syncMobileSort(activeSort);
+      document.getElementById("sort-select").value = activeSort;
+      sortCards();
+      applyFilters();
+    });
 
     document.querySelectorAll(".sidebar-section-toggle").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -279,6 +343,8 @@
         content.hidden = expanded;
       });
     });
+
+    updateSliderFill();
   })();
 </script>
 {% endif %}
