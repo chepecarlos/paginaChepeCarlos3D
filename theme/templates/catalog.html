@@ -19,74 +19,110 @@
       {% endif %}
     {% endfor %}
 
-    <div class="catalog-filters">
-      <div class="filter-group">
-        <span class="filter-label">Categoría</span>
-        <div class="filter-buttons" id="filter-category">
-          <button class="btn btn-tag is-active" data-filter="all">Todos</button>
-          {% for cat in cat_ns.list | sort %}
-          <button class="btn btn-tag" data-filter="{{ cat }}">{{ cat }}</button>
+    <div class="catalog-layout">
+
+      <aside class="catalog-sidebar">
+        <div class="sidebar-header">
+          <h3 class="sidebar-title">Filtrar por</h3>
+          <button id="clear-filters" class="clear-filters-btn" hidden>Borrar filtros <span aria-hidden="true">×</span></button>
+        </div>
+
+        <div class="sidebar-section">
+          <button class="sidebar-section-toggle" aria-expanded="true" data-target="section-price">
+            <span class="sidebar-section-label">Precio</span>
+            <span class="toggle-icon" aria-hidden="true">−</span>
+          </button>
+          <div class="sidebar-section-content" id="section-price">
+            <div class="price-range-wrap">
+              <div class="price-range-display">
+                <span id="price-min-label">$0</span>
+                <span class="price-range-sep">—</span>
+                <span id="price-max-label">$30+</span>
+              </div>
+              <div class="price-range-slider">
+                <div class="price-range-track"></div>
+                <div class="price-range-fill" id="price-range-fill"></div>
+                <input type="range" id="price-slider-min" min="0" max="30" value="0" step="1" class="price-slider" aria-label="Precio mínimo" />
+                <input type="range" id="price-slider-max" min="0" max="30" value="30" step="1" class="price-slider" aria-label="Precio máximo" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <button class="sidebar-section-toggle" aria-expanded="true" data-target="section-category">
+            <span class="sidebar-section-label">Categoría</span>
+            <span class="toggle-icon" aria-hidden="true">−</span>
+          </button>
+          <div class="sidebar-section-content" id="section-category">
+            <div class="filter-buttons" id="filter-category">
+              <button class="btn btn-tag is-active" data-filter="all">Todos</button>
+              {% for cat in cat_ns.list | sort %}
+              <button class="btn btn-tag" data-filter="{{ cat }}">{{ cat }}</button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="catalog-main">
+        <div class="catalog-toolbar">
+          <span class="catalog-count" id="catalog-count">{{ productos | length }} producto{% if productos | length != 1 %}s{% endif %}</span>
+          <select id="sort-select" class="sort-select" aria-label="Ordenar productos">
+            <option value="" disabled>Ordenar por</option>
+            <option value="date-desc" selected>Lo más nuevo</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre: A → Z</option>
+            <option value="name-desc">Nombre: Z → A</option>
+          </select>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+          {% for product in productos %}
+          <article class="product-card"
+                   data-category="{{ product.category | string }}"
+                   data-name="{{ product.title | lower }}"
+                   data-price="{{ product.price | replace('$', '') | replace(' ', '') if product.price else '0' }}"
+                   data-date="{{ product.date.strftime('%Y%m%d%H%M%S') }}">
+            <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
+              {% if product.image %}
+              <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
+              {% elif product.auto_gallery %}
+              <img src="{{ SITEURL }}/{{ resolve_image(product.auto_gallery[0]) }}" alt="{{ product.title }}" loading="lazy" />
+              {% else %}
+              <div class="product-img-placeholder">
+                <span>{{ MSG.product_no_image }}</span>
+              </div>
+              {% endif %}
+            </a>
+            <div class="product-body">
+              <h2 class="product-title">
+                <a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a>
+              </h2>
+              <p class="product-meta">
+                <a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a>
+              </p>
+              {% if product.price %}
+              <p class="product-price">{{ product.price }}</p>
+              {% endif %}
+              {% if product.tags %}
+              <p class="product-tags">
+                {% for tag in product.tags %}
+                <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
+                {% endfor %}
+              </p>
+              {% endif %}
+              <a href="{{ SITEURL }}/{{ product.url }}" class="btn btn-primary">Ver detalles</a>
+            </div>
+          </article>
           {% endfor %}
         </div>
-      </div>
-      <div class="filter-group filter-group-price">
-        <span class="filter-label">Precio</span>
-        <div class="price-range-wrap">
-          <div class="price-range-display">
-            <span id="price-min-label">$0</span>
-            <span class="price-range-sep">—</span>
-            <span id="price-max-label">$30+</span>
-          </div>
-          <div class="price-range-slider">
-            <div class="price-range-track"></div>
-            <div class="price-range-fill" id="price-range-fill"></div>
-            <input type="range" id="price-slider-min" min="0" max="30" value="0" step="1" class="price-slider" aria-label="Precio mínimo" />
-            <input type="range" id="price-slider-max" min="0" max="30" value="30" step="1" class="price-slider" aria-label="Precio máximo" />
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="product-grid" id="product-grid">
-      {% for product in productos %}
-      <article class="product-card"
-               data-category="{{ product.category | string }}"
-               data-price="{{ product.price | replace('$', '') | replace(' ', '') if product.price else '0' }}">
-        <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
-          {% if product.image %}
-          <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
-          {% elif product.auto_gallery %}
-          <img src="{{ SITEURL }}/{{ resolve_image(product.auto_gallery[0]) }}" alt="{{ product.title }}" loading="lazy" />
-          {% else %}
-          <div class="product-img-placeholder">
-            <span>{{ MSG.product_no_image }}</span>
-          </div>
-          {% endif %}
-        </a>
-        <div class="product-body">
-          <h2 class="product-title">
-            <a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a>
-          </h2>
-          <p class="product-meta">
-            <a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a>
-          </p>
-          {% if product.price %}
-          <p class="product-price">{{ product.price }}</p>
-          {% endif %}
-          {% if product.tags %}
-          <p class="product-tags">
-            {% for tag in product.tags %}
-            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
-            {% endfor %}
-          </p>
-          {% endif %}
-          <a href="{{ SITEURL }}/{{ product.url }}" class="btn btn-primary">Ver detalles</a>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
+        <p class="catalog-no-results" id="no-results" hidden>No hay productos para este filtro.</p>
+      </div>
 
-    <p class="catalog-no-results" id="no-results" hidden>No hay productos para este filtro.</p>
+    </div>
 
     {% else %}
     <div class="empty-catalog">
@@ -109,12 +145,51 @@
     const fill = document.getElementById("price-range-fill");
     const minLabel = document.getElementById("price-min-label");
     const maxLabel = document.getElementById("price-max-label");
+    const countEl = document.getElementById("catalog-count");
+    const clearBtn = document.getElementById("clear-filters");
 
     if (!grid) return;
 
     let activeCat = "all";
     let activeMin = 0;
     let activeMax = 9999;
+    let activeSort = "date-desc";
+
+    const defaultOrder = Array.from(grid.querySelectorAll(".product-card"));
+
+    function sortCards() {
+      const cards = Array.from(grid.querySelectorAll(".product-card"));
+      if (activeSort === "date-desc") {
+        cards.sort(function (a, b) {
+          return b.dataset.date.localeCompare(a.dataset.date);
+        });
+      } else if (activeSort === "name-asc") {
+        cards.sort(function (a, b) {
+          return a.dataset.name.localeCompare(b.dataset.name, "es");
+        });
+      } else if (activeSort === "name-desc") {
+        cards.sort(function (a, b) {
+          return b.dataset.name.localeCompare(a.dataset.name, "es");
+        });
+      } else if (activeSort === "price-asc") {
+        cards.sort(function (a, b) {
+          return (parseFloat(a.dataset.price) || 0) - (parseFloat(b.dataset.price) || 0);
+        });
+      } else if (activeSort === "price-desc") {
+        cards.sort(function (a, b) {
+          return (parseFloat(b.dataset.price) || 0) - (parseFloat(a.dataset.price) || 0);
+        });
+      } else {
+        defaultOrder.forEach(function (card) { grid.appendChild(card); });
+        return;
+      }
+      cards.forEach(function (card) { grid.appendChild(card); });
+    }
+
+    function updateClearBtn() {
+      const hasFilter = activeCat !== "all" || activeMin > 0 || activeMax < 9999;
+      clearBtn.hidden = !hasFilter;
+    }
 
     function applyFilters() {
       const cards = grid.querySelectorAll(".product-card");
@@ -129,7 +204,22 @@
         if (show) visible++;
       });
       noResults.hidden = visible > 0;
+      if (countEl) {
+        countEl.textContent = visible + " producto" + (visible !== 1 ? "s" : "");
+      }
+      updateClearBtn();
     }
+
+    clearBtn.addEventListener("click", function () {
+      activeCat = "all";
+      document.querySelectorAll("#filter-category button").forEach(function (b) {
+        b.classList.toggle("is-active", b.dataset.filter === "all");
+      });
+      sliderMin.value = 0;
+      sliderMax.value = PRICE_MAX;
+      updateSliderFill();
+      applyFilters();
+    });
 
     function updateSliderFill() {
       const minVal = parseInt(sliderMin.value);
@@ -172,7 +262,23 @@
       applyFilters();
     });
 
+    document.getElementById("sort-select").addEventListener("change", function () {
+      activeSort = this.value;
+      sortCards();
+      applyFilters();
+    });
+
     updateSliderFill();
+
+    document.querySelectorAll(".sidebar-section-toggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const content = document.getElementById(btn.dataset.target);
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", !expanded);
+        btn.querySelector(".toggle-icon").textContent = expanded ? "+" : "−";
+        content.hidden = expanded;
+      });
+    });
   })();
 </script>
 {% endif %}

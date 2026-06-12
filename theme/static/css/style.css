@@ -682,33 +682,109 @@ img {
     width: 100%;
 }
 
-.catalog-filters {
+/* ============================================================
+   Catalog layout: sidebar + main
+   ============================================================ */
+.catalog-layout {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 36px;
-    padding: 20px 24px;
-    background: var(--color-light);
-    border-radius: var(--radius);
-    border: 1px solid var(--color-border);
-}
-
-.filter-group {
-    display: flex;
+    gap: 36px;
     align-items: flex-start;
-    gap: 12px;
-    flex-wrap: wrap;
 }
 
-.filter-label {
+.catalog-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.clear-filters-btn:not([hidden]) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clear-filters-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.8rem;
+    font-family: inherit;
+    color: var(--color-gray);
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+.clear-filters-btn:hover {
+    color: var(--color-primary);
+}
+
+.sidebar-section {
+    border-top: 1px solid var(--color-border);
+    padding: 16px 0;
+}
+
+.sidebar-section:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-section-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.sidebar-section-toggle:hover .sidebar-section-label {
+    color: var(--color-primary);
+}
+
+.sidebar-section-label {
     font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
     color: var(--color-gray);
-    padding-top: 9px;
-    min-width: 70px;
-    flex-shrink: 0;
+    transition: color var(--transition);
+}
+
+.toggle-icon {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--color-gray);
+    line-height: 1;
+    user-select: none;
+}
+
+.sidebar-section-content {
+    margin-top: 14px;
 }
 
 .filter-buttons {
@@ -729,6 +805,52 @@ img {
     color: var(--color-white);
 }
 
+/* Main content area */
+.catalog-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.catalog-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.catalog-count {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    font-weight: 600;
+}
+
+.sort-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 8px 40px 8px 14px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--color-dark);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.sort-select:hover {
+    border-color: var(--color-primary);
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 0,0,0), 0.12);
+}
+
 .catalog-no-results {
     text-align: center;
     padding: 48px 0;
@@ -737,16 +859,11 @@ img {
 }
 
 /* Price range slider */
-.filter-group-price {
-    align-items: center;
-}
 
 .price-range-wrap {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-width: 200px;
-    max-width: 280px;
 }
 
 .price-range-display {
@@ -1902,6 +2019,16 @@ mark {
 
     .product-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .catalog-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-sidebar {
+        width: 100%;
+        position: static;
     }
 
     .product-detail {
