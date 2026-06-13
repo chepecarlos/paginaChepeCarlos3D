@@ -128,19 +128,18 @@ img {
     display: none;
     width: 44px;
     height: 44px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    background: none;
     color: var(--color-white);
     align-items: center;
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
-    transition: background var(--transition);
+    transition: color var(--transition);
 }
 
 .mobile-search-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
+    color: var(--color-accent);
 }
 
 .mobile-search-bar {
@@ -2324,42 +2323,47 @@ mark {
     }
 
     .mobile-search-bar {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 0;
-        background: var(--color-dark);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        transform: translateY(-100%);
-        visibility: hidden;
-        transition: transform 0.25s ease, visibility 0s linear 0.25s;
-        overflow: hidden;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        background: rgba(7, 24, 36, 0.97);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 0 0 14px 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        animation: mobileMenuDrop 0.2s ease;
     }
 
-    .mobile-search-bar .container {
+    .mobile-search-inner {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
+        padding: 10px 16px;
+        width: 100%;
     }
 
     #site-header.search-open .mobile-search-bar {
-        transform: translateY(0);
-        visibility: visible;
-        transition: transform 0.25s ease, visibility 0s linear 0s;
+        display: block;
     }
 
     .header-panel {
         display: none;
-        grid-column: 1 / -1;
-        width: 100%;
-        margin-left: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        margin: 0;
         padding: 14px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        background: rgba(7, 24, 36, 0.88);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 0 0 14px 14px;
+        background: rgba(7, 24, 36, 0.97);
         flex-direction: column;
         align-items: stretch;
         gap: 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
     #site-header.menu-open .header-panel {
