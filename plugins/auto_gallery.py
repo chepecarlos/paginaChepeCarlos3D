@@ -420,8 +420,10 @@ def enrich_variation_galleries(generator):
             price_range = min_label if min_value == max_value else f"{min_label} - {max_label}"
 
             article.price_min = min_label
+            article.price_max = max_label
             article.price_range = price_range
             article.metadata["price_min"] = min_label
+            article.metadata["price_max"] = max_label
             article.metadata["price_range"] = price_range
 
 

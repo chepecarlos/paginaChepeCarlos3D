@@ -120,6 +120,8 @@
                    data-category="{{ product.category | string }}"
                    data-name="{{ product.title | lower }}"
                    data-price="{{ (product.price_min or product.price) | replace('$', '') | replace(' ', '') if (product.price_min or product.price) else '0' }}"
+                   data-price-max="{{ (product.price_max or product.price) | replace('$', '') | replace(' ', '') if (product.price_max or product.price) else '0' }}"
+                   data-prices="{% if product.variaciones %}{% for opt in product.variaciones %}{{ opt.precio | replace('$', '') | replace(' ', '') }}{% if not loop.last %},{% endif %}{% endfor %}{% else %}{{ (product.price | replace('$', '') | replace(' ', '')) if product.price else '0' }}{% endif %}"
                    data-date="{{ product.date.strftime('%Y%m%d%H%M%S') }}">
             <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
               {% if product.image %}
@@ -237,7 +239,7 @@
       } else if (activeSort === "price-asc") {
         cards.sort(function (a, b) { return (parseFloat(a.dataset.price) || 0) - (parseFloat(b.dataset.price) || 0); });
       } else if (activeSort === "price-desc") {
-        cards.sort(function (a, b) { return (parseFloat(b.dataset.price) || 0) - (parseFloat(a.dataset.price) || 0); });
+        cards.sort(function (a, b) { return (parseFloat(b.dataset.priceMax) || 0) - (parseFloat(a.dataset.priceMax) || 0); });
       } else {
         defaultOrder.forEach(function (card) { grid.appendChild(card); });
         return;
@@ -256,8 +258,9 @@
       let visible = 0;
       cards.forEach(function (card) {
         const cat = card.dataset.category;
-        const price = parseFloat(card.dataset.price) || 0;
-        const show = (activeCat === "all" || cat === activeCat) && price >= activeMin && price <= activeMax;
+        const prices = (card.dataset.prices || card.dataset.price || "0").split(",").map(function (p) { return parseFloat(p) || 0; });
+        const priceInRange = prices.some(function (price) { return price >= activeMin && price <= activeMax; });
+        const show = (activeCat === "all" || cat === activeCat) && priceInRange;
         card.style.display = show ? "" : "none";
         if (show) visible++;
       });
