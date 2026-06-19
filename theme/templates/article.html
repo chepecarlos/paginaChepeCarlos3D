@@ -72,7 +72,8 @@
             {% if option.imagen %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"{% endif %}
             {% if option.galeria_images %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"{% endif %}
           >
-            {{ option.titulo }}
+            <span class="variation-option-titulo">{{ option.titulo }}</span>
+            {% if option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
           </button>
           {% endfor %}
         </div>

@@ -754,15 +754,30 @@ img {
 }
 
 .variation-option {
-    padding: 8px 18px;
-    border-radius: 999px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 18px;
+    border-radius: 16px;
     border: 1.5px solid var(--color-border);
     background: var(--color-white);
     color: var(--color-dark);
     font-weight: 600;
     font-size: 0.92rem;
+    line-height: 1.3;
     cursor: pointer;
     transition: var(--transition);
+}
+
+.variation-option-precio {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-price);
+}
+
+.variation-option.active .variation-option-precio {
+    color: var(--color-white);
 }
 
 .variation-option:hover {
