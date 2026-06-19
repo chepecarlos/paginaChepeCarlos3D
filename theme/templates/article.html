@@ -38,7 +38,7 @@
       {% else %}
       <div class="product-img-placeholder large">Sin imagen</div>
       {% endif %} {% if support_images %}
-      <div class="product-thumbs" aria-label="Imágenes de apoyo">
+      <div class="product-thumbs" id="product-thumbs" aria-label="Imágenes de apoyo">
         <button class="product-thumb active" type="button" data-image="{{ SITEURL }}/{{ main_image }}" aria-label="Ver imagen principal de {{ article.title }}">
           <img src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }} - principal" loading="lazy" />
         </button>
@@ -56,13 +56,44 @@
       {% if article.category %}
       <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
       {% endif %} {% if article.price %}
-      <p class="product-price large">{{ article.price }}</p>
+      <p class="product-price large" id="product-price">{{ article.price }}</p>
+      {% endif %} {% if article.variaciones %}
+      <div class="variation-selector">
+        <p class="variation-label">
+          {{ article.variation_name or 'Variación' }}: <strong class="variation-selected-label">{{ article.variaciones[0].titulo }}</strong>
+        </p>
+        <div class="variation-options" role="group" aria-label="{{ article.variation_name or 'Variación' }}">
+          {% for option in article.variaciones %}
+          <button
+            type="button"
+            class="variation-option{% if loop.first %} active{% endif %}"
+            data-titulo="{{ option.titulo }}"
+            data-precio="{{ option.precio }}"
+            {% if option.imagen %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"{% endif %}
+            {% if option.galeria_images %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"{% endif %}
+            {% for key, value in option.items() if key not in ['titulo', 'precio', 'imagen', 'galeria', 'galeria_images'] %}data-{{ key }}="{{ value }}" {% endfor %}
+          >
+            <span class="variation-option-titulo">{{ option.titulo }}</span>
+            {% if option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
       {% endif %}
 
       <div class="contact-actions">
         {% if WHATSAPP_NUMBER %} {% set wa_number = WHATSAPP_NUMBER | replace('+', '') | replace(' ', '') | replace('-', '') | replace('(', '') | replace(')', '') %} {% set product_link = SITEURL ~
         '/' ~ article.url if SITEURL else article.url %} {% set wa_message = "Hola, quiero preguntar de este producto: " ~ article.title ~ " " ~ product_link %}
-        <a href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+        <a
+          href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}"
+          class="btn btn-whatsapp btn-lg"
+          id="whatsapp-cta"
+          data-wa-number="{{ wa_number }}"
+          data-base-message="{{ wa_message }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="Cotizar por WhatsApp"
+        >
           <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="WhatsApp" class="btn-whatsapp-icon" />
           <span>Cotizar por WhatsApp</span>
         </a>
@@ -143,7 +174,8 @@
     const prevButton = document.querySelector(".product-nav.prev");
     const nextButton = document.querySelector(".product-nav.next");
     const lightboxTrigger = document.querySelector(".product-lightbox-trigger");
-    const thumbs = Array.from(document.querySelectorAll(".product-thumb"));
+    const thumbsContainer = document.getElementById("product-thumbs");
+    let thumbs = Array.from(document.querySelectorAll(".product-thumb"));
     const normalize = (url) => new URL(url, window.location.href).href;
     const mobileMedia = window.matchMedia("(max-width: 768px)");
 
@@ -167,7 +199,7 @@
       }
     };
 
-    const imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+    let imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
 
     let currentIndex = imageList.findIndex((image) => normalize(image) === normalize(mainImage.src));
     if (currentIndex < 0) currentIndex = 0;
@@ -242,7 +274,7 @@
       });
     };
 
-    thumbs.forEach((thumb) => {
+    const bindThumb = (thumb) => {
       thumb.addEventListener("click", () => {
         const newImage = thumb.getAttribute("data-image");
         if (!newImage) return;
@@ -255,7 +287,45 @@
         mainImage.src = newImage;
         setActiveThumb(newImage);
       });
-    });
+    };
+
+    const renderThumbs = (images) => {
+      if (!thumbsContainer) return;
+      thumbsContainer.innerHTML = images
+        .map(
+          (image, index) => `
+            <button class="product-thumb${index === 0 ? " active" : ""}" type="button" data-image="${image}" aria-label="Ver imagen ${index + 1} de ${mainImage.alt}">
+              <img src="${image}" alt="${mainImage.alt} - imagen ${index + 1}" loading="lazy" />
+            </button>
+          `
+        )
+        .join("");
+      thumbs = Array.from(thumbsContainer.querySelectorAll(".product-thumb"));
+      thumbs.forEach(bindThumb);
+    };
+
+    const setGallery = (images) => {
+      const deduped = images.filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+      if (!deduped.length) return;
+
+      disableZoom();
+      imageList = deduped;
+      currentIndex = 0;
+      mainImage.src = imageList[0];
+      if (lightboxImage) {
+        lightboxImage.src = imageList[0];
+      }
+      renderThumbs(imageList);
+      setActiveThumb(imageList[0]);
+
+      const disableNav = imageList.length <= 1;
+      if (prevButton) prevButton.disabled = disableNav;
+      if (nextButton) nextButton.disabled = disableNav;
+    };
+
+    thumbs.forEach(bindThumb);
+
+    window.__productGallery = { setGallery };
 
     if (prevButton) {
       prevButton.addEventListener("click", () => setImageByIndex(currentIndex - 1));
@@ -311,6 +381,53 @@
 
     syncZoomAvailability();
     setActiveThumb(mainImage.src);
+  })();
+</script>
+{% endif %} {% if article.product and article.variaciones %}
+<script>
+  (function () {
+    const options = Array.from(document.querySelectorAll(".variation-option"));
+    const priceEl = document.getElementById("product-price");
+    const selectedLabel = document.querySelector(".variation-selected-label");
+    const waLink = document.getElementById("whatsapp-cta");
+    // Atributos con manejo propio (precio, imagen, etc). Cualquier otro
+    // data-* del pill se intercambia solo si existe un #product-<campo> en la página.
+    const HANDLED_DATA_KEYS = new Set(["titulo", "precio", "imagen", "galeria"]);
+    const baseMessage = waLink ? waLink.getAttribute("data-base-message") : "";
+    const waNumber = waLink ? waLink.getAttribute("data-wa-number") : "";
+
+    const updateWhatsapp = (variationLabel) => {
+      if (!waLink || !waNumber) return;
+      const message = variationLabel ? `${baseMessage} (${variationLabel})` : baseMessage;
+      waLink.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+    };
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        if (option.classList.contains("active")) return;
+        options.forEach((o) => o.classList.remove("active"));
+        option.classList.add("active");
+
+        const titulo = option.getAttribute("data-titulo");
+        const precio = option.getAttribute("data-precio");
+        if (priceEl && precio) priceEl.textContent = precio;
+        if (selectedLabel) selectedLabel.textContent = titulo;
+        updateWhatsapp(titulo);
+
+        Object.entries(option.dataset).forEach(([key, value]) => {
+          if (HANDLED_DATA_KEYS.has(key) || !value) return;
+          const target = document.getElementById(`product-${key}`);
+          if (target) target.textContent = value;
+        });
+
+        const imagen = option.getAttribute("data-imagen");
+        if (imagen && window.__productGallery) {
+          const galeria = option.getAttribute("data-galeria");
+          const galeriaImages = galeria ? galeria.split(",") : [];
+          window.__productGallery.setGallery([imagen, ...galeriaImages]);
+        }
+      });
+    });
   })();
 </script>
 {% endif %} {% endblock %}

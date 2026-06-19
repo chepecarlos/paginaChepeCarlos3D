@@ -26,6 +26,7 @@ content %}
       "categoryUrl": "{{ SITEURL }}/{{ article.category.url }}",
       "image": {% if article.image %}"{{ SITEURL }}/{{ resolve_image(article.image) }}"{% else %}null{% endif %},
       "price": {% if article.price %}{{ article.price | tojson }}{% else %}null{% endif %},
+      "priceRange": {% if article.price_range %}{{ article.price_range | tojson }}{% else %}null{% endif %},
       "tags": [{% for tag in article.tags %}{"name": {{ tag.name | tojson }}, "url": "{{ SITEURL }}/{{ tag.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]
     }{% if not loop.last %},{% endif %}
     {% endfor %}
@@ -57,8 +58,9 @@ content %}
       ? '<img src="' + item.image + '" alt="' + escape(item.title) + '" loading="lazy" />'
       : '<div class="product-img-placeholder"><span>' + escape(MSG.noImage) + '</span></div>';
 
-    const price = item.price
-      ? '<p class="product-price">' + escape(item.price) + '</p>'
+    const priceLabel = item.priceRange || item.price;
+    const price = priceLabel
+      ? '<p class="product-price">' + escape(priceLabel) + '</p>'
       : '';
 
     const tags = item.tags.length

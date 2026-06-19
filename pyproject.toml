@@ -7,6 +7,12 @@ requires-python = ">=3.10"
 dependencies = [
     "invoke>=2.2.0",
     "livereload>=2.7.1",
+    "pelican-yaml-metadata>=2.1.2",
     "pelican[markdown]>=4.11.0.post0",
     "pillow>=10.4.0",
+]
+
+[dependency-groups]
+dev = [
+    "playwright>=1.60.0",
 ]

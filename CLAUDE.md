@@ -43,18 +43,21 @@ content/productos/<categoria>/<slug>.md   ← artículos de productos
 content/images/productos/<categoria>/     ← imágenes originales
 content/images_opt/productos/<categoria>/ ← WebP generados por optimize_images.py
 theme/templates/                          ← plantillas Jinja2 personalizadas
-plugins/auto_gallery.py                   ← plugin local (galería + aliases bilingues)
+plugins/auto_gallery.py                   ← plugin local (galería + aliases bilingues + variaciones)
 scripts/                                  ← optimize_images, report_image_savings, sync_instagram_feed
 pelicanconf.py                            ← configuración de desarrollo
 publishconf.py                            ← configuración de producción (extiende pelicanconf.py)
 ```
 
-**Plugin `auto_gallery`**: hace tres cosas a la vez —
+**Plugin `auto_gallery`**: hace varias cosas a la vez —
 1. Registra aliases en español para los metadatos (ver tabla en `GUIA_PRODUCTOS.md`).
 2. Descubre automáticamente las imágenes del directorio `gallerydir` y las expone como `article.auto_gallery`.
 3. Expone los filtros Jinja2 `optimized_image` y `optimized_gallery` para servir WebP cuando existen, o la imagen original como fallback.
+4. Parsea `variacion` (front matter YAML anidado, ver más abajo) en `article.variaciones`, resuelve imagen/galería por variación, y calcula `article.price_min`/`price_max`/`price_range` para catálogo.
 
 **Rutas cortas**: en el front matter se puede escribir `galeria: onepiece/luffy/` en lugar de `images/productos/onepiece/luffy/`; el plugin resuelve la ruta completa automáticamente.
+
+**Plugin `yaml_metadata`** (`pelican-yaml-metadata`, en `PLUGINS` antes de `auto_gallery`): habilita un encabezado YAML real (delimitado por `---`) en archivos `.md` que lo necesiten — necesario para `variacion` (estructura anidada que el parser de metadatos plano de Pelican no soporta). Retrocompatible: si el archivo no tiene `---`, usa el parser plano de siempre. Ver sección "Variaciones de producto" en `GUIA_PRODUCTOS.md` para la sintaxis completa y cómo agregar campos dinámicos por variación (ej. `altura`).
 
 **Páginas de catálogo y búsqueda**: se generan desde `TEMPLATE_PAGES` (`catalog.html` → `/catalogo/index.html`, `search.html` → `/buscar/index.html`), no como artículos normales de Pelican.
 
