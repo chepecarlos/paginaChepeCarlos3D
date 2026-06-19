@@ -21,6 +21,7 @@
     <link rel="canonical" href="{% block canonical %}{{ canonical_url }}{% endblock %}" />
     <link rel="icon" type="image/svg+xml" href="{{ SITEURL }}/theme/images/logo-whatsapp.svg" />
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" />
+    {% if GOOGLE_SITE_VERIFICATION %}<meta name="google-site-verification" content="{{ GOOGLE_SITE_VERIFICATION }}" />{% endif %}
     {% block head_extra %}{% endblock %}
   </head>
   <body>
