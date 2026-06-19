@@ -135,8 +135,18 @@ def _parse_variation_options_flat(raw_value):
     return options
 
 
+_VARIATION_RESERVED_KEYS = {
+    "titulo", "title", "precio", "price",
+    "galeria", "gallerydir", "gallery_dir", "imagen", "image",
+}
+
+
 def _parse_variation_options_nested(raw_value):
-    """Lee la forma YAML anidada: {nombre, lista: [{titulo, precio, galeria, imagen}]}."""
+    """Lee la forma YAML anidada: {nombre, lista: [{titulo, precio, galeria, imagen, ...}]}.
+
+    Cualquier otra clave por variación (ej. "altura") se conserva tal cual,
+    para que la plantilla pueda mostrarla y el JS la intercambie al elegir variante.
+    """
     name = str(raw_value.get("nombre") or raw_value.get("name") or "").strip()
     entries = raw_value.get("lista") or raw_value.get("list") or []
 
@@ -153,6 +163,9 @@ def _parse_variation_options_nested(raw_value):
             option["galeria"] = galeria
         if imagen:
             option["imagen"] = imagen
+        for key, value in entry.items():
+            if key.lower() not in _VARIATION_RESERVED_KEYS and value not in (None, ""):
+                option[key.lower()] = value
         options.append(option)
 
     return name, options

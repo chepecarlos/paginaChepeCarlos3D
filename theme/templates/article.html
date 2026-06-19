@@ -71,6 +71,7 @@
             data-precio="{{ option.precio }}"
             {% if option.imagen %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"{% endif %}
             {% if option.galeria_images %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"{% endif %}
+            {% for key, value in option.items() if key not in ['titulo', 'precio', 'imagen', 'galeria', 'galeria_images'] %}data-{{ key }}="{{ value }}" {% endfor %}
           >
             <span class="variation-option-titulo">{{ option.titulo }}</span>
             {% if option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
@@ -389,6 +390,9 @@
     const priceEl = document.getElementById("product-price");
     const selectedLabel = document.querySelector(".variation-selected-label");
     const waLink = document.getElementById("whatsapp-cta");
+    // Atributos con manejo propio (precio, imagen, etc). Cualquier otro
+    // data-* del pill se intercambia solo si existe un #product-<campo> en la página.
+    const HANDLED_DATA_KEYS = new Set(["titulo", "precio", "imagen", "galeria"]);
     const baseMessage = waLink ? waLink.getAttribute("data-base-message") : "";
     const waNumber = waLink ? waLink.getAttribute("data-wa-number") : "";
 
@@ -409,6 +413,12 @@
         if (priceEl && precio) priceEl.textContent = precio;
         if (selectedLabel) selectedLabel.textContent = titulo;
         updateWhatsapp(titulo);
+
+        Object.entries(option.dataset).forEach(([key, value]) => {
+          if (HANDLED_DATA_KEYS.has(key) || !value) return;
+          const target = document.getElementById(`product-${key}`);
+          if (target) target.textContent = value;
+        });
 
         const imagen = option.getAttribute("data-imagen");
         if (imagen && window.__productGallery) {
