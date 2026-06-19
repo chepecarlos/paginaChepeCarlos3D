@@ -119,7 +119,7 @@
           <article class="product-card"
                    data-category="{{ product.category | string }}"
                    data-name="{{ product.title | lower }}"
-                   data-price="{{ product.price | replace('$', '') | replace(' ', '') if product.price else '0' }}"
+                   data-price="{{ (product.price_min or product.price) | replace('$', '') | replace(' ', '') if (product.price_min or product.price) else '0' }}"
                    data-date="{{ product.date.strftime('%Y%m%d%H%M%S') }}">
             <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
               {% if product.image %}
@@ -139,8 +139,8 @@
               <p class="product-meta">
                 <a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a>
               </p>
-              {% if product.price %}
-              <p class="product-price">{{ product.price }}</p>
+              {% if product.price_range or product.price %}
+              <p class="product-price">{{ product.price_range or product.price }}</p>
               {% endif %}
               {% if product.tags %}
               <p class="product-tags">

@@ -27,7 +27,7 @@ IMAGE_OPTIMIZATION_FORMATS = [".jpg", ".jpeg", ".png"]
 
 # Plugins locales
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["auto_gallery"]
+PLUGINS = ["yaml_metadata", "auto_gallery"]
 
 # Página de catálogo generada desde template
 # → accesible en /catalogo/index.html

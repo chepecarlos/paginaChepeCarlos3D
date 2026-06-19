@@ -21,8 +21,8 @@
         <p class="product-meta">
           <a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a>
         </p>
-        {% if product.price %}
-        <p class="product-price">{{ product.price }}</p>
+        {% if product.price_range or product.price %}
+        <p class="product-price">{{ product.price_range or product.price }}</p>
         {% endif %} {% if product.tags %}
         <p class="product-tags">
           {% for product_tag in product.tags %}

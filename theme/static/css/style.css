@@ -731,6 +731,50 @@ img {
     font-size: 1.8rem;
 }
 
+.variation-selector {
+    margin: 4px 0 16px;
+    text-align: center;
+}
+
+.variation-label {
+    font-size: 0.92rem;
+    color: var(--color-gray);
+    margin-bottom: 8px;
+}
+
+.variation-label strong {
+    color: var(--color-dark);
+}
+
+.variation-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.variation-option {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-dark);
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.variation-option:hover {
+    border-color: var(--color-primary);
+}
+
+.variation-option.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
 .product-desc {
     font-size: 0.9rem;
     color: var(--color-gray);

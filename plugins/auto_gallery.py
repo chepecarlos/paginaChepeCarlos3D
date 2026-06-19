@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -23,6 +24,8 @@ METADATA_ALIASES = {
     "modified": ("modificado",),
     "author": ("autor",),
     "lang": ("idioma",),
+    "variation": ("variacion",),
+    "variation_name": ("variacion_nombre",),
 }
 
 
@@ -36,6 +39,7 @@ SAFE_DIRECT_ATTR_FIELDS = {
     "gallerydir",
     "slug",
     "lang",
+    "variation_name",
 }
 
 
@@ -114,6 +118,46 @@ def register_reader_aliases(readers):
         readers.reader_classes[extension] = _build_bilingual_reader(reader_class)
 
 
+def _parse_variation_options_flat(raw_value):
+    """Convierte 'Grande:$28.00, Pequeño:$12.00' en una lista de dicts."""
+    if not raw_value:
+        return []
+
+    options = []
+    for chunk in str(raw_value).split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        titulo, _, precio = chunk.rpartition(":")
+        if not titulo:
+            titulo, precio = precio, ""
+        options.append({"titulo": titulo.strip(), "precio": precio.strip()})
+    return options
+
+
+def _parse_variation_options_nested(raw_value):
+    """Lee la forma YAML anidada: {nombre, lista: [{titulo, precio, galeria, imagen}]}."""
+    name = str(raw_value.get("nombre") or raw_value.get("name") or "").strip()
+    entries = raw_value.get("lista") or raw_value.get("list") or []
+
+    options = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        titulo = str(entry.get("titulo") or entry.get("title") or "").strip()
+        precio = str(entry.get("precio") or entry.get("price") or "").strip()
+        galeria = entry.get("galeria") or entry.get("gallerydir") or entry.get("gallery_dir")
+        imagen = entry.get("imagen") or entry.get("image")
+        option = {"titulo": titulo, "precio": precio}
+        if galeria:
+            option["galeria"] = galeria
+        if imagen:
+            option["imagen"] = imagen
+        options.append(option)
+
+    return name, options
+
+
 def normalize_bilingual_metadata(content):
     metadata = getattr(content, "metadata", None)
     if not metadata:
@@ -139,6 +183,19 @@ def normalize_bilingual_metadata(content):
         for alias in aliases:
             if metadata.get(alias) in (None, ""):
                 metadata[alias] = value
+
+    variation_raw = metadata.get("variation")
+    if isinstance(variation_raw, dict):
+        variation_name, variation_options = _parse_variation_options_nested(variation_raw)
+        if variation_name and not metadata.get("variation_name"):
+            metadata["variation_name"] = variation_name
+            content.variation_name = variation_name
+    else:
+        variation_options = _parse_variation_options_flat(variation_raw)
+
+    if variation_options:
+        metadata["variaciones"] = variation_options
+        content.variaciones = variation_options
 
 
 def _normalize(path_value):
@@ -253,6 +310,28 @@ def _discover_images(content_root, gallery_dir):
     return files
 
 
+def _build_ordered_gallery(content_root, gallery_dir, main_image=None):
+    """Descubre las imágenes de gallery_dir y las ordena con main_image primero."""
+    discovered_images = _discover_images(content_root, gallery_dir)
+    if not discovered_images:
+        return None, []
+
+    if main_image:
+        main_image = _normalize(_resolve_gallery_dir(main_image))
+
+    if main_image and main_image in discovered_images:
+        ordered_images = [main_image] + [
+            image for image in discovered_images if image != main_image
+        ]
+    elif main_image:
+        ordered_images = [main_image] + discovered_images
+    else:
+        ordered_images = discovered_images
+        main_image = discovered_images[0]
+
+    return main_image, ordered_images
+
+
 def enrich_articles_with_auto_gallery(generator):
     content_root = Path(generator.settings.get("PATH", "content")).resolve()
 
@@ -261,33 +340,94 @@ def enrich_articles_with_auto_gallery(generator):
         if not gallery_dir:
             continue
 
-        discovered_images = _discover_images(content_root, gallery_dir)
-        if not discovered_images:
+        main_image, ordered_images = _build_ordered_gallery(
+            content_root, gallery_dir, _meta_value(article, "image")
+        )
+        if not ordered_images:
             continue
 
-        main_image = _meta_value(article, "image")
-        if main_image:
-            # Resolver rutas cortas en la imagen principal
-            resolved_main = _resolve_gallery_dir(main_image)
-            main_image = _normalize(resolved_main)
-
-        if main_image and main_image in discovered_images:
-            ordered_images = [main_image] + [
-                image for image in discovered_images if image != main_image
-            ]
-        elif main_image:
-            ordered_images = [main_image] + discovered_images
-        else:
-            ordered_images = discovered_images
-            article.image = ordered_images[0]
-            article.metadata["image"] = ordered_images[0]
+        if not _meta_value(article, "image"):
+            article.image = main_image
+            article.metadata["image"] = main_image
 
         article.auto_gallery = ordered_images
         article.metadata["auto_gallery"] = ordered_images
+
+
+def _price_to_float(value):
+    if not value:
+        return None
+    cleaned = re.sub(r"[^\d.]", "", str(value))
+    if not cleaned:
+        return None
+    try:
+        return float(cleaned)
+    except ValueError:
+        return None
+
+
+def enrich_variation_galleries(generator):
+    """Resuelve imagen principal y galería para cada variación con 'galeria' definida."""
+    content_root = Path(generator.settings.get("PATH", "content")).resolve()
+
+    for article in generator.articles:
+        variaciones = getattr(article, "variaciones", None)
+        if not variaciones:
+            continue
+
+        for option in variaciones:
+            gallery_dir = option.get("galeria")
+            if not gallery_dir:
+                continue
+
+            main_image, ordered_images = _build_ordered_gallery(
+                content_root, gallery_dir, option.get("imagen")
+            )
+            if not ordered_images:
+                continue
+
+            option["imagen"] = main_image
+            option["galeria_images"] = ordered_images
+
+        # La primera variación de la lista manda: es la que se ve "activa"
+        # al cargar la página, así que su precio/imagen/galería son los
+        # que se muestran por defecto (evita desajustes con los campos
+        # generales del producto).
+        first_option = variaciones[0]
+        if first_option.get("precio"):
+            article.price = first_option["precio"]
+            article.metadata["price"] = first_option["precio"]
+        if first_option.get("imagen"):
+            article.image = first_option["imagen"]
+            article.metadata["image"] = first_option["imagen"]
+        if first_option.get("galeria_images"):
+            article.auto_gallery = first_option["galeria_images"]
+            article.metadata["auto_gallery"] = first_option["galeria_images"]
+
+        # Rango de precio (menor a mayor) entre todas las variaciones,
+        # para mostrarlo en tarjetas de catálogo/listados.
+        priced_options = sorted(
+            (
+                (_price_to_float(option["precio"]), option["precio"])
+                for option in variaciones
+                if _price_to_float(option.get("precio")) is not None
+            ),
+            key=lambda item: item[0],
+        )
+        if priced_options:
+            min_value, min_label = priced_options[0]
+            max_value, max_label = priced_options[-1]
+            price_range = min_label if min_value == max_value else f"{min_label} - {max_label}"
+
+            article.price_min = min_label
+            article.price_range = price_range
+            article.metadata["price_min"] = min_label
+            article.metadata["price_range"] = price_range
 
 
 def register():
     signals.readers_init.connect(register_reader_aliases)
     signals.content_object_init.connect(normalize_bilingual_metadata)
     signals.article_generator_finalized.connect(enrich_articles_with_auto_gallery)
+    signals.article_generator_finalized.connect(enrich_variation_galleries)
     signals.generator_init.connect(_register_template_helpers)
