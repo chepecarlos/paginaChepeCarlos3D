@@ -8,6 +8,7 @@ precio: $28.00
 imagen: sanrio/kuromi-grande/01_Kuromi.png
 galeria: sanrio/kuromi-grande/
 resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de Sanrio.
+id_dolibarr: 21
 
 ## Descripción
 

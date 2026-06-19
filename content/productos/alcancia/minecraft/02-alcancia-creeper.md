@@ -8,6 +8,7 @@ precio: $14.00
 imagen: alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_01.png
 galeria: alcancia/minecraft/alcancia-creeper/
 resumen: Figura impresa 3D con estilo de Creeper, con excelente presencia para coleccionistas y ahorradores del videojuego de Minecraft.
+id_dolibarr: 31
 
 ## Descripción
 

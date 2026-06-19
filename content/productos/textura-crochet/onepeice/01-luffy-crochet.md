@@ -7,6 +7,7 @@ etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: luffy-crochet
 resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
+id_dolibarr: 8
 variacion:
   nombre: Tamaño
   lista:

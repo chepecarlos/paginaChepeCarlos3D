@@ -4,7 +4,7 @@ categoria: Pokemon
 etiquetas: videojuego, alcancia
 producto: true
 slug: alcancia-pokebola-grande
-precio: $13.00
+precio: $20.00
 imagen: alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_01.png
 galeria: alcancia/pokemon/alcancia-pokebola-grande/
 resumen: Figura impresa 3D con estilo de TNT, con excelente presencia para coleccionistas y ahorradores de la franquicia.
