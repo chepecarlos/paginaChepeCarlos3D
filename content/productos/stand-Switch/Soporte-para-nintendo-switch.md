@@ -1,5 +1,5 @@
 titulo: Soporte para Nintendo Switch
-fecha: 2026-01-15
+fecha: 2026-06-18
 categoria: Display
 etiquetas: display, soporte, nintendo
 producto: true
