@@ -384,6 +384,39 @@ def _price_to_float(value):
         return None
 
 
+_PRICE_NUMBER_RE = re.compile(r"[\d.]+")
+
+
+def _format_price_like(reference, value):
+    """Formatea `value` reusando el prefijo/sufijo de moneda de `reference`
+    (ej. referencia '$17.00' y value 18.0 -> '$18.00')."""
+    reference = str(reference)
+    match = _PRICE_NUMBER_RE.search(reference)
+    if not match:
+        return f"{value:.2f}"
+    prefix, suffix = reference[: match.start()], reference[match.end() :]
+    return f"{prefix}{value:.2f}{suffix}"
+
+
+def _resolve_relative_price(base_price, option_price):
+    """Si `option_price` es relativo al precio base (ej. '+$1.00' o '-$2.00'),
+    devuelve el precio absoluto resultante (base + delta); si no es relativo,
+    devuelve `option_price` sin cambios."""
+    text = str(option_price).strip()
+    if not text.startswith(("+", "-")):
+        return option_price
+
+    base_value = _price_to_float(base_price)
+    delta = _price_to_float(text)
+    if base_value is None or delta is None:
+        return option_price
+
+    if text.startswith("-"):
+        delta = -delta
+
+    return _format_price_like(base_price, base_value + delta)
+
+
 def enrich_variation_galleries(generator):
     """Resuelve imagen principal y galería para cada variación con 'galeria' definida."""
     content_root = Path(generator.settings.get("PATH", "content")).resolve()
@@ -392,6 +425,12 @@ def enrich_variation_galleries(generator):
         variaciones = getattr(article, "variaciones", None)
         if not variaciones:
             continue
+
+        # Precio base del producto (campo "precio" del front matter), leído
+        # antes de que las variaciones lo sobrescriban. Se usa como respaldo
+        # para variaciones sin precio propio, y se recalcula en cada build
+        # para reflejar cambios futuros al precio base.
+        base_price = getattr(article, "price", None)
 
         for option in variaciones:
             gallery_dir = option.get("galeria")
@@ -406,6 +445,21 @@ def enrich_variation_galleries(generator):
 
             option["imagen"] = main_image
             option["galeria_images"] = ordered_images
+
+        if base_price:
+            for option in variaciones:
+                precio = option.get("precio")
+                if not precio:
+                    option["precio"] = base_price
+                else:
+                    resolved = _resolve_relative_price(base_price, precio)
+                    if resolved != precio:
+                        # Precio relativo (ej. "+$1.00"): se conserva el texto
+                        # original para mostrarlo en el botón de variación,
+                        # mientras que "precio" queda con el total absoluto
+                        # (usado para el precio grande de arriba y los rangos).
+                        option["precio_relativo"] = precio
+                    option["precio"] = resolved
 
         # La primera variación de la lista manda: es la que se ve "activa"
         # al cargar la página, así que su precio/imagen/galería son los

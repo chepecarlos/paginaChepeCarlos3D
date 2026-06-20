@@ -1,3 +1,4 @@
+---
 titulo: Soporte para Nintendo Switch
 fecha: 2026-06-18
 categoria: Display
@@ -9,7 +10,13 @@ imagen: stand-switch/IMG20260618175553.jpg
 galeria: stand-switch/
 resumen: Soporte hecho en 3D para Nintendo Switch
 id_dolibarr: 8
-
+variacion:
+  nombre: personalización
+  lista:
+    - titulo: normal
+    - titulo: personalizado
+      precio: +$1.00
+---
 ## Descripción
 
 🎮 Soporte para Nintendo Switch impreso en 3D, con diseño inspirado en la icónica estética de Nintendo y acabado en rojo brillante. Ligero, resistente y con la inclinación perfecta para mantener tu consola siempre lista. Ideal para cualquier setup gamer o como regalo único y especial. ⚡🔴
