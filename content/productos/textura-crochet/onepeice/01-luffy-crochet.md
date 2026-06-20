@@ -1,7 +1,6 @@
 ---
 titulo: Luffy Estilo Crochet
 fecha: 2026-01-15
-Date: 2026-01-15
 categoria: onepiece
 etiquetas: crochet, amigurumi, anime, articulado
 producto: true

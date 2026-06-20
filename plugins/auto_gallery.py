@@ -1,5 +1,5 @@
 import re
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 from pelican import signals
@@ -81,6 +81,11 @@ def _normalize_reader_metadata(reader, metadata):
         value = _resolve_aliases(normalized, canonical_name)
         if value in (None, ""):
             continue
+
+        if canonical_name in ("date", "modified") and isinstance(value, date):
+            # YAML front matter auto-parses bare dates (e.g. "fecha: 2026-01-15")
+            # into date/datetime objects; Pelican's date processor expects a string.
+            value = value.isoformat()
 
         try:
             processed_value = reader.process_metadata(canonical_name, value)
