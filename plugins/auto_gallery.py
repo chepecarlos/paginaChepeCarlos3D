@@ -203,17 +203,40 @@ def normalize_bilingual_metadata(content):
                 metadata[alias] = value
 
     variation_raw = metadata.get("variation")
-    if isinstance(variation_raw, dict):
+    variation_groups = []
+
+    if isinstance(variation_raw, list):
+        # Varios grupos de variación combinables (ej. Tamaño + Personalización):
+        # cada item de la lista es un grupo con la misma forma {nombre, lista}
+        # que el caso de un solo grupo.
+        for group_raw in variation_raw:
+            if not isinstance(group_raw, dict):
+                continue
+            group_name, group_options = _parse_variation_options_nested(group_raw)
+            if group_options:
+                variation_groups.append({"nombre": group_name, "opciones": group_options})
+    elif isinstance(variation_raw, dict):
         variation_name, variation_options = _parse_variation_options_nested(variation_raw)
-        if variation_name and not metadata.get("variation_name"):
-            metadata["variation_name"] = variation_name
-            content.variation_name = variation_name
+        if variation_options:
+            variation_groups.append({"nombre": variation_name, "opciones": variation_options})
+            if variation_name and not metadata.get("variation_name"):
+                metadata["variation_name"] = variation_name
+                content.variation_name = variation_name
     else:
         variation_options = _parse_variation_options_flat(variation_raw)
+        if variation_options:
+            variation_groups.append({"nombre": metadata.get("variation_name", ""), "opciones": variation_options})
 
-    if variation_options:
-        metadata["variaciones"] = variation_options
-        content.variaciones = variation_options
+    if variation_groups:
+        metadata["variation_groups"] = variation_groups
+        content.variation_groups = variation_groups
+
+        # Compatibilidad: el primer grupo (el principal, ej. Tamaño) se expone
+        # también como "variaciones" (lista plana), igual que antes, para no
+        # romper plantillas o lógica que solo conocían un grupo.
+        primary_options = variation_groups[0]["opciones"]
+        metadata["variaciones"] = primary_options
+        content.variaciones = primary_options
 
 
 def _normalize(path_value):
@@ -418,78 +441,115 @@ def _resolve_relative_price(base_price, option_price):
 
 
 def enrich_variation_galleries(generator):
-    """Resuelve imagen principal y galería para cada variación con 'galeria' definida."""
+    """Resuelve imagen, galería y precios para cada grupo de variación.
+
+    Soporta uno o varios grupos combinables (ej. Tamaño + Personalización).
+    El primer grupo es el "principal": sus precios son absolutos (o heredan
+    el precio base del producto si no definen uno propio), igual que un
+    producto de variación simple. Los grupos siguientes son aditivos: su
+    precio (ej. "+$1.00") se suma/resta sobre el total acumulado de los
+    grupos anteriores, no sobre un precio base fijo — así "Personalizado"
+    suma $1 al precio de la variación de Tamaño que esté activa.
+    """
     content_root = Path(generator.settings.get("PATH", "content")).resolve()
 
     for article in generator.articles:
-        variaciones = getattr(article, "variaciones", None)
-        if not variaciones:
+        variation_groups = getattr(article, "variation_groups", None)
+        if not variation_groups:
             continue
 
         # Precio base del producto (campo "precio" del front matter), leído
-        # antes de que las variaciones lo sobrescriban. Se usa como respaldo
-        # para variaciones sin precio propio, y se recalcula en cada build
-        # para reflejar cambios futuros al precio base.
+        # antes de que las variaciones lo sobrescriban. Solo lo usa el grupo
+        # principal como respaldo, y se recalcula en cada build para
+        # reflejar cambios futuros al precio base.
         base_price = getattr(article, "price", None)
 
-        for option in variaciones:
-            gallery_dir = option.get("galeria")
-            if not gallery_dir:
-                continue
+        for group_index, group in enumerate(variation_groups):
+            options = group.get("opciones") or []
 
-            main_image, ordered_images = _build_ordered_gallery(
-                content_root, gallery_dir, option.get("imagen")
-            )
-            if not ordered_images:
-                continue
+            for option in options:
+                gallery_dir = option.get("galeria")
+                if gallery_dir:
+                    main_image, ordered_images = _build_ordered_gallery(
+                        content_root, gallery_dir, option.get("imagen")
+                    )
+                    if ordered_images:
+                        option["imagen"] = main_image
+                        option["galeria_images"] = ordered_images
 
-            option["imagen"] = main_image
-            option["galeria_images"] = ordered_images
-
-        if base_price:
-            for option in variaciones:
                 precio = option.get("precio")
-                if not precio:
-                    option["precio"] = base_price
+                if group_index == 0:
+                    if not precio:
+                        precio = base_price
+                    elif base_price:
+                        resolved = _resolve_relative_price(base_price, precio)
+                        if resolved != precio:
+                            option["precio_relativo"] = precio
+                        precio = resolved
+                    option["precio"] = precio
+                    option["precio_valor"] = _price_to_float(precio) or 0.0
                 else:
-                    resolved = _resolve_relative_price(base_price, precio)
-                    if resolved != precio:
-                        # Precio relativo (ej. "+$1.00"): se conserva el texto
-                        # original para mostrarlo en el botón de variación,
-                        # mientras que "precio" queda con el total absoluto
-                        # (usado para el precio grande de arriba y los rangos).
-                        option["precio_relativo"] = precio
-                    option["precio"] = resolved
+                    # Grupo aditivo: su precio es un ajuste (+/-) sobre el
+                    # total acumulado, no un precio fijo. Si no define
+                    # precio, no agrega nada (ej. "Normal" = +$0.00).
+                    if not precio:
+                        option["precio_valor"] = 0.0
+                        continue
+                    text = str(precio).strip()
+                    delta = _price_to_float(text) or 0.0
+                    if text.startswith("-"):
+                        delta = -delta
+                    option["precio_relativo"] = text
+                    option["precio_valor"] = delta
 
-        # La primera variación de la lista manda: es la que se ve "activa"
-        # al cargar la página, así que su precio/imagen/galería son los
-        # que se muestran por defecto (evita desajustes con los campos
-        # generales del producto).
-        first_option = variaciones[0]
-        if first_option.get("precio"):
-            article.price = first_option["precio"]
-            article.metadata["price"] = first_option["precio"]
-        if first_option.get("imagen"):
-            article.image = first_option["imagen"]
-            article.metadata["image"] = first_option["imagen"]
-        if first_option.get("galeria_images"):
-            article.auto_gallery = first_option["galeria_images"]
-            article.metadata["auto_gallery"] = first_option["galeria_images"]
+        primary_options = variation_groups[0].get("opciones") or []
+        if not primary_options:
+            continue
 
-        # Rango de precio (menor a mayor) entre todas las variaciones,
+        # La primera opción de cada grupo es la que se ve "activa" al cargar
+        # la página, así que su combinación define el precio/imagen/galería
+        # que se muestran por defecto.
+        first_primary = primary_options[0]
+        reference_price = first_primary.get("precio") or base_price
+
+        if reference_price:
+            total_valor = first_primary.get("precio_valor", 0.0)
+            for group in variation_groups[1:]:
+                options = group.get("opciones") or []
+                if options:
+                    total_valor += options[0].get("precio_valor", 0.0)
+
+            total_price = _format_price_like(reference_price, total_valor)
+            article.price = total_price
+            article.metadata["price"] = total_price
+
+        if first_primary.get("imagen"):
+            article.image = first_primary["imagen"]
+            article.metadata["image"] = first_primary["imagen"]
+        if first_primary.get("galeria_images"):
+            article.auto_gallery = first_primary["galeria_images"]
+            article.metadata["auto_gallery"] = first_primary["galeria_images"]
+
+        # Rango de precio (menor a mayor) combinando el rango del grupo
+        # principal con el ajuste mínimo/máximo de los grupos adicionales,
         # para mostrarlo en tarjetas de catálogo/listados.
-        priced_options = sorted(
-            (
-                (_price_to_float(option["precio"]), option["precio"])
-                for option in variaciones
-                if _price_to_float(option.get("precio")) is not None
-            ),
-            key=lambda item: item[0],
-        )
-        if priced_options:
-            min_value, min_label = priced_options[0]
-            max_value, max_label = priced_options[-1]
-            price_range = min_label if min_value == max_value else f"{min_label} - {max_label}"
+        primary_values = [
+            option.get("precio_valor")
+            for option in primary_options
+            if option.get("precio_valor") is not None
+        ]
+        if reference_price and primary_values:
+            min_total = min(primary_values)
+            max_total = max(primary_values)
+            for group in variation_groups[1:]:
+                deltas = [option.get("precio_valor", 0.0) for option in (group.get("opciones") or [])]
+                if deltas:
+                    min_total += min(deltas)
+                    max_total += max(deltas)
+
+            min_label = _format_price_like(reference_price, min_total)
+            max_label = _format_price_like(reference_price, max_total)
+            price_range = min_label if min_total == max_total else f"{min_label} - {max_label}"
 
             article.price_min = min_label
             article.price_max = max_label

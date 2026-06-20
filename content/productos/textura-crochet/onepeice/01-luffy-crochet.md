@@ -8,18 +8,23 @@ slug: luffy-crochet
 resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
 id_dolibarr: 8
 variacion:
-  nombre: Tamaño
-  lista:
-    - titulo: Pequeño
-      precio: $12.00
-      altura: 10 cm
-      imagen: onepiece/luffy-crochet/pequeño/01_Luffy.png
-      galeria: onepiece/luffy-crochet/pequeño
-    - titulo: Grande
-      precio: $28.00
-      altura: 17 cm
-      imagen: onepiece/luffy-crochet/grande/04_Luffy.png
-      galeria: onepiece/luffy-crochet/grande
+  - nombre: Tamaño
+    lista:
+      - titulo: Pequeño
+        precio: $12.00
+        altura: 10 cm
+        imagen: onepiece/luffy-crochet/pequeño/01_Luffy.png
+        galeria: onepiece/luffy-crochet/pequeño
+      - titulo: Grande
+        precio: $28.00
+        altura: 17 cm
+        imagen: onepiece/luffy-crochet/grande/04_Luffy.png
+        galeria: onepiece/luffy-crochet/grande
+  - nombre: Personalización
+    lista:
+       - titulo: Normal
+       - titulo: Personalizado
+         precio: +$1.00
 ---
 
 ## Características

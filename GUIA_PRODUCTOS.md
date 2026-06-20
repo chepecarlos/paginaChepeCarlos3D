@@ -120,6 +120,34 @@ Ejemplo real en el repo: `content/productos/textura-crochet/onepeice/01-luffy-cr
 
 No hace falta repetir `precio:`, `imagen:` ni `galeria:` a nivel general del producto — el sitio los toma automaticamente de la **primera** variacion de la lista.
 
+### Varios grupos de variacion combinables (ej. Tamano + Personalizacion)
+
+Cuando un producto necesita dos decisiones independientes (ej. elegir tamano Y elegir si se personaliza), `variacion:` puede ser una **lista de grupos** en vez de un solo grupo:
+
+```yaml
+variacion:
+  - nombre: Tamaño
+    lista:
+      - titulo: Pequeño
+        precio: $12.00
+        imagen: onepiece/luffy-crochet/pequeño/01_Luffy.png
+        galeria: onepiece/luffy-crochet/pequeño
+      - titulo: Grande
+        precio: $28.00
+        imagen: onepiece/luffy-crochet/grande/04_Luffy.png
+        galeria: onepiece/luffy-crochet/grande
+  - nombre: Personalización
+    lista:
+      - titulo: Normal
+      - titulo: Personalizado
+        precio: +$1.00
+```
+
+- El **primer grupo de la lista** es el principal: sus precios son absolutos (igual que el caso de un solo grupo) y son los que definen imagen/galeria por defecto.
+- Los **grupos siguientes** son aditivos: su `precio` (ej. `+$1.00` o `-$2.00`) se suma o resta sobre el total acumulado de los grupos anteriores. Si una opcion no define `precio` (ej. "Normal"), no agrega nada.
+- El precio grande de arriba y el rango del catalogo se recalculan combinando todos los grupos (ej. Pequeño sin personalizar = $12.00, Grande + Personalizado = $29.00 → catalogo muestra "$12.00 - $29.00").
+- En la pagina del producto aparece un selector por cada grupo; el cliente puede elegir una opcion de cada uno de forma independiente.
+
 ### Que hace el sitio automaticamente
 
 - La **primera variacion de la lista** es la que se ve seleccionada al cargar la pagina (su precio, imagen y galeria son los que aparecen por defecto). El orden de `lista` define cual es esa.

@@ -57,29 +57,31 @@
       <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
       {% endif %} {% if article.price %}
       <p class="product-price large" id="product-price">{{ article.price }}</p>
-      {% endif %} {% if article.variaciones %}
-      <div class="variation-selector">
+      {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %}
+      <div class="variation-selector" data-group-index="{{ group_index }}">
         <p class="variation-label">
-          {{ article.variation_name or 'Variación' }}: <strong class="variation-selected-label">{{ article.variaciones[0].titulo }}</strong>
+          {{ group.nombre or 'Variación' }}: <strong class="variation-selected-label">{{ group.opciones[0].titulo }}</strong>
         </p>
-        <div class="variation-options" role="group" aria-label="{{ article.variation_name or 'Variación' }}">
-          {% for option in article.variaciones %}
+        <div class="variation-options" role="group" aria-label="{{ group.nombre or 'Variación' }}">
+          {% for option in group.opciones %}
           <button
             type="button"
             class="variation-option{% if loop.first %} active{% endif %}"
+            data-group-index="{{ group_index }}"
             data-titulo="{{ option.titulo }}"
             data-precio="{{ option.precio }}"
+            data-precio-valor="{{ option.precio_valor }}"
             {% if option.imagen %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"{% endif %}
             {% if option.galeria_images %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"{% endif %}
-            {% for key, value in option.items() if key not in ['titulo', 'precio', 'precio_relativo', 'imagen', 'galeria', 'galeria_images'] %}data-{{ key }}="{{ value }}" {% endfor %}
+            {% for key, value in option.items() if key not in ['titulo', 'precio', 'precio_relativo', 'precio_valor', 'imagen', 'galeria', 'galeria_images'] %}data-{{ key }}="{{ value }}" {% endfor %}
           >
             <span class="variation-option-titulo">{{ option.titulo }}</span>
-            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
+            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif group_index == 0 and option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
           </button>
           {% endfor %}
         </div>
       </div>
-      {% endif %}
+      {% endfor %} {% endif %}
 
       <div class="contact-actions">
         {% if WHATSAPP_NUMBER %} {% set wa_number = WHATSAPP_NUMBER | replace('+', '') | replace(' ', '') | replace('-', '') | replace('(', '') | replace(')', '') %} {% set product_link = SITEURL ~
@@ -383,49 +385,81 @@
     setActiveThumb(mainImage.src);
   })();
 </script>
-{% endif %} {% if article.product and article.variaciones %}
+{% endif %} {% if article.product and article.variation_groups %}
 <script>
   (function () {
-    const options = Array.from(document.querySelectorAll(".variation-option"));
     const priceEl = document.getElementById("product-price");
-    const selectedLabel = document.querySelector(".variation-selected-label");
     const waLink = document.getElementById("whatsapp-cta");
     // Atributos con manejo propio (precio, imagen, etc). Cualquier otro
     // data-* del pill se intercambia solo si existe un #product-<campo> en la página.
-    const HANDLED_DATA_KEYS = new Set(["titulo", "precio", "imagen", "galeria"]);
+    const HANDLED_DATA_KEYS = new Set(["titulo", "precio", "precioValor", "groupIndex", "imagen", "galeria"]);
     const baseMessage = waLink ? waLink.getAttribute("data-base-message") : "";
     const waNumber = waLink ? waLink.getAttribute("data-wa-number") : "";
 
-    const updateWhatsapp = (variationLabel) => {
+    // Captura el formato de moneda (prefijo/sufijo, ej. "$") del precio
+    // inicial renderizado por el servidor, para reformatear el total al
+    // combinar grupos sin perder el símbolo de moneda.
+    let pricePrefix = "";
+    let priceSuffix = "";
+    if (priceEl) {
+      const match = priceEl.textContent.match(/[\d.]+/);
+      if (match) {
+        pricePrefix = priceEl.textContent.slice(0, match.index);
+        priceSuffix = priceEl.textContent.slice(match.index + match[0].length);
+      }
+    }
+
+    const groupEls = Array.from(document.querySelectorAll(".variation-selector"));
+
+    const updateWhatsapp = () => {
       if (!waLink || !waNumber) return;
-      const message = variationLabel ? `${baseMessage} (${variationLabel})` : baseMessage;
+      const selectedTitles = groupEls
+        .map((group) => group.querySelector(".variation-option.active"))
+        .filter(Boolean)
+        .map((option) => option.getAttribute("data-titulo"));
+      const message = selectedTitles.length ? `${baseMessage} (${selectedTitles.join(", ")})` : baseMessage;
       waLink.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
     };
 
-    options.forEach((option) => {
-      option.addEventListener("click", () => {
-        if (option.classList.contains("active")) return;
-        options.forEach((o) => o.classList.remove("active"));
-        option.classList.add("active");
+    const recomputeTotal = () => {
+      if (!priceEl) return;
+      let total = 0;
+      groupEls.forEach((group) => {
+        const active = group.querySelector(".variation-option.active");
+        if (active) total += parseFloat(active.getAttribute("data-precio-valor")) || 0;
+      });
+      priceEl.textContent = `${pricePrefix}${total.toFixed(2)}${priceSuffix}`;
+    };
 
-        const titulo = option.getAttribute("data-titulo");
-        const precio = option.getAttribute("data-precio");
-        if (priceEl && precio) priceEl.textContent = precio;
-        if (selectedLabel) selectedLabel.textContent = titulo;
-        updateWhatsapp(titulo);
+    groupEls.forEach((groupEl) => {
+      const options = Array.from(groupEl.querySelectorAll(".variation-option"));
+      const selectedLabel = groupEl.querySelector(".variation-selected-label");
 
-        Object.entries(option.dataset).forEach(([key, value]) => {
-          if (HANDLED_DATA_KEYS.has(key) || !value) return;
-          const target = document.getElementById(`product-${key}`);
-          if (target) target.textContent = value;
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          if (option.classList.contains("active")) return;
+          options.forEach((o) => o.classList.remove("active"));
+          option.classList.add("active");
+
+          const titulo = option.getAttribute("data-titulo");
+          if (selectedLabel) selectedLabel.textContent = titulo;
+
+          recomputeTotal();
+          updateWhatsapp();
+
+          Object.entries(option.dataset).forEach(([key, value]) => {
+            if (HANDLED_DATA_KEYS.has(key) || !value) return;
+            const target = document.getElementById(`product-${key}`);
+            if (target) target.textContent = value;
+          });
+
+          const imagen = option.getAttribute("data-imagen");
+          if (imagen && window.__productGallery) {
+            const galeria = option.getAttribute("data-galeria");
+            const galeriaImages = galeria ? galeria.split(",") : [];
+            window.__productGallery.setGallery([imagen, ...galeriaImages]);
+          }
         });
-
-        const imagen = option.getAttribute("data-imagen");
-        if (imagen && window.__productGallery) {
-          const galeria = option.getAttribute("data-galeria");
-          const galeriaImages = galeria ? galeria.split(",") : [];
-          window.__productGallery.setGallery([imagen, ...galeriaImages]);
-        }
       });
     });
   })();
