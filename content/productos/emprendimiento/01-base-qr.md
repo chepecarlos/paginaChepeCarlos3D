@@ -2,7 +2,7 @@ titulo: Base de QR
 fecha: 2026-05-1
 categoria: emprendimiento
 etiquetas: link, qr, 
-producto: true
+producto: false
 slug: base-qr
 precio: $15
 

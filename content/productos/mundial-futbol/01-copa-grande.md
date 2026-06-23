@@ -12,7 +12,7 @@ id_dolibarr: 27
 variacion:
   nombre: Calidad
   lista:
-    - titulo: Básica
+    - titulo: Standard
       precio: $35.00
       altura: 36.8 cm
       imagen: copa-mundial/copa-mundial-real-basica/01_Copadelmundo-basica.jpg
