@@ -13,18 +13,18 @@ variacion:
       - titulo: Pequeño
         precio: $12.00
         altura: 10 cm
-        imagen: onepiece/luffy-crochet/pequeño/01_Luffy.png
+        imagen: onepiece/luffy-crochet/pequeño/01_Luffy-pequeño.png
         galeria: onepiece/luffy-crochet/pequeño
       - titulo: Grande
         precio: $28.00
         altura: 17 cm
-        imagen: onepiece/luffy-crochet/grande/04_Luffy.png
+        imagen: onepiece/luffy-crochet/grande/01_Luffy-grande.jpg
         galeria: onepiece/luffy-crochet/grande
   - nombre: Personalización
     lista:
-       - titulo: Normal
-       - titulo: Personalizado
-         precio: +$1.00
+      - titulo: Normal
+      - titulo: Personalizado
+        precio: +$1.00
 ---
 
 ## Características
