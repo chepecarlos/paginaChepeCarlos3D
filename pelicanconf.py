@@ -27,7 +27,7 @@ IMAGE_OPTIMIZATION_FORMATS = [".jpg", ".jpeg", ".png"]
 
 # Plugins locales
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["auto_gallery"]
+PLUGINS = ["yaml_metadata", "auto_gallery"]
 
 # Página de catálogo generada desde template
 # → accesible en /catalogo/index.html
@@ -41,6 +41,11 @@ TEMPLATE_PAGES = {
 
 # Número de WhatsApp para cotizaciones (formato: 50369737593)
 WHATSAPP_NUMBER = "50369737593"  # Modifica con tu número de WhatsApp
+
+# Verificación de Google Search Console
+# Pega aquí el valor del atributo content del meta tag que te da Google
+# Ejemplo: "abc123XYZ..."
+GOOGLE_SITE_VERIFICATION = ""
 
 # Redes sociales en barra principal
 # Completa cada URL para mostrar su botón en el header

@@ -2,7 +2,7 @@ titulo: Base para llaveros
 fecha: 2026-05-14
 categoria: emprendimiento
 etiquetas: base, display, llaveros, pulseras, emprendimiento
-producto: true
+producto: false
 slug: base-llavero
 precio: ???
 resumen: Base impresa 3D tipo base para colgar tus llaveros, pulseras e incluso cadenas de tu preferencia.

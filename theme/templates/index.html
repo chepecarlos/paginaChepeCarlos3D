@@ -68,6 +68,8 @@
         <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
           {% if product.image %}
           <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
+          {% elif product.auto_gallery %}
+          <img src="{{ SITEURL }}/{{ resolve_image(product.auto_gallery[0]) }}" alt="{{ product.title }}" loading="lazy" />
           {% else %}
           <div class="product-img-placeholder"><span>{{ MSG.product_no_image }}</span></div>
           {% endif %}
@@ -75,8 +77,8 @@
         <div class="product-body">
           <h2 class="product-title"><a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a></h2>
           <p class="product-meta"><a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a></p>
-          {% if product.price %}
-          <p class="product-price">{{ product.price }}</p>
+          {% if product.price_range or product.price %}
+          <p class="product-price">{{ product.price_range or product.price }}</p>
           {% endif %}
           <a href="{{ SITEURL }}/{{ product.url }}" class="btn btn-primary">Ver detalles</a>
         </div>

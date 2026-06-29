@@ -41,6 +41,8 @@ help:
 	@echo '   make instagram-feed-urls           descarga imagenes desde post_url    '
 	@echo '   make instagram-feed-latest USERNAME=... trae ultimos posts del perfil  '
 	@echo '   make instagram-feed-build          sync + build local completo         '
+	@echo '   make audit                          revisa productos por datos faltantes '
+	@echo '   make audit-info                     audit + avisos informativos          '
 	@echo '   make optimize-images               optimiza imagenes de productos      '
 	@echo '   make optimize-images-force         reprocesa todas las imagenes         '
 	@echo '   make optimize-images-report        muestra ahorro total original vs webp'
@@ -75,6 +77,17 @@ instagram-feed-latest:
 
 prebuild: instagram-feed
 	@$(MAKE) optimize-images
+
+audit:
+	"$(PY)" scripts/audit_products.py \
+		--content-path "$(INPUTDIR)" \
+		--products-subdir productos
+
+audit-info:
+	"$(PY)" scripts/audit_products.py \
+		--content-path "$(INPUTDIR)" \
+		--products-subdir productos \
+		--info
 
 optimize-images:
 	"$(PY)" scripts/optimize_images.py \
@@ -134,4 +147,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: install install-frozen instagram-feed instagram-feed-urls instagram-feed-latest prebuild optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
+.PHONY: install install-frozen instagram-feed instagram-feed-urls instagram-feed-latest prebuild audit audit-info optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github

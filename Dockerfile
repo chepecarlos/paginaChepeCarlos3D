@@ -1,15 +1,21 @@
 FROM python:3.12-slim AS builder
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy \
+    UV_FROZEN=1 \
+    UV_NO_DEV=1
 
 WORKDIR /app
 
-COPY pyproject.toml README.md ./
-RUN pip install --no-cache-dir \
-    "invoke>=2.2.0" \
-    "livereload>=2.7.1" \
-    "pelican[markdown]>=4.11.0.post0"
+# Instala dependencias desde el lockfile (capa cacheable, separada del codigo).
+# --frozen hace que el build falle si pyproject.toml y uv.lock estan
+# desincronizados, en vez de instalar de menos en silencio.
+COPY pyproject.toml uv.lock README.md ./
+RUN uv sync --frozen --no-dev --no-install-project
 
 COPY . .
 
@@ -19,9 +25,9 @@ ARG INSTAGRAM_SYNC=0
 # Build static output for production. Instagram sync is optional to avoid flaky builds.
 RUN set -eux; \
     if [ "$INSTAGRAM_SYNC" = "1" ]; then \
-        python scripts/sync_instagram_feed.py; \
+        uv run python scripts/sync_instagram_feed.py; \
     fi; \
-    SITEURL="$SITEURL" pelican content -o output -s publishconf.py
+    SITEURL="$SITEURL" uv run pelican content -o output -s publishconf.py
 
 FROM nginx:1.27-alpine
 

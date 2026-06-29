@@ -22,6 +22,15 @@
 
 {% block content %}
 <div class="container">
+  <nav class="breadcrumb" aria-label="Navegación">
+    <a href="{{ SITEURL }}/">Inicio</a>
+    <span aria-hidden="true">›</span>
+    {% if article.category %}
+    <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+    <span aria-hidden="true">›</span>
+    {% endif %}
+    <span aria-current="page">{{ article.title }}</span>
+  </nav>
   {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.image %} {% if article.auto_gallery %} {% set support_images =
   article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
   article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %} {% if main_image %} {% set main_image =
@@ -34,11 +43,12 @@
         <button class="product-lightbox-trigger" type="button" aria-label="Ver imagen en grande">⤢</button>
         <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
         <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+        <span class="gallery-counter" id="gallery-counter" aria-live="polite"></span>
       </div>
       {% else %}
       <div class="product-img-placeholder large">Sin imagen</div>
       {% endif %} {% if support_images %}
-      <div class="product-thumbs" aria-label="Imágenes de apoyo">
+      <div class="product-thumbs" id="product-thumbs" aria-label="Imágenes de apoyo">
         <button class="product-thumb active" type="button" data-image="{{ SITEURL }}/{{ main_image }}" aria-label="Ver imagen principal de {{ article.title }}">
           <img src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }} - principal" loading="lazy" />
         </button>
@@ -56,13 +66,46 @@
       {% if article.category %}
       <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
       {% endif %} {% if article.price %}
-      <p class="product-price large">{{ article.price }}</p>
-      {% endif %}
+      <p class="product-price large" id="product-price">{{ article.price }}</p>
+      {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %}
+      <div class="variation-selector" data-group-index="{{ group_index }}">
+        <p class="variation-label">
+          {{ group.nombre or 'Variación' }}: <strong class="variation-selected-label">{{ group.opciones[0].titulo }}</strong>
+        </p>
+        <div class="variation-options" role="group" aria-label="{{ group.nombre or 'Variación' }}">
+          {% for option in group.opciones %}
+          <button
+            type="button"
+            class="variation-option{% if loop.first %} active{% endif %}"
+            data-group-index="{{ group_index }}"
+            data-titulo="{{ option.titulo }}"
+            data-precio="{{ option.precio }}"
+            data-precio-valor="{{ option.precio_valor }}"
+            {% if option.imagen %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"{% endif %}
+            {% if option.galeria_images %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"{% endif %}
+            {% for key, value in option.items() if key not in ['titulo', 'precio', 'precio_relativo', 'precio_valor', 'imagen', 'galeria', 'galeria_images'] %}data-{{ key }}="{{ value }}" {% endfor %}
+          >
+            <span class="variation-option-titulo">{{ option.titulo }}</span>
+            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif group_index == 0 and option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %} {% endif %}
 
       <div class="contact-actions">
         {% if WHATSAPP_NUMBER %} {% set wa_number = WHATSAPP_NUMBER | replace('+', '') | replace(' ', '') | replace('-', '') | replace('(', '') | replace(')', '') %} {% set product_link = SITEURL ~
         '/' ~ article.url if SITEURL else article.url %} {% set wa_message = "Hola, quiero preguntar de este producto: " ~ article.title ~ " " ~ product_link %}
-        <a href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+        <a
+          href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}"
+          class="btn btn-whatsapp btn-lg"
+          id="whatsapp-cta"
+          data-wa-number="{{ wa_number }}"
+          data-base-message="{{ wa_message }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="Cotizar por WhatsApp"
+        >
           <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="WhatsApp" class="btn-whatsapp-icon" />
           <span>Cotizar por WhatsApp</span>
         </a>
@@ -113,6 +156,35 @@
     </div>
   </article>
 
+  {% set related = article.category.articles | selectattr('product') | reject('equalto', article) | list %}
+  {% if related %}
+  <section class="related-products">
+    <h2 class="related-products-title">También te puede interesar</h2>
+    <div class="product-grid">
+      {% for p in related[:4] %}
+      <article class="product-card">
+        <a href="{{ SITEURL }}/{{ p.url }}" class="product-img-wrap">
+          {% if p.image %}
+          <img src="{{ SITEURL }}/{{ resolve_image(p.image) }}" alt="{{ p.title }}" loading="lazy" />
+          {% elif p.auto_gallery %}
+          <img src="{{ SITEURL }}/{{ resolve_image(p.auto_gallery[0]) }}" alt="{{ p.title }}" loading="lazy" />
+          {% else %}
+          <div class="product-img-placeholder"><span>Sin imagen</span></div>
+          {% endif %}
+        </a>
+        <div class="product-body">
+          <h3 class="product-title"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h3>
+          {% if p.price_range or p.price %}
+          <p class="product-price">{{ p.price_range or p.price }}</p>
+          {% endif %}
+          <a href="{{ SITEURL }}/{{ p.url }}" class="btn btn-primary">Ver detalles</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   {% else %} {# ---- Vista estándar para artículos de blog ---- #}
   <article class="blog-post">
     <header class="post-header">
@@ -131,7 +203,7 @@
   </article>
   {% endif %}
 
-  <a href="javascript:history.back()" class="back-link">← Volver</a>
+  <a href="{{ SITEURL }}/catalogo/" class="back-link">← Volver al catálogo</a>
 </div>
 {% if article.product and main_image %}
 <script>
@@ -143,7 +215,18 @@
     const prevButton = document.querySelector(".product-nav.prev");
     const nextButton = document.querySelector(".product-nav.next");
     const lightboxTrigger = document.querySelector(".product-lightbox-trigger");
-    const thumbs = Array.from(document.querySelectorAll(".product-thumb"));
+    const thumbsContainer = document.getElementById("product-thumbs");
+    const galleryCounter = document.getElementById("gallery-counter");
+
+    const updateCounter = () => {
+      if (!galleryCounter || imageList.length <= 1) {
+        if (galleryCounter) galleryCounter.hidden = true;
+        return;
+      }
+      galleryCounter.hidden = false;
+      galleryCounter.textContent = (currentIndex + 1) + " / " + imageList.length;
+    };
+    let thumbs = Array.from(document.querySelectorAll(".product-thumb"));
     const normalize = (url) => new URL(url, window.location.href).href;
     const mobileMedia = window.matchMedia("(max-width: 768px)");
 
@@ -167,7 +250,7 @@
       }
     };
 
-    const imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+    let imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
 
     let currentIndex = imageList.findIndex((image) => normalize(image) === normalize(mainImage.src));
     if (currentIndex < 0) currentIndex = 0;
@@ -193,6 +276,7 @@
         lightboxImage.src = nextImage;
       }
       setActiveThumb(nextImage);
+      updateCounter();
     };
 
     const closeLightbox = () => {
@@ -242,7 +326,7 @@
       });
     };
 
-    thumbs.forEach((thumb) => {
+    const bindThumb = (thumb) => {
       thumb.addEventListener("click", () => {
         const newImage = thumb.getAttribute("data-image");
         if (!newImage) return;
@@ -255,7 +339,46 @@
         mainImage.src = newImage;
         setActiveThumb(newImage);
       });
-    });
+    };
+
+    const renderThumbs = (images) => {
+      if (!thumbsContainer) return;
+      thumbsContainer.innerHTML = images
+        .map(
+          (image, index) => `
+            <button class="product-thumb${index === 0 ? " active" : ""}" type="button" data-image="${image}" aria-label="Ver imagen ${index + 1} de ${mainImage.alt}">
+              <img src="${image}" alt="${mainImage.alt} - imagen ${index + 1}" loading="lazy" />
+            </button>
+          `
+        )
+        .join("");
+      thumbs = Array.from(thumbsContainer.querySelectorAll(".product-thumb"));
+      thumbs.forEach(bindThumb);
+    };
+
+    const setGallery = (images) => {
+      const deduped = images.filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
+      if (!deduped.length) return;
+
+      disableZoom();
+      imageList = deduped;
+      currentIndex = 0;
+      mainImage.src = imageList[0];
+      if (lightboxImage) {
+        lightboxImage.src = imageList[0];
+      }
+      renderThumbs(imageList);
+      setActiveThumb(imageList[0]);
+
+      const disableNav = imageList.length <= 1;
+      if (prevButton) prevButton.disabled = disableNav;
+      if (nextButton) nextButton.disabled = disableNav;
+      updateCounter();
+    };
+
+    thumbs.forEach(bindThumb);
+
+    window.__productGallery = { setGallery };
 
     if (prevButton) {
       prevButton.addEventListener("click", () => setImageByIndex(currentIndex - 1));
@@ -309,8 +432,105 @@
       mobileMedia.addListener(syncZoomAvailability);
     }
 
+    // Swipe táctil en la imagen principal
+    if (media) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      media.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      media.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+          setImageByIndex(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+        }
+      }, { passive: true });
+    }
+
     syncZoomAvailability();
     setActiveThumb(mainImage.src);
+    updateCounter();
+  })();
+</script>
+{% endif %} {% if article.product and article.variation_groups %}
+<script>
+  (function () {
+    const priceEl = document.getElementById("product-price");
+    const waLink = document.getElementById("whatsapp-cta");
+    // Atributos con manejo propio (precio, imagen, etc). Cualquier otro
+    // data-* del pill se intercambia solo si existe un #product-<campo> en la página.
+    const HANDLED_DATA_KEYS = new Set(["titulo", "precio", "precioValor", "groupIndex", "imagen", "galeria"]);
+    const baseMessage = waLink ? waLink.getAttribute("data-base-message") : "";
+    const waNumber = waLink ? waLink.getAttribute("data-wa-number") : "";
+
+    // Captura el formato de moneda (prefijo/sufijo, ej. "$") del precio
+    // inicial renderizado por el servidor, para reformatear el total al
+    // combinar grupos sin perder el símbolo de moneda.
+    let pricePrefix = "";
+    let priceSuffix = "";
+    if (priceEl) {
+      const match = priceEl.textContent.match(/[\d.]+/);
+      if (match) {
+        pricePrefix = priceEl.textContent.slice(0, match.index);
+        priceSuffix = priceEl.textContent.slice(match.index + match[0].length);
+      }
+    }
+
+    const groupEls = Array.from(document.querySelectorAll(".variation-selector"));
+
+    const updateWhatsapp = () => {
+      if (!waLink || !waNumber) return;
+      const selectedTitles = groupEls
+        .map((group) => group.querySelector(".variation-option.active"))
+        .filter(Boolean)
+        .map((option) => option.getAttribute("data-titulo"));
+      const message = selectedTitles.length ? `${baseMessage} (${selectedTitles.join(", ")})` : baseMessage;
+      waLink.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+    };
+
+    const recomputeTotal = () => {
+      if (!priceEl) return;
+      let total = 0;
+      groupEls.forEach((group) => {
+        const active = group.querySelector(".variation-option.active");
+        if (active) total += parseFloat(active.getAttribute("data-precio-valor")) || 0;
+      });
+      priceEl.textContent = `${pricePrefix}${total.toFixed(2)}${priceSuffix}`;
+    };
+
+    groupEls.forEach((groupEl) => {
+      const options = Array.from(groupEl.querySelectorAll(".variation-option"));
+      const selectedLabel = groupEl.querySelector(".variation-selected-label");
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          if (option.classList.contains("active")) return;
+          options.forEach((o) => o.classList.remove("active"));
+          option.classList.add("active");
+
+          const titulo = option.getAttribute("data-titulo");
+          if (selectedLabel) selectedLabel.textContent = titulo;
+
+          recomputeTotal();
+          updateWhatsapp();
+
+          Object.entries(option.dataset).forEach(([key, value]) => {
+            if (HANDLED_DATA_KEYS.has(key) || !value) return;
+            const target = document.getElementById(`product-${key}`);
+            if (target) target.textContent = value;
+          });
+
+          const imagen = option.getAttribute("data-imagen");
+          if (imagen && window.__productGallery) {
+            const galeria = option.getAttribute("data-galeria");
+            const galeriaImages = galeria ? galeria.split(",") : [];
+            window.__productGallery.setGallery([imagen, ...galeriaImages]);
+          }
+        });
+      });
+    });
   })();
 </script>
 {% endif %} {% endblock %}
