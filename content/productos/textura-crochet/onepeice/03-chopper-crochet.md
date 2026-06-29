@@ -5,10 +5,10 @@ Date: 2026-01-15
 categoria: onepiece
 etiquetas: crochet, amigurumi, anime, articulado
 producto: true
-slug: chopper-grande
+slug: chopper-crochet
 precio: $28.00
-imagen: onepiece/chopper-grande/01_Chopper.png
-galeria: onepiece/chopper-grande/
+imagen: onepiece/chopper-crochet/pequeño/01_Chopper-pequeño.jpg
+# galeria: onepiece/chopper-crochet/
 resumen: Figura impresa 3D con estilo Chopper en version grande, con excelente presencia para coleccionistas de One Piece.
 id_dolibarr: 20
 variacion:

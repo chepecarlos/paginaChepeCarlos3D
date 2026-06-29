@@ -2,7 +2,7 @@ titulo: Alcancia Pokebola Grande
 fecha: 2026-05-1
 categoria: Pokemon
 etiquetas: videojuego, alcancia
-producto: true
+producto: false
 slug: alcancia-pokebola-grande
 precio: $20.00
 imagen: alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_01.png

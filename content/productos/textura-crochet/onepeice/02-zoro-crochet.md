@@ -15,8 +15,9 @@ variacion:
     - titulo: Pequeño
       precio: $12.00
       altura: 10 cm
-      imagen: onepiece/zoro-crochet/pequeño/
-      galeria: onepiece/zoro-crochet/pequeño
+      imagen: onepiece/zoro-crochet/pequeno/
+      galeria: onepiece/zoro-crochet/pequeno
+      producto: false
     - titulo: Grande
       precio: $28.00
       altura: 17 cm
