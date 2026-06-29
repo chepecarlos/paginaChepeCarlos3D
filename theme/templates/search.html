@@ -17,7 +17,7 @@ content %}
 
 <script>
   const SEARCH_INDEX = [
-    {% for article in articles %}
+    {% for article in articles | selectattr('product') %}
     {
       "title": {{ article.title | tojson }},
       "url": "{{ SITEURL }}/{{ article.url }}",

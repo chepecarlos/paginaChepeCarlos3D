@@ -87,6 +87,12 @@ def _normalize_reader_metadata(reader, metadata):
             # into date/datetime objects; Pelican's date processor expects a string.
             value = value.isoformat()
 
+        if canonical_name == "product":
+            # El parser plano de Pelican lee `producto: false` como la cadena
+            # "false", que es truthy en Jinja2. Lo convertimos a booleano real.
+            if isinstance(value, str):
+                value = value.strip().lower() not in ("false", "0", "no", "")
+
         try:
             processed_value = reader.process_metadata(canonical_name, value)
         except Exception:
@@ -476,6 +482,10 @@ def enrich_variation_galleries(generator):
                     if ordered_images:
                         option["imagen"] = main_image
                         option["galeria_images"] = ordered_images
+                    else:
+                        img = option.get("imagen", "")
+                        if not Path(img).suffix.lower() in IMAGE_EXTENSIONS:
+                            option.pop("imagen", None)
 
                 precio = option.get("precio")
                 if group_index == 0:
