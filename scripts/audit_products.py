@@ -242,6 +242,10 @@ def audit_product(path: Path, content_root: Path) -> ProductResult:
             for item in items:
                 if not isinstance(item, dict):
                     continue
+                product_flag = item.get("producto") if "producto" in item else item.get("product")
+                if product_flag is not None:
+                    if str(product_flag).strip().lower() in ("false", "0", "no"):
+                        continue
                 item_name = item.get("titulo") or item.get("title") or "?"
                 label = f"variación '{group_name}' → '{item_name}'"
 

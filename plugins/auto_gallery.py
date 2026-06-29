@@ -149,6 +149,7 @@ def _parse_variation_options_flat(raw_value):
 _VARIATION_RESERVED_KEYS = {
     "titulo", "title", "precio", "price",
     "galeria", "gallerydir", "gallery_dir", "imagen", "image",
+    "producto", "product",
 }
 
 
@@ -165,6 +166,11 @@ def _parse_variation_options_nested(raw_value):
     for entry in entries:
         if not isinstance(entry, dict):
             continue
+        product_flag = entry.get("producto") if "producto" in entry else entry.get("product")
+        if product_flag is not None:
+            active = str(product_flag).strip().lower() not in ("false", "0", "no")
+            if not active:
+                continue
         titulo = str(entry.get("titulo") or entry.get("title") or "").strip()
         precio = str(entry.get("precio") or entry.get("price") or "").strip()
         galeria = entry.get("galeria") or entry.get("gallerydir") or entry.get("gallery_dir")
