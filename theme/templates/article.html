@@ -22,6 +22,15 @@
 
 {% block content %}
 <div class="container">
+  <nav class="breadcrumb" aria-label="Navegación">
+    <a href="{{ SITEURL }}/">Inicio</a>
+    <span aria-hidden="true">›</span>
+    {% if article.category %}
+    <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+    <span aria-hidden="true">›</span>
+    {% endif %}
+    <span aria-current="page">{{ article.title }}</span>
+  </nav>
   {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.image %} {% if article.auto_gallery %} {% set support_images =
   article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
   article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %} {% if main_image %} {% set main_image =
@@ -34,6 +43,7 @@
         <button class="product-lightbox-trigger" type="button" aria-label="Ver imagen en grande">⤢</button>
         <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
         <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+        <span class="gallery-counter" id="gallery-counter" aria-live="polite"></span>
       </div>
       {% else %}
       <div class="product-img-placeholder large">Sin imagen</div>
@@ -146,6 +156,35 @@
     </div>
   </article>
 
+  {% set related = article.category.articles | selectattr('product') | reject('equalto', article) | list %}
+  {% if related %}
+  <section class="related-products">
+    <h2 class="related-products-title">También te puede interesar</h2>
+    <div class="product-grid">
+      {% for p in related[:4] %}
+      <article class="product-card">
+        <a href="{{ SITEURL }}/{{ p.url }}" class="product-img-wrap">
+          {% if p.image %}
+          <img src="{{ SITEURL }}/{{ resolve_image(p.image) }}" alt="{{ p.title }}" loading="lazy" />
+          {% elif p.auto_gallery %}
+          <img src="{{ SITEURL }}/{{ resolve_image(p.auto_gallery[0]) }}" alt="{{ p.title }}" loading="lazy" />
+          {% else %}
+          <div class="product-img-placeholder"><span>Sin imagen</span></div>
+          {% endif %}
+        </a>
+        <div class="product-body">
+          <h3 class="product-title"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h3>
+          {% if p.price_range or p.price %}
+          <p class="product-price">{{ p.price_range or p.price }}</p>
+          {% endif %}
+          <a href="{{ SITEURL }}/{{ p.url }}" class="btn btn-primary">Ver detalles</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   {% else %} {# ---- Vista estándar para artículos de blog ---- #}
   <article class="blog-post">
     <header class="post-header">
@@ -164,7 +203,7 @@
   </article>
   {% endif %}
 
-  <a href="javascript:history.back()" class="back-link">← Volver</a>
+  <a href="{{ SITEURL }}/catalogo/" class="back-link">← Volver al catálogo</a>
 </div>
 {% if article.product and main_image %}
 <script>
@@ -177,6 +216,16 @@
     const nextButton = document.querySelector(".product-nav.next");
     const lightboxTrigger = document.querySelector(".product-lightbox-trigger");
     const thumbsContainer = document.getElementById("product-thumbs");
+    const galleryCounter = document.getElementById("gallery-counter");
+
+    const updateCounter = () => {
+      if (!galleryCounter || imageList.length <= 1) {
+        if (galleryCounter) galleryCounter.hidden = true;
+        return;
+      }
+      galleryCounter.hidden = false;
+      galleryCounter.textContent = (currentIndex + 1) + " / " + imageList.length;
+    };
     let thumbs = Array.from(document.querySelectorAll(".product-thumb"));
     const normalize = (url) => new URL(url, window.location.href).href;
     const mobileMedia = window.matchMedia("(max-width: 768px)");
@@ -227,6 +276,7 @@
         lightboxImage.src = nextImage;
       }
       setActiveThumb(nextImage);
+      updateCounter();
     };
 
     const closeLightbox = () => {
@@ -323,6 +373,7 @@
       const disableNav = imageList.length <= 1;
       if (prevButton) prevButton.disabled = disableNav;
       if (nextButton) nextButton.disabled = disableNav;
+      updateCounter();
     };
 
     thumbs.forEach(bindThumb);
@@ -381,8 +432,26 @@
       mobileMedia.addListener(syncZoomAvailability);
     }
 
+    // Swipe táctil en la imagen principal
+    if (media) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      media.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      media.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+          setImageByIndex(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+        }
+      }, { passive: true });
+    }
+
     syncZoomAvailability();
     setActiveThumb(mainImage.src);
+    updateCounter();
   })();
 </script>
 {% endif %} {% if article.product and article.variation_groups %}

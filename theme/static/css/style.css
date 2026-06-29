@@ -1593,6 +1593,36 @@ img {
 }
 
 /* ============================================================
+   Breadcrumb
+   ============================================================ */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: var(--color-gray);
+}
+
+.breadcrumb a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--color-text);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
+}
+
+/* ============================================================
    Volver
    ============================================================ */
 .back-link {
@@ -1604,6 +1634,53 @@ img {
 
 .back-link:hover {
     color: var(--color-primary);
+}
+
+/* ============================================================
+   Resumen en tarjeta de producto
+   ============================================================ */
+.product-summary {
+    font-size: 0.82rem;
+    color: var(--color-gray);
+    line-height: 1.4;
+    margin: 4px 0 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ============================================================
+   Contador de galería (2 / 5)
+   ============================================================ */
+.gallery-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    pointer-events: none;
+    letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Productos relacionados
+   ============================================================ */
+.related-products {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+}
+
+.related-products-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--color-text);
 }
 
 /* ============================================================
