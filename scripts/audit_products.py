@@ -191,26 +191,19 @@ def audit_product(path: Path, content_root: Path) -> ProductResult:
     if not _get(meta, "slug"):
         add(Issue("warning", "Falta slug"))
 
-    is_product = str(_get(meta, "product") or "").lower() in ("true", "1", "yes", "sí", "si")
+    is_active = str(_get(meta, "product") or "").lower() in ("true", "1", "yes", "sí", "si")
 
-    # Precio solo obligatorio para productos activos
-    if is_product:
-        variation_raw = _get(meta, "variation")
-        has_variation = bool(variation_raw)
+    variation_raw = _get(meta, "variation")
+    if not (variation_raw):
+        result.issues.extend(_check_price(_get(meta, "price"), "producto"))
 
-        if not has_variation:
-            result.issues.extend(_check_price(_get(meta, "price"), "producto"))
+    if not _get(meta, "id_dolibarr"):
+        add(Issue("info", "Sin id_dolibarr (recomendado para sincronizar con Dolibarr)"))
 
-        # id_dolibarr recomendado
-        if not _get(meta, "id_dolibarr"):
-            add(Issue("info", "Sin id_dolibarr (recomendado para sincronizar con Dolibarr)"))
-
-    # Resumen recomendado
     if not _get(meta, "summary"):
         add(Issue("info", "Sin resumen (aparece en tarjetas del catálogo)"))
 
     # Imágenes del producto base
-    variation_raw = _get(meta, "variation")
     img = _get(meta, "image")
     gallery = _get(meta, "gallerydir")
     if img:
@@ -262,6 +255,12 @@ def audit_product(path: Path, content_root: Path) -> ProductResult:
                     result.issues.extend(_check_gallery(str(item_gallery), content_root, label))
                 if not item_img and not item_gallery and not is_additive:
                     add(Issue("info", f"Sin imagen ni galería en {label}"))
+
+    if not is_active:
+        # Producto desactivado: todos los issues pasan a info para que no
+        # aparezcan en make audit pero sí en make audit-info.
+        result.issues = [Issue("info", i.message) for i in result.issues]
+        result.issues.insert(0, Issue("info", "Producto en desarrollo (producto: false)"))
 
     return result
 
