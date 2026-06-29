@@ -519,7 +519,7 @@
           Object.entries(option.dataset).forEach(([key, value]) => {
             if (HANDLED_DATA_KEYS.has(key) || !value) return;
             const target = document.getElementById(`product-${key}`);
-            if (target) target.textContent = value;
+            if (target) target.innerHTML = value;
           });
 
           const imagen = option.getAttribute("data-imagen");

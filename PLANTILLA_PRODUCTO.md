@@ -30,6 +30,8 @@ Escribe aqui la descripcion completa del producto.
 - Recomendacion 2.
 ```
 
+> **Formato de imagen recomendado:** usa fotos cuadradas (relacion 1:1, ej. 1000×1000 px). El audit avisa si alguna imagen no cumple este formato.
+
 ## Plantilla con variaciones (talla, color, modelo...)
 
 Usa esta version si el producto tiene varias opciones con precio y/o fotos distintas (ver detalle completo en [GUIA_PRODUCTOS.md](GUIA_PRODUCTOS.md#variaciones-de-producto-talla-color-modelo-etc)):
@@ -76,12 +78,48 @@ Escribe aqui la descripcion completa del producto.
 
 La primera variacion de `lista` es la que se muestra por defecto al cargar la pagina (precio, imagen y galeria).
 
+## Producto en desarrollo (oculto del catalogo)
+
+Agrega `producto: false` para que el producto no aparezca en el sitio pero si en `make audit-info`:
+
+```md
+titulo: Producto nuevo
+fecha: 2026-04-24
+Date: 2026-04-24
+categoria: categoria-principal
+producto: false
+slug: nombre-del-producto
+precio: $0.00
+```
+
+Para ocultar solo una variacion especifica (ej. aun no tiene fotos):
+
+```yaml
+variacion:
+  nombre: Tamano
+  lista:
+    - titulo: Pequeno
+      precio: $12.00
+      galeria: categoria/producto/pequeno
+    - titulo: Grande
+      precio: $20.00
+      galeria: categoria/producto/grande
+      producto: false   # oculta solo esta opcion
+```
+
 ## Flujo sugerido
 
 1. Copia una opcion completa.
 2. Guarda el archivo en content/productos/<categoria>/<slug>.md.
-3. Ajusta imagen/galeria a la carpeta real.
-4. Regenera el sitio con:
+3. Coloca las imagenes en content/images/productos/<categoria>/<slug>/ (cuadradas, 1:1).
+4. Audita el producto para detectar campos faltantes o imagenes incorrectas:
+
+```bash
+make audit-info   # muestra todo, incluido productos con producto: false
+make audit        # solo errores y avisos de productos activos
+```
+
+5. Previsualiza el sitio:
 
 ```bash
 source .venv/bin/activate && make devserver

@@ -34,6 +34,7 @@ PLUGINS = ["yaml_metadata", "auto_gallery"]
 TEMPLATE_PAGES = {
     "catalog.html": "catalogo/index.html",
     "search.html": "buscar/index.html",
+    "404.html": "404.html",
 }
 
 # Email de contacto (se muestra en páginas de producto)

@@ -20,6 +20,12 @@ try:
 except ImportError as exc:
     raise SystemExit("Rich no instalado. Ejecuta: uv sync") from exc
 
+try:
+    from PIL import Image as PILImage
+    _PIL_AVAILABLE = True
+except ImportError:
+    _PIL_AVAILABLE = False
+
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".svg", ".avif", ".gif"}
 VALID_PRICE_RE = re.compile(r"^\$\d+(\.\d+)?$")
 
@@ -147,6 +153,39 @@ def _check_price(value, label: str) -> list[Issue]:
     return issues
 
 
+ASPECT_TOLERANCE = 0.05  # diferencia máxima aceptable entre ancho/alto (5%)
+
+
+def _check_aspect_ratio(img_path: Path, label: str) -> list[Issue]:
+    """Emite warning si la imagen no es cuadrada (relación 1:1)."""
+    if not _PIL_AVAILABLE or not img_path.exists():
+        return []
+    if img_path.suffix.lower() in (".svg", ".gif"):
+        return []
+    try:
+        with PILImage.open(img_path) as im:
+            w, h = im.size
+        if h == 0:
+            return []
+        ratio = w / h
+        if abs(ratio - 1.0) > ASPECT_TOLERANCE:
+            return [Issue("warning", f"Imagen no cuadrada ({w}×{h}, ratio {ratio:.2f}) en {label}: {img_path.name}")]
+    except Exception:
+        pass
+    return []
+
+
+def _check_gallery_aspect(directory: Path, label: str) -> list[Issue]:
+    """Revisa la relación de aspecto de todas las imágenes en un directorio."""
+    if not directory.is_dir():
+        return []
+    issues = []
+    for f in sorted(directory.iterdir()):
+        if f.is_file() and f.suffix.lower() in IMAGE_EXTENSIONS:
+            issues.extend(_check_aspect_ratio(f, label))
+    return issues
+
+
 def _check_image_path(raw: str, content_root: Path, label: str) -> list[Issue]:
     """Verifica que una ruta imagen apunte a un archivo real."""
     issues = []
@@ -154,10 +193,14 @@ def _check_image_path(raw: str, content_root: Path, label: str) -> list[Issue]:
     if resolved.suffix.lower() in IMAGE_EXTENSIONS:
         if not resolved.exists():
             issues.append(Issue("error", f"Imagen no existe: {raw!r} ({label})"))
+        else:
+            issues.extend(_check_aspect_ratio(resolved, label))
     else:
         # Es ruta de directorio — buscar como galería
         if not _has_images(resolved):
             issues.append(Issue("error", f"Directorio de imagen vacío o inexistente: {raw!r} ({label})"))
+        else:
+            issues.extend(_check_gallery_aspect(resolved, label))
     return issues
 
 
@@ -165,7 +208,7 @@ def _check_gallery(raw: str, content_root: Path, label: str) -> list[Issue]:
     resolved = _resolve_media_path(raw, content_root)
     if not _has_images(resolved):
         return [Issue("error", f"Galería vacía o inexistente: {raw!r} ({label})")]
-    return []
+    return _check_gallery_aspect(resolved, label)
 
 
 def audit_product(path: Path, content_root: Path) -> ProductResult:

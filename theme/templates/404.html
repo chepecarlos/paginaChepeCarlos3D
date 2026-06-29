@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Página no encontrada — {{ SITENAME }}{% endblock %}
+{% block description %}La página que buscas no existe o fue movida. Explora el catálogo de piezas 3D de {{ SITENAME }}.{% endblock %}
+
+{% block content %}
+<section class="error-404">
+  <div class="container">
+    <div class="error-404__inner">
+      <p class="error-404__code">404</p>
+      <h1 class="error-404__title">Página no encontrada</h1>
+      <p class="error-404__text">
+        La página que buscas no existe o fue movida.<br>
+        Regresa al inicio o explora el catálogo.
+      </p>
+      <div class="error-404__actions">
+        <a href="{{ SITEURL }}/" class="btn btn-primary">Ir al inicio</a>
+        <a href="{{ SITEURL }}/catalogo/" class="btn btn-outline">Ver catálogo</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

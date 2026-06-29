@@ -4,6 +4,18 @@ from pathlib import Path
 
 from pelican import signals
 
+try:
+    import markdown as _md_module
+    def _md_inline(text: str) -> str:
+        """Convierte markdown a HTML inline (sin <p> envolvente)."""
+        html = _md_module.markdown(str(text)).strip()
+        if html.startswith("<p>") and html.endswith("</p>"):
+            html = html[3:-4]
+        return html
+except ImportError:
+    def _md_inline(text: str) -> str:
+        return str(text)
+
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".svg", ".avif", ".gif"}
 
@@ -182,6 +194,8 @@ def _parse_variation_options_nested(raw_value):
             option["imagen"] = imagen
         for key, value in entry.items():
             if key.lower() not in _VARIATION_RESERVED_KEYS and value not in (None, ""):
+                if isinstance(value, str):
+                    value = _md_inline(value)
                 option[key.lower()] = value
         options.append(option)
 
