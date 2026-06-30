@@ -41,7 +41,7 @@ TEMPLATE_PAGES = {
 # CONTACT_EMAIL = "ventas@chepecarlos3d.com" # por el momento no busco venden por email, talves el futuro
 
 # Número de WhatsApp para cotizaciones (formato: 50369737593)
-WHATSAPP_NUMBER = "50369737593"  # Modifica con tu número de WhatsApp
+WHATSAPP_NUMBER = "50376161812"  # Modifica con tu número de WhatsApp
 
 # Verificación de Google Search Console
 # Pega aquí el valor del atributo content del meta tag que te da Google
