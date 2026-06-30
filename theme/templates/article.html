@@ -260,8 +260,13 @@
         const thumbImage = thumb.getAttribute("data-image");
         const isActive = thumbImage && normalize(thumbImage) === normalize(imageUrl);
         thumb.classList.toggle("active", !!isActive);
-        if (isActive) {
-          thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        if (isActive && thumbsContainer) {
+          const containerRect = thumbsContainer.getBoundingClientRect();
+          const thumbRect = thumb.getBoundingClientRect();
+          if (thumbRect.left < containerRect.left || thumbRect.right > containerRect.right) {
+            const offset = thumbRect.left - containerRect.left - (containerRect.width - thumbRect.width) / 2;
+            thumbsContainer.scrollBy({ left: offset, behavior: "smooth" });
+          }
         }
       });
     };
