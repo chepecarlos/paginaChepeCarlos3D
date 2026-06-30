@@ -505,9 +505,20 @@
       priceEl.textContent = `${pricePrefix}${total.toFixed(2)}${priceSuffix}`;
     };
 
+    const applyExtraFields = (option) => {
+      Object.entries(option.dataset).forEach(([key, value]) => {
+        if (HANDLED_DATA_KEYS.has(key) || !value) return;
+        const target = document.getElementById(`product-${key}`);
+        if (target) target.innerHTML = value;
+      });
+    };
+
     groupEls.forEach((groupEl) => {
       const options = Array.from(groupEl.querySelectorAll(".variation-option"));
       const selectedLabel = groupEl.querySelector(".variation-selected-label");
+
+      const initialActive = groupEl.querySelector(".variation-option.active");
+      if (initialActive) applyExtraFields(initialActive);
 
       options.forEach((option) => {
         option.addEventListener("click", () => {
@@ -520,12 +531,7 @@
 
           recomputeTotal();
           updateWhatsapp();
-
-          Object.entries(option.dataset).forEach(([key, value]) => {
-            if (HANDLED_DATA_KEYS.has(key) || !value) return;
-            const target = document.getElementById(`product-${key}`);
-            if (target) target.innerHTML = value;
-          });
+          applyExtraFields(option);
 
           const imagen = option.getAttribute("data-imagen");
           if (imagen && window.__productGallery) {
