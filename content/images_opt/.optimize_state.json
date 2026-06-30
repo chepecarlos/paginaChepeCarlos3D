@@ -318,15 +318,15 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/Litofania_02.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo01.png": {
-    "mtime_ns": 1782701445142951197,
+    "mtime_ns": 1782785178123937904,
     "quality": 72,
-    "size": 10598615,
+    "size": 1645485,
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo01.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo02.png": {
-    "mtime_ns": 1782701467328323792,
+    "mtime_ns": 1782783824937647054,
     "quality": 72,
-    "size": 11387834,
+    "size": 1498814,
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo02.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo03.png": {
@@ -353,12 +353,6 @@
     "size": 9550605,
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo06.webp"
   },
-  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo07.png": {
-    "mtime_ns": 1782701674259802541,
-    "quality": 72,
-    "size": 10377057,
-    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo07.webp"
-  },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo08.png": {
     "mtime_ns": 1782701726316678483,
     "quality": 72,
@@ -377,6 +371,18 @@
     "size": 10278308,
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo10.webp"
   },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo11.png": {
+    "mtime_ns": 1782785565114381855,
+    "quality": 72,
+    "size": 1571635,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo11.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo13.png": {
+    "mtime_ns": 1782783731853747679,
+    "quality": 72,
+    "size": 1435384,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo13.webp"
+  },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/01_Litofania.jpg": {
     "mtime_ns": 1782696601598991951,
     "quality": 72,
@@ -388,6 +394,18 @@
     "quality": 72,
     "size": 905043,
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/02_Litofania.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/03_Litofania.png": {
+    "mtime_ns": 1782785755468768599,
+    "quality": 72,
+    "size": 1095210,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/03_Litofania.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/04_Litofania.png": {
+    "mtime_ns": 1782785800914958954,
+    "quality": 72,
+    "size": 1651108,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/04_Litofania.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/marvel/deadpool-grande/01_DeadPool.png": {
     "mtime_ns": 1778477307871425793,
@@ -766,6 +784,24 @@
     "quality": 72,
     "size": 1770611,
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/sanrio/kuromi-grande/05_Kuromi.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/llavero/01_snoopy-llavero.png": {
+    "mtime_ns": 1782782287698096127,
+    "quality": 72,
+    "size": 1554687,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/llavero/01_snoopy-llavero.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/llavero/02_snoopy-llavero.png": {
+    "mtime_ns": 1782783312228920458,
+    "quality": 72,
+    "size": 1524668,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/llavero/02_snoopy-llavero.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/01_snoopy-peque\u00f1o.png": {
+    "mtime_ns": 1782783031392349137,
+    "quality": 72,
+    "size": 1465174,
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/01_snoopy-peque\u00f1o.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/stand-switch/IMG20260618175553.jpg": {
     "mtime_ns": 1782696601694993604,

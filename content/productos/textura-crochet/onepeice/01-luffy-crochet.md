@@ -22,7 +22,7 @@ variacion:
         galeria: onepiece/luffy-crochet/grande
   - nombre: Personalización
     lista:
-      - titulo: Normal
+      - titulo: Original
       - titulo: Personalizado
         precio: +$1.00
 ---
