@@ -177,11 +177,65 @@ Puedes agregar cualquier otro campo a una variacion ademas de los de la tabla de
 
 El sitio detecta el campo solo — no hace falta tocar plantillas ni JavaScript. Funciona con cualquier nombre de campo (`estilo`, `modelo`, `color`, `material`...), distinto en cada producto si lo necesitas.
 
+## Ocultar productos en desarrollo (producto: false)
+
+Agrega `producto: false` para que el producto no aparezca en el sitio ni en los listados, pero el archivo siga siendo auditado por `make audit-info`:
+
+```md
+titulo: Producto nuevo
+fecha: 2026-06-28
+Date: 2026-06-28
+categoria: categoria-principal
+producto: false
+slug: nombre-del-producto
+precio: $0.00
+```
+
+Tambien puedes ocultar solo una variacion especifica (ej. todavia no tiene fotos):
+
+```yaml
+variacion:
+  nombre: Tamano
+  lista:
+    - titulo: Pequeno
+      precio: $12.00
+      galeria: categoria/producto/pequeno
+    - titulo: Grande
+      precio: $20.00
+      galeria: categoria/producto/grande
+      producto: false   # esta opcion no aparece como boton
+```
+
+## Auditoria de productos
+
+El comando `make audit` revisa todos los productos activos y reporta:
+
+- Campos requeridos faltantes (titulo, precio).
+- Imagenes o galerias que no existen en disco.
+- Imagenes que no son cuadradas (relacion 1:1 recomendada para fotos de producto).
+- Nombre de archivo con espacios o caracteres no-ASCII.
+
+```bash
+make audit        # errores y avisos de productos activos (producto: true)
+make audit-info   # igual + productos en desarrollo (producto: false) + campos opcionales
+```
+
+Los productos con `producto: false` solo aparecen en `make audit-info`, con todos sus avisos marcados como INFO para distinguirlos.
+
+## Imagenes: formato recomendado
+
+Usa siempre fotos **cuadradas (1:1)**, por ejemplo 1000×1000 px o 1200×1200 px. Esto garantiza que las tarjetas del catalogo y la galeria del producto se vean correctas sin recortes ni espacios en blanco.
+
+Si una imagen no cumple la relacion 1:1, `make audit` muestra un aviso con las dimensiones exactas para que sea facil identificarla y recortarla.
+
+Formatos soportados: JPG, PNG, WebP, AVIF. El sitio genera versiones WebP automaticamente con `make optimize-images`.
+
 ## Recomendaciones rapidas
 
-- Usa product o producto en true para que aparezca en el catalogo.
+- Usa `producto: true` para que aparezca en el catalogo; `producto: false` para productos en desarrollo.
 - Mantiene una sola forma por archivo (todo EN o todo ES) para mayor orden, aunque mezclar tambien funciona.
-- Si no defines image o imagen y existe gallerydir o galeria con imagenes, el sistema toma la primera automaticamente.
+- Si no defines `imagen` y existe `galeria` con imagenes, el sistema toma la primera automaticamente (en catalogo, inicio y pagina de producto).
+- Las fotos deben ser cuadradas (1:1); usa `make audit` para verificarlo.
 
 ## Comando para regenerar
 
