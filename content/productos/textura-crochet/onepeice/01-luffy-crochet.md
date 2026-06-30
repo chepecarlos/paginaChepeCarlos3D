@@ -1,7 +1,7 @@
 ---
 titulo: Luffy Estilo Crochet
 fecha: 2026-01-15
-categoria: onepiece
+categoria: One Piece
 etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: luffy-crochet

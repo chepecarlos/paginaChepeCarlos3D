@@ -1,3 +1,4 @@
+---
 titulo: Cruz imagen Jesus
 fecha: 2026-04-24
 categoria: religiosas
@@ -8,6 +9,14 @@ precio: $5.00
 imagen: cruz-jesus/cruz-jesus-01.png
 galeria: cruz-jesus
 id_dolibarr: 4
+variacion:
+  nombre: Personalización
+  lista:
+    - titulo: Original
+    - titulo: Personalizado
+      precio: +$1.00
+---
+
 ## Descripción
 
 

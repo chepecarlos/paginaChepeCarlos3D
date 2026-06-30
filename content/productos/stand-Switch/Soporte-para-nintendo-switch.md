@@ -13,8 +13,8 @@ id_dolibarr: 8
 variacion:
   nombre: Personalización
   lista:
-    - titulo: normal
-    - titulo: personalizado
+    - titulo: Original
+    - titulo: Personalizado
       precio: +$1.00
 ---
 
