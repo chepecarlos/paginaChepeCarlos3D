@@ -193,7 +193,15 @@ def main() -> int:
         print("Resumen: procesadas=0 omitidas=0 errores=0")
         return 0
 
-    for source_file in source_files:
+    total = len(source_files)
+    tty = sys.stdout.isatty()
+    for i, source_file in enumerate(source_files, 1):
+        if tty:
+            filled = i * 40 // total
+            bar = "█" * filled + "░" * (40 - filled)
+            sys.stdout.write(f"\r[{bar}] {i}/{total}  {source_file.name[:40]:<40}")
+            sys.stdout.flush()
+
         target_file = source_to_target(source_file, source_images_dir, dest_images_dir)
         source_key = normalize_relpath(source_file)
 
@@ -214,7 +222,10 @@ def main() -> int:
             counters.processed += 1
         except Exception as exc:  # pragma: no cover - runtime errors logged
             counters.errors += 1
-            print(f"[ERROR] {source_file}: {exc}", file=sys.stderr)
+            print(f"\n[ERROR] {source_file}: {exc}", file=sys.stderr)
+
+    if tty:
+        print()
 
     counters.deleted = cleanup_orphaned_webp(
         dest_images_dir, source_images_dir, args.products_subdir, formats, state
