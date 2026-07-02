@@ -331,6 +331,7 @@ def _attach_helpers_to_env(env, settings):
 
     env.filters["optimized_image"] = _resolve_image
     env.filters["optimized_gallery"] = _resolve_gallery
+    env.filters["price_value"] = _price_to_float
     env.globals["resolve_image"] = _resolve_image
     env.globals["resolve_gallery"] = _resolve_gallery
 

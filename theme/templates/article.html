@@ -20,6 +20,21 @@
 
 {%- block twitter_image -%}{{ self.og_image() }}{%- endblock -%}
 
+{% block head_extra %}
+{% if article.product and FACEBOOK_PIXEL_ID %}
+<script>
+  fbq('track', 'ViewContent', {
+    content_name: {{ article.title | tojson }},
+    content_ids: [{{ article.slug | tojson }}],
+    content_type: 'product',
+    {% set _value = (article.price_min or article.price) | price_value %}
+    {% if _value %}value: {{ _value }},
+    currency: 'USD',{% endif %}
+  });
+</script>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
   <nav class="breadcrumb" aria-label="Navegación">
