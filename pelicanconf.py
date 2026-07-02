@@ -48,6 +48,10 @@ WHATSAPP_NUMBER = "50376161812"  # Modifica con tu número de WhatsApp
 # Ejemplo: "abc123XYZ..."
 GOOGLE_SITE_VERIFICATION = ""
 
+# Meta Pixel (Facebook Ads)
+# Pega aquí el ID numérico de tu pixel (Events Manager → Configuración del pixel)
+FACEBOOK_PIXEL_ID = "958042070611307"
+
 # Redes sociales en barra principal
 # Completa cada URL para mostrar su botón en el header
 SOCIAL_LINKS = {
