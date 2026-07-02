@@ -33,6 +33,11 @@
       fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ FACEBOOK_PIXEL_ID }}&ev=PageView&noscript=1" /></noscript>
+    <script>
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('a[href*="wa.me"], #whatsapp-floating-btn')) fbq('track', 'Contact');
+      });
+    </script>
     {% endif %}
     {% block head_extra %}{% endblock %}
   </head>
