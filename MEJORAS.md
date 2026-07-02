@@ -32,6 +32,18 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
   Al terminar de ver un producto no hay dónde seguir navegando.
   Mostrar 3-4 productos de la misma categoría al final de `article.html`.
 
+## Páginas de contenido pendientes
+
+- [ ] **Historia / Nosotros** — Página que cuente quién es ChepeCarlos, cómo empezó, qué hace. Da confianza al comprador antes de cotizar.
+
+- [ ] **Blog** — Sección de artículos (proceso de impresión, materiales, casos de uso). Ayuda con SEO y posiciona como experto.
+
+- [ ] **Política de privacidad** — Requerida si se usan formularios, WhatsApp o Google Analytics. Página estática simple.
+
+- [ ] **Política de devoluciones** — Qué cubre, qué no, plazos. Reduce fricción en la decisión de compra.
+
+---
+
 ## Google Search Console
 
 - [ ] **Verificar el sitio en Google Search Console**
@@ -42,6 +54,20 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
   3. Elegir verificación por "Etiqueta HTML" y copiar el valor del atributo `content`
   4. Pegarlo en `pelicanconf.py`: `GOOGLE_SITE_VERIFICATION = "abc123XYZ..."`
   5. Desplegar el sitio y hacer clic en "Verificar" en Search Console
+
+---
+
+## Meta Pixel (Facebook Ads)
+
+Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelicanconf.py`). Eventos activos: `PageView`, `ViewContent` (páginas de producto, en `article.html`), `Contact` (clic en cualquier botón/link de WhatsApp, listener delegado en `base.html`). Confirmado en Events Manager que `PageView` y `ViewContent` llegan por "Navegador".
+
+- [ ] **Confirmar que llega el evento `Contact`** — no apareció en el primer test porque no se hizo clic en WhatsApp durante la prueba. Repetir el test haciendo clic en el botón flotante o el de la página de producto y verificar en Events Manager.
+
+- [ ] **Confirmar que la API de Conversiones (gateway gratuito de Meta) está activa** — se eligió la opción "Realiza la configuración con Meta" (gratis, solo eventos web) en vez de Stape. En el primer test, `PageView` y `Ver contenido` solo mostraban integración "Navegador", sin fila "Servidor". Revisar la configuración del pixel (¿quedó "API de conversiones: Conectada"?) y repetir el test tras desplegar a producción.
+
+- [ ] **Marcar `Contact` como evento prioritario** en Events Manager (máx. 8 eventos prioritarios) — es la conversión real del negocio al no haber checkout online.
+
+- [ ] **Verificar el dominio** en Meta Business Settings → Marca de la empresa → Dominios, para mejorar atribución cuando el navegador bloquea cookies de terceros.
 
 ---
 

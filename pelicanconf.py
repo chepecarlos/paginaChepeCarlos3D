@@ -49,8 +49,10 @@ WHATSAPP_NUMBER = "50376161812"  # Modifica con tu número de WhatsApp
 GOOGLE_SITE_VERIFICATION = ""
 
 # Meta Pixel (Facebook Ads)
-# Pega aquí el ID numérico de tu pixel (Events Manager → Configuración del pixel)
-FACEBOOK_PIXEL_ID = "958042070611307"
+# Se activa solo si la variable de entorno FACEBOOK_PIXEL_ID está definida
+# (evita mezclar tráfico de pruebas/devserver con los datos reales de Meta).
+# En producción, defínela en Dokploy con el ID de Events Manager → Configuración del pixel.
+FACEBOOK_PIXEL_ID = os.getenv("FACEBOOK_PIXEL_ID", "")
 
 # Redes sociales en barra principal
 # Completa cada URL para mostrar su botón en el header
