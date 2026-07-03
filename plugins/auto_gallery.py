@@ -491,6 +491,11 @@ def enrich_variation_galleries(generator):
         # reflejar cambios futuros al precio base.
         base_price = getattr(article, "price", None)
 
+        # Si el front matter ya trae "imagen" explícita, es la elegida para
+        # catálogo/listados y no debe ser reemplazada por la imagen de la
+        # variación por defecto (ver "imagen" en 02-mewtwo.md).
+        has_explicit_image = bool(_meta_value(article, "image"))
+
         for group_index, group in enumerate(variation_groups):
             options = group.get("opciones") or []
 
@@ -555,8 +560,13 @@ def enrich_variation_galleries(generator):
             article.metadata["price"] = total_price
 
         if first_primary.get("imagen"):
-            article.image = first_primary["imagen"]
-            article.metadata["image"] = first_primary["imagen"]
+            # La ficha de producto siempre muestra la imagen de la variación
+            # activa por defecto (para que coincida con el precio mostrado).
+            article.variation_image = first_primary["imagen"]
+            article.metadata["variation_image"] = first_primary["imagen"]
+            if not has_explicit_image:
+                article.image = first_primary["imagen"]
+                article.metadata["image"] = first_primary["imagen"]
         if first_primary.get("galeria_images"):
             article.auto_gallery = first_primary["galeria_images"]
             article.metadata["auto_gallery"] = first_primary["galeria_images"]

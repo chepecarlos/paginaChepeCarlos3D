@@ -2,7 +2,7 @@
 
 {%- block og_image -%}
   {%- if article.product -%}
-    {%- set _og_img = article.image -%}
+    {%- set _og_img = article.variation_image or article.image -%}
     {%- if not _og_img and article.auto_gallery -%}
       {%- set _og_img = article.auto_gallery[0] -%}
     {%- elif not _og_img and article.gallery -%}
@@ -46,7 +46,7 @@
     {% endif %}
     <span aria-current="page">{{ article.title }}</span>
   </nav>
-  {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.image %} {% if article.auto_gallery %} {% set support_images =
+  {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.variation_image or article.image %} {% if article.auto_gallery %} {% set support_images =
   article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
   article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %} {% if main_image %} {% set main_image =
   resolve_image(main_image) %} {% endif %}

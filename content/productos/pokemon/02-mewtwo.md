@@ -6,6 +6,7 @@ etiquetas: producto, crochet, amigurumi, pokemon, anime
 producto: true
 slug: mewtwo
 resumen: Figura impresa 3D con estilo Mewtwo en version grande, con excelente presencia para coleccionistas de Pokemon.
+imagen: pokemon/mewtwo/mewtwo-mediano/03_Mewtwo-mediano.png
 id_dolibarr:
 variacion:
   - nombre: Tamaño
