@@ -1,6 +1,6 @@
 ---
 titulo: Mewtwo
-fecha: 2026-01-15
+fecha: 2026-07-02
 categoria: pokemon
 etiquetas: producto, crochet, amigurumi, pokemon, anime
 producto: true
