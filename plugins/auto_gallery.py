@@ -20,6 +20,24 @@ except ImportError:
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".svg", ".avif", ".gif"}
 
 
+# Pelican agrupa categorías/etiquetas por slug (minúsculas), pero cada
+# artículo conserva su propio texto original como nombre para mostrar. Si
+# "Pokemon" y "pokemon" aparecen en distintos artículos, ambos apuntan al
+# mismo slug/URL pero se muestran con casing distinto (ej. dos botones en el
+# filtro del catálogo). Aquí forzamos que todos usen el casing del primer
+# artículo visto para ese slug.
+_WRAPPER_NAME_BY_SLUG = {}
+
+
+def _normalize_wrapper_casing(wrapper):
+    if wrapper is None:
+        return
+    key = (type(wrapper).__name__, wrapper.slug)
+    canonical_name = _WRAPPER_NAME_BY_SLUG.setdefault(key, wrapper.name)
+    if wrapper.name != canonical_name:
+        wrapper.name = canonical_name
+
+
 # Canonical field names used by templates plus Spanish aliases for content editing.
 METADATA_ALIASES = {
     "title": ("titulo",),
@@ -203,6 +221,10 @@ def _parse_variation_options_nested(raw_value):
 
 
 def normalize_bilingual_metadata(content):
+    _normalize_wrapper_casing(getattr(content, "category", None))
+    for tag in getattr(content, "tags", None) or []:
+        _normalize_wrapper_casing(tag)
+
     metadata = getattr(content, "metadata", None)
     if not metadata:
         return
