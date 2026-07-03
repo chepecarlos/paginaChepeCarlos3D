@@ -5,10 +5,10 @@ etiquetas: producto, crochet, amigurumi, pokemon, anime
 producto: true
 slug: pikachu-crochet
 precio: $15.00
-imagen: pikachu-crochet/01_Pikachu.png
-galeria: pikachu-crochet/
+imagen: pokemon/pikachu/01_Pikachu.png
+galeria: pokemon/pikachu
 resumen: Figura impresa 3D con estil de Pikachu en version grande, con excelente presencia para coleccionistas de Pokemón.
-
+id_dolibarr: 3
 ## Descripción
 
 **¡Atrapamos a Pikachu y lo volvimos "suave"!**

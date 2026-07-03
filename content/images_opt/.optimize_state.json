@@ -2063,47 +2063,125 @@
     "size": 1806369,
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/zoro-crochet/grande/03_Zoro-grande.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/01_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/01_Mewtwo-llavero.png": {
+    "mtime_ns": 1783039488749324842,
+    "quality": 72,
+    "size": 1479092,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/01_Mewtwo-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/02_Mewtwo-llavero.png": {
+    "mtime_ns": 1783039496080064837,
+    "quality": 72,
+    "size": 1449478,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/02_Mewtwo-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/03_Mewtwo-llavero.png": {
+    "mtime_ns": 1783039502745947661,
+    "quality": 72,
+    "size": 1496807,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/03_Mewtwo-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/04_Mewtwo-llavero.png": {
+    "mtime_ns": 1783039509074685216,
+    "quality": 72,
+    "size": 1497645,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/04_Mewtwo-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/05_Mewtwo-llavero.png": {
+    "mtime_ns": 1783039516006867792,
+    "quality": 72,
+    "size": 1367499,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/05_Mewtwo-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/01_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039238769789155,
+    "quality": 72,
+    "size": 1335274,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/01_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/02_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039248578371899,
+    "quality": 72,
+    "size": 1331324,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/02_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/03_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039255813255813,
+    "quality": 72,
+    "size": 1457031,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/03_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/04_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039262136889420,
+    "quality": 72,
+    "size": 1492777,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/04_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/05_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039269433760911,
+    "quality": 72,
+    "size": 1787944,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/05_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/06_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039275637341750,
+    "quality": 72,
+    "size": 1430902,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/06_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/07_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039282183000560,
+    "quality": 72,
+    "size": 1468057,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/07_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/08_Mewtwo-mediano.png": {
+    "mtime_ns": 1783039291102247290,
+    "quality": 72,
+    "size": 1472705,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/08_Mewtwo-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/01_Pikachu.png": {
     "mtime_ns": 1777411099770873603,
     "quality": 72,
     "size": 1076725,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/01_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/01_Pikachu.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/02_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/02_Pikachu.png": {
     "mtime_ns": 1777411099776871613,
     "quality": 72,
     "size": 1193631,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/02_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/02_Pikachu.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/03_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/03_Pikachu.png": {
     "mtime_ns": 1777411099788867633,
     "quality": 72,
     "size": 1505618,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/03_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/03_Pikachu.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/04_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/04_Pikachu.png": {
     "mtime_ns": 1777411099797864647,
     "quality": 72,
     "size": 1718011,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/04_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/04_Pikachu.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/05_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/05_Pikachu.png": {
     "mtime_ns": 1777411099801863320,
     "quality": 72,
     "size": 1434996,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/05_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/05_Pikachu.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/06_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/06_Pikachu.png": {
     "mtime_ns": 1777411099807861330,
     "quality": 72,
     "size": 1501156,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/06_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/06_Pikachu.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pikachu-crochet/07_Pikachu.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/07_Pikachu.png": {
     "mtime_ns": 1777411099814859008,
     "quality": 72,
     "size": 2612290,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pikachu-crochet/07_Pikachu.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/07_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty-grande/01_Kitty.png": {
     "mtime_ns": 1778288032755693223,
