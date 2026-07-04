@@ -1,8 +1,11 @@
+import logging
 import re
 from datetime import date, datetime
 from pathlib import Path
 
 from pelican import signals
+
+logger = logging.getLogger(__name__)
 
 try:
     import markdown as _md_module
@@ -622,9 +625,85 @@ def enrich_variation_galleries(generator):
             article.metadata["price_range"] = price_range
 
 
+FIRST_IMAGE_PATTERN = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
+
+
+def extract_first_image(generator):
+    """Guarda en article.first_image la primera <img> del cuerpo, para usarla
+    como miniatura en listados de blog (los posts no tienen `imagen:` en el
+    front matter, sus fotos van sueltas en el contenido)."""
+    for article in generator.articles:
+        if getattr(article, "product", False):
+            continue
+        match = FIRST_IMAGE_PATTERN.search(article._content)
+        if not match:
+            continue
+        first_image = normalize_media_path(match.group(1))
+        article.first_image = first_image
+        article.metadata["first_image"] = first_image
+
+
+# Shortcode para insertar una tarjeta de producto dentro de un artículo de
+# blog, ej. escribiendo `[[producto:mewtwo-mediano]]` en su propia línea.
+PRODUCT_MENTION_PATTERN = re.compile(r"\[\[\s*producto\s*:\s*([\w-]+)\s*\]\]")
+
+
+def _product_card_html(product, settings):
+    image = _meta_value(product, "image") or (
+        product.auto_gallery[0] if getattr(product, "auto_gallery", None) else None
+    )
+    if image:
+        image = resolve_optimized_image_path(image, settings)
+        image_html = f'<img src="/{image}" alt="{product.title}" loading="lazy">'
+    else:
+        image_html = '<div class="product-img-placeholder"><span>Sin imagen</span></div>'
+
+    price = getattr(product, "price_range", None) or _meta_value(product, "price")
+    price_html = f'<p class="product-price">{price}</p>' if price else ""
+
+    return (
+        '<article class="product-card product-card-inline">'
+        f'<a href="/{product.url}" class="product-img-wrap">{image_html}</a>'
+        '<div class="product-body">'
+        f'<h3 class="product-title"><a href="/{product.url}">{product.title}</a></h3>'
+        f"{price_html}"
+        f'<a href="/{product.url}" class="btn btn-primary">Ver detalles</a>'
+        "</div></article>"
+    )
+
+
+def insert_product_mentions(generator):
+    settings = generator.settings
+    products_by_slug = {
+        article.slug: article
+        for article in generator.articles
+        if getattr(article, "product", False)
+    }
+
+    for article in generator.articles:
+        if not PRODUCT_MENTION_PATTERN.search(article._content):
+            continue
+
+        def _replace(match):
+            slug = match.group(1)
+            product = products_by_slug.get(slug)
+            if not product:
+                logger.warning(
+                    "auto_gallery: producto '%s' referenciado en '%s' no existe",
+                    slug,
+                    article.source_path,
+                )
+                return f"<!-- producto no encontrado: {slug} -->"
+            return _product_card_html(product, settings)
+
+        article._content = PRODUCT_MENTION_PATTERN.sub(_replace, article._content)
+
+
 def register():
     signals.readers_init.connect(register_reader_aliases)
     signals.content_object_init.connect(normalize_bilingual_metadata)
     signals.article_generator_finalized.connect(enrich_articles_with_auto_gallery)
     signals.article_generator_finalized.connect(enrich_variation_galleries)
+    signals.article_generator_finalized.connect(extract_first_image)
+    signals.article_generator_finalized.connect(insert_product_mentions)
     signals.generator_init.connect(_register_template_helpers)

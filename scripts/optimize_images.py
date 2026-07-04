@@ -120,11 +120,10 @@ def should_process(
 def cleanup_orphaned_webp(
     dest_images_dir: Path,
     source_images_dir: Path,
-    products_subdir: str,
     formats: tuple[str, ...],
     state: Dict[str, dict],
 ) -> int:
-    dest_root = dest_images_dir / normalize_relpath(products_subdir)
+    dest_root = dest_images_dir
     if not dest_root.exists():
         return 0
 
@@ -132,7 +131,13 @@ def cleanup_orphaned_webp(
     for webp_file in sorted(dest_root.rglob("*.webp")):
         rel = webp_file.relative_to(dest_images_dir)
         source_base = (source_images_dir / rel).with_suffix("")
-        source_exists = any(source_base.with_suffix(ext).exists() for ext in formats)
+        source_parent = source_base.parent
+        # Comparacion insensible a mayusculas: el filesystem puede tener
+        # ".PNG" mientras --formats siempre trae minusculas.
+        source_exists = source_parent.exists() and any(
+            f.is_file() and f.stem == source_base.name and f.suffix.lower() in formats
+            for f in source_parent.iterdir()
+        )
 
         if not source_exists:
             webp_file.unlink()
@@ -161,7 +166,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--content-path", default="content")
     parser.add_argument("--source-dir", default="images")
     parser.add_argument("--dest-dir", default="images_opt")
-    parser.add_argument("--products-subdir", default="productos")
     parser.add_argument("--formats", default=",".join(DEFAULT_FORMATS))
     parser.add_argument("--quality", type=int, default=72)
     parser.add_argument("--force", action="store_true")
@@ -177,9 +181,7 @@ def main() -> int:
 
     content_path = Path(args.content_path).resolve()
     source_images_dir = (content_path / normalize_relpath(args.source_dir)).resolve()
-    source_root = (
-        source_images_dir / normalize_relpath(args.products_subdir)
-    ).resolve()
+    source_root = source_images_dir
     dest_images_dir = (content_path / normalize_relpath(args.dest_dir)).resolve()
     state_file = dest_images_dir / STATE_FILE_NAME
     formats = parse_formats(args.formats)
@@ -228,7 +230,7 @@ def main() -> int:
         print()
 
     counters.deleted = cleanup_orphaned_webp(
-        dest_images_dir, source_images_dir, args.products_subdir, formats, state
+        dest_images_dir, source_images_dir, formats, state
     )
 
     save_state(state_file, state)

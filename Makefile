@@ -94,7 +94,6 @@ optimize-images:
 		--content-path "$(INPUTDIR)" \
 		--source-dir images \
 		--dest-dir images_opt \
-		--products-subdir productos \
 		--quality 72 \
 		--formats ".jpg,.jpeg,.png"
 
@@ -103,7 +102,6 @@ optimize-images-force:
 		--content-path "$(INPUTDIR)" \
 		--source-dir images \
 		--dest-dir images_opt \
-		--products-subdir productos \
 		--quality 72 \
 		--formats ".jpg,.jpeg,.png" \
 		--force

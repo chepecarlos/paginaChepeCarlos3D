@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Blog — {{ SITENAME }}{% endblock %} {% block content %}
+<div class="container">
+  <h1 class="section-title">Blog</h1>
+  {% set posts = articles | rejectattr('product') | selectattr('category', 'equalto', 'blog') | list %}
+  <div class="posts-list">
+    {% for article in posts %}
+    <article class="post-card{% if article.first_image %} post-card-featured{% endif %}">
+      <div class="post-card-body">
+        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+        <p class="post-meta">
+          <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+        </p>
+        <p>{{ article.summary }}</p>
+      </div>
+      {% if article.first_image %}
+      <a href="{{ SITEURL }}/{{ article.url }}" class="post-card-thumb">
+        <img src="{{ SITEURL }}/{{ article.first_image }}" alt="{{ article.title }}" loading="lazy">
+      </a>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

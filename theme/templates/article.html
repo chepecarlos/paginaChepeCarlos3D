@@ -13,6 +13,8 @@
     {%- else -%}
       {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}}
     {%- endif -%}
+  {%- elif article.first_image -%}
+    {{- SITEURL ~ '/' ~ article.first_image -}}
   {%- else -%}
     {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}}
   {%- endif -%}

@@ -543,6 +543,7 @@ img {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding-bottom: 64px;
 }
 
 .post-card {
@@ -566,6 +567,50 @@ img {
 
 .post-card.compact {
     padding: 16px 24px;
+}
+
+.post-card-featured {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.post-card-featured .post-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-card-thumb {
+    flex-shrink: 0;
+    display: block;
+    width: 160px;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-light);
+}
+
+.post-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition);
+}
+
+.post-card-featured:hover .post-card-thumb img {
+    transform: scale(1.04);
+}
+
+@media (max-width: 640px) {
+    .post-card-featured {
+        flex-direction: column-reverse;
+    }
+
+    .post-card-thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
 }
 
 .post-meta {
@@ -628,6 +673,11 @@ img {
     box-shadow: var(--shadow-md);
     transform: translateY(-4px);
     border-color: rgba(6, 133, 135, 0.45);
+}
+
+.product-card-inline {
+    max-width: 280px;
+    margin: 24px auto;
 }
 
 .product-img-wrap {
@@ -1521,6 +1571,19 @@ img {
 
 .post-content p {
     margin-bottom: 16px;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 24px auto;
+    border-radius: var(--radius);
+}
+
+.post-content .product-card img {
+    height: 100%;
+    margin: 0;
 }
 
 .post-content h2 {

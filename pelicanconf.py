@@ -34,6 +34,7 @@ PLUGINS = ["yaml_metadata", "auto_gallery"]
 TEMPLATE_PAGES = {
     "catalog.html": "catalogo/index.html",
     "search.html": "buscar/index.html",
+    "blog.html": "blog/index.html",
     "404.html": "404.html",
 }
 
