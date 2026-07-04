@@ -41,9 +41,9 @@ Cuenta de la comunidad: <a href="https://www.instagram.com/pokecafetalon/" targe
 
 Cuenta de la comunidad: <a href="https://www.instagram.com/pokeraiderssv/" target="_blank" rel="noopener">@pokeraiderssv</a>
 
-<img src="/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/team_go_cuscatlan_sv.webp" alt="Team GO Cuscatlán SV" style="max-width: 300px;">
+<!-- <img src="/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/team_go_cuscatlan_sv.webp" alt="Team GO Cuscatlán SV" style="max-width: 300px;">
 
-Cuenta de la comunidad: <a href="https://www.instagram.com/team_go_cuscatlan_sv/" target="_blank" rel="noopener">@team_go_cuscatlan_sv</a>
+Cuenta de la comunidad: <a href="https://www.instagram.com/team_go_cuscatlan_sv/" target="_blank" rel="noopener">@team_go_cuscatlan_sv</a> -->
 
 ## ¿No vas a poder asistir? También puedes llevarte el tuyo
 
