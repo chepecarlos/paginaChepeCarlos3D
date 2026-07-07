@@ -4,7 +4,7 @@ categoria: Minecraft
 etiquetas: videojuego, alcancia
 producto: true
 slug: alcancia-tnt
-precio: $13.00
+precio: $20.00
 imagen: alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_01.png
 galeria: alcancia/minecraft/alcancia-tnt/
 resumen: Figura impresa 3D con estilo de TNT, con excelente presencia para coleccionistas y ahorradores de la franquicia.
