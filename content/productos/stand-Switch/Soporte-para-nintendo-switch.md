@@ -9,7 +9,7 @@ precio: $17.00
 imagen: stand-switch/IMG20260618175553.jpg
 galeria: stand-switch/
 resumen: Soporte hecho en 3D para Nintendo Switch
-id_dolibarr: 8
+id_dolibarr: 33
 variacion:
   nombre: Personalización
   lista:

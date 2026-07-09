@@ -211,6 +211,46 @@ def _check_gallery(raw: str, content_root: Path, label: str) -> list[Issue]:
     return _check_gallery_aspect(resolved, label)
 
 
+def dolibarr_ids(meta: dict) -> list[str]:
+    """id_dolibarr del producto, o uno por cada variante que traiga el suyo propio."""
+    top_id = _get(meta, "id_dolibarr")
+    if top_id:
+        return [str(top_id)]
+
+    ids = []
+    variation = _get(meta, "variation")
+    groups = variation if isinstance(variation, list) else [variation] if variation else []
+    for group in groups:
+        if not isinstance(group, dict):
+            continue
+        items = group.get("lista") or group.get("list") or []
+        for item in items:
+            if isinstance(item, dict) and item.get("id_dolibarr"):
+                ids.append(str(item["id_dolibarr"]))
+    return ids
+
+
+def check_duplicate_ids(md_files: list[Path], results: list[ProductResult]) -> None:
+    """Agrega un error a cada producto cuyo id_dolibarr se repite en otro archivo."""
+    ids_by_file: dict[Path, list[str]] = {}
+    files_by_id: dict[str, list[Path]] = {}
+    for path in md_files:
+        ids = dolibarr_ids(parse_frontmatter(path))
+        if ids:
+            ids_by_file[path] = ids
+            for id_str in ids:
+                files_by_id.setdefault(id_str, []).append(path)
+
+    for result in results:
+        for id_str in ids_by_file.get(result.path, []):
+            others = [p for p in files_by_id[id_str] if p != result.path]
+            if others:
+                names = ", ".join(p.name for p in others)
+                result.issues.append(
+                    Issue("error", f"id_dolibarr {id_str!r} repetido, también en: {names}")
+                )
+
+
 def audit_product(path: Path, content_root: Path) -> ProductResult:
     result = ProductResult(path=path)
     add = result.issues.append
@@ -240,7 +280,7 @@ def audit_product(path: Path, content_root: Path) -> ProductResult:
     if not (variation_raw):
         result.issues.extend(_check_price(_get(meta, "price"), "producto"))
 
-    if not _get(meta, "id_dolibarr"):
+    if not dolibarr_ids(meta):
         add(Issue("info", "Sin id_dolibarr (recomendado para sincronizar con Dolibarr)"))
 
     if not _get(meta, "summary"):
@@ -406,6 +446,7 @@ def main() -> int:
     console.print(f"[bold]Auditando {len(md_files)} producto(s) en {products_dir}[/]\n")
 
     results = [audit_product(f, content_root) for f in md_files]
+    check_duplicate_ids(md_files, results)
 
     show_info = args.info and not args.only_errors
 

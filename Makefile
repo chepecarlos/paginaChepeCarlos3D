@@ -43,6 +43,7 @@ help:
 	@echo '   make instagram-feed-build          sync + build local completo         '
 	@echo '   make audit                          revisa productos por datos faltantes '
 	@echo '   make audit-info                     audit + avisos informativos          '
+	@echo '   make check-dolibarr-prices          compara precios locales vs Dolibarr   '
 	@echo '   make optimize-images               optimiza imagenes de productos      '
 	@echo '   make optimize-images-force         reprocesa todas las imagenes         '
 	@echo '   make optimize-images-report        muestra ahorro total original vs webp'
@@ -88,6 +89,11 @@ audit-info:
 		--content-path "$(INPUTDIR)" \
 		--products-subdir productos \
 		--info
+
+check-dolibarr-prices:
+	"$(PY)" scripts/check_dolibarr_prices.py \
+		--content-path "$(INPUTDIR)" \
+		--products-subdir productos
 
 optimize-images:
 	"$(PY)" scripts/optimize_images.py \
@@ -145,4 +151,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: install install-frozen instagram-feed instagram-feed-urls instagram-feed-latest prebuild audit audit-info optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
+.PHONY: install install-frozen instagram-feed instagram-feed-urls instagram-feed-latest prebuild audit audit-info check-dolibarr-prices optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github

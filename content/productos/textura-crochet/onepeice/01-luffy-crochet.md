@@ -6,7 +6,6 @@ etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: luffy-crochet
 resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
-id_dolibarr: 8
 variacion:
   - nombre: Tamaño
     lista:
@@ -15,11 +14,13 @@ variacion:
         altura: 10 cm
         imagen: onepiece/luffy-crochet/pequeño/01_Luffy-pequeño.png
         galeria: onepiece/luffy-crochet/pequeño
+        id_dolibarr: 10
       - titulo: Grande
         precio: $28.00
         altura: 17 cm
         imagen: onepiece/luffy-crochet/grande/01_Luffy-grande.jpg
         galeria: onepiece/luffy-crochet/grande
+        id_dolibarr: 8
   - nombre: Personalización
     lista:
       - titulo: Original

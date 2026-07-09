@@ -9,5 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
+# Secretos locales
+.env
+
 # Pelican generated site
 output/
