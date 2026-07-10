@@ -43,7 +43,7 @@ help:
 	@echo '   make instagram-feed-build          sync + build local completo         '
 	@echo '   make audit                          revisa productos por datos faltantes '
 	@echo '   make audit-info                     audit + avisos informativos          '
-	@echo '   make check-dolibarr-prices          compara precios locales vs Dolibarr   '
+	@echo '   make check-dolibarr-prices          compara precios: sitio, Dolibarr y fuente'
 	@echo '   make optimize-images               optimiza imagenes de productos      '
 	@echo '   make optimize-images-force         reprocesa todas las imagenes         '
 	@echo '   make optimize-images-report        muestra ahorro total original vs webp'

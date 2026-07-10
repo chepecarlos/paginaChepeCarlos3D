@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -50,6 +51,24 @@ def _fetch_dolibarr_price(base_url: str, api_key: str, product_id: str) -> str:
         return "sin conexión"
     price = data.get("price")
     return f"${float(price):.2f}" if price not in (None, "") else "?"
+
+
+def _fetch_source_prices(source_path: str) -> dict[str, str]:
+    """id_dolibarr -> precio_venta según printtool (proyectos fuente con gcode/costo)."""
+    try:
+        result = subprocess.run(
+            ["printtool", "productos", "listar", source_path],
+            capture_output=True, text=True, timeout=120, check=True,
+        )
+        productos = json.loads(result.stdout)
+    except (OSError, subprocess.SubprocessError, json.JSONDecodeError) as e:
+        console.print(f"[yellow]No se pudo consultar printtool ({e}), se omite el precio de fuente[/]\n")
+        return {}
+    return {
+        str(int(p["id_producto_dolibarr"])): f"${float(p['precio_venta']):.2f}"
+        for p in productos
+        if p.get("id_producto_dolibarr")
+    }
 
 
 def _price_to_float(price: str) -> float | None:
@@ -100,10 +119,11 @@ def _entries_for(meta: dict, title: str) -> list[tuple[str, str, str]]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Compara precios locales vs Dolibarr")
+    parser = argparse.ArgumentParser(description="Compara precios locales vs Dolibarr vs fuente (printtool)")
     parser.add_argument("--content-path", default="content")
     parser.add_argument("--products-subdir", default="productos")
     parser.add_argument("--no-dolibarr", action="store_true", help="Omite la consulta a Dolibarr")
+    parser.add_argument("--no-source", action="store_true", help="Omite la consulta a printtool (proyectos fuente)")
     args = parser.parse_args()
 
     env = _load_env(Path(__file__).parent.parent / ".env")
@@ -112,6 +132,12 @@ def main() -> int:
     query_dolibarr = not args.no_dolibarr and base_url and api_key
     if not args.no_dolibarr and not query_dolibarr:
         console.print("[yellow]DOLIBARR_URL / DOLIBARR_API_KEY no configurados en .env, se omite la consulta[/]\n")
+
+    source_path = env.get("SOURCE_PROJECTS_PATH", "")
+    query_source = not args.no_source and source_path
+    if not args.no_source and not query_source:
+        console.print("[yellow]SOURCE_PROJECTS_PATH no configurado en .env, se omite el precio de fuente[/]\n")
+    source_prices = _fetch_source_prices(source_path) if query_source else {}
 
     products_dir = Path(args.content_path).resolve() / args.products_subdir
     md_files = sorted(products_dir.rglob("*.md"))
@@ -127,7 +153,8 @@ def main() -> int:
             continue
         for id_dolibarr, label, local_price in entries:
             dolibarr_price = _fetch_dolibarr_price(base_url, api_key, id_dolibarr) if query_dolibarr else "-"
-            rows.append((id_dolibarr, label, local_price, dolibarr_price))
+            source_price = source_prices.get(id_dolibarr, "-")
+            rows.append((id_dolibarr, label, local_price, dolibarr_price, source_price))
 
     rows.sort(key=lambda r: (r[0].isdigit() is False, int(r[0]) if r[0].isdigit() else 0))
 
@@ -139,39 +166,61 @@ def main() -> int:
     table.add_column("Nombre")
     table.add_column("Precio local", justify="right")
     table.add_column("Precio Dolibarr", justify="right")
+    table.add_column("Precio fuente", justify="right")
     mismatches = 0
+    no_source = 0
     shown = 0
-    for id_dolibarr, title, local_price, dolibarr_price in rows:
+    for id_dolibarr, title, local_price, dolibarr_price, source_price in rows:
         if id_dolibarr in duplicated:
             shown += 1
-            table.add_row(*(f"[bold red]{v}[/]" for v in (id_dolibarr, title, local_price, dolibarr_price)))
+            table.add_row(*(f"[bold red]{v}[/]" for v in (id_dolibarr, title, local_price, dolibarr_price, source_price)))
             continue
-        prices_differ = (
-            query_dolibarr
-            and dolibarr_price.startswith("$")
-            and _price_to_float(local_price) != _price_to_float(dolibarr_price)
-        )
-        if prices_differ:
+
+        local_float = _price_to_float(local_price)
+        dolibarr_not_found = dolibarr_price == "no encontrado"
+        dolibarr_differs = dolibarr_price.startswith("$") and _price_to_float(dolibarr_price) != local_float
+        source_missing = query_source and source_price == "-"
+        source_differs = source_price.startswith("$") and _price_to_float(source_price) != local_float
+
+        if not (dolibarr_not_found or dolibarr_differs or source_missing or source_differs):
+            continue  # precio igual en las tres fuentes (o sin datos para comparar): no se muestra
+
+        shown += 1
+        if dolibarr_differs or source_differs:
             mismatches += 1
-            shown += 1
-            table.add_row(id_dolibarr, title, local_price, f"[yellow]{dolibarr_price}[/]")
-        elif dolibarr_price == "no encontrado":
-            shown += 1
-            table.add_row(id_dolibarr, title, local_price, f"[bold red]{dolibarr_price}[/]")
-        # precio igual y sin problemas: no se muestra en la tabla
+        if source_missing:
+            no_source += 1
+
+        dolibarr_cell = f"[bold red]{dolibarr_price}[/]" if dolibarr_not_found else (
+            f"[yellow]{dolibarr_price}[/]" if dolibarr_differs else dolibarr_price
+        )
+        source_cell = "[bold red]sin folder[/]" if source_missing else (
+            f"[yellow]{source_price}[/]" if source_differs else source_price
+        )
+        table.add_row(id_dolibarr, title, local_price, dolibarr_cell, source_cell)
 
     console.print(table)
     console.print(f"\n[dim]{len(rows)} producto(s) con id_dolibarr, {shown} con problema(s)[/]")
     if missing:
         console.print(f"[yellow]{len(missing)} producto(s) sin id_dolibarr[/]")
     if mismatches:
-        console.print(f"[yellow]{mismatches} producto(s) con precio distinto entre el sitio y Dolibarr[/]")
+        console.print(f"[yellow]{mismatches} producto(s) con precio distinto entre sitio, Dolibarr y/o fuente[/]")
+    if no_source:
+        console.print(f"[yellow]{no_source} producto(s) sin folder configurado en printtool (no se puede verificar el precio de fuente)[/]")
 
-    not_found = [(id_dolibarr, title) for id_dolibarr, title, _, dolibarr_price in rows if dolibarr_price == "no encontrado"]
+    not_found = [(id_dolibarr, title) for id_dolibarr, title, _, dolibarr_price, _ in rows if dolibarr_price == "no encontrado"]
     if not_found:
         console.print("\n[bold red]No encontrados en Dolibarr:[/]")
         for id_dolibarr, title in not_found:
             console.print(f"  [red]· {id_dolibarr}[/] — {title}")
+
+    if query_source:
+        site_ids = {id_dolibarr for id_dolibarr, *_ in rows}
+        source_only = {id_ for id_ in source_prices if id_ not in site_ids}
+        if source_only:
+            console.print(f"\n[yellow]{len(source_only)} producto(s) en printtool sin artículo en el sitio:[/]")
+            for id_ in sorted(source_only, key=lambda x: int(x) if x.isdigit() else 0):
+                console.print(f"  [yellow]· {id_}[/]")
 
     if duplicated:
         console.print(f"\n[bold red]ERROR[/] id_dolibarr repetido(s): {', '.join(sorted(duplicated))}")
