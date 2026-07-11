@@ -53,8 +53,12 @@ def _fetch_dolibarr_price(base_url: str, api_key: str, product_id: str) -> str:
     return f"${float(price):.2f}" if price not in (None, "") else "?"
 
 
-def _fetch_source_prices(source_path: str) -> dict[str, str]:
-    """id_dolibarr -> precio_venta según printtool (proyectos fuente con gcode/costo)."""
+def _fetch_source_prices(source_path: str) -> dict[str, dict]:
+    """id_dolibarr -> {venta, referencia} según printtool (proyectos fuente con gcode/costo).
+
+    precio_referencia es el precio sugerido por costo+margen+IVA; precio_venta es el que
+    quedó realmente configurado (puede haberse ajustado a mano por debajo de la referencia).
+    """
     try:
         result = subprocess.run(
             ["printtool", "productos", "listar", source_path],
@@ -65,7 +69,10 @@ def _fetch_source_prices(source_path: str) -> dict[str, str]:
         console.print(f"[yellow]No se pudo consultar printtool ({e}), se omite el precio de fuente[/]\n")
         return {}
     return {
-        str(int(p["id_producto_dolibarr"])): f"${float(p['precio_venta']):.2f}"
+        str(int(p["id_producto_dolibarr"])): {
+            "venta": f"${float(p['precio_venta']):.2f}",
+            "referencia": float(p["precio_referencia"]),
+        }
         for p in productos
         if p.get("id_producto_dolibarr")
     }
@@ -153,8 +160,10 @@ def main() -> int:
             continue
         for id_dolibarr, label, local_price in entries:
             dolibarr_price = _fetch_dolibarr_price(base_url, api_key, id_dolibarr) if query_dolibarr else "-"
-            source_price = source_prices.get(id_dolibarr, "-")
-            rows.append((id_dolibarr, label, local_price, dolibarr_price, source_price))
+            source_info = source_prices.get(id_dolibarr)
+            source_price = source_info["venta"] if source_info else "-"
+            source_referencia = source_info["referencia"] if source_info else None
+            rows.append((id_dolibarr, label, local_price, dolibarr_price, source_price, source_referencia))
 
     rows.sort(key=lambda r: (r[0].isdigit() is False, int(r[0]) if r[0].isdigit() else 0))
 
@@ -169,8 +178,9 @@ def main() -> int:
     table.add_column("Precio fuente", justify="right")
     mismatches = 0
     no_source = 0
+    underpriced_count = 0
     shown = 0
-    for id_dolibarr, title, local_price, dolibarr_price, source_price in rows:
+    for id_dolibarr, title, local_price, dolibarr_price, source_price, source_referencia in rows:
         if id_dolibarr in duplicated:
             shown += 1
             table.add_row(*(f"[bold red]{v}[/]" for v in (id_dolibarr, title, local_price, dolibarr_price, source_price)))
@@ -181,8 +191,9 @@ def main() -> int:
         dolibarr_differs = dolibarr_price.startswith("$") and _price_to_float(dolibarr_price) != local_float
         source_missing = query_source and source_price == "-"
         source_differs = source_price.startswith("$") and _price_to_float(source_price) != local_float
+        underpriced = source_referencia is not None and local_float is not None and source_referencia > local_float
 
-        if not (dolibarr_not_found or dolibarr_differs or source_missing or source_differs):
+        if not (dolibarr_not_found or dolibarr_differs or source_missing or source_differs or underpriced):
             continue  # precio igual en las tres fuentes (o sin datos para comparar): no se muestra
 
         shown += 1
@@ -190,14 +201,17 @@ def main() -> int:
             mismatches += 1
         if source_missing:
             no_source += 1
+        if underpriced:
+            underpriced_count += 1
 
+        local_cell = f"[yellow]{local_price}[/] (sug. ${source_referencia:.2f})" if underpriced else local_price
         dolibarr_cell = f"[bold red]{dolibarr_price}[/]" if dolibarr_not_found else (
             f"[yellow]{dolibarr_price}[/]" if dolibarr_differs else dolibarr_price
         )
         source_cell = "[bold red]sin folder[/]" if source_missing else (
             f"[yellow]{source_price}[/]" if source_differs else source_price
         )
-        table.add_row(id_dolibarr, title, local_price, dolibarr_cell, source_cell)
+        table.add_row(id_dolibarr, title, local_cell, dolibarr_cell, source_cell)
 
     console.print(table)
     console.print(f"\n[dim]{len(rows)} producto(s) con id_dolibarr, {shown} con problema(s)[/]")
@@ -207,8 +221,10 @@ def main() -> int:
         console.print(f"[yellow]{mismatches} producto(s) con precio distinto entre sitio, Dolibarr y/o fuente[/]")
     if no_source:
         console.print(f"[yellow]{no_source} producto(s) sin folder configurado en printtool (no se puede verificar el precio de fuente)[/]")
+    if underpriced_count:
+        console.print(f"[yellow]{underpriced_count} producto(s) con precio local por debajo del precio sugerido por costo (revisar margen)[/]")
 
-    not_found = [(id_dolibarr, title) for id_dolibarr, title, _, dolibarr_price, _ in rows if dolibarr_price == "no encontrado"]
+    not_found = [(id_dolibarr, title) for id_dolibarr, title, _, dolibarr_price, *_ in rows if dolibarr_price == "no encontrado"]
     if not_found:
         console.print("\n[bold red]No encontrados en Dolibarr:[/]")
         for id_dolibarr, title in not_found:
