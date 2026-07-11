@@ -6,6 +6,7 @@ producto: false
 slug: alcancia-pokebola-pequena
 precio: $13.00
 resumen: Figura impresa 3D con estilo de TNT, con excelente presencia para coleccionistas y ahorradores de la franquicia.
+id_dolibarr: 35
 
 ## Descripción
 

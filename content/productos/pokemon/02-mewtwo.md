@@ -16,11 +16,13 @@ variacion:
         altura: 5 cm
         imagen: pokemon/mewtwo/mewtwo-llavero/01_Mewtwo-llavero
         galeria: pokemon/mewtwo/mewtwo-llavero
+        id_dolibarr: 36
       - titulo: Mediano
         precio: $12.00
         altura: 10 cm
         imagen: pokemon/mewtwo/mewtwo-mediano/01_Mewtwo-mediano
         galeria: pokemon/mewtwo/mewtwo-mediano
+        id_dolibarr: 37
   - nombre: Personalización
     lista:
       - titulo: Original

@@ -14,7 +14,7 @@ variacion:
         altura: 10 cm
         imagen: onepiece/luffy-crochet/pequeño/01_Luffy-pequeño.png
         galeria: onepiece/luffy-crochet/pequeño
-        id_dolibarr: 10
+        id_dolibarr: 5
       - titulo: Grande
         precio: $28.00
         altura: 17 cm

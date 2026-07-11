@@ -12,7 +12,7 @@ variacion:
         precio: $5.00
         altura: 7 cm
         imagen: snoopy/snoopy-crochet/llavero/01_snoopy-llavero.png
-        galeria: snoopy/snoopy-crochet/llavero
+        galeria: snoopy/snoopy-crochet/llavero/
       - titulo: Mediano
         precio: $12.00
         altura: 10 cm
@@ -28,7 +28,7 @@ variacion:
 ## Características
 
 - **Altura:** <span id="product-altura"> cm</span>.
-- **Personalización:** Añade el nombre que desees en su sombrero por un extra de $1.50.
+- **Personalización:** Añade el nombre que desees por un extra de $1.00.
 
 ## Descripción
 

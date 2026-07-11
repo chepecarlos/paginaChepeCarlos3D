@@ -10,7 +10,6 @@ precio: $28.00
 imagen: onepiece/chopper-crochet/pequeño/01_Chopper-pequeño.jpg
 # galeria: onepiece/chopper-crochet/
 resumen: Figura impresa 3D con estilo Chopper en version grande, con excelente presencia para coleccionistas de One Piece.
-id_dolibarr: 20
 variacion:
   nombre: Tamaño
   lista:
@@ -19,11 +18,13 @@ variacion:
       altura: 10 cm
       imagen: onepiece/chopper-crochet/pequeño/01_Chopper-pequeño.jpg
       galeria: onepiece/chopper-crochet/pequeño
+      id_dolibarr: 38
     - titulo: Grande
       precio: $28.00
       altura: 17 cm
       imagen: onepiece/chopper-crochet/grande/01_Chopper-grande.png
       galeria: onepiece/chopper-crochet/grande
+      id_dolibarr: 20
 ---
 
 ## Características

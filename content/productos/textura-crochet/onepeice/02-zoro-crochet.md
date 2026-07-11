@@ -8,7 +8,6 @@ producto: true
 slug: zoro-grande
 precio: $28.00
 resumen: Figura impresa 3D con estilo Zoro en version grande, con excelente presencia para coleccionistas de One Piece.
-id_dolibarr: 16
 variacion:
   nombre: Tamaño
   lista:
@@ -17,12 +16,14 @@ variacion:
       altura: 10 cm
       imagen: onepiece/zoro-crochet/pequeno/
       galeria: onepiece/zoro-crochet/pequeno
+      id_dolibarr: 16
       producto: false
     - titulo: Grande
       precio: $28.00
       altura: 17 cm
       imagen: onepiece/zoro-crochet/grande/01_Zoro-grande.png
       galeria: onepiece/zoro-crochet/grande
+      id_dolibarr: 33
 ---
 
 ## Características
