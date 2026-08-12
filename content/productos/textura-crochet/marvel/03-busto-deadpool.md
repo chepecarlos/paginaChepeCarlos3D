@@ -1,8 +1,8 @@
 ---
 titulo: Busto Deadpool
-fecha: 2026-05-1
+fecha: 2026-8-11
 categoria: Marvel
-etiquetas: crochet, superhero, busto
+etiquetas: busto, marvel, antihero
 producto: true
 slug: busto-deadpool
 precio: $28.00
