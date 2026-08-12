@@ -5,7 +5,7 @@ categoria: litofania
 etiquetas: litofania, foto
 producto: true
 slug: litofania-personalizada
-precio: $15
+precio: $15.00
 imagen: litofania/litofania-personalizada/original/01_Litofania.jpg
 id_dolibarr: 28
 variacion:

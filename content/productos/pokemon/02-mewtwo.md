@@ -12,7 +12,7 @@ variacion:
   - nombre: Tamaño
     lista:
       - titulo: Llavero
-        precio: $3
+        precio: $3.00
         altura: 5 cm
         imagen: pokemon/mewtwo/mewtwo-llavero/01_Mewtwo-llavero
         galeria: pokemon/mewtwo/mewtwo-llavero
