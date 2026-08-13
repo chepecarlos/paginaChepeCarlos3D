@@ -7,7 +7,7 @@ producto: true
 slug: busto-deadpool
 precio: $28.00
 resumen: Figura impresa 3D con estilo de DeadPool en version grande, con excelente presencia para coleccionistas de Marvel.
-id_dolibarr:
+id_dolibarr: 42
 variacion:
   - nombre: Personalización
     lista:
