@@ -27,5 +27,5 @@ Impresión 3D gigante del busto del mercenario favorito DeadPool. Es una pieza s
 
 ## Características
 
-- **Altura:** 23 cm.
+- **Altura:** 17 cm.
 - **Personalización:** Añade el nombre que desees por un extra de $1.00
