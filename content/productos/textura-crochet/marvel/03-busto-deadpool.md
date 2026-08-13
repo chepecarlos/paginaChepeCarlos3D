@@ -6,16 +6,18 @@ etiquetas: busto, marvel, antihero
 producto: true
 slug: busto-deadpool
 precio: $28.00
-imagen: marvel/busto-deadpool/01.busto-deadpool.jpg
-galeria: marvel/busto-deadpool/
 resumen: Figura impresa 3D con estilo de DeadPool en version grande, con excelente presencia para coleccionistas de Marvel.
 id_dolibarr:
 variacion:
   - nombre: Personalización
     lista:
       - titulo: Original
+        imagen: marvel/busto-deadpool/deadpool-normal/01.busto-deadpool.png
+        galeria: marvel/busto-deadpool/deadpool-normal
       - titulo: Personalizado
         precio: +$1.00
+        imagen: marvel/busto-deadpool/deadpool-personalizado/01.busto-deadpool-personalizado.jpg
+        galeria: marvel/busto-deadpool/deadpool-personalizado
 ---
 
 ## Descripción
