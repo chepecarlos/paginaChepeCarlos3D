@@ -1,6 +1,6 @@
 ---
 titulo: Maceta de Pokebola
-fecha: 2026-12-8
+fecha: 2026-8-12
 categoria: Pokemon
 etiquetas: pokemon, pokebola, maseta, jardineria
 producto: true
