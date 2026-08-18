@@ -1907,6 +1907,42 @@
     "size": 2129292,
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dc/batman-grande/05_Batman.webp"
   },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/01.Stitch_llavero.png": {
+    "mtime_ns": 1787009569498340752,
+    "quality": 72,
+    "size": 1696071,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/01.Stitch_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/02.Stitch_llavero.png": {
+    "mtime_ns": 1787009669184114667,
+    "quality": 72,
+    "size": 1643763,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/02.Stitch_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/03.Stitch_llavero.png": {
+    "mtime_ns": 1787009834330290088,
+    "quality": 72,
+    "size": 1684615,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/03.Stitch_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/04.Stitch_llavero.png": {
+    "mtime_ns": 1787011649947996601,
+    "quality": 72,
+    "size": 1638481,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/04.Stitch_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/05.Stitch_llavero.png": {
+    "mtime_ns": 1787012637479399994,
+    "quality": 72,
+    "size": 1688246,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/05.Stitch_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/06.Stitch_llavero.png": {
+    "mtime_ns": 1787012666275152626,
+    "quality": 72,
+    "size": 1668542,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/06.Stitch_llavero.webp"
+  },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dragon-ball/01_Goku.png": {
     "mtime_ns": 1777418693893950255,
     "quality": 72,
@@ -2399,29 +2435,65 @@
     "size": 2353745,
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/deadpool-grande/03_DeadPool.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman-grande/01_Spiderman.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/01_Spiderman.png": {
     "mtime_ns": 1778290970074389856,
     "quality": 72,
     "size": 1985680,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman-grande/01_Spiderman.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/01_Spiderman.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman-grande/02_Spiderman.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/02_Spiderman.png": {
     "mtime_ns": 1778290977511503254,
     "quality": 72,
     "size": 2292607,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman-grande/02_Spiderman.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/02_Spiderman.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman-grande/03_Spiderman.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/03_Spiderman.png": {
     "mtime_ns": 1778290985384622548,
     "quality": 72,
     "size": 2212316,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman-grande/03_Spiderman.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/03_Spiderman.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman-grande/04_Spiderman.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/04_Spiderman.png": {
     "mtime_ns": 1778290991834719708,
     "quality": 72,
     "size": 2152386,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman-grande/04_Spiderman.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/04_Spiderman.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/01.Spiderman_llavero.png": {
+    "mtime_ns": 1787007784933904086,
+    "quality": 72,
+    "size": 1591672,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/01.Spiderman_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/02.Spiderman_llavero.png": {
+    "mtime_ns": 1787007892522076467,
+    "quality": 72,
+    "size": 1765068,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/02.Spiderman_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/03.Spiderman_llavero.png": {
+    "mtime_ns": 1787008016301605090,
+    "quality": 72,
+    "size": 1527273,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/03.Spiderman_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/04.Spiderman_llavero.png": {
+    "mtime_ns": 1787008087482941361,
+    "quality": 72,
+    "size": 1664676,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/04.Spiderman_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/05.Spiderman_llavero.png": {
+    "mtime_ns": 1787008108546216217,
+    "quality": 72,
+    "size": 1647781,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/05.Spiderman_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/06.Spiderman_llavero.png": {
+    "mtime_ns": 1787008156810889270,
+    "quality": 72,
+    "size": 1627488,
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/06.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_01.png": {
     "mtime_ns": 1785886053539233639,
