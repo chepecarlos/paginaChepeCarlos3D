@@ -1,6 +1,6 @@
 ---
 titulo: SpiderMan Estilo Crochet
-fecha: 2026-05-1
+fecha: 2026-8-17
 categoria: Marvel
 etiquetas: crochet, amigurumi, superhero, articulado
 producto: true
