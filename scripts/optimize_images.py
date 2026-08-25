@@ -14,7 +14,7 @@ except ImportError as exc:  # pragma: no cover - handled at runtime
     raise SystemExit("Pillow no esta instalado. Ejecuta: pip install pillow") from exc
 
 
-DEFAULT_FORMATS = (".jpg", ".jpeg", ".png")
+DEFAULT_FORMATS = (".jpg", ".jpeg", ".png", ".gif")
 STATE_FILE_NAME = ".optimize_state.json"
 
 
@@ -156,7 +156,11 @@ def cleanup_orphaned_webp(
 def optimize_image(source_file: Path, target_file: Path, quality: int) -> None:
     target_file.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source_file) as image:
-        image.save(target_file, format="WEBP", quality=quality, method=6)
+        save_kwargs = {"format": "WEBP", "quality": quality, "method": 6}
+        if getattr(image, "is_animated", False):
+            save_kwargs["save_all"] = True
+            save_kwargs["loop"] = image.info.get("loop", 0)
+        image.save(target_file, **save_kwargs)
 
 
 def build_parser() -> argparse.ArgumentParser:

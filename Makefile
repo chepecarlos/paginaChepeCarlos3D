@@ -101,7 +101,7 @@ optimize-images:
 		--source-dir images \
 		--dest-dir images_opt \
 		--quality 72 \
-		--formats ".jpg,.jpeg,.png"
+		--formats ".jpg,.jpeg,.png,.gif"
 
 optimize-images-force:
 	"$(PY)" scripts/optimize_images.py \
@@ -109,7 +109,7 @@ optimize-images-force:
 		--source-dir images \
 		--dest-dir images_opt \
 		--quality 72 \
-		--formats ".jpg,.jpeg,.png" \
+		--formats ".jpg,.jpeg,.png,.gif" \
 		--force
 
 optimize-images-report:
@@ -118,7 +118,7 @@ optimize-images-report:
 		--source-dir images \
 		--dest-dir images_opt \
 		--products-subdir productos \
-		--formats ".jpg,.jpeg,.png"
+		--formats ".jpg,.jpeg,.png,.gif"
 
 instagram-feed-build: clean instagram-feed html
 

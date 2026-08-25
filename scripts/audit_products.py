@@ -160,7 +160,7 @@ def _check_aspect_ratio(img_path: Path, label: str) -> list[Issue]:
     """Emite warning si la imagen no es cuadrada (relación 1:1)."""
     if not _PIL_AVAILABLE or not img_path.exists():
         return []
-    if img_path.suffix.lower() in (".svg", ".gif"):
+    if img_path.suffix.lower() == ".svg":
         return []
     try:
         with PILImage.open(img_path) as im:
