@@ -27,13 +27,15 @@ IMAGE_OPTIMIZATION_FORMATS = [".jpg", ".jpeg", ".png"]
 
 # Plugins locales
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["yaml_metadata", "auto_gallery"]
+PLUGINS = ["yaml_metadata", "auto_gallery", "sitemap"]
 
 # Página de catálogo generada desde template
 # → accesible en /catalogo/index.html
+# robots.txt también se genera desde template para poder usar SITEURL
 TEMPLATE_PAGES = {
     "catalog.html": "catalogo/index.html",
     "search.html": "buscar/index.html",
+    "robots.txt": "robots.txt",
 }
 
 # Email de contacto (se muestra en páginas de producto)

@@ -45,6 +45,45 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
 
 ---
 
+## SEO y descubribilidad
+
+### Alta prioridad
+
+- [x] **Sitemap.xml y robots.txt**
+  Implementado: `plugins/sitemap.py` (nuevo plugin local, mismo patrón de signals que `auto_gallery.py`) genera `sitemap.xml` con todos los artículos y páginas al finalizar el build.
+  `robots.txt` se genera desde `theme/templates/robots.txt` vía `TEMPLATE_PAGES` (igual que `catalog.html`), para poder usar `SITEURL` dinámico y apuntar al sitemap.
+
+- [ ] **Datos estructurados JSON-LD (`schema.org/Product`)**
+  `article.html` no emite structured data para productos (precio, imagen, disponibilidad).
+  Agregarlo habilita "rich snippets" en resultados de Google (precio visible en la búsqueda), lo que mejora el CTR.
+
+### Impacto medio
+
+- [ ] **Verificar el sitio en Google Search Console**
+  (ver sección más abajo — pendiente ya documentado, se deja aquí como referencia cruzada de SEO)
+
+## Analítica
+
+- [ ] **Conectar Google Analytics (u otra herramienta)**
+  `GOOGLE_ANALYTICS` está comentado en `publishconf.py` línea 22 y no hay ningún script de analítica en el theme.
+  Sin esto no hay forma de saber qué productos generan más clics al botón de WhatsApp ni de dónde viene el tráfico.
+
+## Rendimiento (Core Web Vitals)
+
+- [ ] **`width`/`height` explícitos en imágenes de producto**
+  Ni `catalog.html` ni `article.html` los declaran, lo que causa layout shift (CLS) mientras cargan las imágenes.
+
+- [ ] **`fetchpriority="high"` en la imagen principal del producto**
+  La imagen candidata a LCP (`#product-main-image` en `article.html`) no tiene esta pista de prioridad de carga.
+
+## Calidad de código
+
+- [ ] **Tests automatizados y CI**
+  `playwright` ya está como dependencia de dev pero no hay archivos de test ni `.github/workflows`.
+  La lógica de precios/variaciones en `plugins/auto_gallery.py` (grupos combinables, precios relativos) es compleja y no tiene cobertura — un cambio ahí podría romper precios sin detectarse hasta producción.
+
+---
+
 ### Pulido de UX
 
 - [x] **Indicador de posición en la galería**
