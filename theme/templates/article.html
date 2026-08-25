@@ -35,6 +35,54 @@
   });
 </script>
 {% endif %}
+{% if article.product %}
+{% set _ld_images = [] %}
+{% if article.image %}
+{% set _ld_images = _ld_images + [SITEURL ~ '/' ~ resolve_image(article.image)] %}
+{% endif %}
+{% if article.auto_gallery %}
+{% for _img in article.auto_gallery %}
+{% set _resolved = SITEURL ~ '/' ~ resolve_image(_img) %}
+{% if _resolved not in _ld_images %}
+{% set _ld_images = _ld_images + [_resolved] %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% set _ld_description = (article.summary or article.title) | striptags | trim %}
+{% set _ld_price_min = (article.price_min or article.price or '') | replace('$', '') | replace(' ', '') %}
+{% set _ld_price_max = (article.price_max or article.price or '') | replace('$', '') | replace(' ', '') %}
+{% if _ld_price_min %}
+{% set ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  'name': article.title,
+  'description': _ld_description,
+  'url': SITEURL ~ '/' ~ article.url,
+  'brand': {'@type': 'Brand', 'name': SITENAME}
+} %}
+{% if _ld_images %}{% set _ = ld.update({'image': _ld_images}) %}{% endif %}
+{% if article.category %}{% set _ = ld.update({'category': article.category | string}) %}{% endif %}
+{% if _ld_price_min == _ld_price_max %}
+{% set _ = ld.update({'offers': {
+  '@type': 'Offer',
+  'url': SITEURL ~ '/' ~ article.url,
+  'priceCurrency': 'USD',
+  'price': _ld_price_min,
+  'availability': 'https://schema.org/InStock'
+}}) %}
+{% else %}
+{% set _ = ld.update({'offers': {
+  '@type': 'AggregateOffer',
+  'url': SITEURL ~ '/' ~ article.url,
+  'priceCurrency': 'USD',
+  'lowPrice': _ld_price_min,
+  'highPrice': _ld_price_max,
+  'availability': 'https://schema.org/InStock'
+}}) %}
+{% endif %}
+<script type="application/ld+json">{{ ld | tojson }}</script>
+{% endif %}
+{% endif %}
 {% endblock %}
 
 {% block content %}
