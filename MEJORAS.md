@@ -81,8 +81,9 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
 
 - [x] **Datos estructurados JSON-LD (`schema.org/Product`)**
   Implementado en `article.html` (bloque `head_extra`): emite `Product` con nombre, descripción, imágenes, categoría y marca.
-  Usa `Offer` cuando el producto tiene un precio único, o `AggregateOffer` (lowPrice/highPrice) cuando tiene variaciones con rango de precio.
+  Usa `Offer` cuando el producto tiene un precio único, o `AggregateOffer` (lowPrice/highPrice/offerCount) cuando tiene variaciones con rango de precio. `offerCount` es el total real de combinaciones (producto de las opciones de cada grupo de variación).
   `availability` se deja fijo en `InStock` porque son piezas hechas por encargo, no hay control de stock real.
+  Confirmado con Google Rich Results Test: "Se ha detectado 1 elemento válido". Quedan pendientes opcionales `review`/`aggregateRating` — no se agregan porque requerirían reseñas reales, que el sitio no tiene todavía.
 
 ### Impacto medio
 

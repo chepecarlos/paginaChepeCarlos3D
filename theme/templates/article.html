@@ -71,12 +71,17 @@
   'availability': 'https://schema.org/InStock'
 }}) %}
 {% else %}
+{% set _offer_count = namespace(value=1) %}
+{% for group in (article.variation_groups or []) %}
+{% set _offer_count.value = _offer_count.value * (group.opciones | length) %}
+{% endfor %}
 {% set _ = ld.update({'offers': {
   '@type': 'AggregateOffer',
   'url': SITEURL ~ '/' ~ article.url,
   'priceCurrency': 'USD',
   'lowPrice': _ld_price_min,
   'highPrice': _ld_price_max,
+  'offerCount': _offer_count.value,
   'availability': 'https://schema.org/InStock'
 }}) %}
 {% endif %}
