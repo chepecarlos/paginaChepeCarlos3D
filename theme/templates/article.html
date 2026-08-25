@@ -109,7 +109,7 @@
     <div class="product-detail-img">
       {% if main_image %}
       <div class="product-main-media">
-        <img id="product-main-image" src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }}" />
+        <img id="product-main-image" src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }}" fetchpriority="high" />
         <button class="product-lightbox-trigger" type="button" aria-label="Ver imagen en grande">⤢</button>
         <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
         <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>

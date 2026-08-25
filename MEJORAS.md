@@ -101,8 +101,8 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
 - [ ] **`width`/`height` explícitos en imágenes de producto**
   Ni `catalog.html` ni `article.html` los declaran, lo que causa layout shift (CLS) mientras cargan las imágenes.
 
-- [ ] **`fetchpriority="high"` en la imagen principal del producto**
-  La imagen candidata a LCP (`#product-main-image` en `article.html`) no tiene esta pista de prioridad de carga.
+- [x] **`fetchpriority="high"` en la imagen principal del producto**
+  Implementado: `#product-main-image` en `article.html` ahora tiene `fetchpriority="high"` para que el navegador la priorice como candidata a LCP.
 
 ## Calidad de código
 
