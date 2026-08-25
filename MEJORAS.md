@@ -53,9 +53,10 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
   Implementado: `plugins/sitemap.py` (nuevo plugin local, mismo patrón de signals que `auto_gallery.py`) genera `sitemap.xml` con todos los artículos y páginas al finalizar el build.
   `robots.txt` se genera desde `theme/templates/robots.txt` vía `TEMPLATE_PAGES` (igual que `catalog.html`), para poder usar `SITEURL` dinámico y apuntar al sitemap.
 
-- [ ] **Datos estructurados JSON-LD (`schema.org/Product`)**
-  `article.html` no emite structured data para productos (precio, imagen, disponibilidad).
-  Agregarlo habilita "rich snippets" en resultados de Google (precio visible en la búsqueda), lo que mejora el CTR.
+- [x] **Datos estructurados JSON-LD (`schema.org/Product`)**
+  Implementado en `article.html` (bloque `head_extra`): emite `Product` con nombre, descripción, imágenes, categoría y marca.
+  Usa `Offer` cuando el producto tiene un precio único, o `AggregateOffer` (lowPrice/highPrice) cuando tiene variaciones con rango de precio.
+  `availability` se deja fijo en `InStock` porque son piezas hechas por encargo, no hay control de stock real.
 
 ### Impacto medio
 
