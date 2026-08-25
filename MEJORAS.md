@@ -98,8 +98,8 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
 
 ## Rendimiento (Core Web Vitals)
 
-- [ ] **`width`/`height` explícitos en imágenes de producto**
-  Ni `catalog.html` ni `article.html` los declaran, lo que causa layout shift (CLS) mientras cargan las imágenes.
+- [x] ~~`width`/`height` explícitos en imágenes de producto~~ — **no hacía falta**
+  Revisado: todas las imágenes del sitio (catálogo, producto, relacionados, blog, Instagram) ya están dentro de contenedores con `aspect-ratio: 1/1` fijo en `style.css` (`.product-img-wrap`, `.product-main-media`, `.product-detail-img`, `.product-thumb`, `.post-card-thumb`, `.social-mosaic-item`). El CSS ya reserva el espacio antes de que cargue la imagen, igual que harían `width`/`height`, así que no hay CLS real que corregir aquí.
 
 - [x] **`fetchpriority="high"` en la imagen principal del producto**
   Implementado: `#product-main-image` en `article.html` ahora tiene `fetchpriority="high"` para que el navegador la priorice como candidata a LCP.
