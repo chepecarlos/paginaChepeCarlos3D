@@ -1212,6 +1212,43 @@ img {
     transition: transform var(--transition);
 }
 
+#product-main-image.slide-in-right {
+    animation: productSlideInRight 0.32s ease-out;
+}
+
+#product-main-image.slide-in-left {
+    animation: productSlideInLeft 0.32s ease-out;
+}
+
+@keyframes productSlideInRight {
+    from {
+        transform: translateX(32px);
+        opacity: 0.4;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes productSlideInLeft {
+    from {
+        transform: translateX(-32px);
+        opacity: 0.4;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #product-main-image.slide-in-right,
+    #product-main-image.slide-in-left {
+        animation: none;
+    }
+}
+
 .product-main-media.zoomed img {
     transform: scale(1.9);
 }
@@ -2451,6 +2488,10 @@ mark {
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+    }
+
+    .product-lightbox-trigger {
+        display: none;
     }
 
     .product-lightbox-content {

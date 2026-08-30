@@ -1,29 +1,8 @@
-{% extends "base.html" %} {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %} {% block description %}{{ article.summary }}{% endblock %}
-
-{%- block og_image -%}
-  {%- if article.product -%}
-    {%- set _og_img = article.variation_image or article.image -%}
-    {%- if not _og_img and article.auto_gallery -%}
-      {%- set _og_img = article.auto_gallery[0] -%}
-    {%- elif not _og_img and article.gallery -%}
-      {%- set _og_img = article.gallery.split(',')[0] | trim -%}
-    {%- endif -%}
-    {%- if _og_img -%}
-      {{- SITEURL ~ '/' ~ resolve_image(_og_img) -}}
-    {%- else -%}
-      {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}}
-    {%- endif -%}
-  {%- elif article.first_image -%}
-    {{- SITEURL ~ '/' ~ article.first_image -}}
-  {%- else -%}
-    {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}}
-  {%- endif -%}
-{%- endblock -%}
-
-{%- block twitter_image -%}{{ self.og_image() }}{%- endblock -%}
-
-{% block head_extra %}
-{% if article.product and FACEBOOK_PIXEL_ID %}
+{% extends "base.html" %} {% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %} {% block description %}{{ article.summary }}{% endblock %} {%- block og_image -%} {%- if article.product
+-%} {%- set _og_img = article.variation_image or article.image -%} {%- if not _og_img and article.auto_gallery -%} {%- set _og_img = article.auto_gallery[0] -%} {%- elif not _og_img and
+article.gallery -%} {%- set _og_img = article.gallery.split(',')[0] | trim -%} {%- endif -%} {%- if _og_img -%} {{- SITEURL ~ '/' ~ resolve_image(_og_img) -}} {%- else -%} {{- SITEURL ~
+'/theme/images/logo-whatsapp.svg' -}} {%- endif -%} {%- elif article.first_image -%} {{- SITEURL ~ '/' ~ article.first_image -}} {%- else -%} {{- SITEURL ~ '/theme/images/logo-whatsapp.svg' -}} {%-
+endif -%} {%- endblock -%} {%- block twitter_image -%}{{ self.og_image() }}{%- endblock -%} {% block head_extra %} {% if article.product and FACEBOOK_PIXEL_ID %}
 <script>
   fbq('track', 'ViewContent', {
     content_name: {{ article.title | tojson }},
@@ -34,63 +13,20 @@
     currency: 'USD',{% endif %}
   });
 </script>
-{% endif %}
-{% if article.product %}
-{% set _ld_images = [] %}
-{% if article.image %}
-{% set _ld_images = _ld_images + [SITEURL ~ '/' ~ resolve_image(article.image)] %}
-{% endif %}
-{% if article.auto_gallery %}
-{% for _img in article.auto_gallery %}
-{% set _resolved = SITEURL ~ '/' ~ resolve_image(_img) %}
-{% if _resolved not in _ld_images %}
-{% set _ld_images = _ld_images + [_resolved] %}
-{% endif %}
-{% endfor %}
-{% endif %}
-{% set _ld_description = (article.summary or article.title) | striptags | trim %}
-{% set _ld_price_min = (article.price_min or article.price or '') | replace('$', '') | replace(' ', '') %}
-{% set _ld_price_max = (article.price_max or article.price or '') | replace('$', '') | replace(' ', '') %}
-{% if _ld_price_min %}
-{% set ld = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  'name': article.title,
-  'description': _ld_description,
-  'url': SITEURL ~ '/' ~ article.url,
-  'brand': {'@type': 'Brand', 'name': SITENAME}
-} %}
-{% if _ld_images %}{% set _ = ld.update({'image': _ld_images}) %}{% endif %}
-{% if article.category %}{% set _ = ld.update({'category': article.category | string}) %}{% endif %}
-{% if _ld_price_min == _ld_price_max %}
-{% set _ = ld.update({'offers': {
-  '@type': 'Offer',
-  'url': SITEURL ~ '/' ~ article.url,
-  'priceCurrency': 'USD',
-  'price': _ld_price_min,
-  'availability': 'https://schema.org/InStock'
-}}) %}
-{% else %}
-{% set _offer_count = namespace(value=1) %}
-{% for group in (article.variation_groups or []) %}
-{% set _offer_count.value = _offer_count.value * (group.opciones | length) %}
-{% endfor %}
-{% set _ = ld.update({'offers': {
-  '@type': 'AggregateOffer',
-  'url': SITEURL ~ '/' ~ article.url,
-  'priceCurrency': 'USD',
-  'lowPrice': _ld_price_min,
-  'highPrice': _ld_price_max,
-  'offerCount': _offer_count.value,
-  'availability': 'https://schema.org/InStock'
-}}) %}
-{% endif %}
-<script type="application/ld+json">{{ ld | tojson }}</script>
-{% endif %}
-{% endif %}
-{% endblock %}
-
-{% block content %}
+{% endif %} {% if article.product %} {% set _ld_images = [] %} {% if article.image %} {% set _ld_images = _ld_images + [SITEURL ~ '/' ~ resolve_image(article.image)] %} {% endif %} {% if
+article.auto_gallery %} {% for _img in article.auto_gallery %} {% set _resolved = SITEURL ~ '/' ~ resolve_image(_img) %} {% if _resolved not in _ld_images %} {% set _ld_images = _ld_images +
+[_resolved] %} {% endif %} {% endfor %} {% endif %} {% set _ld_description = (article.summary or article.title) | striptags | trim %} {% set _ld_price_min = (article.price_min or article.price or '')
+| replace('$', '') | replace(' ', '') %} {% set _ld_price_max = (article.price_max or article.price or '') | replace('$', '') | replace(' ', '') %} {% if _ld_price_min %} {% set ld = { '@context':
+'https://schema.org', '@type': 'Product', 'name': article.title, 'description': _ld_description, 'url': SITEURL ~ '/' ~ article.url, 'brand': {'@type': 'Brand', 'name': SITENAME} } %} {% if _ld_images
+%}{% set _ = ld.update({'image': _ld_images}) %}{% endif %} {% if article.category %}{% set _ = ld.update({'category': article.category | string}) %}{% endif %} {% if _ld_price_min == _ld_price_max %}
+{% set _ = ld.update({'offers': { '@type': 'Offer', 'url': SITEURL ~ '/' ~ article.url, 'priceCurrency': 'USD', 'price': _ld_price_min, 'availability': 'https://schema.org/InStock' }}) %} {% else %}
+{% set _offer_count = namespace(value=1) %} {% for group in (article.variation_groups or []) %} {% set _offer_count.value = _offer_count.value * (group.opciones | length) %} {% endfor %} {% set _ =
+ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article.url, 'priceCurrency': 'USD', 'lowPrice': _ld_price_min, 'highPrice': _ld_price_max, 'offerCount': _offer_count.value,
+'availability': 'https://schema.org/InStock' }}) %} {% endif %}
+<script type="application/ld+json">
+  {{ ld | tojson }}
+</script>
+{% endif %} {% endif %} {% endblock %} {% block content %}
 <div class="container">
   <nav class="breadcrumb" aria-label="Navegación">
     <a href="{{ SITEURL }}/">Inicio</a>
@@ -101,8 +37,8 @@
     {% endif %}
     <span aria-current="page">{{ article.title }}</span>
   </nav>
-  {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.variation_image or article.image %} {% if article.auto_gallery %} {% set support_images =
-  article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
+  {% if article.product %} {# ---- Vista especial para productos ---- #} {% set support_images = [] %} {% set main_image = article.variation_image or article.image %} {% if article.auto_gallery %} {%
+  set support_images = article.auto_gallery %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] %} {% endif %} {% elif article.gallery %} {% set support_images =
   article.gallery.split(',') %} {% if (not main_image) and support_images %} {% set main_image = support_images[0] | trim %} {% endif %} {% endif %} {% if main_image %} {% set main_image =
   resolve_image(main_image) %} {% endif %}
   <article class="product-detail">
@@ -139,9 +75,7 @@
       <p class="product-price large" id="product-price">{{ article.price }}</p>
       {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %}
       <div class="variation-selector" data-group-index="{{ group_index }}">
-        <p class="variation-label">
-          {{ group.nombre or 'Variación' }}: <strong class="variation-selected-label">{{ group.opciones[0].titulo }}</strong>
-        </p>
+        <p class="variation-label">{{ group.nombre or 'Variación' }}: <strong class="variation-selected-label">{{ group.opciones[0].titulo }}</strong></p>
         <div class="variation-options" role="group" aria-label="{{ group.nombre or 'Variación' }}">
           {% for option in group.opciones %}
           <button
@@ -151,12 +85,42 @@
             data-titulo="{{ option.titulo }}"
             data-precio="{{ option.precio }}"
             data-precio-valor="{{ option.precio_valor }}"
-            {% if option.imagen %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"{% endif %}
-            {% if option.galeria_images %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"{% endif %}
-            {% for key, value in option.items() if key not in ['titulo', 'precio', 'precio_relativo', 'precio_valor', 'imagen', 'galeria', 'galeria_images'] %}data-{{ key }}="{{ value }}" {% endfor %}
+            {%
+            if
+            option.imagen
+            %}data-imagen="{{ SITEURL }}/{{ resolve_image(option.imagen) }}"
+            {%
+            endif
+            %}
+            {%
+            if
+            option.galeria_images
+            %}data-galeria="{% for img in option.galeria_images %}{{ SITEURL }}/{{ resolve_image(img) }}{% if not loop.last %},{% endif %}{% endfor %}"
+            {%
+            endif
+            %}
+            {%
+            for
+            key,
+            value
+            in
+            option.items()
+            if
+            key
+            not
+            in
+            ['titulo', 'precio', 'precio_relativo', 'precio_valor', 'imagen', 'galeria', 'galeria_images']
+            %}data-{{
+            key
+            }}="{{ value }}"
+            {%
+            endfor
+            %}
           >
             <span class="variation-option-titulo">{{ option.titulo }}</span>
-            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif group_index == 0 and option.precio %}<span class="variation-option-precio">{{ option.precio }}</span>{% endif %}
+            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif group_index == 0 and option.precio %}<span class="variation-option-precio"
+              >{{ option.precio }}</span
+            >{% endif %}
           </button>
           {% endfor %}
         </div>
@@ -226,8 +190,7 @@
     </div>
   </article>
 
-  {% set related = article.category.articles | selectattr('product') | reject('equalto', article) | list %}
-  {% if related %}
+  {% set related = article.category.articles | selectattr('product') | reject('equalto', article) | list %} {% if related %}
   <section class="related-products">
     <h2 class="related-products-title">También te puede interesar</h2>
     <div class="product-grid">
@@ -253,9 +216,7 @@
       {% endfor %}
     </div>
   </section>
-  {% endif %}
-
-  {% else %} {# ---- Vista estándar para artículos de blog ---- #}
+  {% endif %} {% else %} {# ---- Vista estándar para artículos de blog ---- #}
   <article class="blog-post">
     <header class="post-header">
       <h1>{{ article.title }}</h1>
@@ -294,7 +255,7 @@
         return;
       }
       galleryCounter.hidden = false;
-      galleryCounter.textContent = (currentIndex + 1) + " / " + imageList.length;
+      galleryCounter.textContent = currentIndex + 1 + " / " + imageList.length;
     };
     let thumbs = Array.from(document.querySelectorAll(".product-thumb"));
     const normalize = (url) => new URL(url, window.location.href).href;
@@ -341,12 +302,27 @@
       });
     };
 
+    const SLIDE_DURATION = 500;
+    const swapMainImage = (src, direction) => {
+      if (!src || normalize(src) === normalize(mainImage.src)) return;
+      mainImage.classList.remove("slide-in-left", "slide-in-right");
+      void mainImage.offsetWidth; // reinicia la animación si ya estaba corriendo
+      mainImage.src = src;
+      const enterClass = direction === "prev" ? "slide-in-left" : "slide-in-right";
+      mainImage.classList.add(enterClass);
+      window.setTimeout(() => {
+        mainImage.classList.remove(enterClass);
+      }, SLIDE_DURATION);
+    };
+
     const setImageByIndex = (index) => {
       if (!imageList.length) return;
+      const previousIndex = currentIndex;
       currentIndex = (index + imageList.length) % imageList.length;
       const nextImage = imageList[currentIndex];
+      const direction = currentIndex < previousIndex ? "prev" : "next";
       disableZoom();
-      mainImage.src = nextImage;
+      swapMainImage(nextImage, direction);
       if (lightboxImage) {
         lightboxImage.src = nextImage;
       }
@@ -411,7 +387,7 @@
           return;
         }
         disableZoom();
-        mainImage.src = newImage;
+        swapMainImage(newImage);
         setActiveThumb(newImage);
       });
     };
@@ -424,7 +400,7 @@
             <button class="product-thumb${index === 0 ? " active" : ""}" type="button" data-image="${image}" aria-label="Ver imagen ${index + 1} de ${mainImage.alt}">
               <img src="${image}" alt="${mainImage.alt} - imagen ${index + 1}" loading="lazy" />
             </button>
-          `
+          `,
         )
         .join("");
       thumbs = Array.from(thumbsContainer.querySelectorAll(".product-thumb"));
@@ -438,7 +414,7 @@
       disableZoom();
       imageList = deduped;
       currentIndex = 0;
-      mainImage.src = imageList[0];
+      swapMainImage(imageList[0]);
       if (lightboxImage) {
         lightboxImage.src = imageList[0];
       }
@@ -511,17 +487,25 @@
     if (media) {
       let touchStartX = 0;
       let touchStartY = 0;
-      media.addEventListener("touchstart", (e) => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-      media.addEventListener("touchend", (e) => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        const dy = e.changedTouches[0].clientY - touchStartY;
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-          setImageByIndex(dx < 0 ? currentIndex + 1 : currentIndex - 1);
-        }
-      }, { passive: true });
+      media.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        },
+        { passive: true },
+      );
+      media.addEventListener(
+        "touchend",
+        (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            setImageByIndex(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+          }
+        },
+        { passive: true },
+      );
     }
 
     syncZoomAvailability();
