@@ -41,7 +41,7 @@ TEMPLATE_PAGES = {
 }
 
 # Email de contacto (se muestra en el pie de página)
-CONTACT_EMAIL = "ventas@chepecarlos.com"
+CONTACT_EMAIL = "chepecarlos@chepecarlos.com"
 
 # Número de WhatsApp para cotizaciones (formato: 50369737593)
 WHATSAPP_NUMBER = "50376161812"  # Modifica con tu número de WhatsApp
