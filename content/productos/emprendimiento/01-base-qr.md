@@ -1,6 +1,6 @@
 ---
 titulo: Base de QR
-fecha: 2026-03-9
+fecha: 2026-09-3
 categoria: emprendimiento
 etiquetas: link, qr, emprendimiento, emprendedor
 producto: true
