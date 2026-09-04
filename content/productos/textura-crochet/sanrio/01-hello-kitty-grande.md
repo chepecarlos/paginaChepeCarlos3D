@@ -9,8 +9,8 @@ variacion:
   - nombre: Tamaño
     lista:
       - titulo: Llavero
-        precio: $3.00
-        altura: 4.5 cm
+        precio: $5.00
+        altura: 7 cm
         imagen: sanrio/hello-kitty/llavero/01_Kitty-llavero.png
         galeria: sanrio/hello-kitty/llavero
         id_dolibarr: 39
