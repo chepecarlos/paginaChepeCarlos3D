@@ -16,7 +16,7 @@ variacion:
       galeria: emprendimiento/base-qr
       id_dolibarr: 
     - titulo: QR Extra
-      precio: +$4.00
+      precio: $4.00
       id_dolibarr:
 ---
 
@@ -24,9 +24,20 @@ variacion:
 
 - **Tamaño Base:** 14x12x10
 - **Tamaño QR:** 10x10
-- **Personalización:** Añade el nombre que desees por un extra de $1.00.
 
 ## Descripción:
 
 Base con Código QR Personalizado para Emprendedores 📱💼
-¡Haz que conectar con tus clientes sea más fácil que nunca! Esta base impresa en 3D está diseñada para exhibir de manera elegante y visible el código QR de tu negocio (redes sociales, catálogo digital, menú).
+
+¡Haz que conectar con tus clientes sea más fácil que nunca! 
+
+Esta base impresa en 3D está diseñada para exhibir de manera elegante y visible el código QR de tu negocio:
+
+- Redes Sociales
+- WhatsApp
+- Sitio Web
+- Formularios
+- Catalogo Digitales
+- Menús
+- Contraseña Wifi
+- Muchos mas
