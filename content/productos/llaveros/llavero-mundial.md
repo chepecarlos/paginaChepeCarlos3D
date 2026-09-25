@@ -1,7 +1,8 @@
+---
 titulo: Copa del Mundo Llavero
 fecha: 2026-07-10
 categoria: llaveros
-etiquetas: juego, futbol, mundial, deporte
+etiquetas: juego, futbol, mundial, deporte, llavero
 producto: true
 slug: llavero-mundial
 precio: $2.00
@@ -9,7 +10,7 @@ imagen: llaveros/llavero-mundial/01_llavero-mundial.png
 galeria: llaveros/llavero-mundial
 resumen: Llavero de la copa del mundo para aficionados del Futbol y del Mundial.
 id_dolibarr: 40
-
+---
 ## Descripción
 
 ¿Eres un verdadero apasionado del fútbol? Ahora puedes llevar el trofeo más deseado del planeta a donde quiera que vayas. 🌍⚽
