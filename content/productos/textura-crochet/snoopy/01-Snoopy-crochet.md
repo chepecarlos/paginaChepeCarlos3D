@@ -2,7 +2,7 @@
 titulo: Snoopy Estilo Crochet
 fecha: 2026-06-29
 categoria: Peanuts
-etiquetas: crochet, amigurumi, articulado
+etiquetas: crochet, amigurumi, articulado, llavero
 producto: true
 slug: Snoopy-crochet
 variacion:

@@ -2,7 +2,7 @@
 titulo: Mewtwo
 fecha: 2026-07-02
 categoria: pokemon
-etiquetas: producto, crochet, amigurumi, pokemon, anime
+etiquetas: producto, crochet, amigurumi, pokemon, anime, llavero
 producto: true
 slug: mewtwo
 resumen: Figura impresa 3D con estilo Mewtwo en version grande, con excelente presencia para coleccionistas de Pokemon.

@@ -2,7 +2,7 @@
 titulo: SpiderMan Estilo Crochet
 fecha: 2026-8-17
 categoria: Marvel
-etiquetas: crochet, amigurumi, superhero, articulado
+etiquetas: crochet, amigurumi, superhero, articulado, llavero
 producto: true
 slug: spiderman-grande
 precio: $28.00
