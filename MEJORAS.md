@@ -42,6 +42,8 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
 
 - [ ] **Política de devoluciones** — Qué cubre, qué no, plazos. Reduce fricción en la decisión de compra.
 
+- [ ] **Logo o foto de cuenta en `/links/`** — Hoy `links.html` (`.links-avatar`) muestra solo la inicial de `SITENAME`. Reemplazar por un `<img>` con el logo o foto de perfil (ej. `theme/static/images/avatar.webp`).
+
 ---
 
 ## Google Search Console

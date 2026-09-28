@@ -36,6 +36,7 @@ TEMPLATE_PAGES = {
     "catalog.html": "catalogo/index.html",
     "search.html": "buscar/index.html",
     "blog.html": "blog/index.html",
+    "links.html": "links/index.html",
     "404.html": "404.html",
     "robots.txt": "robots.txt",
 }

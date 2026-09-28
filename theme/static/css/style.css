@@ -2749,3 +2749,82 @@ mark {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+/* ============================================================
+   Links (estilo Linktree)
+   ============================================================ */
+.links-page {
+    background: var(--color-dark);
+    min-height: calc(100vh - 64px);
+    padding: 56px 0 80px;
+}
+
+.links-page__inner {
+    max-width: 460px;
+    text-align: center;
+}
+
+.links-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 16px;
+}
+
+.links-name {
+    color: var(--color-white);
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.links-bio {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+}
+
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--color-white);
+    color: var(--color-dark);
+    padding: 16px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.link-btn:hover {
+    background: var(--color-light);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.link-btn-accent {
+    background: var(--color-accent);
+}
+
+.link-btn-accent:hover {
+    background: #e0a02c;
+}
+
+.link-btn-icon,
+.link-btn svg {
+    width: 22px;
+    height: 22px;
+}
