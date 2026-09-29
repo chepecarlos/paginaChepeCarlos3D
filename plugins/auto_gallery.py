@@ -55,7 +55,6 @@ METADATA_ALIASES = {
     "slug": ("slug_es",),
     "date": ("fecha",),
     "modified": ("modificado",),
-    "author": ("autor",),
     "lang": ("idioma",),
     "variation": ("variacion",),
     "variation_name": ("variacion_nombre",),

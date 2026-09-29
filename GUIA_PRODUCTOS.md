@@ -36,8 +36,15 @@ Puedes usar cualquiera de estas dos columnas:
 | gallerydir    | galeria     |
 | date          | fecha       |
 | modified      | modificado  |
-| author        | autor       |
 | lang          | idioma      |
+
+Nota: `autor` da credito al disenador del modelo (solo encabezado YAML con `---`):
+
+```yaml
+autor:
+  - nombre: Atseini
+    link: https://makerworld.com/es/models/2456380-mewtwo-chibi
+```
 
 Nota: tambien se acepta gallery_dir y directorio_galeria como variantes de gallerydir.
 Nota: Pelican requiere Date para procesar el articulo. Puedes usar fecha y Date con el mismo valor para mantener consistencia en espanol.

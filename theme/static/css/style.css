@@ -1448,6 +1448,12 @@ img {
     margin-bottom: 12px;
 }
 
+.model-credits {
+    margin: -8px 0 24px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
 .related-actions {
     display: flex;
     flex-direction: column;

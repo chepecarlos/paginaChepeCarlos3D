@@ -8,6 +8,9 @@ slug: mewtwo
 resumen: Figura impresa 3D con estilo Mewtwo en version grande, con excelente presencia para coleccionistas de Pokemon.
 imagen: pokemon/mewtwo/mewtwo-mediano/03_Mewtwo-mediano.png
 id_dolibarr:
+autor: 
+  - nombre: Atseini
+    link: https://makerworld.com/es/models/2456380-mewtwo-chibi
 variacion:
   - nombre: Tamaño
     lista:

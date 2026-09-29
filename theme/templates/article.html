@@ -150,6 +150,13 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
 
       <div class="product-detail-content">{{ article.content }}</div>
 
+      {% set autores = article.metadata.get('autor') %} {% if autores is iterable and autores is not string %}
+      <p class="model-credits">
+        Diseño del modelo:
+        {% for a in autores %}{% if a.link %}<a href="{{ a.link }}" target="_blank" rel="noopener">{{ a.nombre }}</a>{% else %}{{ a.nombre }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}
+      </p>
+      {% endif %}
+
       <div class="related-actions">
         {% if article.tags %}
         <div class="related-tags">
