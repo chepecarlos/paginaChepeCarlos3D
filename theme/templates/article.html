@@ -72,7 +72,7 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       {% if article.category %}
       <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
       {% endif %} {% if article.price %}
-      <p class="product-price large" id="product-price">{{ article.price }}</p>
+      <p class="product-price large" id="product-price" aria-live="polite">{{ article.price }}</p>
       {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %}
       <div class="variation-selector" data-group-index="{{ group_index }}">
         <p class="variation-label">{{ group.nombre or 'Variación' }}: <strong class="variation-selected-label">{{ group.opciones[0].titulo }}</strong></p>
@@ -81,6 +81,7 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
           <button
             type="button"
             class="variation-option{% if loop.first %} active{% endif %}"
+            aria-pressed="{{ 'true' if loop.first else 'false' }}"
             data-group-index="{{ group_index }}"
             data-titulo="{{ option.titulo }}"
             data-precio="{{ option.precio }}"
@@ -337,19 +338,25 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       updateCounter();
     };
 
+    let lightboxReturnFocus = null;
+
     const closeLightbox = () => {
       if (!lightboxRoot) return;
       lightboxOpen = false;
       lightboxRoot.classList.remove("is-open");
       document.body.style.overflow = "";
+      if (lightboxReturnFocus) lightboxReturnFocus.focus();
+      lightboxReturnFocus = null;
     };
 
     const openLightbox = () => {
       if (!lightboxRoot || !lightboxImage) return;
       lightboxOpen = true;
+      lightboxReturnFocus = document.activeElement;
       lightboxImage.src = imageList[currentIndex] || mainImage.src;
       lightboxRoot.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      lightboxRoot.querySelector(".product-lightbox-close").focus();
     };
 
     const buildLightbox = () => {
@@ -476,6 +483,14 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       if (event.key === "Escape") {
         closeLightbox();
       }
+      // Mantener el foco dentro del lightbox mientras está abierto
+      if (event.key === "Tab") {
+        const focusables = [...lightboxRoot.querySelectorAll("button:not([disabled])")];
+        const index = focusables.indexOf(document.activeElement);
+        const step = event.shiftKey ? -1 : 1;
+        event.preventDefault();
+        focusables[(index + step + focusables.length) % focusables.length].focus();
+      }
       if (event.key === "ArrowLeft") {
         setImageByIndex(currentIndex - 1);
       }
@@ -584,8 +599,12 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       options.forEach((option) => {
         option.addEventListener("click", () => {
           if (option.classList.contains("active")) return;
-          options.forEach((o) => o.classList.remove("active"));
+          options.forEach((o) => {
+            o.classList.remove("active");
+            o.setAttribute("aria-pressed", "false");
+          });
           option.classList.add("active");
+          option.setAttribute("aria-pressed", "true");
 
           const titulo = option.getAttribute("data-titulo");
           if (selectedLabel) selectedLabel.textContent = titulo;

@@ -1,4 +1,5 @@
 Title: Sobre ChepeCarlos3D
+Menu: Nosotros
 Date: 2026-03-24
 Status: published
 Slug: sobre-nosotros

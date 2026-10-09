@@ -1,3 +1,4 @@
+---
 titulo: Deadpool Estilo Crochet Grande
 fecha: 2026-05-1
 categoria: Marvel
@@ -9,6 +10,7 @@ imagen: marvel/deadpool-grande/01_DeadPool.png
 galeria: marvel/deadpool-grande/
 resumen: Figura impresa 3D con estilo de DeadPool en version grande, con excelente presencia para coleccionistas de Marvel.
 id_dolibarr: 24
+---
 
 ## Descripción
 

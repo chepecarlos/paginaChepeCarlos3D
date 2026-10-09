@@ -1,11 +1,16 @@
+---
 titulo: Base para llaveros
 fecha: 2026-05-14
 categoria: emprendimiento
 etiquetas: base, display, llaveros, pulseras, emprendimiento
 producto: false
 slug: base-llavero
+autor: 
+  - nombre: shay
+    link: https://makerworld.com/es/models/1953047-keychain-stand-carousel-twist-snap-lock
 precio: ???
 resumen: Base impresa 3D tipo base para colgar tus llaveros, pulseras e incluso cadenas de tu preferencia.
+---
 
 ## Descripción
 

@@ -62,7 +62,7 @@
               <li><a href="{{ SITEURL }}/catalogo/">Catálogo</a></li>
               <li><a href="{{ SITEURL }}/blog/">Blog</a></li>
               {% for p in pages %}
-              <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+              <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.menu or p.title }}</a></li>
               {% endfor %}
             </ul>
           </nav>
@@ -170,7 +170,7 @@
               <li><a href="{{ SITEURL }}/catalogo/">Catálogo</a></li>
               <li><a href="{{ SITEURL }}/blog/">Blog</a></li>
               {% for p in pages %}
-              <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+              <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.menu or p.title }}</a></li>
               {% endfor %}
             </ul>
           </div>

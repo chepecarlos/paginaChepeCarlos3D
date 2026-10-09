@@ -38,7 +38,7 @@
       <aside class="catalog-sidebar" id="catalog-sidebar">
         <div class="drawer-handle" aria-hidden="true"></div>
         <div class="sidebar-header">
-          <h3 class="sidebar-title">Filtrar por</h3>
+          <h2 class="sidebar-title">Filtrar por</h2>
           <div class="sidebar-header-actions">
             <button id="clear-filters" class="clear-filters-btn" hidden>Borrar filtros <span aria-hidden="true">×</span></button>
             <button class="sidebar-close-btn" id="sidebar-close" aria-label="Cerrar filtros">
@@ -103,7 +103,7 @@
 
       <div class="catalog-main">
         <div class="catalog-toolbar">
-          <span class="catalog-count" id="catalog-count">{{ productos | length }} producto{% if productos | length != 1 %}s{% endif %}</span>
+          <span class="catalog-count" id="catalog-count" aria-live="polite">{{ productos | length }} producto{% if productos | length != 1 %}s{% endif %}</span>
           <select id="sort-select" class="sort-select" aria-label="Ordenar productos">
             <option value="" disabled>Ordenar por</option>
             <option value="date-desc" selected>Lo más nuevo</option>

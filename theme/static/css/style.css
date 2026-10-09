@@ -2,8 +2,9 @@
    Variables y Reset
    ============================================================ */
 :root {
-    --color-primary: #068587;
-    /* Acua Base */
+    --color-primary: #067c7e;
+    /* Acua Base (oscurecido de #068587 para 4.5:1 sobre blanco y --color-light) */
+    --color-primary-rgb: 6, 124, 126;
     --color-primary-h: #044f51;
     /* Acua Base — hover */
     --color-dark: #112f41;
@@ -16,7 +17,8 @@
     --color-light: #eef5f5;
     --color-border: #c8e0e0;
     --color-white: #ffffff;
-    --color-price: #f2b134;
+    --color-price: #9c6300;
+    /* Ámbar tostado: el #f2b134 solo pasa contraste sobre fondos oscuros */
     --color-tech: #19d3da;
 
     --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -52,6 +54,20 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Foco de teclado: "html" sube la especificidad sobre los outline: none de cada control */
+html :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Sobre fondos oscuros el acua no llega a 3:1; el ámbar sí */
+html #site-header :focus-visible,
+html #site-footer :focus-visible,
+html .hero-main :focus-visible,
+html .product-lightbox :focus-visible {
+    outline-color: var(--color-accent);
 }
 
 img {
@@ -165,7 +181,7 @@ img {
 }
 
 .mobile-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .mobile-search-close {
@@ -1066,7 +1082,7 @@ img {
 .sort-select:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 0,0,0), 0.12);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.25);
 }
 
 .catalog-no-results {
@@ -1928,7 +1944,7 @@ img {
     padding: 20px 0;
     text-align: center;
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* ============================================================
@@ -1954,7 +1970,7 @@ img {
 }
 
 .nav-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .nav-search-input:focus {
@@ -2833,4 +2849,39 @@ mark {
 .link-btn svg {
     width: 22px;
     height: 22px;
+}
+/* ============================================================
+   Pantallas táctiles: objetivos de toque de al menos 44px
+   (con mouse se conserva la densidad original)
+   ============================================================ */
+@media (pointer: coarse) {
+    .footer-social-btn,
+    .sidebar-close-btn {
+        min-width: 44px;
+        min-height: 44px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar-section-toggle,
+    .btn-tag,
+    .social-ig-link {
+        min-height: 44px;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .price-slider::-webkit-slider-thumb {
+        width: 28px;
+        height: 28px;
+    }
+
+    .price-slider::-moz-range-thumb {
+        width: 28px;
+        height: 28px;
+    }
 }

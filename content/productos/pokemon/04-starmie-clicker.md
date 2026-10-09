@@ -10,6 +10,9 @@ imagen: pokemon/starmie-clicker/01.Starmie-clicker.png
 galeria: pokemon/starmie-clicker
 resumen: Figura impresa en 3D de starmie con mecanica para clickear de la franquicia de Pokemon
 id_dolibarr: 
+autor: 
+  - nombre: AstroDex_3D
+    link: https://makerworld.com/es/models/2205944-starmie-pokemon-clicker#profileId-2397354
 variacion:
   - nombre: Personalización
     lista:

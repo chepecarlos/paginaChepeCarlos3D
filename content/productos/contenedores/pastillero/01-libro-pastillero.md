@@ -9,6 +9,9 @@ precio: $7.00
 imagen: contenedores/pastillero/libro-pastillero/01.Libro-pastillero.png
 galeria: contenedores/pastillero/libro-pastillero
 id_dolibarr: 
+autor: 
+  - nombre: Yixeo
+    link: https://makerworld.com/es/models/1316343-the-book-storage-the-multi-storage-medicine-box
 variacion:
   nombre: Personalización
   lista:
