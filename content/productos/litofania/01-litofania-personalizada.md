@@ -1,7 +1,7 @@
 ---
-titulo: Litofania Personalizada con Base
+titulo: Litofanía Personalizada con Base
 fecha: 2026-05-1
-categoria: litofania
+categoria: Litofanía
 etiquetas: litofania, foto
 producto: true
 slug: litofania-personalizada
@@ -23,7 +23,7 @@ variacion:
 
 **Colores:** Los colores principales son a escala de grises.
 
-**Personalización:** Puedes personalizarlo con alguna forma (Flotante, Cuadriculada, Redondeada,) y ponerle el nombre de tu gusto por un costo extra.
+**Personalización:** Puedes personalizarlo con alguna forma (flotante, cuadriculada o redondeada) y ponerle el nombre de tu gusto por un costo extra.
 
 <span id="product-logo"></span>
 

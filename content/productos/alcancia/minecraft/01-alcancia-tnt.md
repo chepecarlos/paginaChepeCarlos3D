@@ -1,4 +1,4 @@
-titulo: Alcancia TNT
+titulo: Alcancía TNT
 fecha: 2026-05-1
 categoria: Minecraft
 etiquetas: videojuego, alcancia

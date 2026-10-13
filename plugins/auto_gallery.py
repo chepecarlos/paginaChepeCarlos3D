@@ -344,9 +344,28 @@ def resolve_optimized_image_path(path_value, settings):
     return normalized
 
 
+def resolve_thumb_image_path(path_value, settings):
+    """Miniatura (foto.thumb.webp) de scripts/optimize_images.py; si no existe, la imagen normal."""
+    dest_dir = normalize_media_path(settings.get("IMAGE_OPTIMIZATION_DEST_DIR", "images_opt"))
+    if path_value and normalize_media_path(path_value).startswith(f"{dest_dir}/"):
+        resolved = normalize_media_path(path_value)  # ya viene resuelta (ej. main_image)
+    else:
+        resolved = resolve_optimized_image_path(path_value, settings)
+    if not resolved or not str(resolved).endswith(".webp"):
+        return resolved
+    thumb_rel = str(resolved)[: -len(".webp")] + ".thumb.webp"
+    content_root = Path(settings.get("PATH", "content")).resolve()
+    if (content_root / thumb_rel).exists():
+        return thumb_rel
+    return resolved
+
+
 def _attach_helpers_to_env(env, settings):
     def _resolve_image(path_value):
         return resolve_optimized_image_path(path_value, settings)
+
+    def _resolve_thumb(path_value):
+        return resolve_thumb_image_path(path_value, settings)
 
     def _resolve_gallery(paths):
         if not paths:
@@ -357,6 +376,7 @@ def _attach_helpers_to_env(env, settings):
     env.filters["optimized_gallery"] = _resolve_gallery
     env.filters["price_value"] = _price_to_float
     env.globals["resolve_image"] = _resolve_image
+    env.globals["resolve_thumb"] = _resolve_thumb
     env.globals["resolve_gallery"] = _resolve_gallery
 
 
@@ -652,7 +672,7 @@ def _product_card_html(product, settings):
         product.auto_gallery[0] if getattr(product, "auto_gallery", None) else None
     )
     if image:
-        image = resolve_optimized_image_path(image, settings)
+        image = resolve_thumb_image_path(image, settings)
         image_html = f'<img src="/{image}" alt="{product.title}" loading="lazy">'
     else:
         image_html = '<div class="product-img-placeholder"><span>Sin imagen</span></div>'

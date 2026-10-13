@@ -1,7 +1,7 @@
 ---
-titulo: Cruz imagen Jesus
+titulo: Cruz imagen Jesús
 fecha: 2026-04-24
-categoria: religiosas
+categoria: Religiosas
 etiquetas: jesus, colgar
 producto: true
 slug: cruz-jesus

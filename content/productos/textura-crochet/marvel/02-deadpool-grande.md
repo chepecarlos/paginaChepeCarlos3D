@@ -8,7 +8,7 @@ slug: deadpool-grande
 precio: $28.00
 imagen: marvel/deadpool-grande/01_DeadPool.png
 galeria: marvel/deadpool-grande/
-resumen: Figura impresa 3D con estilo de DeadPool en version grande, con excelente presencia para coleccionistas de Marvel.
+resumen: Figura impresa 3D con estilo de Deadpool en versión grande, con excelente presencia para coleccionistas de Marvel.
 id_dolibarr: 24
 ---
 

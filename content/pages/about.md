@@ -5,19 +5,19 @@ Status: published
 Slug: sobre-nosotros
 Summary: Emprendimiento artesanal enfocado en piezas tejidas y productos personalizados para fans de anime, gaming y cultura pop.
 
-ChepeCarlos3D es un emprendimiento que combina creatividad, detalle y trabajo artesanal para ofrecer productos unicos.
+ChepeCarlos3D es un emprendimiento que combina creatividad, detalle y trabajo artesanal para ofrecer productos únicos.
 
-Nos enfocamos en piezas estilo crochet, articuladas y personalizadas para regalo, decoracion o coleccion. Cada producto se prepara con cuidado para entregar buena calidad y una experiencia de compra cercana.
+Nos enfocamos en piezas estilo crochet, articuladas y personalizadas para regalo, decoración o colección. Cada producto se prepara con cuidado para entregar buena calidad y una experiencia de compra cercana.
 
-## Que nos diferencia
+## Qué nos diferencia
 
-- Atencion directa por WhatsApp
-- Produccion artesanal por pedido
-- Opciones de personalizacion segun disponibilidad
-- Enfoque en acabados limpios y presentacion cuidada
+- Atención directa por WhatsApp
+- Producción artesanal por pedido
+- Opciones de personalización según disponibilidad
+- Enfoque en acabados limpios y presentación cuidada
 
 ## Cobertura y tiempos
 
-- Entrega local y envios segun zona
-- Tiempos de preparacion variables segun producto
-- Confirmacion de disponibilidad antes de cada pedido
+- Entrega local y envíos según zona
+- Tiempos de preparación variables según producto
+- Confirmación de disponibilidad antes de cada pedido

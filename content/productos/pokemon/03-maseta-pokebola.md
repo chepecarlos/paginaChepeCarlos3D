@@ -1,14 +1,14 @@
 ---
-titulo: Maceta de Pokebola
+titulo: Maceta de Pokébola
 fecha: 2026-8-12
-categoria: Pokemon
+categoria: Pokémon
 etiquetas: pokemon, pokebola, maseta, jardineria
 producto: true
 slug: maceta-pokebola
 precio: $15.00
 imagen: pokemon/maseta-pokebola/01.maseta-pokebola.png
 galeria: pokemon/maseta-pokebola
-resumen: Figura impresa en 3D de una maceta con estilo de pokebola de la franquicia de Pokemon
+resumen: Figura impresa en 3D de una maceta con estilo de Pokébola de la franquicia de Pokémon
 id_dolibarr: 
 variacion:
   - nombre: Personalización

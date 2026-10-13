@@ -7,7 +7,7 @@ slug: batman-grande
 precio: $28.00
 imagen: dc/batman-grande/01_Batman.png
 galeria: dc/batman-grande/
-resumen: Figura impresa 3D con estilo de Batman en version grande, con excelente presencia para coleccionistas de DC Comics.
+resumen: Figura impresa 3D con estilo de Batman en versión grande, con excelente presencia para coleccionistas de DC Comics.
 id_dolibarr: 26
 
 ## Descripción

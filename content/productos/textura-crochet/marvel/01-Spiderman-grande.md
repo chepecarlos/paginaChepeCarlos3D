@@ -1,12 +1,12 @@
 ---
-titulo: SpiderMan Estilo Crochet
+titulo: Spider-Man Estilo Crochet
 fecha: 2026-8-17
 categoria: Marvel
 etiquetas: crochet, amigurumi, superhero, articulado, llavero
 producto: true
 slug: spiderman-grande
 precio: $28.00
-resumen: Figura impresa 3D con estilo Spider-Man en version grande, con excelente presencia para coleccionistas de Marvel.
+resumen: Figura impresa 3D con estilo Spider-Man en versión grande, con excelente presencia para coleccionistas de Marvel.
 id_dolibarr: 23
 variacion:
   - nombre: Tamaño

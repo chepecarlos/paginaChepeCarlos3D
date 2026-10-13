@@ -5,7 +5,7 @@ categoria: One Piece
 etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: luffy-crochet
-resumen: Figura impresa 3D con estilo Luffy en version grande, con excelente presencia para coleccionistas de One Piece.
+resumen: Figura impresa 3D con estilo Luffy en versión grande, con excelente presencia para coleccionistas de One Piece.
 variacion:
   - nombre: Tamaño
     lista:
@@ -36,6 +36,6 @@ variacion:
 
 ## Descripción
 
-El espíritu del futuro Rey de los Piratas llega en una increíble impresión 3D de Luffy estilo crochet con cabeza articular! ⚓🍖
+¡El espíritu del futuro Rey de los Piratas llega en una increíble impresión 3D de Luffy estilo crochet con cabeza articulable! ⚓🍖
 Con detalles definidos y un acabado impecable, esta pieza captura la energía, determinación y carisma del capitán más querido del anime 💪✨.
 

@@ -8,15 +8,15 @@ slug: link-llavero
 precio: $5.00
 imagen: nintendo/link/01_Link-llavero.png
 galeria: nintendo/link
-resumen: Figura impresa 3D con estilo de link de el juego Zelda en version llavero, con excelente presencia para coleccionistas de la saga.
+resumen: Figura impresa 3D con estilo de Link del juego Zelda en versión llavero, con excelente presencia para coleccionistas de la saga.
 id_dolibarr:
 variacion:
-  nombre: personalizacion 
+  nombre: Personalización
   lista:
-    - titulo: original 
+    - titulo: Original
       precio: $5.00
       id_dolibarr: 
-    - titulo: personalizado
+    - titulo: Personalizado
       precio: +$1.00
       id_dolibarr: 
 ---
@@ -28,4 +28,4 @@ variacion:
 ## Características
 
 - **Altura:** 7 cm.
-- **Articulable:** Cuello completamente Articulable
+- **Articulable:** Cuello completamente articulable

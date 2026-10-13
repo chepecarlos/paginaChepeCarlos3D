@@ -40,6 +40,13 @@
     btn.addEventListener("click", function (e) {
       e.preventDefault();
 
+      // En producto, reutiliza el enlace del CTA principal (incluye URL y variación elegida)
+      const productCta = document.getElementById("whatsapp-cta");
+      if (productCta) {
+        window.open(productCta.href, "_blank", "noopener,noreferrer");
+        return;
+      }
+
       const { message } = createWhatsAppMessage();
       const cleanNumber = WHATSAPP_NUMBER.replace(/[^0-9]/g, "");
       const encodedMessage = encodeURIComponent(message);
@@ -47,6 +54,20 @@
 
       window.open(waUrl, "_blank", "noopener,noreferrer");
     });
+
+    // Se oculta mientras el precio, las variaciones o el CTA principal están en pantalla, para no duplicarlo ni taparlos
+    const buyBox = document.querySelectorAll("#product-price, .variation-selector, #whatsapp-cta");
+    if (buyBox.length && "IntersectionObserver" in window) {
+      const visible = new Set();
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+        btn.classList.toggle("is-hidden", visible.size > 0);
+      });
+      buyBox.forEach(function (el) { observer.observe(el); });
+    }
 
     // Tooltip/hint al pasar el mouse
     const productName = getProductName();

@@ -9,13 +9,16 @@ from pathlib import Path
 from typing import Dict, Iterable
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError as exc:  # pragma: no cover - handled at runtime
     raise SystemExit("Pillow no esta instalado. Ejecuta: pip install pillow") from exc
 
 
 DEFAULT_FORMATS = (".jpg", ".jpeg", ".png", ".gif")
 STATE_FILE_NAME = ".optimize_state.json"
+# Sufijo de la miniatura: foto.webp (grande) + foto.thumb.webp (tarjetas y
+# miniaturas). El plugin auto_gallery busca este mismo sufijo.
+THUMB_SUFFIX = ".thumb.webp"
 
 
 @dataclass
@@ -91,11 +94,16 @@ def source_to_target(
     return (dest_images_dir / rel_to_images).with_suffix(".webp")
 
 
+def thumb_path(target_file: Path) -> Path:
+    return target_file.with_name(target_file.stem + THUMB_SUFFIX)
+
+
 def should_process(
     source_file: Path,
     target_file: Path,
     state: Dict[str, dict],
     quality: int,
+    sizes: tuple[int, int],
     force: bool,
 ) -> bool:
     if force:
@@ -105,10 +113,10 @@ def should_process(
     signature = source_signature(source_file)
     previous = state.get(source_key)
 
-    if not target_file.exists() or not previous:
+    if not target_file.exists() or not thumb_path(target_file).exists() or not previous:
         return True
 
-    if previous.get("quality") != quality:
+    if previous.get("quality") != quality or previous.get("sizes") != list(sizes):
         return True
 
     return not (
@@ -130,6 +138,8 @@ def cleanup_orphaned_webp(
     deleted = 0
     for webp_file in sorted(dest_root.rglob("*.webp")):
         rel = webp_file.relative_to(dest_images_dir)
+        if rel.name.endswith(THUMB_SUFFIX):
+            rel = rel.with_name(rel.name[: -len(THUMB_SUFFIX)] + ".webp")
         source_base = (source_images_dir / rel).with_suffix("")
         source_parent = source_base.parent
         # Comparacion insensible a mayusculas: el filesystem puede tener
@@ -153,25 +163,50 @@ def cleanup_orphaned_webp(
     return deleted
 
 
-def optimize_image(source_file: Path, target_file: Path, quality: int) -> None:
+def optimize_image(
+    source_file: Path, target_file: Path, quality: int, sizes: tuple[int, int]
+) -> None:
+    """Genera la version grande y la miniatura, limitando el lado mayor."""
     target_file.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source_file) as image:
         save_kwargs = {"format": "WEBP", "quality": quality, "method": 6}
         if getattr(image, "is_animated", False):
+            # ponytail: los GIF animados no se redimensionan (habria que
+            # recorrer cuadro por cuadro); la miniatura es la misma animacion.
             save_kwargs["save_all"] = True
             save_kwargs["loop"] = image.info.get("loop", 0)
-        image.save(target_file, **save_kwargs)
+            image.save(target_file, **save_kwargs)
+            image.save(thumb_path(target_file), **save_kwargs)
+            return
+
+        # Las fotos de celular vienen giradas via EXIF; WebP no conserva ese
+        # dato, asi que se aplica la rotacion antes de guardar.
+        image = ImageOps.exif_transpose(image)
+        if image.mode not in ("RGB", "RGBA"):
+            image = image.convert("RGBA" if "transparency" in image.info else "RGB")
+        for max_side, out in zip(sizes, (target_file, thumb_path(target_file))):
+            copy = image.copy()
+            copy.thumbnail((max_side, max_side), Image.LANCZOS)
+            copy.save(out, **save_kwargs)
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Optimiza imagenes PNG/JPG/JPEG a WebP en modo incremental."
+        description="Optimiza imagenes PNG/JPG/JPEG a WebP (grande + miniatura) en modo incremental."
     )
     parser.add_argument("--content-path", default="content")
     parser.add_argument("--source-dir", default="images")
     parser.add_argument("--dest-dir", default="images_opt")
     parser.add_argument("--formats", default=",".join(DEFAULT_FORMATS))
     parser.add_argument("--quality", type=int, default=72)
+    parser.add_argument(
+        "--max-size", type=int, default=1600,
+        help="Lado mayor de la imagen grande (ficha y visor ampliado).",
+    )
+    parser.add_argument(
+        "--thumb-size", type=int, default=640,
+        help="Lado mayor de la miniatura (tarjetas del catalogo y galeria).",
+    )
     parser.add_argument("--force", action="store_true")
     return parser
 
@@ -189,6 +224,7 @@ def main() -> int:
     dest_images_dir = (content_path / normalize_relpath(args.dest_dir)).resolve()
     state_file = dest_images_dir / STATE_FILE_NAME
     formats = parse_formats(args.formats)
+    sizes = (args.max_size, args.thumb_size)
 
     state = load_state(state_file)
     counters = Counters()
@@ -213,16 +249,17 @@ def main() -> int:
 
         try:
             if not should_process(
-                source_file, target_file, state, args.quality, args.force
+                source_file, target_file, state, args.quality, sizes, args.force
             ):
                 counters.skipped += 1
                 continue
 
-            optimize_image(source_file, target_file, args.quality)
+            optimize_image(source_file, target_file, args.quality, sizes)
             signature = source_signature(source_file)
             state[source_key] = {
                 **signature,
                 "quality": args.quality,
+                "sizes": list(sizes),
                 "target": normalize_relpath(target_file),
             }
             counters.processed += 1

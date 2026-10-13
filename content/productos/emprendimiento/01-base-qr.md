@@ -1,14 +1,14 @@
 ---
 titulo: Base de QR
 fecha: 2026-09-3
-categoria: emprendimiento
+categoria: Emprendimiento
 etiquetas: link, qr, emprendimiento, emprendedor
 producto: true
 slug: base-qr
 precio: $15
-resumen: Figura impresa 3D de flor de lirio para la decoracion de tu hogar.
+resumen: Figura impresa 3D de flor de lirio para la decoración de tu hogar.
 variacion:
-  nombre: personalización 
+  nombre: Personalización
   lista:
     - titulo: Base con QR
       precio: $15
@@ -37,7 +37,7 @@ Esta base impresa en 3D está diseñada para exhibir de manera elegante y visibl
 - WhatsApp
 - Sitio Web
 - Formularios
-- Catalogo Digitales
+- Catálogos digitales
 - Menús
 - Contraseña Wifi
-- Muchos mas
+- Y mucho más

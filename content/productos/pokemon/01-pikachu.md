@@ -1,13 +1,13 @@
 titulo: Pikachu Estilo Crochet
 fecha: 2026-01-15
-categoria: Pokemon
+categoria: Pokémon
 etiquetas: producto, crochet, amigurumi, pokemon, anime
 producto: true
 slug: pikachu-crochet
 precio: $15.00
 imagen: pokemon/pikachu/01_Pikachu.png
 galeria: pokemon/pikachu
-resumen: Figura impresa 3D con estil de Pikachu en version grande, con excelente presencia para coleccionistas de Pokemón.
+resumen: Figura impresa 3D con estilo de Pikachu en versión grande, con excelente presencia para coleccionistas de Pokémon.
 id_dolibarr: 3
 ## Descripción
 

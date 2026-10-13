@@ -3,28 +3,28 @@ fecha: 2026-07-03
 Date: 2026-07-03
 categoria: blog
 etiquetas: materiales, pla, petg, guia
-resumen: Diferencias entre PLA y PETG explicadas en simple, para que sepas que pedir segun el uso que le daras a tu pieza.
+resumen: Diferencias entre PLA y PETG explicadas en simple, para que sepas qué pedir según el uso que le darás a tu pieza.
 
-## Los dos materiales que mas usamos
+## Los dos materiales que más usamos
 
-En ChepeCarlos3D trabajamos principalmente con dos filamentos: **PLA** y **PETG**. Ambos se ven bien y quedan con buen acabado, pero se comportan distinto segun donde va a vivir la pieza.
+En ChepeCarlos3D trabajamos principalmente con dos filamentos: **PLA** y **PETG**. Ambos se ven bien y quedan con buen acabado, pero se comportan distinto según donde va a vivir la pieza.
 
-## PLA: el mas versatil
+## PLA: el más versátil
 
-- Acabado mas rigido y detallado, ideal para figuras, decoracion y piezas que no reciben mucho estres.
-- Viene en mas colores y con acabados especiales (brillante, mate, con efecto marmol, etc.).
+- Acabado más rígido y detallado, ideal para figuras, decoración y piezas que no reciben mucho estrés.
+- Viene en más colores y con acabados especiales (brillante, mate, con efecto mármol, etc.).
 - No es buena idea dejarlo dentro de un carro cerrado bajo el sol: se ablanda con calor alto.
 
-**Recomendado para:** figuras coleccionables, llaveros, alcancias, piezas decorativas, litofanias.
+**Recomendado para:** figuras coleccionables, llaveros, alcancías, piezas decorativas, litofanías.
 
-## PETG: mas resistente al uso diario
+## PETG: más resistente al uso diario
 
-- Aguanta mejor los golpes y la flexion sin quebrarse.
+- Aguanta mejor los golpes y la flexión sin quebrarse.
 - Resiste mejor el calor y la intemperie, por lo que sirve para piezas que van afuera o cerca de una fuente de calor.
-- Un poco mas flexible, por lo que en piezas muy finas de detalle puede perder algo de nitidez comparado al PLA.
+- Un poco más flexible, por lo que en piezas muy finas de detalle puede perder algo de nitidez comparado al PLA.
 
-**Recomendado para:** soportes, bases de uso frecuente, piezas para exteriores o que reciben manipulacion constante.
+**Recomendado para:** soportes, bases de uso frecuente, piezas para exteriores o que reciben manipulación constante.
 
-## ¿Cual pedir?
+## ¿Cuál pedir?
 
-Si no estas seguro, cuentanos para que vas a usar la pieza y te recomendamos el material segun tu caso. La mayoria de productos del catalogo estan pensados para PLA, pero si necesitas mayor resistencia podemos cotizar en PETG.
+Si no estás seguro, cuéntanos para qué vas a usar la pieza y te recomendamos el material según tu caso. La mayoría de productos del catálogo están pensados para PLA, pero si necesitas mayor resistencia podemos cotizar en PETG.

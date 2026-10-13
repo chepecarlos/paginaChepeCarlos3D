@@ -1,11 +1,11 @@
 ---
-titulo: Alcancia Masterbola
+titulo: Alcancía Masterbola
 fecha: 2026-8-24
-categoria: Pokemon
+categoria: Pokémon
 etiquetas: pokemon, alcancia, pokebola, masterbola
 producto: true
 slug: alcancia-masterbola
-resumen: Alcancia impresa en 3D con estilo de masterbola, con excelente presencia para coleccionistas de Pokemon.
+resumen: Alcancía impresa en 3D con estilo de Masterbola, con excelente presencia para coleccionistas de Pokémon.
 id_dolibarr:
 variacion:
   - nombre: Tamaño
@@ -25,7 +25,7 @@ variacion:
 
 ## Descripción
 
-Ahorra con estilo geek. Alcancía con diseño de masterbola, ideal para fans de Pokémon. Resistente, colorida y perfecta para decorar tu espacio mientras guardas tus monedas y fichas.
+Ahorra con estilo geek. Alcancía con diseño de Masterbola, ideal para fans de Pokémon. Resistente, colorida y perfecta para decorar tu espacio mientras guardas tus monedas y fichas.
 
 
 ## Características

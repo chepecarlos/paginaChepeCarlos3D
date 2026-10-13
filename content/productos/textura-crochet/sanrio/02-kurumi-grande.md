@@ -1,13 +1,13 @@
 titulo: Kuromi Estilo Crochet Grande
 fecha: 2026-05-1
-categoria: sanrio
+categoria: Sanrio
 etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: kuromi-grande
 precio: $28.00
 imagen: sanrio/kuromi-grande/01_Kuromi.png
 galeria: sanrio/kuromi-grande/
-resumen: Figura impresa 3D con estilo de Kuromi en version grande, con excelente presencia para coleccionistas de Sanrio.
+resumen: Figura impresa 3D con estilo de Kuromi en versión grande, con excelente presencia para coleccionistas de Sanrio.
 id_dolibarr: 21
 
 ## Descripción

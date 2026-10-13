@@ -7,7 +7,7 @@ etiquetas: crochet, amigurumi, anime, articulado
 producto: true
 slug: zoro-grande
 precio: $28.00
-resumen: Figura impresa 3D con estilo Zoro en version grande, con excelente presencia para coleccionistas de One Piece.
+resumen: Figura impresa 3D con estilo Zoro en versión grande, con excelente presencia para coleccionistas de One Piece.
 variacion:
   nombre: Tamaño
   lista:

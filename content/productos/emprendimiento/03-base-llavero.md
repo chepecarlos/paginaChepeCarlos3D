@@ -1,7 +1,7 @@
 ---
 titulo: Base para llaveros
 fecha: 2026-05-14
-categoria: emprendimiento
+categoria: Emprendimiento
 etiquetas: base, display, llaveros, pulseras, emprendimiento
 producto: false
 slug: base-llavero

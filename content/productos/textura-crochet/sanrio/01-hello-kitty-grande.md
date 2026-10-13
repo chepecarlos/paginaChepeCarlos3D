@@ -1,7 +1,7 @@
 ---
 titulo: Hello Kitty Estilo Crochet
 fecha: 2026-07-10
-categoria: sanrio
+categoria: Sanrio
 etiquetas: crochet, amigurumi, llavero
 producto: true
 slug: Hello-kitty-crochet

@@ -1,4 +1,4 @@
-titulo: Alcancia Creeper
+titulo: Alcancía Creeper
 fecha: 2026-05-1
 categoria: Minecraft
 etiquetas: videojuego, alcancia

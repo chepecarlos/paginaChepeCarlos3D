@@ -1,11 +1,11 @@
 ---
-titulo: Alcancia Pokebola
+titulo: Alcancía Pokébola
 fecha: 2026-8-24
-categoria: Pokemon
+categoria: Pokémon
 etiquetas: pokemon, alcancia, pokebola
 producto: true
 slug: alcancia-pokebola
-resumen: Alcancia impresa en 3D con estilo de pokebola, con excelente presencia para coleccionistas de Pokemon.
+resumen: Alcancía impresa en 3D con estilo de Pokébola, con excelente presencia para coleccionistas de Pokémon.
 id_dolibarr:
 variacion:
   - nombre: Tamaño
@@ -31,7 +31,7 @@ variacion:
 
 ## Descripción
 
-Ahorra con estilo geek. Alcancía con diseño de Pokebola, ideal para fans de Pokémon. Resistente, colorida y perfecta para decorar tu espacio mientras guardas tus monedas.
+Ahorra con estilo geek. Alcancía con diseño de Pokébola, ideal para fans de Pokémon. Resistente, colorida y perfecta para decorar tu espacio mientras guardas tus monedas.
 
 
 ## Características

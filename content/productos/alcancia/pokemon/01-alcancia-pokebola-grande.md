@@ -1,6 +1,6 @@
-titulo: Alcancia Pokebola Grande
+titulo: Alcancía Pokébola Grande
 fecha: 2026-05-1
-categoria: Pokemon
+categoria: Pokémon
 etiquetas: videojuego, alcancia
 producto: false
 slug: alcancia-pokebola-grande
@@ -12,4 +12,4 @@ id_dolibarr: 34
 
 ## Descripción
 
-Ahorra con estilo geek. Alcancía con diseño de Pokebola, ideal para fans de Pokémon. Resistente, colorida y perfecta para decorar tu espacio mientras guardas tus monedas.
+Ahorra con estilo geek. Alcancía con diseño de Pokébola, ideal para fans de Pokémon. Resistente, colorida y perfecta para decorar tu espacio mientras guardas tus monedas.

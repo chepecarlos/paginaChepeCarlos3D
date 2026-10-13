@@ -46,9 +46,9 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       {% if main_image %}
       <div class="product-main-media">
         <img id="product-main-image" src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }}" fetchpriority="high" />
-        <button class="product-lightbox-trigger" type="button" aria-label="Ver imagen en grande">⤢</button>
-        <button class="product-nav prev" type="button" aria-label="Imagen anterior">&#10094;</button>
-        <button class="product-nav next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+        <button class="product-lightbox-trigger" type="button" aria-label="Ver imagen en grande"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        <button class="product-nav prev" type="button" aria-label="Imagen anterior"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="product-nav next" type="button" aria-label="Imagen siguiente"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
         <span class="gallery-counter" id="gallery-counter" aria-live="polite"></span>
       </div>
       {% else %}
@@ -56,12 +56,12 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       {% endif %} {% if support_images %}
       <div class="product-thumbs" id="product-thumbs" aria-label="Imágenes de apoyo">
         <button class="product-thumb active" type="button" data-image="{{ SITEURL }}/{{ main_image }}" aria-label="Ver imagen principal de {{ article.title }}">
-          <img src="{{ SITEURL }}/{{ main_image }}" alt="{{ article.title }} - principal" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_thumb(main_image) }}" alt="{{ article.title }} - principal" loading="lazy" />
         </button>
         {% for support_image_raw in support_images %} {% set support_image = support_image_raw | trim %} {% set support_image_resolved = resolve_image(support_image) %} {% if support_image_resolved
         and support_image_resolved != main_image %}
         <button class="product-thumb" type="button" data-image="{{ SITEURL }}/{{ support_image_resolved }}" aria-label="Ver imagen {{ loop.index }} de {{ article.title }}">
-          <img src="{{ SITEURL }}/{{ support_image_resolved }}" alt="{{ article.title }} - apoyo {{ loop.index }}" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_thumb(support_image_resolved) }}" alt="{{ article.title }} - apoyo {{ loop.index }}" loading="lazy" />
         </button>
         {% endif %} {% endfor %}
       </div>
@@ -73,8 +73,8 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
       {% endif %} {% if article.price %}
       <p class="product-price large" id="product-price" aria-live="polite">{{ article.price }}</p>
-      {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %}
-      <div class="variation-selector" data-group-index="{{ group_index }}">
+      {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %} {% set group_prices = group.opciones | map(attribute='precio') | unique | list %}
+      <div class="variation-selector" data-group-index="{{ group_index }}" data-group-name="{{ group.nombre or 'Variación' }}">
         <p class="variation-label">{{ group.nombre or 'Variación' }}: <strong class="variation-selected-label">{{ group.opciones[0].titulo }}</strong></p>
         <div class="variation-options" role="group" aria-label="{{ group.nombre or 'Variación' }}">
           {% for option in group.opciones %}
@@ -119,7 +119,7 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
             %}
           >
             <span class="variation-option-titulo">{{ option.titulo }}</span>
-            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif group_index == 0 and option.precio %}<span class="variation-option-precio"
+            {% if option.precio_relativo %}<span class="variation-option-precio">{{ option.precio_relativo }}</span>{% elif group_index == 0 and option.precio and group_prices | length > 1 %}<span class="variation-option-precio"
               >{{ option.precio }}</span
             >{% endif %}
           </button>
@@ -130,20 +130,31 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
 
       <div class="contact-actions">
         {% if WHATSAPP_NUMBER %} {% set wa_number = WHATSAPP_NUMBER | replace('+', '') | replace(' ', '') | replace('-', '') | replace('(', '') | replace(')', '') %} {% set product_link = SITEURL ~
-        '/' ~ article.url if SITEURL else article.url %} {% set wa_message = "Hola, quiero preguntar de este producto: " ~ article.title ~ " " ~ product_link %}
+        '/' ~ article.url if SITEURL else article.url %} {# Mensaje: saludo + opciones elegidas + precio + enlace. Cantidad, zona y fecha se piden después en la conversación, no en el primer mensaje. El JS de variaciones lo rearma con el mismo formato. #}
+        {% set wa_head = "Hola, quiero cotizar: " ~ article.title %}
+        {% set wa_tail = product_link %}
+        {% set wa_lines = [wa_head] %}
+        {% for group in article.variation_groups or [] %}{% set _ = wa_lines.append((group.nombre or 'Variación') ~ ": " ~ group.opciones[0].titulo) %}{% endfor %}
+        {% if article.price %}{% set _ = wa_lines.append("Precio: " ~ article.price) %}{% endif %}
+        {% set _ = wa_lines.append(wa_tail) %}
+        {% set wa_message = wa_lines | join("\n") %}
         <a
           href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}"
           class="btn btn-whatsapp btn-lg"
           id="whatsapp-cta"
           data-wa-number="{{ wa_number }}"
-          data-base-message="{{ wa_message }}"
+          data-wa-head="{{ wa_head }}"
+          data-wa-tail="{{ wa_tail }}"
           target="_blank"
           rel="noopener"
-          aria-label="Cotizar por WhatsApp"
         >
-          <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="WhatsApp" class="btn-whatsapp-icon" />
+          <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="" class="btn-whatsapp-icon" />
           <span>Cotizar por WhatsApp</span>
         </a>
+        <ul class="product-facts">
+          <li>Envíos a todo El Salvador</li>
+          <li>Personalizable según disponibilidad</li>
+        </ul>
         {% endif %} {# botón de correo desactivado temporalmente {% if CONTACT_EMAIL %}
         <a href="mailto:{{ CONTACT_EMAIL }}?subject=Consulta sobre {{ article.title }}" class="btn btn-outline btn-lg">✉️ Consultar disponibilidad</a>
         {% endif %} #}
@@ -168,47 +179,37 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
         {% endif %}
       </div>
 
-      <section class="product-assurance" aria-label="Beneficios del producto">
-        <div class="assurance-grid">
-          <article class="assurance-card">
-            <span class="assurance-label">Envios</span>
-            <h2>Enviamos a todo El Salvador</h2>
-            <p>Coordinamos entregas y envios a nivel nacional para que recibas tu pedido donde lo necesites.</p>
-          </article>
-          <article class="assurance-card">
-            <span class="assurance-label">Personalizacion</span>
-            <h2>Podemos crear tu version</h2>
-            <p>Adaptamos colores, detalles o personajes segun disponibilidad para que tu pieza se sienta mas tuya.</p>
-          </article>
-          <article class="assurance-card assurance-card-cta">
-            <span class="assurance-label">Atencion rapida</span>
-            <h2>Te respondemos por WhatsApp</h2>
-            <p>Consulta disponibilidad, tiempos de elaboracion y cotizaciones de forma directa y rapida.</p>
-          </article>
-        </div>
-
-        {% if WHATSAPP_NUMBER %}
-        <div class="product-promo">
-          <h2>Listo para pedir o personalizar tu pieza?</h2>
-          <p>Escribenos y te ayudamos a confirmar disponibilidad, precio y tiempo estimado.</p>
-          <a href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}" class="btn btn-accent btn-lg" target="_blank" rel="noopener">Hablar por WhatsApp</a>
-        </div>
-        {% endif %}
-      </section>
     </div>
   </article>
 
-  {% set related = article.category.articles | selectattr('product') | reject('equalto', article) | list %} {% if related %}
+  {% if WHATSAPP_NUMBER %}
+  {# Barra fija en celular: aparece mientras el CTA principal está fuera de pantalla #}
+  <div class="mobile-buy-bar" id="mobile-buy-bar" inert>
+    <div class="mobile-buy-bar-info">
+      <span class="mobile-buy-bar-title">{{ article.title }}</span>
+      {% if article.price %}<span class="mobile-buy-bar-price" id="mobile-buy-bar-price">{{ article.price }}</span>{% endif %}
+    </div>
+    <a href="https://wa.me/{{ wa_number }}?text={{ wa_message | urlencode }}" class="btn btn-whatsapp" id="mobile-buy-bar-cta" target="_blank" rel="noopener">
+      <img src="{{ SITEURL }}/theme/images/logo-whatsapp.svg" alt="" class="btn-whatsapp-icon" />
+      <span>Cotizar</span>
+    </a>
+  </div>
+  {% endif %}
+
+  {# Category de Pelican no expone sus artículos: se filtra la lista global. Si la categoría tiene menos de 4, se completa con otros productos. #}
+  {% set _products = articles | selectattr('product') | reject('equalto', article) | list %}
+  {% set _same = _products | selectattr('category', 'equalto', article.category) | list %}
+  {% set related = (_same + (_products | reject('in', _same) | list))[:4] %} {% if related %}
   <section class="related-products">
     <h2 class="related-products-title">También te puede interesar</h2>
     <div class="product-grid">
-      {% for p in related[:4] %}
+      {% for p in related %}
       <article class="product-card">
         <a href="{{ SITEURL }}/{{ p.url }}" class="product-img-wrap">
           {% if p.image %}
-          <img src="{{ SITEURL }}/{{ resolve_image(p.image) }}" alt="{{ p.title }}" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_thumb(p.image) }}" alt="{{ p.title }}" loading="lazy" />
           {% elif p.auto_gallery %}
-          <img src="{{ SITEURL }}/{{ resolve_image(p.auto_gallery[0]) }}" alt="{{ p.title }}" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_thumb(p.auto_gallery[0]) }}" alt="{{ p.title }}" loading="lazy" />
           {% else %}
           <div class="product-img-placeholder"><span>Sin imagen</span></div>
           {% endif %}
@@ -267,27 +268,10 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
     };
     let thumbs = Array.from(document.querySelectorAll(".product-thumb"));
     const normalize = (url) => new URL(url, window.location.href).href;
-    const mobileMedia = window.matchMedia("(max-width: 768px)");
 
     let lightboxOpen = false;
     let lightboxImage = null;
     let lightboxRoot = null;
-
-    let zoomed = false;
-
-    const disableZoom = () => {
-      if (!media) return;
-      zoomed = false;
-      media.classList.remove("zoomed");
-    };
-
-    const syncZoomAvailability = () => {
-      if (!media) return;
-      media.classList.toggle("is-zoomable", mobileMedia.matches);
-      if (!mobileMedia.matches) {
-        disableZoom();
-      }
-    };
 
     let imageList = [mainImage.getAttribute("src"), ...thumbs.map((thumb) => thumb.getAttribute("data-image"))].filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
 
@@ -329,7 +313,6 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       currentIndex = (index + imageList.length) % imageList.length;
       const nextImage = imageList[currentIndex];
       const direction = currentIndex < previousIndex ? "prev" : "next";
-      disableZoom();
       swapMainImage(nextImage, direction);
       if (lightboxImage) {
         lightboxImage.src = nextImage;
@@ -366,10 +349,10 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       lightboxRoot.className = "product-lightbox";
       lightboxRoot.innerHTML = `
         <div class="product-lightbox-content" role="dialog" aria-modal="true" aria-label="Vista ampliada del producto">
-          <button type="button" class="product-lightbox-close" aria-label="Cerrar imagen">✕</button>
-          <button type="button" class="product-lightbox-nav prev" aria-label="Imagen anterior">&#10094;</button>
+          <button type="button" class="product-lightbox-close" aria-label="Cerrar imagen"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+          <button type="button" class="product-lightbox-nav prev" aria-label="Imagen anterior"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
           <img class="product-lightbox-image" src="" alt="${mainImage.alt || "Imagen del producto"}" />
-          <button type="button" class="product-lightbox-nav next" aria-label="Imagen siguiente">&#10095;</button>
+          <button type="button" class="product-lightbox-nav next" aria-label="Imagen siguiente"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
       `;
 
@@ -400,7 +383,6 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
           setImageByIndex(index);
           return;
         }
-        disableZoom();
         swapMainImage(newImage);
         setActiveThumb(newImage);
       });
@@ -412,7 +394,7 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
         .map(
           (image, index) => `
             <button class="product-thumb${index === 0 ? " active" : ""}" type="button" data-image="${image}" aria-label="Ver imagen ${index + 1} de ${mainImage.alt}">
-              <img src="${image}" alt="${mainImage.alt} - imagen ${index + 1}" loading="lazy" />
+              <img src="${image.replace(/\/images_opt\/(.+)\.webp$/, "/images_opt/$1.thumb.webp")}" alt="${mainImage.alt} - imagen ${index + 1}" loading="lazy" onerror="this.onerror=null;this.src=this.parentNode.dataset.image" />
             </button>
           `,
         )
@@ -425,7 +407,6 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       const deduped = images.filter(Boolean).filter((value, index, arr) => arr.indexOf(value) === index);
       if (!deduped.length) return;
 
-      disableZoom();
       imageList = deduped;
       currentIndex = 0;
       swapMainImage(imageList[0]);
@@ -454,10 +435,7 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
 
     if (lightboxTrigger) {
       buildLightbox();
-      lightboxTrigger.addEventListener("click", () => {
-        disableZoom();
-        openLightbox();
-      });
+      lightboxTrigger.addEventListener("click", openLightbox);
     }
 
     if (imageList.length <= 1) {
@@ -465,17 +443,9 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       if (nextButton) nextButton.disabled = true;
     }
 
-    if (media) {
-      mainImage.addEventListener("click", () => {
-        if (!mobileMedia.matches) return;
-        zoomed = !zoomed;
-        media.classList.toggle("zoomed", zoomed);
-      });
-
-      media.addEventListener("click", (event) => {
-        if (!zoomed || event.target === mainImage) return;
-        disableZoom();
-      });
+    // Tocar la foto abre la vista ampliada (en celular el zoom se hace con pellizco ahí)
+    if (lightboxRoot) {
+      mainImage.addEventListener("click", openLightbox);
     }
 
     document.addEventListener("keydown", (event) => {
@@ -499,17 +469,11 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
       }
     });
 
-    if (mobileMedia.addEventListener) {
-      mobileMedia.addEventListener("change", syncZoomAvailability);
-    } else if (mobileMedia.addListener) {
-      mobileMedia.addListener(syncZoomAvailability);
-    }
-
-    // Swipe táctil en la imagen principal
-    if (media) {
+    // Swipe táctil en la imagen principal y en la vista ampliada
+    const bindSwipe = (el) => {
       let touchStartX = 0;
       let touchStartY = 0;
-      media.addEventListener(
+      el.addEventListener(
         "touchstart",
         (e) => {
           touchStartX = e.touches[0].clientX;
@@ -517,9 +481,11 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
         },
         { passive: true },
       );
-      media.addEventListener(
+      el.addEventListener(
         "touchend",
         (e) => {
+          // Ignora gestos de varios dedos (pellizco para ampliar)
+          if (e.touches.length || e.changedTouches.length > 1) return;
           const dx = e.changedTouches[0].clientX - touchStartX;
           const dy = e.changedTouches[0].clientY - touchStartY;
           if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
@@ -528,11 +494,25 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
         },
         { passive: true },
       );
-    }
+    };
+    if (media) bindSwipe(media);
+    if (lightboxRoot) bindSwipe(lightboxRoot);
 
-    syncZoomAvailability();
     setActiveThumb(mainImage.src);
     updateCounter();
+  })();
+</script>
+{% endif %} {% if article.product and WHATSAPP_NUMBER %}
+<script>
+  (function () {
+    const bar = document.getElementById("mobile-buy-bar");
+    const cta = document.getElementById("whatsapp-cta");
+    if (!bar || !cta || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (entries) {
+      const show = !entries[0].isIntersecting;
+      bar.classList.toggle("is-visible", show);
+      bar.inert = !show;
+    }).observe(cta);
   })();
 </script>
 {% endif %} {% if article.product and article.variation_groups %}
@@ -543,8 +523,11 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
     // Atributos con manejo propio (precio, imagen, etc). Cualquier otro
     // data-* del pill se intercambia solo si existe un #product-<campo> en la página.
     const HANDLED_DATA_KEYS = new Set(["titulo", "precio", "precioValor", "groupIndex", "imagen", "galeria"]);
-    const baseMessage = waLink ? waLink.getAttribute("data-base-message") : "";
+    const waHead = waLink ? waLink.getAttribute("data-wa-head") : "";
+    const waTail = waLink ? waLink.getAttribute("data-wa-tail") : "";
     const waNumber = waLink ? waLink.getAttribute("data-wa-number") : "";
+    const barCta = document.getElementById("mobile-buy-bar-cta");
+    const barPrice = document.getElementById("mobile-buy-bar-price");
 
     // Captura el formato de moneda (prefijo/sufijo, ej. "$") del precio
     // inicial renderizado por el servidor, para reformatear el total al
@@ -563,12 +546,17 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
 
     const updateWhatsapp = () => {
       if (!waLink || !waNumber) return;
-      const selectedTitles = groupEls
-        .map((group) => group.querySelector(".variation-option.active"))
-        .filter(Boolean)
-        .map((option) => option.getAttribute("data-titulo"));
-      const message = selectedTitles.length ? `${baseMessage} (${selectedTitles.join(", ")})` : baseMessage;
+      // Mismo formato que arma la plantilla: "Grupo: opción" por línea, luego el precio total
+      const lines = [waHead];
+      groupEls.forEach((group) => {
+        const active = group.querySelector(".variation-option.active");
+        if (active) lines.push(`${group.getAttribute("data-group-name")}: ${active.getAttribute("data-titulo")}`);
+      });
+      if (priceEl) lines.push(`Precio: ${priceEl.textContent.trim()}`);
+      lines.push(waTail);
+      const message = lines.join("\n");
       waLink.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+      if (barCta) barCta.href = waLink.href;
     };
 
     const recomputeTotal = () => {
@@ -578,7 +566,22 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
         const active = group.querySelector(".variation-option.active");
         if (active) total += parseFloat(active.getAttribute("data-precio-valor")) || 0;
       });
+      const previous = parseFloat(priceEl.textContent.replace(/[^\d.]/g, "")) || 0;
       priceEl.textContent = `${pricePrefix}${total.toFixed(2)}${priceSuffix}`;
+      if (barPrice) barPrice.textContent = priceEl.textContent;
+      if (total === previous || !priceEl.animate) return;
+      // Sube desde abajo si el precio aumenta, baja desde arriba si disminuye
+      const offset = total > previous ? "0.45em" : "-0.45em";
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      priceEl.animate(
+        reduce
+          ? [{ opacity: 0.3 }, { opacity: 1 }]
+          : [
+              { transform: `translateY(${offset})`, opacity: 0, filter: "blur(3px)" },
+              { transform: "none", opacity: 1, filter: "none" },
+            ],
+        { duration: 320, easing: "cubic-bezier(0.16, 1, 0.3, 1)" },
+      );
     };
 
     const applyExtraFields = (option) => {

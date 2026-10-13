@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% import "partials/messages.html" as shared with context %} {% set MSG = shared.MSG %} {% block title %}{{ SITENAME }} — Impresion 3D y fabricacion digital{% endblock %} {% block description %}{{ MSG.site_description }}{% endblock %} {% block content %}
+{% extends "base.html" %} {% import "partials/messages.html" as shared with context %} {% set MSG = shared.MSG %} {% block title %}{{ SITENAME }} — Impresión 3D y fabricación digital{% endblock %} {% block description %}{{ MSG.site_description }}{% endblock %} {% block content %}
 
 <!-- ── HERO PRINCIPAL ───────────────────────────────────────── -->
 <section class="hero-main">
@@ -42,7 +42,7 @@
       {% for cat, cat_articles in categories %} {% set prods = cat_articles | selectattr('product') | list %} {% if prods %} {% set fp = prods[0] %}
       <a href="{{ SITEURL }}/{{ cat.url }}" class="home-cat-card">
         {% if fp.image %}
-        <div class="home-cat-img" style="background-image: url('{{ SITEURL }}/{{ resolve_image(fp.image) }}')"></div>
+        <div class="home-cat-img" style="background-image: url('{{ SITEURL }}/{{ resolve_thumb(fp.image) }}')"></div>
         {% else %}
         <div class="home-cat-img home-cat-img-empty"></div>
         {% endif %}
@@ -67,15 +67,15 @@
       <article class="product-card">
         <a href="{{ SITEURL }}/{{ product.url }}" class="product-img-wrap">
           {% if product.image %}
-          <img src="{{ SITEURL }}/{{ resolve_image(product.image) }}" alt="{{ product.title }}" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_thumb(product.image) }}" alt="{{ product.title }}" loading="lazy" />
           {% elif product.auto_gallery %}
-          <img src="{{ SITEURL }}/{{ resolve_image(product.auto_gallery[0]) }}" alt="{{ product.title }}" loading="lazy" />
+          <img src="{{ SITEURL }}/{{ resolve_thumb(product.auto_gallery[0]) }}" alt="{{ product.title }}" loading="lazy" />
           {% else %}
           <div class="product-img-placeholder"><span>{{ MSG.product_no_image }}</span></div>
           {% endif %}
         </a>
         <div class="product-body">
-          <h2 class="product-title"><a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a></h2>
+          <h3 class="product-title"><a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a></h3>
           <p class="product-meta"><a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a></p>
           {% if product.price_range or product.price %}
           <p class="product-price">{{ product.price_range or product.price }}</p>

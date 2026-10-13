@@ -70,6 +70,13 @@ html .product-lightbox :focus-visible {
     outline-color: var(--color-accent);
 }
 
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -339,6 +346,9 @@ img {
     border: 1px solid var(--color-border);
     font-size: 0.82rem;
     padding: 8px 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .btn-tag:hover {
@@ -382,18 +392,6 @@ img {
     background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-cta) 100%);
 }
 
-.hero-main-content::after {
-    content: '';
-    position: absolute;
-    inset: -20px -24px -20px -24px;
-    background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.14;
-    pointer-events: none;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
-}
 
 .hero-main-content {
     position: relative;
@@ -768,8 +766,10 @@ img {
 
 .product-category-detail {
     display: block;
+    width: fit-content;
     text-align: center;
-    margin: 0 auto 12px;
+    margin: 0 auto 4px;
+    padding: 10px 12px;
     font-size: 0.92rem;
     border: 0;
     text-decoration: none;
@@ -1200,11 +1200,12 @@ img {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 48px;
     align-items: start;
-    padding: 48px 0;
+    padding: 16px 0 48px;
 }
 
 .product-detail-img {
-    position: relative;
+    position: sticky;
+    top: 88px;
     min-width: 0;
 }
 
@@ -1265,16 +1266,13 @@ img {
     }
 }
 
-.product-main-media.zoomed img {
-    transform: scale(1.9);
-}
-
-.product-main-media.is-zoomable {
+.product-main-media #product-main-image {
     cursor: zoom-in;
 }
 
-.product-main-media.zoomed {
-    cursor: zoom-out;
+/* Barra de compra fija: solo en celular */
+.mobile-buy-bar {
+    display: none;
 }
 
 .product-lightbox-trigger {
@@ -1282,8 +1280,8 @@ img {
     top: 12px;
     right: 12px;
     z-index: 3;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 999px;
     background: rgba(2, 13, 25, 0.65);
@@ -1292,7 +1290,7 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.15rem;
 }
 
 .product-lightbox {
@@ -1308,6 +1306,45 @@ img {
 
 .product-lightbox.is-open {
     display: flex;
+    animation: lightboxFadeIn 0.2s ease-out;
+}
+
+.product-lightbox.is-open .product-lightbox-image {
+    animation: lightboxImageIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lightboxFadeIn {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes lightboxImageIn {
+    from {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+}
+
+/* Catálogo: tarjetas que se reacomodan al filtrar u ordenar */
+::view-transition-group(*) {
+    animation-duration: 0.34s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-lightbox.is-open .product-lightbox-image {
+        animation: none;
+    }
+
+    .mobile-buy-bar {
+        transition: none;
+    }
 }
 
 .product-lightbox-content {
@@ -1336,6 +1373,9 @@ img {
     color: var(--color-white);
     font-size: 1.15rem;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-lightbox-nav {
@@ -1350,6 +1390,9 @@ img {
     color: var(--color-white);
     font-size: 1.6rem;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-lightbox-nav.prev {
@@ -1374,11 +1417,11 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 300;
     line-height: 1;
     z-index: 2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
     transition: color var(--transition), background var(--transition), opacity var(--transition);
 }
 
@@ -1483,82 +1526,6 @@ img {
     gap: 8px;
 }
 
-.product-assurance {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.assurance-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-}
-
-.assurance-card {
-    padding: 22px 20px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(6, 133, 135, 0.08) 0%, rgba(17, 47, 65, 0.04) 100%);
-    border: 1px solid rgba(6, 133, 135, 0.16);
-    box-shadow: 0 10px 24px rgba(17, 47, 65, 0.08);
-}
-
-.assurance-card h2 {
-    font-size: 1.08rem;
-    font-weight: 800;
-    line-height: 1.3;
-    margin-bottom: 10px;
-    color: var(--color-dark);
-}
-
-.assurance-card p {
-    font-size: 0.92rem;
-    color: #41586a;
-    line-height: 1.7;
-}
-
-.assurance-label {
-    display: inline-block;
-    margin-bottom: 12px;
-    padding: 5px 12px;
-    border-radius: 999px;
-    background: rgba(242, 177, 52, 0.14);
-    color: var(--color-dark);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.assurance-card-cta {
-    background: linear-gradient(180deg, rgba(242, 177, 52, 0.16) 0%, rgba(237, 85, 59, 0.08) 100%);
-    border-color: rgba(237, 85, 59, 0.16);
-}
-
-.product-promo {
-    padding: 30px 28px;
-    border-radius: 22px;
-    background: var(--color-dark);
-    color: var(--color-white);
-    text-align: center;
-    box-shadow: 0 18px 34px rgba(17, 47, 65, 0.18);
-}
-
-.product-promo h2 {
-    font-size: 1.55rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-}
-
-.product-promo p {
-    max-width: 520px;
-    margin: 0 auto 22px;
-    color: rgba(255, 255, 255, 0.72);
-    line-height: 1.75;
-}
-
 .contact-actions {
     display: flex;
     flex-wrap: wrap;
@@ -1567,24 +1534,41 @@ img {
     justify-content: center;
 }
 
+/* Datos breves bajo el CTA: reemplazan las tarjetas de beneficios */
+.product-facts {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 0;
+    list-style: none;
+    font-size: 0.88rem;
+    color: var(--color-gray);
+}
+
+.product-facts li + li::before {
+    content: "·";
+    margin: 0 10px;
+}
+
 .product-detail-info .related-actions>a.btn-outline {
     align-self: center;
     text-align: center;
 }
 
 .btn-whatsapp {
-    background: #25d366;
+    background: #15803d;
     color: #ffffff;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border: 1px solid #1ebe5d;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    border: 1px solid #15803d;
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
 }
 
 .btn-whatsapp:hover {
-    background: #1ebe5d;
+    background: #166534;
     color: #ffffff;
 }
 
@@ -1592,20 +1576,6 @@ img {
     width: 20px;
     height: 20px;
     flex: 0 0 20px;
-}
-
-@media (max-width: 768px) {
-    .assurance-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .product-promo {
-        padding: 24px 20px;
-    }
-
-    .product-promo h2 {
-        font-size: 1.3rem;
-    }
 }
 
 /* ============================================================
@@ -1724,6 +1694,7 @@ img {
     flex-wrap: wrap;
     font-size: 0.85rem;
     color: var(--color-gray);
+    padding-top: 16px;
     margin-bottom: 20px;
 }
 
@@ -1876,7 +1847,7 @@ img {
 
 .footer-links h3,
 .footer-contact h3 {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -2124,22 +2095,28 @@ mark {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #25d366;
+    background: #15803d;
     color: white;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-    transition: all var(--transition);
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.4);
+    transition: transform var(--transition), opacity var(--transition), background var(--transition), box-shadow var(--transition), visibility var(--transition);
     z-index: 999;
 }
 
+.whatsapp-floating-btn.is-hidden {
+    opacity: 0;
+    transform: scale(0.6);
+    visibility: hidden;
+}
+
 .whatsapp-floating-btn:hover {
-    background: #22c559;
+    background: #166534;
     transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+    box-shadow: 0 6px 16px rgba(21, 128, 61, 0.5);
 }
 
 .whatsapp-floating-btn:active {
@@ -2499,13 +2476,21 @@ mark {
 
     .product-detail {
         grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .product-detail-img {
+        position: relative;
+        top: auto;
     }
 
     .product-thumbs {
         display: flex;
         gap: 10px;
-        margin-top: 12px;
-        padding-bottom: 6px;
+        margin: 12px -4px 0;
+        /* Margen interior para que el anillo de foco no quede recortado por el scroll */
+        padding: 4px 4px 6px;
+        scroll-padding-inline: 4px;
         overflow-x: auto;
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
@@ -2534,7 +2519,7 @@ mark {
         scroll-snap-align: start;
     }
 
-    .product-main-media.is-zoomable::after {
+    .product-main-media::after {
         content: "Toque para ampliar";
         position: absolute;
         left: 10px;
@@ -2548,8 +2533,62 @@ mark {
         pointer-events: none;
     }
 
-    .product-main-media.zoomed::after {
-        content: "Toque para reducir";
+    .mobile-buy-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: var(--color-white);
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 -4px 16px rgba(17, 47, 65, 0.12);
+        transform: translateY(110%);
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-buy-bar.is-visible {
+        transform: none;
+    }
+
+    .mobile-buy-bar-info {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        flex: 1;
+    }
+
+    .mobile-buy-bar-title {
+        font-size: 0.85rem;
+        color: var(--color-dark);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .mobile-buy-bar-price {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--color-price);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .mobile-buy-bar .btn {
+        flex: none;
+        min-height: 48px;
+        padding: 0 20px;
+    }
+
+    /* En producto la barra reemplaza al botón flotante; deja espacio para no tapar el pie */
+    body:has(.mobile-buy-bar) .whatsapp-floating-btn {
+        display: none;
+    }
+
+    body:has(.mobile-buy-bar) {
+        padding-bottom: 72px;
     }
 
     .product-nav {
@@ -2673,6 +2712,16 @@ mark {
         width: 100%;
     }
 
+    /* En celular los datos van uno bajo otro; el separador sobra */
+    .product-facts {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-facts li + li::before {
+        content: none;
+    }
+
     .nav-search-input {
         width: auto;
         min-width: 0;
@@ -2705,7 +2754,24 @@ mark {
     }
 
     .home-categories {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .home-cat-card {
+        aspect-ratio: 1 / 1;
+    }
+
+    .home-cat-body {
+        padding: 12px;
+    }
+
+    .home-cat-name {
+        font-size: 0.95rem;
+    }
+
+    .home-cat-cta {
+        display: none;
     }
 
     .social-mosaic {
@@ -2718,6 +2784,30 @@ mark {
 
     .product-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Relacionados: 2 columnas compactas para no alargar la ficha (4 tarjetas a 1 columna ≈ 2200px) */
+    .related-products .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .related-products .product-body {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .related-products .product-title {
+        font-size: 0.92rem;
+    }
+
+    .related-products .product-price {
+        font-size: 1rem;
+    }
+
+    /* Toda la tarjeta ya es enlace (imagen y título); el botón sobra en tamaño compacto */
+    .related-products .product-body .btn {
+        display: none;
     }
 
     .nav-search {

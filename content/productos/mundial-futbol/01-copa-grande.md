@@ -2,12 +2,12 @@
 titulo: Copa Mundial Tamaño Real
 fecha: 2026-05-1
 Date: 2026-05-1
-categoria: futbol
+categoria: Fútbol
 etiquetas: fifa, deporte, copa
 producto: true
 slug: copa-mundial-grande
 precio: $35.00
-resumen: Figura impresa 3D con estilo Goku en version grande, con excelente presencia para coleccionistas de Dragon Ball.
+resumen: Figura impresa 3D con estilo Goku en versión grande, con excelente presencia para coleccionistas de Dragon Ball.
 id_dolibarr: 27
 variacion:
   nombre: Calidad

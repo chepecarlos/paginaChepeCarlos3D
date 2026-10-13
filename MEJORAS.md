@@ -4,39 +4,7 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
 
 ---
 
-## Página de productos
-
-### Alta prioridad
-
-- [x] **Filtros por categoría y precio en el catálogo**
-  Botones de categoría (Todos + una por categoría) y rangos de precio (Todos, Hasta $10, $10–$20, Más de $20).
-  JS puro filtrando tarjetas visibles sin recargar la página. Implementado en `catalog.html` y `style.css`.
-
-- [x] **Imagen de galería en tarjetas del catálogo**
-  En `catalog.html` línea 16-18 solo se usa `product.image`.
-  Si el producto no tiene `imagen:` pero sí tiene `galeria:`, la tarjeta sale sin foto.
-  Agregar fallback a `auto_gallery[0]` igual que ya hace `article.html` líneas 6-8.
-
-- [x] **Resumen visible en la tarjeta del catálogo**
-  Las tarjetas no muestran el campo `resumen:` del producto.
-  Agregar una línea de descripción breve en `catalog.html` para dar contexto antes del clic.
-
-### Impacto medio
-
-- [x] **Breadcrumb en la página de producto**
-  El botón "Volver" usa `javascript:history.back()` — no funciona si el usuario llega de Google.
-  Reemplazar con breadcrumb: `Inicio › [Categoría] › [Nombre del producto]`.
-  Archivo: `article.html` línea 134.
-
-- [x] **Productos relacionados al final del producto**
-  Al terminar de ver un producto no hay dónde seguir navegando.
-  Mostrar 3-4 productos de la misma categoría al final de `article.html`.
-
 ## Páginas de contenido pendientes
-
-- [ ] **Historia / Nosotros** — Página que cuente quién es ChepeCarlos, cómo empezó, qué hace. Da confianza al comprador antes de cotizar.
-
-- [ ] **Blog** — Sección de artículos (proceso de impresión, materiales, casos de uso). Ayuda con SEO y posiciona como experto.
 
 - [ ] **Política de privacidad** — Requerida si se usan formularios, WhatsApp o Google Analytics. Página estática simple.
 
@@ -75,22 +43,8 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
 
 ## SEO y descubribilidad
 
-### Alta prioridad
-
-- [x] **Sitemap.xml y robots.txt**
-  Implementado: `plugins/sitemap.py` (nuevo plugin local, mismo patrón de signals que `auto_gallery.py`) genera `sitemap.xml` con todos los artículos y páginas al finalizar el build.
-  `robots.txt` se genera desde `theme/templates/robots.txt` vía `TEMPLATE_PAGES` (igual que `catalog.html`), para poder usar `SITEURL` dinámico y apuntar al sitemap.
-
-- [x] **Datos estructurados JSON-LD (`schema.org/Product`)**
-  Implementado en `article.html` (bloque `head_extra`): emite `Product` con nombre, descripción, imágenes, categoría y marca.
-  Usa `Offer` cuando el producto tiene un precio único, o `AggregateOffer` (lowPrice/highPrice/offerCount) cuando tiene variaciones con rango de precio. `offerCount` es el total real de combinaciones (producto de las opciones de cada grupo de variación).
-  `availability` se deja fijo en `InStock` porque son piezas hechas por encargo, no hay control de stock real.
-  Confirmado con Google Rich Results Test: "Se ha detectado 1 elemento válido". Quedan pendientes opcionales `review`/`aggregateRating` — no se agregan porque requerirían reseñas reales, que el sitio no tiene todavía.
-
-### Impacto medio
-
 - [ ] **Verificar el sitio en Google Search Console**
-  (ver sección más abajo — pendiente ya documentado, se deja aquí como referencia cruzada de SEO)
+  (ver sección más arriba — pendiente ya documentado, se deja aquí como referencia cruzada de SEO)
 
 ## Analítica
 
@@ -98,31 +52,11 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
   `GOOGLE_ANALYTICS` está comentado en `publishconf.py` línea 22 y no hay ningún script de analítica en el theme.
   Sin esto no hay forma de saber qué productos generan más clics al botón de WhatsApp ni de dónde viene el tráfico.
 
-## Rendimiento (Core Web Vitals)
-
-- [x] ~~`width`/`height` explícitos en imágenes de producto~~ — **no hacía falta**
-  Revisado: todas las imágenes del sitio (catálogo, producto, relacionados, blog, Instagram) ya están dentro de contenedores con `aspect-ratio: 1/1` fijo en `style.css` (`.product-img-wrap`, `.product-main-media`, `.product-detail-img`, `.product-thumb`, `.post-card-thumb`, `.social-mosaic-item`). El CSS ya reserva el espacio antes de que cargue la imagen, igual que harían `width`/`height`, así que no hay CLS real que corregir aquí.
-
-- [x] **`fetchpriority="high"` en la imagen principal del producto**
-  Implementado: `#product-main-image` en `article.html` ahora tiene `fetchpriority="high"` para que el navegador la priorice como candidata a LCP.
-
 ## Calidad de código
 
 - [ ] **Tests automatizados y CI**
   `playwright` ya está como dependencia de dev pero no hay archivos de test ni `.github/workflows`.
   La lógica de precios/variaciones en `plugins/auto_gallery.py` (grupos combinables, precios relativos) es compleja y no tiene cobertura — un cambio ahí podría romper precios sin detectarse hasta producción.
-
----
-
-### Pulido de UX
-
-- [x] **Indicador de posición en la galería**
-  El carousel no indica cuántas fotos hay ni en cuál se está (ej: `2 / 5`).
-  Agregar puntos o contador en el JS del `article.html`.
-
-- [x] **Swipe en móvil para la galería**
-  La galería no responde a gestos táctiles.
-  Agregar soporte de swipe con unos pocos eventos de touch en el JS del `article.html`.
 
 ---
 
@@ -152,3 +86,35 @@ Hallazgos de sobre-ingeniería ordenados por impacto. Ninguno afecta funcionalid
   AUTHORS_SAVE_AS = ""
   AUTHOR_SAVE_AS = ""
   ```
+
+---
+
+## Contenido de productos (revisión 2026-10-08)
+
+Detectado al corregir la ortografía; son datos, no ortografía, así que no se cambiaron sin confirmar.
+
+### Resúmenes copiados de otro producto
+
+- [ ] **Alcancía Pokébola Grande** (`productos/alcancia/pokemon/01-alcancia-pokebola-grande.md`) — el `resumen` dice "estilo de TNT".
+- [ ] **Alcancía Pokébola Pequeña** (`productos/alcancia/pokemon/01-alcancia-pokebola.md`) — el `resumen` dice "estilo de TNT".
+- [ ] **Dragón Esquelético Articulable** (`productos/medieval/01-dragon-esqueletico-articulable.md`) — el `resumen` habla de una alcancía Masterbola de Pokémon.
+- [ ] **Copa Mundial Tamaño Real** (`productos/mundial-futbol/01-copa-grande.md`) — el `resumen` habla de Goku y Dragon Ball.
+- [ ] **Base de QR** (`productos/emprendimiento/01-base-qr.md`) — el `resumen` habla de una flor de lirio.
+
+### Precio de personalización contradictorio
+
+- [ ] **Definir si la personalización cuesta $1.00 o $1.50** — el texto de "Características" dice $1.50 pero la variación cobra `+$1.00` en: Batman, Goku, Pikachu, Mewtwo, Luffy, Zoro, Chopper, Kuromi, Deadpool grande, Copa Mundial, Muñeco de nieve y Lámpara de Lirio.
+
+### Contenido incompleto
+
+- [ ] **Base para llaveros** (`productos/emprendimiento/03-base-llavero.md`) — `precio: ???`.
+- [ ] **Cruz imagen Jesús** (`productos/religiosas/cruz-jesus.md`) — sin descripción.
+- [ ] **Lámpara de Lirio** (`productos/iluminaria/lampara-lirio.md`) — la descripción es solo "...".
+
+---
+
+## Diseño y accesibilidad (auditoría impeccable 2026-10-08)
+
+- [ ] **Crear `DESIGN.md`** (`/impeccable document`) — documentar paleta, tipografía y componentes actuales; hoy hay ~127 colores escritos directo en `style.css` en vez de usar variables (`#334155`, `#0c2132`, `#113a56`, varios `rgba(...)`).
+- [ ] **Íconos de la barra de ventajas** — `index.html` usa emojis (📦 ✨ 📍 💬) mientras el resto del sitio usa íconos SVG. Reemplazarlos por SVG del mismo estilo.
+- [ ] **Zona de testimonios** — reservada en `PRODUCT.md`; llenar con reseñas reales cuando se consigan (no usar testimonios inventados).

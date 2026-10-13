@@ -41,7 +41,7 @@ SITEURL=http://localhost:8000 INSTAGRAM_SYNC=0 docker compose up --build
 ```
 content/productos/<categoria>/<slug>.md   ← artículos de productos
 content/images/productos/<categoria>/     ← imágenes originales
-content/images_opt/productos/<categoria>/ ← WebP generados por optimize_images.py
+content/images_opt/productos/<categoria>/ ← WebP generados por optimize_images.py (foto.webp ≤1600px + foto.thumb.webp ≤640px)
 theme/templates/                          ← plantillas Jinja2 personalizadas
 plugins/auto_gallery.py                   ← plugin local (galería + aliases bilingues + variaciones)
 scripts/                                  ← optimize_images, report_image_savings, sync_instagram_feed
@@ -52,7 +52,7 @@ publishconf.py                            ← configuración de producción (ext
 **Plugin `auto_gallery`**: hace varias cosas a la vez —
 1. Registra aliases en español para los metadatos (ver tabla en `GUIA_PRODUCTOS.md`).
 2. Descubre automáticamente las imágenes del directorio `gallerydir` y las expone como `article.auto_gallery`.
-3. Expone los filtros Jinja2 `optimized_image` y `optimized_gallery` para servir WebP cuando existen, o la imagen original como fallback.
+3. Expone los filtros Jinja2 `optimized_image` y `optimized_gallery` para servir WebP cuando existen, o la imagen original como fallback. `resolve_thumb()` devuelve la miniatura `.thumb.webp` (tarjetas, miniaturas de galería); úsala en cualquier imagen que se muestre chica.
 4. Parsea `variacion` (front matter YAML anidado, ver más abajo) en `article.variaciones`, resuelve imagen/galería por variación, y calcula `article.price_min`/`price_max`/`price_range` para catálogo.
 
 **Rutas cortas**: en el front matter se puede escribir `galeria: onepiece/luffy/` en lugar de `images/productos/onepiece/luffy/`; el plugin resuelve la ruta completa automáticamente.

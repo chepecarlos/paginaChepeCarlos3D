@@ -1,8 +1,8 @@
 ---
-titulo: Osito de Crochet 
+titulo: Osito de Crochet
 fecha: 2026-09-29
 Date: 2026-09-29
-categoria: Para Enamorados
+categoria: Para enamorados
 etiquetas: Enamorados, San Valentin, Parejas
 producto: true
 slug: osito-crochet
@@ -11,12 +11,12 @@ imagen: para-enamorados/osito-crochet/01_Osito-crochet.png
 galeria: para-enamorados/osito-crochet/
 resumen: Figura impresa 3D de Osito con estilo crochet para parejas.
 variacion:
-  nombre: personalizacion 
+  nombre: Personalización
   lista:
-    - titulo: original 
+    - titulo: Original
       precio: $23.00
       id_dolibarr: 
-    - titulo: personalizado
+    - titulo: Personalizado
       precio: +$1.00
       id_dolibarr: 
 ---

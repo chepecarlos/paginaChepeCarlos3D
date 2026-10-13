@@ -8,12 +8,12 @@ slug: goku-grande
 precio: $20.00
 imagen: dragon-ball/goku/01_Goku.png
 galeria: dragon-ball/goku/
-resumen: Figura impresa 3D con estilo Goku en version grande, con excelente presencia para coleccionistas de Dragon Ball.
+resumen: Figura impresa 3D con estilo Goku en versión grande, con excelente presencia para coleccionistas de Dragon Ball.
 id_dolibarr: 25
 
 ## Descripción
 
-Dale un toque único y creativo a tu colección con este increíble Goku con cabeza articulable de 15cm y su nube voladora de 5cm impreso en 3D con acabado estilo crochet 🧶⚡.
+Dale un toque único y creativo a tu colección con este increíble Goku con cabeza articulable de 15 cm y su nube voladora de 5 cm impreso en 3D con acabado estilo crochet 🧶⚡.
 Una impresión que resalta cada detalle del guerrero saiyajin más icónico 💥🟠.
 
 ## Características

@@ -9,7 +9,7 @@ slug: chopper-crochet
 precio: $28.00
 imagen: onepiece/chopper-crochet/pequeño/01_Chopper-pequeño.jpg
 # galeria: onepiece/chopper-crochet/
-resumen: Figura impresa 3D con estilo Chopper en version grande, con excelente presencia para coleccionistas de One Piece.
+resumen: Figura impresa 3D con estilo Chopper en versión grande, con excelente presencia para coleccionistas de One Piece.
 variacion:
   nombre: Tamaño
   lista:

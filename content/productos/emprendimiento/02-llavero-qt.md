@@ -1,6 +1,6 @@
 titulo: Llavero de QR
 fecha: 2026-05-1
-categoria: emprendimiento
+categoria: Emprendimiento
 etiquetas: link, qr, llavero
 producto: false
 slug: llavero-qr

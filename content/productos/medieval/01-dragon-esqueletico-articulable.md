@@ -1,11 +1,11 @@
 ---
-titulo: Dragon Esqueletico Articulable
+titulo: Dragón Esquelético Articulable
 fecha: 2026-8-24
-categoria: medieval
+categoria: Medieval
 etiquetas: medieval, dragon, articulable
 producto: true
 slug: dragon-esqueletico-articulable
-resumen: Alcancia impresa en 3D con estilo de masterbola, con excelente presencia para coleccionistas de Pokemon.
+resumen: Alcancía impresa en 3D con estilo de Masterbola, con excelente presencia para coleccionistas de Pokémon.
 id_dolibarr:
 variacion:
   - nombre: Color

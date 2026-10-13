@@ -15,7 +15,7 @@ La gran novedad es el debut de las megaevoluciones de Mewtwo. El sábado 11 apar
 
 <img src="/images_opt/blog/2026/01-go-fest-2026-el-salvador/Mega-Mewtwo.webp" alt="Mega Mewtwo GO Fest 2026">
 
-Así que ya sabes: carga bien tu teléfono, junta Pokebolas y ojalá la suerte te alcance para un **Mewtwo shiny** 🍀✨
+Así que ya sabes: carga bien tu teléfono, junta Pokébolas y ojalá la suerte te alcance para un **Mewtwo shiny** 🍀✨
 
 ## Nuestras comunidades aliadas
 

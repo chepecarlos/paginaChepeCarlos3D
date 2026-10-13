@@ -1,7 +1,7 @@
 ---
 titulo: Pastillero de Libro
 fecha: 2026-09-7
-categoria: pastilleros
+categoria: Pastilleros
 etiquetas: pastilleros, medicina, pastillas, libro
 producto: true
 slug: libro-pastillero

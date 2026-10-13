@@ -1,5 +1,5 @@
 ---
-titulo: Muñeco de nieve 
+titulo: Muñeco de nieve
 fecha: 2026-08-04
 Date: 2026-08-04
 categoria: Navidad
@@ -9,14 +9,14 @@ slug: muñeco-nieve
 precio: $5.00
 imagen: navidad/01-muñeco-de-nieve/muñeco_01.png
 galeria: navidad/01-muñeco-de-nieve
-resumen: Figura impresa 3D navideña con luz para que le des vida a tu arbolito de navidad
+resumen: Figura impresa 3D navideña con luz para que le des vida a tu arbolito de Navidad
 variacion:
-  nombre: personalizacion 
+  nombre: Personalización
   lista:
-    - titulo: original 
+    - titulo: Original
       precio: $5
       id_dolibarr: 38
-    - titulo: personalizado
+    - titulo: Personalizado
       precio: +$1.00
       id_dolibarr: 20
 ---
@@ -24,10 +24,10 @@ variacion:
 ## Características
 
 - **Altura:** <span id="product-altura">10 cm</span>.
-- **Flexibilidad:** Cuello completamentme articulable.
+- **Flexibilidad:** Cuello completamente articulable.
 - **Personalización:** Añade el nombre que desees por un extra de $1.50.
 
 
 ## Descripción
 
-Porque en estas navidades ilumina tu navidad con estilo
+Esta Navidad, ilumina tu arbolito con estilo.
