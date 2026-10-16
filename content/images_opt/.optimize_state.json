@@ -3173,312 +3173,520 @@
     "mtime_ns": 1783637142644563693,
     "quality": 72,
     "size": 372444,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/LogoGoFest2026.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/Mega-Mewtwo.jpg": {
     "mtime_ns": 1783637142649563925,
     "quality": 72,
     "size": 1671048,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/Mega-Mewtwo.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/maestrospokemonsantaana.png": {
     "mtime_ns": 1783637142659564388,
     "quality": 72,
     "size": 1011147,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/maestrospokemonsantaana.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pogoteamrocketsv.png": {
     "mtime_ns": 1783637142661564480,
     "quality": 72,
     "size": 115274,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pogoteamrocketsv.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pokecafetalon.png": {
     "mtime_ns": 1783637142665564665,
     "quality": 72,
     "size": 554221,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pokecafetalon.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pokemon_go_san_miguel.png": {
     "mtime_ns": 1783637142671564943,
     "quality": 72,
     "size": 1395965,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pokemon_go_san_miguel.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pokeraiderssv.PNG": {
     "mtime_ns": 1783637142685565591,
     "quality": 72,
     "size": 2266244,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/pokeraiderssv.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/team_go_cuscatlan_sv.png": {
     "mtime_ns": 1783637142688565729,
     "quality": 72,
     "size": 346181,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/team_go_cuscatlan_sv.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-01.jpg": {
     "mtime_ns": 1782866464231760069,
     "quality": 72,
     "size": 155225,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-02.jpg": {
     "mtime_ns": 1777411099693899144,
     "quality": 72,
     "size": 60217,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-03.jpg": {
     "mtime_ns": 1782866464232760016,
     "quality": 72,
     "size": 171188,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-04.jpg": {
     "mtime_ns": 1782866464233759962,
     "quality": 72,
     "size": 171465,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-04.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-05.jpg": {
     "mtime_ns": 1782866464235759856,
     "quality": 72,
     "size": 164957,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-05.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-06.jpg": {
     "mtime_ns": 1782866464236759803,
     "quality": 72,
     "size": 173422,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-06.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_01.png": {
     "mtime_ns": 1713821132000000000,
     "quality": 72,
     "size": 1566238,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_02.png": {
     "mtime_ns": 1713821304000000000,
     "quality": 72,
     "size": 1787429,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_03.png": {
     "mtime_ns": 1713821225000000000,
     "quality": 72,
     "size": 1597817,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_04.png": {
     "mtime_ns": 1713821427000000000,
     "quality": 72,
     "size": 1855846,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_04.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_05.png": {
     "mtime_ns": 1756850528067818116,
     "quality": 72,
     "size": 1187581,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_05.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_06.png": {
     "mtime_ns": 1756850539424793346,
     "quality": 72,
     "size": 1145966,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_06.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_07.png": {
     "mtime_ns": 1756850548165319233,
     "quality": 72,
     "size": 1114370,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_07.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_08.png": {
     "mtime_ns": 1756850557441943762,
     "quality": 72,
     "size": 1107599,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_08.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/mariobros/alcancia-hongito/Hongito_09.png": {
     "mtime_ns": 1756850570001821658,
     "quality": 72,
     "size": 1187581,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/mariobros/alcancia-hongito/Hongito_09.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_01.png": {
     "mtime_ns": 1756425303229040864,
     "quality": 72,
     "size": 1255971,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_02.png": {
     "mtime_ns": 1756425541290002510,
     "quality": 72,
     "size": 985542,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_03.png": {
     "mtime_ns": 1756425552029407180,
     "quality": 72,
     "size": 1015266,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_04.png": {
     "mtime_ns": 1756425561948780976,
     "quality": 72,
     "size": 1277097,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_04.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_05.png": {
     "mtime_ns": 1756852536459009318,
     "quality": 72,
     "size": 745850,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-creeper/Creeper_Alcansilla_05.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_01.png": {
     "mtime_ns": 1756422899751116914,
     "quality": 72,
     "size": 1091046,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_02.png": {
     "mtime_ns": 1756422911955187111,
     "quality": 72,
     "size": 1139969,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_03.png": {
     "mtime_ns": 1756422927117277927,
     "quality": 72,
     "size": 1134264,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/minecraft/alcancia-tnt/TNT_Alcansilla_03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_01.png": {
     "mtime_ns": 1756421981966769894,
     "quality": 72,
     "size": 1187844,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_02.png": {
     "mtime_ns": 1756422009496205431,
     "quality": 72,
     "size": 1257897,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_03.png": {
     "mtime_ns": 1756422208696380069,
     "quality": 72,
     "size": 977855,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_04.png": {
     "mtime_ns": 1756422301965877864,
     "quality": 72,
     "size": 1061570,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/alcancia/pokemon/alcancia-pokebola-grande/Pokebola_Alcansilla_04.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/contenedores/pastillero/libro-pastillero/01.Libro-pastillero.png": {
     "mtime_ns": 1788819366827868867,
     "quality": 72,
     "size": 1698486,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/contenedores/pastillero/libro-pastillero/01.Libro-pastillero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/contenedores/pastillero/libro-pastillero/02.Libro-pastillero.png": {
     "mtime_ns": 1788819374070996310,
     "quality": 72,
     "size": 1406110,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/contenedores/pastillero/libro-pastillero/02.Libro-pastillero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/contenedores/pastillero/libro-pastillero/03.Libro-pastillero.png": {
     "mtime_ns": 1788819380095094735,
     "quality": 72,
     "size": 1350657,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/contenedores/pastillero/libro-pastillero/03.Libro-pastillero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/contenedores/pastillero/libro-pastillero/04.Libro-pastillero.png": {
     "mtime_ns": 1788819385363789527,
     "quality": 72,
     "size": 1396517,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/contenedores/pastillero/libro-pastillero/04.Libro-pastillero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/contenedores/pastillero/libro-pastillero/05.Libro-pastillero.png": {
     "mtime_ns": 1788819390790484649,
     "quality": 72,
     "size": 1359316,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/contenedores/pastillero/libro-pastillero/05.Libro-pastillero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/contenedores/pastillero/libro-pastillero/06.Libro-pastillero.png": {
     "mtime_ns": 1788819396158311235,
     "quality": 72,
     "size": 1485363,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/contenedores/pastillero/libro-pastillero/06.Libro-pastillero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/01_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464246759269,
     "quality": 72,
     "size": 1208671,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/01_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/02_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464254758843,
     "quality": 72,
     "size": 979818,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/02_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/03_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464263758363,
     "quality": 72,
     "size": 951421,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/03_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/04_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464269758043,
     "quality": 72,
     "size": 753286,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/04_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/05_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464278757563,
     "quality": 72,
     "size": 990230,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/05_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/06_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464287757083,
     "quality": 72,
     "size": 991372,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/06_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-basica/07_Copadelmundo-basica.jpg": {
     "mtime_ns": 1782866464297756550,
     "quality": 72,
     "size": 1015389,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-basica/07_Copadelmundo-basica.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-premium/01_Copadelmundo-premium.jpg": {
     "mtime_ns": 1782866464308755964,
     "quality": 72,
     "size": 1484447,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-premium/01_Copadelmundo-premium.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-premium/02_Copadelmundo-premium.jpg": {
     "mtime_ns": 1782866464319755377,
     "quality": 72,
     "size": 1315165,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-premium/02_Copadelmundo-premium.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-premium/03_Copadelmundo-premium.jpg": {
     "mtime_ns": 1782866464329754844,
     "quality": 72,
     "size": 1305892,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-premium/03_Copadelmundo-premium.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real-premium/04_Copadelmundo-premium.jpg": {
     "mtime_ns": 1782866464339754311,
     "quality": 72,
     "size": 1280053,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/copa-mundial/copa-mundial-real-premium/04_Copadelmundo-premium.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/copa-mundial/copa-mundial-real/01_CopaMundial.png": {
@@ -3491,79 +3699,271 @@
     "mtime_ns": 1777411099712892842,
     "quality": 72,
     "size": 1542217,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/cruz-jesus/cruz-jesus-01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/cruz-jesus/curz-jesus-02.png": {
     "mtime_ns": 1777411099719890520,
     "quality": 72,
     "size": 1303062,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/cruz-jesus/curz-jesus-02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dc/batman-grande/01_Batman.png": {
     "mtime_ns": 1778289084154916110,
     "quality": 72,
     "size": 2135161,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dc/batman-grande/01_Batman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dc/batman-grande/02_Batman.png": {
     "mtime_ns": 1778289102199680359,
     "quality": 72,
     "size": 2186209,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dc/batman-grande/02_Batman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dc/batman-grande/03_Batman.png": {
     "mtime_ns": 1778289114050531686,
     "quality": 72,
     "size": 2274873,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dc/batman-grande/03_Batman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dc/batman-grande/04_Batman.png": {
     "mtime_ns": 1778289127887364105,
     "quality": 72,
     "size": 2143643,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dc/batman-grande/04_Batman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dc/batman-grande/05_Batman.png": {
     "mtime_ns": 1778289134380287654,
     "quality": 72,
     "size": 2129292,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dc/batman-grande/05_Batman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/01.Stitch_llavero.png": {
     "mtime_ns": 1787009569498340752,
     "quality": 72,
     "size": 1696071,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/01.Stitch_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/02.Stitch_llavero.png": {
     "mtime_ns": 1787009669184114667,
     "quality": 72,
     "size": 1643763,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/02.Stitch_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/03.Stitch_llavero.png": {
     "mtime_ns": 1787009834330290088,
     "quality": 72,
     "size": 1684615,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/03.Stitch_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/04.Stitch_llavero.png": {
     "mtime_ns": 1787011649947996601,
     "quality": 72,
     "size": 1638481,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/04.Stitch_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/05.Stitch_llavero.png": {
     "mtime_ns": 1787012637479399994,
     "quality": 72,
     "size": 1688246,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/05.Stitch_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/disney/stitch/stitch-llavero/06.Stitch_llavero.png": {
     "mtime_ns": 1787012666275152626,
     "quality": 72,
     "size": 1668542,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/06.Stitch_llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/01.Base-bts.png": {
+    "mtime_ns": 1792108120679055525,
+    "quality": 72,
+    "size": 1106877,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/01.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/02.Base-bts.png": {
+    "mtime_ns": 1792108286264940277,
+    "quality": 72,
+    "size": 994715,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/02.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/03.Base-bts.png": {
+    "mtime_ns": 1792109238709320861,
+    "quality": 72,
+    "size": 1240966,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/03.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/04.Base-bts.png": {
+    "mtime_ns": 1792108408567690923,
+    "quality": 72,
+    "size": 1376251,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/04.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/05.Base-bts.png": {
+    "mtime_ns": 1792108448083970149,
+    "quality": 72,
+    "size": 1405082,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/05.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/06.Base-bts.png": {
+    "mtime_ns": 1792108487577252027,
+    "quality": 72,
+    "size": 1305051,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/06.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/base-bts/07.Base-bts.png": {
+    "mtime_ns": 1792109167240752195,
+    "quality": 72,
+    "size": 1321313,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/base-bts/07.Base-bts.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175553.jpg": {
+    "mtime_ns": 1781830723056507469,
+    "quality": 72,
+    "size": 3273682,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175553.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175604.jpg": {
+    "mtime_ns": 1781830723084506562,
+    "quality": 72,
+    "size": 2870916,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175604.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175612.jpg": {
+    "mtime_ns": 1781830723112505654,
+    "quality": 72,
+    "size": 2994056,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175612.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175716.jpg": {
+    "mtime_ns": 1781830723143504649,
+    "quality": 72,
+    "size": 3035130,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175716.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175749.jpg": {
+    "mtime_ns": 1781830723174503644,
+    "quality": 72,
+    "size": 3083345,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175749.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618180118.jpg": {
+    "mtime_ns": 1781830723201502769,
+    "quality": 72,
+    "size": 2834477,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618180118.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618180500.jpg": {
+    "mtime_ns": 1781830723235501667,
+    "quality": 72,
+    "size": 3117673,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618180500.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dragon-ball/01_Goku.png": {
     "mtime_ns": 1777418693893950255,
@@ -3605,66 +4005,110 @@
     "mtime_ns": 1777418693893950255,
     "quality": 72,
     "size": 1851166,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dragon-ball/goku/01_Goku.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dragon-ball/goku/02_Goku.png": {
     "mtime_ns": 1771281789180615129,
     "quality": 72,
     "size": 1385383,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dragon-ball/goku/02_Goku.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dragon-ball/goku/03_Goku.png": {
     "mtime_ns": 1771281799562660837,
     "quality": 72,
     "size": 1536655,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dragon-ball/goku/03_Goku.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dragon-ball/goku/04_Goku.png": {
     "mtime_ns": 1771281808372708959,
     "quality": 72,
     "size": 1469935,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dragon-ball/goku/04_Goku.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/dragon-ball/goku/05_Goku.png": {
     "mtime_ns": 1771281815295752587,
     "quality": 72,
     "size": 1731559,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/dragon-ball/goku/05_Goku.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/base-qr/01_Base-qr.png": {
     "mtime_ns": 1788479648121177209,
     "quality": 72,
     "size": 1785346,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/base-qr/01_Base-qr.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/base-qr/02_Base-qr.png": {
     "mtime_ns": 1788479656274740445,
     "quality": 72,
     "size": 1326249,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/base-qr/02_Base-qr.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/base-qr/03_Base-qr.png": {
     "mtime_ns": 1788479662938144114,
     "quality": 72,
     "size": 1552993,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/base-qr/03_Base-qr.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/base-qr/04_Base-qr.png": {
     "mtime_ns": 1788479671730286199,
     "quality": 72,
     "size": 1332204,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/base-qr/04_Base-qr.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/base-qr/05_Base-qr.png": {
     "mtime_ns": 1788479678884169741,
     "quality": 72,
     "size": 1470692,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/base-qr/05_Base-qr.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/base-qr/06_Base-qr.png": {
     "mtime_ns": 1788479687778940020,
     "quality": 72,
     "size": 1699365,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/base-qr/06_Base-qr.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/llavero-qr/IMG-20260601-WA0027.jpg": {
@@ -3677,36 +4121,60 @@
     "mtime_ns": 1780440311000000000,
     "quality": 72,
     "size": 713135,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/llavero-qr/IMG-20260601-WA0050.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/llavero-qr/IMG-20260601-WA0052.jpg": {
     "mtime_ns": 1780440312000000000,
     "quality": 72,
     "size": 858007,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/llavero-qr/IMG-20260601-WA0052.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/llavero-qr/IMG-20260601-WA0056.jpg": {
     "mtime_ns": 1780440315000000000,
     "quality": 72,
     "size": 766077,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/llavero-qr/IMG-20260601-WA0056.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/llavero-qr/IMG-20260601-WA0060.jpg": {
     "mtime_ns": 1780440321000000000,
     "quality": 72,
     "size": 704166,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/llavero-qr/IMG-20260601-WA0060.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/llavero-qr/IMG-20260601-WA0064.jpg": {
     "mtime_ns": 1780440324000000000,
     "quality": 72,
     "size": 789447,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/llavero-qr/IMG-20260601-WA0064.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/emprendimiento/llavero-qr/IMG-20260601-WA0068.jpg": {
     "mtime_ns": 1780440326000000000,
     "quality": 72,
     "size": 873169,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/emprendimiento/llavero-qr/IMG-20260601-WA0068.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/01_Litofania.jpg": {
@@ -3791,108 +4259,180 @@
     "mtime_ns": 1782866464344754044,
     "quality": 72,
     "size": 1645485,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo02.png": {
     "mtime_ns": 1782866464347753885,
     "quality": 72,
     "size": 1498814,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo03.png": {
     "mtime_ns": 1782866464365752925,
     "quality": 72,
     "size": 9178319,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo04.png": {
     "mtime_ns": 1782866464379752178,
     "quality": 72,
     "size": 7519591,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo04.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo05.png": {
     "mtime_ns": 1782866464391751538,
     "quality": 72,
     "size": 7702157,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo05.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo06.png": {
     "mtime_ns": 1782866464409750579,
     "quality": 72,
     "size": 9550605,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo06.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo08.png": {
     "mtime_ns": 1782866464419750045,
     "quality": 72,
     "size": 9387628,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo08.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo09.png": {
     "mtime_ns": 1782866464431749406,
     "quality": 72,
     "size": 8612378,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo09.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo10.png": {
     "mtime_ns": 1782866464454748180,
     "quality": 72,
     "size": 10278308,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo10.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo11.png": {
     "mtime_ns": 1782866464457748020,
     "quality": 72,
     "size": 1571635,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo11.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/con-logo/BaseConLogo13.png": {
     "mtime_ns": 1782866464459747913,
     "quality": 72,
     "size": 1435384,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/con-logo/BaseConLogo13.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/01_Litofania.jpg": {
     "mtime_ns": 1782866464470747326,
     "quality": 72,
     "size": 2641090,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/01_Litofania.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/02_Litofania.jpg": {
     "mtime_ns": 1782866464477746953,
     "quality": 72,
     "size": 905043,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/02_Litofania.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/03_Litofania.png": {
     "mtime_ns": 1782866464480746793,
     "quality": 72,
     "size": 1095210,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/03_Litofania.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/litofania/litofania-personalizada/original/04_Litofania.png": {
     "mtime_ns": 1782866464484746580,
     "quality": 72,
     "size": 1651108,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/litofania/litofania-personalizada/original/04_Litofania.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/llaveros/llavero-mundial/01_llavero-mundial.png": {
     "mtime_ns": 1783730873469683449,
     "quality": 72,
     "size": 1487731,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/llaveros/llavero-mundial/01_llavero-mundial.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/llaveros/llavero-mundial/02_llavero-mundial.png": {
     "mtime_ns": 1783730873472680636,
     "quality": 72,
     "size": 1470434,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/llaveros/llavero-mundial/02_llavero-mundial.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/llaveros/llavero-mundial/03_llavero-mundial.png": {
     "mtime_ns": 1783730873475677823,
     "quality": 72,
     "size": 2072975,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/llaveros/llavero-mundial/03_llavero-mundial.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/01.busto-deadpool.jpg": {
@@ -3977,36 +4517,60 @@
     "mtime_ns": 1786583365391779014,
     "quality": 72,
     "size": 1553650,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-normal/01.busto-deadpool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-normal/02.busto-deadpool.png": {
     "mtime_ns": 1786583342743379725,
     "quality": 72,
     "size": 1678620,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-normal/02.busto-deadpool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-normal/03.busto-deadpool.png": {
     "mtime_ns": 1786583350648700957,
     "quality": 72,
     "size": 1835244,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-normal/03.busto-deadpool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-normal/04.busto-deadpool.png": {
     "mtime_ns": 1786583357994212336,
     "quality": 72,
     "size": 1922955,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-normal/04.busto-deadpool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-normal/05.busto-deadpool.png": {
     "mtime_ns": 1786583324073690419,
     "quality": 72,
     "size": 1945981,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-normal/05.busto-deadpool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-normal/06.busto-deadpool.png": {
     "mtime_ns": 1786583373227328255,
     "quality": 72,
     "size": 1954085,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-normal/06.busto-deadpool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-normal/1.busto-deadpool.png": {
@@ -4049,306 +4613,580 @@
     "mtime_ns": 1785960941877477389,
     "quality": 72,
     "size": 244479,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-personalizado/01.busto-deadpool-personalizado.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-personalizado/02.busto-deadpool-personalizado.jpg": {
     "mtime_ns": 1785961564307656814,
     "quality": 72,
     "size": 6126836,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-personalizado/02.busto-deadpool-personalizado.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-personalizado/03.busto-deadpool-personalizado.jpg": {
     "mtime_ns": 1785961806845240605,
     "quality": 72,
     "size": 8023747,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-personalizado/03.busto-deadpool-personalizado.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-personalizado/04.busto-deadpool-personalizado.jpg": {
     "mtime_ns": 1785961637279641138,
     "quality": 72,
     "size": 4086250,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-personalizado/04.busto-deadpool-personalizado.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/busto-deadpool/deadpool-personalizado/05.busto-deadpool-personalizado.jpg": {
     "mtime_ns": 1785961753652599556,
     "quality": 72,
     "size": 313565,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/busto-deadpool/deadpool-personalizado/05.busto-deadpool-personalizado.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/deadpool-grande/01_DeadPool.png": {
     "mtime_ns": 1778290520668756179,
     "quality": 72,
     "size": 2363660,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/deadpool-grande/01_DeadPool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/deadpool-grande/02_DeadPool.png": {
     "mtime_ns": 1778290538453186249,
     "quality": 72,
     "size": 2218823,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/deadpool-grande/02_DeadPool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/deadpool-grande/03_DeadPool.png": {
     "mtime_ns": 1778290545638357334,
     "quality": 72,
     "size": 2353745,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/deadpool-grande/03_DeadPool.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/01_Spiderman.png": {
     "mtime_ns": 1778290970074389856,
     "quality": 72,
     "size": 1985680,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/01_Spiderman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/02_Spiderman.png": {
     "mtime_ns": 1778290977511503254,
     "quality": 72,
     "size": 2292607,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/02_Spiderman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/03_Spiderman.png": {
     "mtime_ns": 1778290985384622548,
     "quality": 72,
     "size": 2212316,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/03_Spiderman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-grande/04_Spiderman.png": {
     "mtime_ns": 1778290991834719708,
     "quality": 72,
     "size": 2152386,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-grande/04_Spiderman.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/01.Spiderman_llavero.png": {
     "mtime_ns": 1787007784933904086,
     "quality": 72,
     "size": 1591672,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/01.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/02.Spiderman_llavero.png": {
     "mtime_ns": 1787007892522076467,
     "quality": 72,
     "size": 1765068,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/02.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/03.Spiderman_llavero.png": {
     "mtime_ns": 1787008016301605090,
     "quality": 72,
     "size": 1527273,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/03.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/04.Spiderman_llavero.png": {
     "mtime_ns": 1787008087482941361,
     "quality": 72,
     "size": 1664676,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/04.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/05.Spiderman_llavero.png": {
     "mtime_ns": 1787008108546216217,
     "quality": 72,
     "size": 1647781,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/05.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/marvel/spiderman/spiderman-llavero/06.Spiderman_llavero.png": {
     "mtime_ns": 1787008156810889270,
     "quality": 72,
     "size": 1627488,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/marvel/spiderman/spiderman-llavero/06.Spiderman_llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/medieval/dragon-esqueletico/01.Dragon-esqueletico.png": {
     "mtime_ns": 1787613690105878977,
     "quality": 72,
     "size": 964204,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/medieval/dragon-esqueletico/01.Dragon-esqueletico.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/medieval/dragon-esqueletico/02.Dragon-esqueletico.png": {
     "mtime_ns": 1787613596978788181,
     "quality": 72,
     "size": 1441983,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/medieval/dragon-esqueletico/02.Dragon-esqueletico.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/medieval/dragon-esqueletico/03.Dragon-esqueletico.png": {
     "mtime_ns": 1787613604180578582,
     "quality": 72,
     "size": 1375401,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/medieval/dragon-esqueletico/03.Dragon-esqueletico.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/medieval/dragon-esqueletico/04.Dragon-esqueletico.png": {
     "mtime_ns": 1787613613329306556,
     "quality": 72,
     "size": 1396872,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/medieval/dragon-esqueletico/04.Dragon-esqueletico.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_01.png": {
     "mtime_ns": 1785886053539233639,
     "quality": 72,
     "size": 2428904,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_02.png": {
     "mtime_ns": 1785886405117445253,
     "quality": 72,
     "size": 1285224,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_03.png": {
     "mtime_ns": 1785886481247635686,
     "quality": 72,
     "size": 1656298,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_03.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/01_Link-llavero.png": {
+    "mtime_ns": 1790815363154936088,
+    "quality": 72,
+    "size": 1609691,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/01_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/02_Link-llavero.png": {
+    "mtime_ns": 1790815363156935221,
+    "quality": 72,
+    "size": 1551175,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/02_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/03_Link-llavero.png": {
+    "mtime_ns": 1790815363158934355,
+    "quality": 72,
+    "size": 1606308,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/03_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/04_Link-llavero.png": {
+    "mtime_ns": 1790815363161933054,
+    "quality": 72,
+    "size": 1547960,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/04_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/05_Link-llavero.png": {
+    "mtime_ns": 1790815363163932188,
+    "quality": 72,
+    "size": 1554535,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/05_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/06_Link-llavero.png": {
+    "mtime_ns": 1790815363165931321,
+    "quality": 72,
+    "size": 1511886,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/06_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/07_Link-llavero.png": {
+    "mtime_ns": 1790815363167930454,
+    "quality": 72,
+    "size": 1555289,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/07_Link-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/grande/01_Chopper-grande.png": {
     "mtime_ns": 1782866464487746420,
     "quality": 72,
     "size": 2259045,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/grande/01_Chopper-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/grande/02_Chopper-grande.png": {
     "mtime_ns": 1782866464492746154,
     "quality": 72,
     "size": 2156268,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/grande/02_Chopper-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/grande/03_Chopper-grande.png": {
     "mtime_ns": 1782866464495745994,
     "quality": 72,
     "size": 2204720,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/grande/03_Chopper-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/grande/04_Chopper-grande.png": {
     "mtime_ns": 1782866464498745834,
     "quality": 72,
     "size": 2021960,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/grande/04_Chopper-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/grande/05_Chopper-grande.png": {
     "mtime_ns": 1782866464501745674,
     "quality": 72,
     "size": 2223609,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/grande/05_Chopper-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/01_Chopper-peque\u00f1o.jpg": {
     "mtime_ns": 1782866464510745194,
     "quality": 72,
     "size": 1145488,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/01_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/02_Chopper-peque\u00f1o.jpg": {
     "mtime_ns": 1782866464517744821,
     "quality": 72,
     "size": 881030,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/02_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/03_Chopper-peque\u00f1o.jpg": {
     "mtime_ns": 1782866464525744394,
     "quality": 72,
     "size": 921529,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/03_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/04_Chopper-peque\u00f1o.jpg": {
     "mtime_ns": 1782866464534743914,
     "quality": 72,
     "size": 921369,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/04_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/05_Chopper-peque\u00f1o.jpg": {
     "mtime_ns": 1782866464542743488,
     "quality": 72,
     "size": 815904,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/05_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/06_Chopper-peque\u00f1o.jpg": {
     "mtime_ns": 1782866464550743061,
     "quality": 72,
     "size": 804333,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/06_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/07_Chopper-peque\u00f1o.png": {
     "mtime_ns": 1782866885995215875,
     "quality": 72,
     "size": 1393389,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/07_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/08_Chopper-peque\u00f1o.png": {
     "mtime_ns": 1782866917530605615,
     "quality": 72,
     "size": 1400315,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/08_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/peque\u00f1o/09_Chopper-peque\u00f1o.png": {
     "mtime_ns": 1782866878881360402,
     "quality": 72,
     "size": 1444002,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/chopper-crochet/peque\u00f1o/09_Chopper-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/grande/01_Luffy-grande.jpg": {
     "mtime_ns": 1782866464559742582,
     "quality": 72,
     "size": 1178306,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/grande/01_Luffy-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/grande/02_Luffy-grande.jpg": {
     "mtime_ns": 1782866464567742155,
     "quality": 72,
     "size": 988462,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/grande/02_Luffy-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/grande/03_Luffy-grande.jpg": {
     "mtime_ns": 1782866464576741675,
     "quality": 72,
     "size": 1140008,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/grande/03_Luffy-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/grande/04_Luffy-grande.jpg": {
     "mtime_ns": 1782866464584741249,
     "quality": 72,
     "size": 836129,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/grande/04_Luffy-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/grande/05_Luffy-grande.jpg": {
     "mtime_ns": 1782866464593740769,
     "quality": 72,
     "size": 900737,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/grande/05_Luffy-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/grande/06_Luffy-grande.jpg": {
     "mtime_ns": 1782866464603740236,
     "quality": 72,
     "size": 1218828,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/grande/06_Luffy-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/peque\u00f1o/01_Luffy-peque\u00f1o.png": {
     "mtime_ns": 1782866464607740023,
     "quality": 72,
     "size": 1527520,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/peque\u00f1o/01_Luffy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/peque\u00f1o/02_Luffy-peque\u00f1o.png": {
     "mtime_ns": 1782866464610739863,
     "quality": 72,
     "size": 1588928,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/peque\u00f1o/02_Luffy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/peque\u00f1o/03_Luffy-peque\u00f1o.png": {
     "mtime_ns": 1782866464614739649,
     "quality": 72,
     "size": 1859355,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/peque\u00f1o/03_Luffy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/peque\u00f1o/04_Luffy-peque\u00f1o.png": {
     "mtime_ns": 1782866464616739543,
     "quality": 72,
     "size": 1854623,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/peque\u00f1o/04_Luffy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/peque\u00f1o/05_Luffy-peque\u00f1o.png": {
     "mtime_ns": 1782866464619739383,
     "quality": 72,
     "size": 1691966,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/peque\u00f1o/05_Luffy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-crochet/peque\u00f1o/06_Luffy-peque\u00f1o.png": {
     "mtime_ns": 1782866464622739223,
     "quality": 72,
     "size": 1772619,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/luffy-crochet/peque\u00f1o/06_Luffy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/luffy-grande/zoro-grande/01_Zoro.png": {
@@ -4373,522 +5211,800 @@
     "mtime_ns": 1782866464629738850,
     "quality": 72,
     "size": 1874194,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/zoro-crochet/grande/01_Zoro-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/zoro-crochet/grande/02_Zoro-grande.png": {
     "mtime_ns": 1782866464634738583,
     "quality": 72,
     "size": 1801495,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/zoro-crochet/grande/02_Zoro-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/zoro-crochet/grande/03_Zoro-grande.png": {
     "mtime_ns": 1782866464638738370,
     "quality": 72,
     "size": 1806369,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/onepiece/zoro-crochet/grande/03_Zoro-grande.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/01_Osito-crochet.png": {
-    "mtime_ns": 1790721732580172507,
+    "mtime_ns": 1790815363171928721,
     "quality": 72,
     "size": 1520390,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/01_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/02_Osito-crochet.png": {
-    "mtime_ns": 1790721744596833038,
+    "mtime_ns": 1790815363174927421,
     "quality": 72,
     "size": 1454544,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/02_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/03_Osito-crochet.png": {
-    "mtime_ns": 1790721750100135236,
+    "mtime_ns": 1790815363177926121,
     "quality": 72,
     "size": 1344830,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/03_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/04_Osito-crochet.png": {
-    "mtime_ns": 1790721756097464348,
+    "mtime_ns": 1790815363181924388,
     "quality": 72,
     "size": 1531748,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/04_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/05_Osito-crochet.png": {
-    "mtime_ns": 1790721761756770480,
+    "mtime_ns": 1790815363184923088,
     "quality": 72,
     "size": 1721586,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/05_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/06_Osito-crochet.png": {
-    "mtime_ns": 1790721768085585707,
+    "mtime_ns": 1790815363186922221,
     "quality": 72,
     "size": 1468441,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/06_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/07_Osito-crochet.png": {
-    "mtime_ns": 1790721773669410773,
+    "mtime_ns": 1790815363189920921,
     "quality": 72,
     "size": 1872229,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/07_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/para-enamorados/osito-crochet/09_Osito-crochet.png": {
-    "mtime_ns": 1790721782044156890,
+    "mtime_ns": 1790815363191920054,
     "quality": 72,
     "size": 1461879,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/para-enamorados/osito-crochet/09_Osito-crochet.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-masterbola/peque\u00f1o/01.Alcancia-masterbola.png": {
     "mtime_ns": 1787611527255125630,
     "quality": 72,
     "size": 1384532,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-masterbola/peque\u00f1o/01.Alcancia-masterbola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-masterbola/peque\u00f1o/02.Alcancia-masterbola.png": {
     "mtime_ns": 1787611536119822053,
     "quality": 72,
     "size": 1252611,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-masterbola/peque\u00f1o/02.Alcancia-masterbola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-masterbola/peque\u00f1o/03.Alcancia-masterbola.png": {
     "mtime_ns": 1787611542455924505,
     "quality": 72,
     "size": 1267685,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-masterbola/peque\u00f1o/03.Alcancia-masterbola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-masterbola/peque\u00f1o/04.Alcancia-masterbola.png": {
     "mtime_ns": 1787611551456378176,
     "quality": 72,
     "size": 1282600,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-masterbola/peque\u00f1o/04.Alcancia-masterbola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/mediano/01.Alcancia-pokebola.png": {
     "mtime_ns": 1787610454262219091,
     "quality": 72,
     "size": 1224336,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/mediano/01.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/mediano/02.Alcancia-pokebola.png": {
     "mtime_ns": 1787610543811325924,
     "quality": 72,
     "size": 1303425,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/mediano/02.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/mediano/03.Alcancia-pokebola.png": {
     "mtime_ns": 1787610554035977792,
     "quality": 72,
     "size": 1106501,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/mediano/03.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/mediano/04.Alcancia-pokebola.png": {
     "mtime_ns": 1787610561172799014,
     "quality": 72,
     "size": 1190163,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/mediano/04.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/peque\u00f1o/01.Alcancia-pokebola.png": {
     "mtime_ns": 1787610454262219091,
     "quality": 72,
     "size": 1224336,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/peque\u00f1o/01.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/peque\u00f1o/02.Alcancia-pokebola.png": {
     "mtime_ns": 1787610543811325924,
     "quality": 72,
     "size": 1303425,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/peque\u00f1o/02.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/peque\u00f1o/03.Alcancia-pokebola.png": {
     "mtime_ns": 1787610554035977792,
     "quality": 72,
     "size": 1106501,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/peque\u00f1o/03.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/alcancia-pokebola/peque\u00f1o/04.Alcancia-pokebola.png": {
     "mtime_ns": 1787610561172799014,
     "quality": 72,
     "size": 1190163,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/alcancia-pokebola/peque\u00f1o/04.Alcancia-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/maseta-pokebola/01.maseta-pokebola.png": {
     "mtime_ns": 1786586038152697843,
     "quality": 72,
     "size": 1350894,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/maseta-pokebola/01.maseta-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/maseta-pokebola/02.maseta-pokebola.png": {
     "mtime_ns": 1786586049616429053,
     "quality": 72,
     "size": 1298513,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/maseta-pokebola/02.maseta-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/maseta-pokebola/03.maseta-pokebola.png": {
     "mtime_ns": 1786586156501844255,
     "quality": 72,
     "size": 1337243,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/maseta-pokebola/03.maseta-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/maseta-pokebola/04.maseta-pokebola.png": {
     "mtime_ns": 1786586164019601151,
     "quality": 72,
     "size": 1541013,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/maseta-pokebola/04.maseta-pokebola.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/01_Mewtwo-llavero.png": {
     "mtime_ns": 1783041246685066813,
     "quality": 72,
     "size": 1479092,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/01_Mewtwo-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/02_Mewtwo-llavero.png": {
     "mtime_ns": 1783041246687066254,
     "quality": 72,
     "size": 1449478,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/02_Mewtwo-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/03_Mewtwo-llavero.png": {
     "mtime_ns": 1783041246689065694,
     "quality": 72,
     "size": 1496807,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/03_Mewtwo-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/04_Mewtwo-llavero.png": {
     "mtime_ns": 1783041246690065414,
     "quality": 72,
     "size": 1497645,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/04_Mewtwo-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-llavero/05_Mewtwo-llavero.png": {
     "mtime_ns": 1783041246692064854,
     "quality": 72,
     "size": 1367499,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-llavero/05_Mewtwo-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/01_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246693064574,
     "quality": 72,
     "size": 1335274,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/01_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/02_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246695064015,
     "quality": 72,
     "size": 1331324,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/02_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/03_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246696063735,
     "quality": 72,
     "size": 1457031,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/03_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/04_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246698063175,
     "quality": 72,
     "size": 1492777,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/04_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/05_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246700062615,
     "quality": 72,
     "size": 1787944,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/05_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/06_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246702062055,
     "quality": 72,
     "size": 1430902,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/06_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/07_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246704061496,
     "quality": 72,
     "size": 1468057,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/07_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/mewtwo/mewtwo-mediano/08_Mewtwo-mediano.png": {
     "mtime_ns": 1783041246706060936,
     "quality": 72,
     "size": 1472705,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/mewtwo/mewtwo-mediano/08_Mewtwo-mediano.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/01_Pikachu.png": {
     "mtime_ns": 1783041246708060376,
     "quality": 72,
     "size": 1076725,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/01_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/02_Pikachu.png": {
     "mtime_ns": 1783041246710059816,
     "quality": 72,
     "size": 1193631,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/02_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/03_Pikachu.png": {
     "mtime_ns": 1783041246714058697,
     "quality": 72,
     "size": 1505618,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/03_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/04_Pikachu.png": {
     "mtime_ns": 1783041246716058137,
     "quality": 72,
     "size": 1718011,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/04_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/05_Pikachu.png": {
     "mtime_ns": 1783041246718057577,
     "quality": 72,
     "size": 1434996,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/05_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/06_Pikachu.png": {
     "mtime_ns": 1783041246722056458,
     "quality": 72,
     "size": 1501156,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/06_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pikachu/07_Pikachu.png": {
     "mtime_ns": 1783041246727055058,
     "quality": 72,
     "size": 2612290,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/07_Pikachu.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/01.Starmie-clicker.png": {
     "mtime_ns": 1787357008118410195,
     "quality": 72,
     "size": 1506411,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/01.Starmie-clicker.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/02.Starmie-clicker.png": {
     "mtime_ns": 1787357008122410253,
     "quality": 72,
     "size": 1897783,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/02.Starmie-clicker.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/03.Starmie-clicker.png": {
     "mtime_ns": 1787357008125410296,
     "quality": 72,
     "size": 1636040,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/03.Starmie-clicker.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/04.Starmie-clicker.png": {
     "mtime_ns": 1787357008128410340,
     "quality": 72,
     "size": 1542447,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/04.Starmie-clicker.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/05.Starmie-clicker.png": {
     "mtime_ns": 1787357008131410383,
     "quality": 72,
     "size": 1757711,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/05.Starmie-clicker.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/06.Starmie-clicker.png": {
     "mtime_ns": 1787357008133410412,
     "quality": 72,
     "size": 1272870,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/06.Starmie-clicker.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/grande/01_Kitty.png": {
     "mtime_ns": 1783730873478675011,
     "quality": 72,
     "size": 2259242,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/grande/01_Kitty.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/grande/02_Kitty.png": {
     "mtime_ns": 1783730873480673135,
     "quality": 72,
     "size": 2023307,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/grande/02_Kitty.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/grande/03_Kitty.png": {
     "mtime_ns": 1783730873483670323,
     "quality": 72,
     "size": 2089512,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/grande/03_Kitty.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/grande/04_Kitty.png": {
     "mtime_ns": 1783730873485668447,
     "quality": 72,
     "size": 1954763,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/grande/04_Kitty.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/01_Kitty-llavero.png": {
     "mtime_ns": 1788477052832482438,
     "quality": 72,
     "size": 1512026,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/01_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/02_Kitty-llavero.png": {
     "mtime_ns": 1788477422045962728,
     "quality": 72,
     "size": 1527990,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/02_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/03_Kitty-llavero.png": {
     "mtime_ns": 1788477430003852467,
     "quality": 72,
     "size": 1547467,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/03_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/04_Kitty-llavero.png": {
     "mtime_ns": 1788477446729367718,
     "quality": 72,
     "size": 1493532,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/04_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/05_Kitty-llavero.png": {
     "mtime_ns": 1788477460852780262,
     "quality": 72,
     "size": 1441390,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/05_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/06_Kitty-llavero.png": {
     "mtime_ns": 1788477482297707670,
     "quality": 72,
     "size": 1480549,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/06_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/llavero/07_Kitty-llavero.png": {
     "mtime_ns": 1788477526176961978,
     "quality": 72,
     "size": 1450306,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/hello-kitty/llavero/07_Kitty-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/kuromi-grande/01_Kuromi.png": {
     "mtime_ns": 1778108778871502482,
     "quality": 72,
     "size": 1708175,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/kuromi-grande/01_Kuromi.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/kuromi-grande/02_Kuromi.png": {
     "mtime_ns": 1778109279058609991,
     "quality": 72,
     "size": 1880439,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/kuromi-grande/02_Kuromi.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/kuromi-grande/03_Kuromi.png": {
     "mtime_ns": 1778109286354434561,
     "quality": 72,
     "size": 2001397,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/kuromi-grande/03_Kuromi.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/kuromi-grande/04_Kuromi.png": {
     "mtime_ns": 1778109293428280519,
     "quality": 72,
     "size": 1828293,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/kuromi-grande/04_Kuromi.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/kuromi-grande/05_Kuromi.png": {
     "mtime_ns": 1778109300911134284,
     "quality": 72,
     "size": 1770611,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/sanrio/kuromi-grande/05_Kuromi.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/llavero/01_snoopy-llavero.png": {
     "mtime_ns": 1782866464642738157,
     "quality": 72,
     "size": 1554687,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/llavero/01_snoopy-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/llavero/02_snoopy-llavero.png": {
     "mtime_ns": 1782866464645737997,
     "quality": 72,
     "size": 1524668,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/llavero/02_snoopy-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/01_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782866464647737890,
     "quality": 72,
     "size": 1465174,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/01_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/02_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867806867479980,
     "quality": 72,
     "size": 1679816,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/02_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/03_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867817287496153,
     "quality": 72,
     "size": 1880978,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/03_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/04_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867826661511465,
     "quality": 72,
     "size": 1867727,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/04_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/05_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867834423524679,
     "quality": 72,
     "size": 1573181,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/05_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/06_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867841218536640,
     "quality": 72,
     "size": 1873178,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/06_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/07_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867848544549941,
     "quality": 72,
     "size": 1756176,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/07_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/08_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867855553563054,
     "quality": 72,
     "size": 1710566,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/08_snoopy-peque\u00f1o.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/snoopy/snoopy-crochet/peque\u00f1o/09_snoopy-peque\u00f1o.png": {
     "mtime_ns": 1782867864336580014,
     "quality": 72,
     "size": 1722940,
+    "sizes": [
+      1600,
+      640
+    ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/snoopy/snoopy-crochet/peque\u00f1o/09_snoopy-peque\u00f1o.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618175553.jpg": {
-    "mtime_ns": 1781830723056507469,
-    "quality": 72,
-    "size": 3273682,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618175553.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618175604.jpg": {
-    "mtime_ns": 1781830723084506562,
-    "quality": 72,
-    "size": 2870916,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618175604.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618175612.jpg": {
-    "mtime_ns": 1781830723112505654,
-    "quality": 72,
-    "size": 2994056,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618175612.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618175716.jpg": {
-    "mtime_ns": 1781830723143504649,
-    "quality": 72,
-    "size": 3035130,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618175716.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618175749.jpg": {
-    "mtime_ns": 1781830723174503644,
-    "quality": 72,
-    "size": 3083345,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618175749.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618180118.jpg": {
-    "mtime_ns": 1781830723201502769,
-    "quality": 72,
-    "size": 2834477,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618180118.webp"
-  },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/stand-switch/IMG20260618180500.jpg": {
-    "mtime_ns": 1781830723235501667,
-    "quality": 72,
-    "size": 3117673,
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/stand-switch/IMG20260618180500.webp"
   }
 }
