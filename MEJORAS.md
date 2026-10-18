@@ -60,32 +60,50 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
 
 ---
 
-## Limpieza de código (auditoría ponytail)
+## Limpieza de código (auditoría ponytail, actualizada 2026-10-13)
 
-Hallazgos de sobre-ingeniería ordenados por impacto. Ninguno afecta funcionalidad actual.
+Hallazgos de sobre-ingeniería ordenados por impacto (mayor recorte primero). Ninguno afecta funcionalidad actual. Total posible: ~790 líneas y 3 dependencias menos.
 
-- [ ] **Eliminar `tasks.py`** — 216 líneas que duplican el Makefile. El task `publish` crashea en runtime (no define `ssh_port`/`ssh_user`). Deploy real es Dokploy/Docker. Nadie usa `inv`.
+- [ ] **Eliminar `tasks.py` y las deps `invoke` y `livereload`** (~-215 líneas) — Duplica el Makefile. El task `publish` crashea en runtime (no define `ssh_port`/`ssh_user`). Deploy real es Dokploy/Docker. Nadie usa `inv`. Al borrarlo, quitar `invoke` y `livereload` de `pyproject.toml` y regenerar `uv.lock`.
 
-- [ ] **Quitar deps `invoke` y `livereload`** — Solo las usa `tasks.py`. Al borrarlo quedan huérfanas. Actualizar `pyproject.toml` y regenerar `uv.lock`.
+- [ ] **Instagram: dejar solo el modo `manual_urls`** (~-200 líneas) — `content/instagram-source/feed.json` solo usa `manual_urls`. Los modos `profile_latest` y `local_files` están muertos: borrar `fetch_profile_latest_items`, `fetch_json`, `INSTAGRAM_APP_ID`, `normalize_items`, `copy_images`, `discover_source_images`, las ramas lista/dict de `load_manifest`, los args `--mode`/`--username` y los targets `instagram-feed-urls`/`instagram-feed-latest` del Makefile. (`scripts/sync_instagram_feed.py`)
 
-- [ ] **Quitar `playwright` de deps de desarrollo** — No existe ningún test Playwright en el repo. (`pyproject.toml` `[dependency-groups] dev`)
+- [ ] **Reemplazar `report_image_savings.py` por `du`** (~-140 líneas) — El target `optimize-images-report` puede ser solo `du -sh content/images/productos content/images_opt/productos`. El script actual además no cuenta las `.thumb.webp`. Esto también elimina las funciones duplicadas con `optimize_images.py` (`normalize_relpath`, `parse_formats`, `iter_source_images`, `source_to_target`), así que ya no hace falta crear `scripts/image_utils.py`.
 
-- [ ] **Borrar filtros Jinja muertos en `auto_gallery.py`** — `optimized_image`, `optimized_gallery` y el global `resolve_gallery` (líneas 332–335) nunca se usan en plantillas. Las templates solo llaman `resolve_image`.
+- [ ] **Quitar el archivo de estado `.optimize_state.json`** (~-40 líneas) — En `scripts/optimize_images.py`, `load_state`/`save_state`/`source_signature` y el manejo de `state` en `cleanup_orphaned_webp` se reemplazan comparando fechas: `target.stat().st_mtime >= source.stat().st_mtime` (como hace make). Si cambia la calidad o el tamaño, para eso está `--force`.
 
-- [ ] **Borrar 3 settings muertos en `pelicanconf.py`** — `IMAGE_OPTIMIZATION_QUALITY`, `IMAGE_OPTIMIZATION_PRODUCTS_SUBDIR` e `IMAGE_OPTIMIZATION_FORMATS` (líneas 24–26) solo las leía `tasks.py`.
+- [ ] **Limpiar boilerplate de Pelican en el Makefile** (~-35 líneas) — Borrar el target `github` y las vars `GITHUB_PAGES_*` (`ghp-import` no está en deps; deploy es Dokploy), además de `serve-global`, `devserver-global`, `regenerate`, `install-frozen`, `instagram-feed-build`, las opciones `RELATIVE`/`DEBUG` y sus líneas del `help`.
 
-- [ ] **Eliminar target `github` del Makefile** — `ghp-import` no está en las deps; deploy es Dokploy. Borrar vars `GITHUB_PAGES_*` (líneas 14–15) y el target `github` (líneas 145–147).
+- [ ] **Borrar el formato plano de variaciones** (~-30 líneas) — Ningún producto usa `variacion: Grande:$28, Pequeño:$12`; todos usan el YAML anidado. Borrar `_parse_variation_options_flat`, la rama `else` en `normalize_bilingual_metadata` y el alias `variation_name`/`variacion_nombre`. (`plugins/auto_gallery.py`)
 
-- [ ] **Consolidar funciones duplicadas entre scripts de imágenes** — `normalize_relpath`, `parse_formats`, `iter_source_images` y `source_to_target` están copiadas palabra por palabra en `optimize_images.py` y `report_image_savings.py` (~45 líneas). Extraer a `scripts/image_utils.py`.
-
-- [ ] **Importar `ALIASES` desde el plugin en `audit_products.py`** — `ALIASES` (líneas 38–51) duplica `METADATA_ALIASES` de `auto_gallery.py` y se mantiene en sync a mano. Importar directamente o mover a módulo compartido.
-
-- [ ] **Desactivar templates Pelican sin uso** — `archives.html`, `authors.html`, `author.html` y `period_archives.html` generan rutas muertas. Agregar en `pelicanconf.py`:
+- [ ] **Desactivar templates Pelican sin uso** (~-40 líneas) — Borrar `archives.html`, `authors.html` y `period_archives.html`, y agregar en `pelicanconf.py`:
   ```python
   ARCHIVES_SAVE_AS = ""
   AUTHORS_SAVE_AS = ""
-  AUTHOR_SAVE_AS = ""
   ```
+  **Ojo:** `author.html` ya NO es código muerto — `article.html:233` enlaza a `article.author.url`. No poner `AUTHOR_SAVE_AS = ""`.
+
+- [ ] **Simplificar helpers de `auto_gallery.py`** (~-25 líneas)
+  - Fusionar `_normalize` y `normalize_media_path` (hacen lo mismo).
+  - `_resolve_gallery_dir` repite la lógica de rutas cortas de `resolve_optimized_image_path`; dejar una sola.
+  - Quitar el `try/except ImportError` de `markdown`: es dependencia fija vía `pelican[markdown]`.
+  - Meter `_attach_helpers_to_env` dentro de `_register_template_helpers` (tiene un solo caller).
+  - Borrar los filtros Jinja sin uso `optimized_image`, `optimized_gallery` y el global `resolve_gallery`; las plantillas solo usan `resolve_image`, `resolve_thumb` y `price_value`.
+  - Quitar `"gallery_dir"` de `_meta_value(article, "gallerydir", "gallery_dir")`: el alias ya se normaliza antes.
+
+- [ ] **Quitar settings `IMAGE_OPTIMIZATION_*` de `pelicanconf.py`** (~-15 líneas) — `QUALITY`, `PRODUCTS_SUBDIR` y `FORMATS` solo las leía `tasks.py`. `ENABLED`, `SOURCE_DIR` y `DEST_DIR` las lee el plugin, pero nunca cambian y el Makefile igual tiene `images`/`images_opt` escritos a mano. Pasarlas a constantes en el plugin.
+
+- [ ] **Quitar argumentos sin uso de `optimize_images.py`** (~-25 líneas) — `--content-path`, `--source-dir`, `--dest-dir`, `--formats` y `parse_formats`: el Makefile siempre pasa los valores por defecto. Pasarlos a constantes; los targets quedan como `"$(PY)" scripts/optimize_images.py [--force]`.
+
+- [ ] **Quitar feeds Atom de `publishconf.py`** (~-6 líneas) — `FEED_ALL_ATOM` y `CATEGORY_FEED_ATOM` generan feeds que ninguna plantilla enlaza. Borrar también los comentarios de DISQUS/GOOGLE_ANALYTICS.
+
+- [ ] **Quitar `playwright` de deps de desarrollo** — No existe ningún test Playwright. Si se hace la tarea de "Tests automatizados y CI", decidir ahí si vuelve. (`pyproject.toml` `[dependency-groups] dev`)
+
+- [ ] **Importar del plugin en lugar de copiar** (~-20 líneas) — `ALIASES` en `scripts/audit_products.py` duplica `METADATA_ALIASES`, y `_price_to_float` en `scripts/check_dolibarr_prices.py` duplica el del plugin. Importar ambos desde `plugins/auto_gallery.py`.
+
+- [ ] **Simplificar `_catalog_url` en `plugins/sitemap.py`** (-4 líneas) — El bucle sobre `TEMPLATE_PAGES` se reemplaza por `(settings.get("TEMPLATE_PAGES") or {}).get("catalog.html")`.
+
+- [ ] **Verificar doble resolución de aliases** (~-20 líneas, posible) — `normalize_bilingual_metadata` vuelve a resolver los aliases que `BilingualReader` ya resolvió al leer. Si se confirma que sobra, dejar solo la normalización de mayúsculas y el parseo de variaciones. Hacer `make html` antes y después y comparar `output/` (`diff -r`).
 
 ---
 
