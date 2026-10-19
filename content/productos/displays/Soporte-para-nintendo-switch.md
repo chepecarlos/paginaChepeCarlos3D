@@ -6,8 +6,8 @@ etiquetas: display, soporte, nintendo
 producto: true
 slug: soporte-switch
 precio: $17.00
-imagen: stand-switch/IMG20260618175553.jpg
-galeria: stand-switch/
+imagen: displays/stand-switch/IMG20260618175553.jpg
+galeria: displays/stand-switch/
 resumen: Soporte hecho en 3D para Nintendo Switch
 id_dolibarr: 32
 variacion:
