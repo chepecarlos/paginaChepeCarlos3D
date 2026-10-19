@@ -37,10 +37,7 @@ help:
 	@echo 'Usage:                                                                    '
 	@echo '   make install                        instala dependencias con uv        '
 	@echo '   make install-frozen                 instala exacto desde uv.lock       '
-	@echo '   make instagram-feed                sync del feed local al sitio        '
-	@echo '   make instagram-feed-urls           descarga imagenes desde post_url    '
-	@echo '   make instagram-feed-latest USERNAME=... trae ultimos posts del perfil  '
-	@echo '   make instagram-feed-build          sync + build local completo         '
+	@echo '   make instagram-feed                descarga fotos de los post_url      '
 	@echo '   make audit                          revisa productos por datos faltantes '
 	@echo '   make audit-info                     audit + avisos informativos          '
 	@echo '   make check-dolibarr-prices          compara precios: sitio, Dolibarr y fuente'
@@ -69,12 +66,6 @@ install-frozen:
 
 instagram-feed:
 	"$(PY)" scripts/sync_instagram_feed.py
-
-instagram-feed-urls:
-	"$(PY)" scripts/sync_instagram_feed.py --mode manual_urls
-
-instagram-feed-latest:
-	"$(PY)" scripts/sync_instagram_feed.py --mode profile_latest --username "$(USERNAME)"
 
 prebuild: instagram-feed
 	@$(MAKE) optimize-images
@@ -120,8 +111,6 @@ optimize-images-report:
 		--products-subdir productos \
 		--formats ".jpg,.jpeg,.png,.gif"
 
-instagram-feed-build: clean instagram-feed html
-
 html: prebuild
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 
@@ -151,4 +140,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: install install-frozen instagram-feed instagram-feed-urls instagram-feed-latest prebuild audit audit-info check-dolibarr-prices optimize-images optimize-images-force optimize-images-report instagram-feed-build html help clean regenerate serve serve-global devserver devserver-global publish github
+.PHONY: install install-frozen instagram-feed prebuild audit audit-info check-dolibarr-prices optimize-images optimize-images-force optimize-images-report html help clean regenerate serve serve-global devserver devserver-global publish github

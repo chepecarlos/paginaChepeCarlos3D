@@ -1,28 +1,39 @@
-Feed local para "Nuestros trabajos"
+Feed para "Trabajos recientes" (home)
 
-Modos soportados:
+Ejecuta `make instagram-feed` (también corre en cada `make html`), revisa el home,
+y haz commit de content/images/instagram/, content/images_opt/instagram/ y
+theme/templates/partials/instagram_feed_items.html para que Dokploy lo despliegue.
 
-1. manual_urls (recomendado):
-  - En `feed.json`, agrega `post_url` (o `instagram_url`) por item.
-  - El script intenta descargar desde `post_url/media/?size=l` automaticamente.
-  - Opcional: `image_url` para forzar imagen manual si falla la extraccion automatica.
-  - Ejecuta `make instagram-feed-urls`.
+== Modo API (automático: trae los últimos 6 posts) ==
 
-2. profile_latest (experimental pero util):
-  - En `feed.json`, define `mode: profile_latest` y agrega `username` con el usuario publico.
-  - Tambien puedes ejecutarlo directo con `make instagram-feed-latest USERNAME=chepecarlos3d`.
-  - El script consulta el endpoint web publico del perfil, reconstruye los `post_url` recientes y descarga sus imagenes.
+Si existe INSTAGRAM_TOKEN en `.env` (o como variable de entorno), el script usa la
+API oficial de Instagram: toma los últimos posts, usa el texto del post como `alt`
+y, en Reels, la portada. feed.json se ignora.
 
-3. local_files (compatibilidad):
-  - En `feed.json`, define `mode: local_files` y usa `image` con archivos locales.
-  - Ejecuta `make instagram-feed`.
+Conseguir el token (una sola vez; la cuenta debe ser Empresa o Creador):
+1. https://developers.facebook.com/apps → Crear app → caso de uso
+   "Administrar mensajes y contenido en Instagram".
+2. En la app: Instagram → "Configuración de la API con inicio de sesión de Instagram"
+   → "Generar tokens de acceso" → Agregar cuenta → inicia sesión con @chepecarlos3d.
+3. Copia el token y pégalo en `.env` (copia `.env.example`): INSTAGRAM_TOKEN=IGAA...
 
-Luego genera el sitio con `make html` o `make publish`.
+El token dura 60 días y el script lo renueva y guarda en `.env` en cada corrida
+(Instagram solo lo renueva si tiene más de 24 h). Basta con correr
+`make instagram-feed` al menos una vez cada ~50 días; si vence, repite el paso 2.
 
-Ejemplo mode manual_urls:
+== Modo manual (sin token) ==
+
+1. En `feed.json`, agrega un item por post con su `post_url` (máx. 6).
+   - `title` / `alt` (opcional pero recomendado): describe la pieza; si falta queda "Trabajo destacado N".
+   - `image_url` (opcional): fuerza una imagen si falla la descarga automática.
+
+El script descarga desde `post_url/media/?size=l` y, si falla, intenta con el og:image del post.
+Si alguna descarga falla, las fotos actuales no se tocan.
+Con `items` vacío, el home muestra fotos de productos.
+
+Ejemplo:
 
 {
-  "mode": "manual_urls",
   "max_items": 6,
   "items": [
     {
@@ -31,13 +42,4 @@ Ejemplo mode manual_urls:
       "post_url": "https://www.instagram.com/p/XXXXXXXXXXX/"
     }
   ]
-}
-
-Ejemplo mode profile_latest:
-
-{
-  "mode": "profile_latest",
-  "username": "chepecarlos3d",
-  "max_items": 6,
-  "items": []
 }

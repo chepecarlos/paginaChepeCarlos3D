@@ -80,9 +80,9 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/team_go_cuscatlan_sv.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/instagram/instagram-01.jpg": {
-    "mtime_ns": 1791609585392541011,
+    "mtime_ns": 1792449053856120023,
     "quality": 72,
-    "size": 155225,
+    "size": 323874,
     "sizes": [
       1600,
       640
@@ -90,9 +90,9 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/instagram/instagram-01.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/instagram/instagram-02.jpg": {
-    "mtime_ns": 1791609585757546395,
+    "mtime_ns": 1792449053856120023,
     "quality": 72,
-    "size": 60217,
+    "size": 351207,
     "sizes": [
       1600,
       640
@@ -100,9 +100,9 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/instagram/instagram-02.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/instagram/instagram-03.jpg": {
-    "mtime_ns": 1791609586067550968,
+    "mtime_ns": 1792449053857120042,
     "quality": 72,
-    "size": 171188,
+    "size": 305755,
     "sizes": [
       1600,
       640
@@ -110,9 +110,9 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/instagram/instagram-03.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/instagram/instagram-04.jpg": {
-    "mtime_ns": 1791609586380555586,
+    "mtime_ns": 1792449053857120042,
     "quality": 72,
-    "size": 171465,
+    "size": 65484,
     "sizes": [
       1600,
       640
@@ -120,9 +120,9 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/instagram/instagram-04.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/instagram/instagram-05.jpg": {
-    "mtime_ns": 1791609586666559805,
+    "mtime_ns": 1792449053858120060,
     "quality": 72,
-    "size": 164957,
+    "size": 118276,
     "sizes": [
       1600,
       640
@@ -130,9 +130,9 @@
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/instagram/instagram-05.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/instagram/instagram-06.jpg": {
-    "mtime_ns": 1791609586999564718,
+    "mtime_ns": 1792449053858120060,
     "quality": 72,
-    "size": 173422,
+    "size": 104864,
     "sizes": [
       1600,
       640
@@ -654,6 +654,146 @@
       640
     ],
     "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/disney/stitch/stitch-llavero/06.Stitch_llavero.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/01.Base-bts.png": {
+    "mtime_ns": 1792445187251988132,
+    "quality": 72,
+    "size": 1106877,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/01.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/02.Base-bts.png": {
+    "mtime_ns": 1792445187266988410,
+    "quality": 72,
+    "size": 994715,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/02.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/03.Base-bts.png": {
+    "mtime_ns": 1792445187278988633,
+    "quality": 72,
+    "size": 1240966,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/03.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/04.Base-bts.png": {
+    "mtime_ns": 1792445187285988763,
+    "quality": 72,
+    "size": 1376251,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/04.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/05.Base-bts.png": {
+    "mtime_ns": 1792445187291988874,
+    "quality": 72,
+    "size": 1405082,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/05.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/06.Base-bts.png": {
+    "mtime_ns": 1792445187297988985,
+    "quality": 72,
+    "size": 1305051,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/06.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/base-bts/07.Base-bts.png": {
+    "mtime_ns": 1792445187303989097,
+    "quality": 72,
+    "size": 1321313,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/base-bts/07.Base-bts.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175553.jpg": {
+    "mtime_ns": 1792445187348989932,
+    "quality": 72,
+    "size": 3273682,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175553.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175604.jpg": {
+    "mtime_ns": 1792445187369990321,
+    "quality": 72,
+    "size": 2870916,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175604.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175612.jpg": {
+    "mtime_ns": 1792445187398990859,
+    "quality": 72,
+    "size": 2994056,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175612.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175716.jpg": {
+    "mtime_ns": 1792445187415991175,
+    "quality": 72,
+    "size": 3035130,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175716.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618175749.jpg": {
+    "mtime_ns": 1792445187431991471,
+    "quality": 72,
+    "size": 3083345,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618175749.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618180118.jpg": {
+    "mtime_ns": 1792445187448991787,
+    "quality": 72,
+    "size": 2834477,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618180118.webp"
+  },
+  "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/displays/stand-switch/IMG20260618180500.jpg": {
+    "mtime_ns": 1792445187467992139,
+    "quality": 72,
+    "size": 3117673,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images_opt/productos/displays/stand-switch/IMG20260618180500.webp"
   },
   "home/SudoData/1.Proyectos/1.Oficial/5.ChepeCarlos3D/content/images/productos/dragon-ball/goku/01_Goku.png": {
     "mtime_ns": 1777421627770144704,

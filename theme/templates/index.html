@@ -42,7 +42,7 @@
       {% for cat, cat_articles in categories %} {% set prods = cat_articles | selectattr('product') | list %} {% if prods %} {% set fp = prods[0] %}
       <a href="{{ SITEURL }}/{{ cat.url }}" class="home-cat-card">
         {% if fp.image %}
-        <div class="home-cat-img" style="background-image: url('{{ SITEURL }}/{{ resolve_thumb(fp.image) }}')"></div>
+        <img class="home-cat-img" src="{{ SITEURL }}/{{ resolve_thumb(fp.image) }}" alt="" loading="lazy" />
         {% else %}
         <div class="home-cat-img home-cat-img-empty"></div>
         {% endif %}

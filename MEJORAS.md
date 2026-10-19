@@ -14,6 +14,12 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
 
 ---
 
+## Instagram
+
+- [x] **Configurar el token de la API de Instagram** — App `ChepeCarlos3dFeed` (portafolio ChepeCarlos3D), token solo con permiso de lectura en `.env`. Cada `make instagram-feed`/`make html` lo renueva 60 días; si pasan 60 días sin correrlo, regenerarlo (pasos en `content/instagram-source/README.txt`).
+
+---
+
 ## Google Search Console
 
 - [ ] **Verificar el sitio en Google Search Console**
@@ -66,7 +72,7 @@ Hallazgos de sobre-ingeniería ordenados por impacto (mayor recorte primero). Ni
 
 - [ ] **Eliminar `tasks.py` y las deps `invoke` y `livereload`** (~-215 líneas) — Duplica el Makefile. El task `publish` crashea en runtime (no define `ssh_port`/`ssh_user`). Deploy real es Dokploy/Docker. Nadie usa `inv`. Al borrarlo, quitar `invoke` y `livereload` de `pyproject.toml` y regenerar `uv.lock`.
 
-- [ ] **Instagram: dejar solo el modo `manual_urls`** (~-200 líneas) — `content/instagram-source/feed.json` solo usa `manual_urls`. Los modos `profile_latest` y `local_files` están muertos: borrar `fetch_profile_latest_items`, `fetch_json`, `INSTAGRAM_APP_ID`, `normalize_items`, `copy_images`, `discover_source_images`, las ramas lista/dict de `load_manifest`, los args `--mode`/`--username` y los targets `instagram-feed-urls`/`instagram-feed-latest` del Makefile. (`scripts/sync_instagram_feed.py`)
+- [x] **Instagram: dejar solo el modo `manual_urls`** (~-200 líneas) — `content/instagram-source/feed.json` solo usa `manual_urls`. Los modos `profile_latest` y `local_files` están muertos: borrar `fetch_profile_latest_items`, `fetch_json`, `INSTAGRAM_APP_ID`, `normalize_items`, `copy_images`, `discover_source_images`, las ramas lista/dict de `load_manifest`, los args `--mode`/`--username` y los targets `instagram-feed-urls`/`instagram-feed-latest` del Makefile. (`scripts/sync_instagram_feed.py`)
 
 - [ ] **Reemplazar `report_image_savings.py` por `du`** (~-140 líneas) — El target `optimize-images-report` puede ser solo `du -sh content/images/productos content/images_opt/productos`. El script actual además no cuenta las `.thumb.webp`. Esto también elimina las funciones duplicadas con `optimize_images.py` (`normalize_relpath`, `parse_formats`, `iter_source_images`, `source_to_target`), así que ya no hace falta crear `scripts/image_utils.py`.
 
