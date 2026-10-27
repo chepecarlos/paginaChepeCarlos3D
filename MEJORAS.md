@@ -18,6 +18,11 @@ Ideas y tareas de mejora identificadas para trabajar en futuras sesiones.
 
 - [x] **Configurar el token de la API de Instagram** — App `ChepeCarlos3dFeed` (portafolio ChepeCarlos3D), token solo con permiso de lectura en `.env`. Cada `make instagram-feed`/`make html` lo renueva 60 días; si pasan 60 días sin correrlo, regenerarlo (pasos en `content/instagram-source/README.txt`).
 
+- [ ] **Automatizar el feed con GitHub Actions** — Hoy hay que correr `make instagram-feed` a mano y hacer commit. Crear `.github/workflows/instagram-feed.yml` con `schedule` (ej. semanal) + `workflow_dispatch` que: instale con `uv`, corra `scripts/sync_instagram_feed.py` y `scripts/optimize_images.py`, y haga commit/push de `content/images/instagram/`, `content/images_opt/instagram/` y `theme/templates/partials/instagram_feed_items.html` solo si cambiaron (Dokploy despliega con el push).
+  - Token como secret `INSTAGRAM_TOKEN` (el script ya lo lee de la variable de entorno).
+  - **Ojo:** el script renueva el token pero en Actions no puede guardarlo en `.env`. Si la renovación devuelve un token distinto, hay que actualizar el secret con `gh secret set` usando un PAT con permiso de secrets; si devuelve el mismo, con correr al menos cada 60 días basta. Verificarlo antes de depender de esto.
+  - `.optimize_state.json` guarda rutas absolutas de la máquina local: en Actions reprocesaría todas las imágenes. Resolverlo antes (ver tarea "Quitar el archivo de estado `.optimize_state.json`") o correr la optimización solo sobre `images/instagram`.
+
 ---
 
 ## Google Search Console
