@@ -9,7 +9,7 @@ precio: $5.00
 imagen: pokemon/starmie-clicker/01.Starmie-clicker.png
 galeria: pokemon/starmie-clicker
 resumen: Figura impresa en 3D de Starmie con mecánica de clic de la franquicia de Pokémon
-id_dolibarr: 
+id_dolibarr: 47
 autor: 
   - nombre: AstroDex_3D
     link: https://makerworld.com/es/models/2205944-starmie-pokemon-clicker#profileId-2397354

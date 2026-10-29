@@ -9,7 +9,7 @@ precio: $5.00
 imagen: disney/stitch/stitch-llavero/01.Stitch_llavero.png
 galeria: disney/stitch/stitch-llavero
 resumen: Figura impresa 3D con estilo de Stitch, con excelente presencia para coleccionistas de Disney.
-id_dolibarr: 
+id_dolibarr: 53
 variacion:
   - nombre: Personalización
     lista:

@@ -16,7 +16,7 @@ variacion:
         altura: 7 cm
         imagen: marvel/spiderman/spiderman-llavero/01.Spiderman_llavero.png
         galeria: marvel/spiderman/spiderman-llavero
-        id_dolibarr: 
+        id_dolibarr: 52
       - titulo: Grande
         precio: $28.00
         altura: 21 cm

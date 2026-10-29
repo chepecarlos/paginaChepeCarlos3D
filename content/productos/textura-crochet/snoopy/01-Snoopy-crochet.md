@@ -13,6 +13,7 @@ variacion:
         altura: 7 cm
         imagen: snoopy/snoopy-crochet/llavero/01_snoopy-llavero.png
         galeria: snoopy/snoopy-crochet/llavero/
+        id_dolibarr: 51
       - titulo: Mediano
         precio: $12.00
         altura: 10 cm
