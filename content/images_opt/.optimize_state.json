@@ -3390,9 +3390,9 @@
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/blog/2026/01-go-fest-2026-el-salvador/comunidades_pokemon-go_sv/team_go_cuscatlan_sv.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-01.jpg": {
-    "mtime_ns": 1782866464231760069,
+    "mtime_ns": 1793314497023639946,
     "quality": 72,
-    "size": 155225,
+    "size": 517043,
     "sizes": [
       1600,
       640
@@ -3400,9 +3400,9 @@
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-01.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-02.jpg": {
-    "mtime_ns": 1777411099693899144,
+    "mtime_ns": 1793314497025641434,
     "quality": 72,
-    "size": 60217,
+    "size": 323874,
     "sizes": [
       1600,
       640
@@ -3410,9 +3410,9 @@
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-02.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-03.jpg": {
-    "mtime_ns": 1782866464232760016,
+    "mtime_ns": 1793314497026642177,
     "quality": 72,
-    "size": 171188,
+    "size": 351207,
     "sizes": [
       1600,
       640
@@ -3420,9 +3420,9 @@
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-03.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-04.jpg": {
-    "mtime_ns": 1782866464233759962,
+    "mtime_ns": 1793314497028643665,
     "quality": 72,
-    "size": 171465,
+    "size": 305755,
     "sizes": [
       1600,
       640
@@ -3430,9 +3430,9 @@
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-04.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-05.jpg": {
-    "mtime_ns": 1782866464235759856,
+    "mtime_ns": 1793314497028643665,
     "quality": 72,
-    "size": 164957,
+    "size": 65484,
     "sizes": [
       1600,
       640
@@ -3440,9 +3440,9 @@
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/instagram/instagram-05.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/instagram/instagram-06.jpg": {
-    "mtime_ns": 1782866464236759803,
+    "mtime_ns": 1793314497029644408,
     "quality": 72,
-    "size": 173422,
+    "size": 118276,
     "sizes": [
       1600,
       640
@@ -4999,7 +4999,77 @@
     ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/navidad/01-mu\u00f1eco-de-nieve/mu\u00f1eco_03.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/01_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/01_Link-mediano.png": {
+    "mtime_ns": 1793316107040490622,
+    "quality": 72,
+    "size": 1622120,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/01_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/02_Link-mediano.png": {
+    "mtime_ns": 1793316113828759798,
+    "quality": 72,
+    "size": 1547909,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/02_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/03_Link-mediano.png": {
+    "mtime_ns": 1793316121783048945,
+    "quality": 72,
+    "size": 1530521,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/03_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/04_Link-mediano.png": {
+    "mtime_ns": 1793318494280226979,
+    "quality": 72,
+    "size": 1626003,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/04_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/05_Link-mediano.png": {
+    "mtime_ns": 1793316136303508987,
+    "quality": 72,
+    "size": 1684789,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/05_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/06_Link-mediano.png": {
+    "mtime_ns": 1793316143134697375,
+    "quality": 72,
+    "size": 1585408,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/06_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-figura-mediana/07_Link-mediano.png": {
+    "mtime_ns": 1793316474711674807,
+    "quality": 72,
+    "size": 1591039,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-figura-mediana/07_Link-mediano.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/01_Link-llavero.png": {
     "mtime_ns": 1790815363154936088,
     "quality": 72,
     "size": 1609691,
@@ -5007,9 +5077,9 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/01_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/01_Link-llavero.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/02_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/02_Link-llavero.png": {
     "mtime_ns": 1790815363156935221,
     "quality": 72,
     "size": 1551175,
@@ -5017,9 +5087,9 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/02_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/02_Link-llavero.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/03_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/03_Link-llavero.png": {
     "mtime_ns": 1790815363158934355,
     "quality": 72,
     "size": 1606308,
@@ -5027,9 +5097,9 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/03_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/03_Link-llavero.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/04_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/04_Link-llavero.png": {
     "mtime_ns": 1790815363161933054,
     "quality": 72,
     "size": 1547960,
@@ -5037,9 +5107,9 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/04_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/04_Link-llavero.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/05_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/05_Link-llavero.png": {
     "mtime_ns": 1790815363163932188,
     "quality": 72,
     "size": 1554535,
@@ -5047,9 +5117,9 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/05_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/05_Link-llavero.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/06_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/06_Link-llavero.png": {
     "mtime_ns": 1790815363165931321,
     "quality": 72,
     "size": 1511886,
@@ -5057,9 +5127,9 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/06_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/06_Link-llavero.webp"
   },
-  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/07_Link-llavero.png": {
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/link/link-llavero/07_Link-llavero.png": {
     "mtime_ns": 1790815363167930454,
     "quality": 72,
     "size": 1555289,
@@ -5067,7 +5137,67 @@
       1600,
       640
     ],
-    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/07_Link-llavero.webp"
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/link/link-llavero/07_Link-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/zelda/zelda-figura-mediana/01_Zelda-mediana.png": {
+    "mtime_ns": 1793321311067315133,
+    "quality": 72,
+    "size": 1596057,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/zelda/zelda-figura-mediana/01_Zelda-mediana.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/zelda/zelda-figura-mediana/02_Zelda-mediana.png": {
+    "mtime_ns": 1793321331838484121,
+    "quality": 72,
+    "size": 1525354,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/zelda/zelda-figura-mediana/02_Zelda-mediana.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/zelda/zelda-figura-mediana/03_Zelda-mediana.png": {
+    "mtime_ns": 1793321337873534307,
+    "quality": 72,
+    "size": 1555370,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/zelda/zelda-figura-mediana/03_Zelda-mediana.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/zelda/zelda-figura-mediana/04_Zelda-mediana.png": {
+    "mtime_ns": 1793321343393580632,
+    "quality": 72,
+    "size": 1504894,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/zelda/zelda-figura-mediana/04_Zelda-mediana.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/zelda/zelda-figura-mediana/05_Zelda-mediana.png": {
+    "mtime_ns": 1793321350611641803,
+    "quality": 72,
+    "size": 1588504,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/zelda/zelda-figura-mediana/05_Zelda-mediana.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/nintendo/zelda/zelda-figura-mediana/06_Zelda-mediana.png": {
+    "mtime_ns": 1793321356457691838,
+    "quality": 72,
+    "size": 1570037,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/nintendo/zelda/zelda-figura-mediana/06_Zelda-mediana.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/onepiece/chopper-crochet/grande/01_Chopper-grande.png": {
     "mtime_ns": 1782866464487746420,
@@ -5817,6 +5947,56 @@
     ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pikachu/07_Pikachu.webp"
   },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pokebola-pikachu/01_Pokebola-pikachu.png": {
+    "mtime_ns": 1793323327843504003,
+    "quality": 72,
+    "size": 1616272,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pokebola-pikachu/01_Pokebola-pikachu.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pokebola-pikachu/02_Pokebola-pikachu.png": {
+    "mtime_ns": 1793323338405537518,
+    "quality": 72,
+    "size": 1099173,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pokebola-pikachu/02_Pokebola-pikachu.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pokebola-pikachu/03_Pokebola-pikachu.png": {
+    "mtime_ns": 1793323344979559140,
+    "quality": 72,
+    "size": 1142853,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pokebola-pikachu/03_Pokebola-pikachu.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pokebola-pikachu/04_Pokebola-pikachu.png": {
+    "mtime_ns": 1793323353222587062,
+    "quality": 72,
+    "size": 1091357,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pokebola-pikachu/04_Pokebola-pikachu.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/pokebola-pikachu/05_Pokebola-pikachu.png": {
+    "mtime_ns": 1793323360922613950,
+    "quality": 72,
+    "size": 1329181,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/pokebola-pikachu/05_Pokebola-pikachu.webp"
+  },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/starmie-clicker/01.Starmie-clicker.png": {
     "mtime_ns": 1787357008118410195,
     "quality": 72,
@@ -5876,6 +6056,56 @@
       640
     ],
     "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/starmie-clicker/06.Starmie-clicker.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/zorua-llavero/01_Zorua-llavero.png": {
+    "mtime_ns": 1793322197501701436,
+    "quality": 72,
+    "size": 1406367,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/zorua-llavero/01_Zorua-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/zorua-llavero/02_Zorua-llavero.png": {
+    "mtime_ns": 1793322208973860286,
+    "quality": 72,
+    "size": 1369722,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/zorua-llavero/02_Zorua-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/zorua-llavero/03_Zorua-llavero.png": {
+    "mtime_ns": 1793322215263947517,
+    "quality": 72,
+    "size": 1581498,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/zorua-llavero/03_Zorua-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/zorua-llavero/04_Zorua-llavero.png": {
+    "mtime_ns": 1793322221171029522,
+    "quality": 72,
+    "size": 1555945,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/zorua-llavero/04_Zorua-llavero.webp"
+  },
+  "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/pokemon/zorua-llavero/05_Zorua-llavero.png": {
+    "mtime_ns": 1793322227425116432,
+    "quality": 72,
+    "size": 1514309,
+    "sizes": [
+      1600,
+      640
+    ],
+    "target": "home/maomao/Proyecto/paginaChepeCarlos3D/content/images_opt/productos/pokemon/zorua-llavero/05_Zorua-llavero.webp"
   },
   "home/maomao/Proyecto/paginaChepeCarlos3D/content/images/productos/sanrio/hello-kitty/grande/01_Kitty.png": {
     "mtime_ns": 1783730873478675011,
