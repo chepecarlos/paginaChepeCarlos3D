@@ -61,6 +61,10 @@ GOOGLE_SITE_VERIFICATION = ""
 # En producción, defínela en Dokploy con el ID de Events Manager → Configuración del pixel.
 FACEBOOK_PIXEL_ID = os.getenv("FACEBOOK_PIXEL_ID", "")
 
+# Google Analytics 4 — mismo criterio que el pixel: solo si la variable existe.
+# ID de medición (G-XXXXXXXXXX) en GA4 → Administrar → Flujos de datos → Web.
+GOOGLE_ANALYTICS_ID = os.getenv("GOOGLE_ANALYTICS_ID", "")
+
 # Redes sociales en barra principal
 # Completa cada URL para mostrar su botón en el header
 SOCIAL_LINKS = {

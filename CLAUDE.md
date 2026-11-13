@@ -72,6 +72,10 @@ Los campos del front matter pueden estar en español o inglés (ver `GUIA_PRODUC
 
 ## Despliegue
 
+Sitio en producción: **https://chepecarlos3d.com/**
+
 El build de producción se realiza con Dokploy apuntando al `Dockerfile` de este repositorio. Variables de entorno relevantes:
-- `SITEURL` — URL pública final (obligatoria en producción).
+- `SITEURL` — URL pública final (obligatoria en producción): `https://chepecarlos3d.com`.
+- `FACEBOOK_PIXEL_ID` — activa el Meta Pixel si está definida.
+- `GOOGLE_ANALYTICS_ID` — ID de medición GA4 (`G-4D73J2SG7W`); activa Google Analytics si está definida. Registra `generate_lead` en clics a WhatsApp.
 - `INSTAGRAM_SYNC` — `0` por defecto; `1` sincroniza el feed durante el build (puede fallar por rate-limiting de Instagram).

@@ -39,6 +39,18 @@
       });
     </script>
     {% endif %}
+    {% if GOOGLE_ANALYTICS_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('a[href*="wa.me"], #whatsapp-floating-btn')) gtag('event', 'generate_lead', { method: 'whatsapp', page_path: location.pathname });
+      });
+    </script>
+    {% endif %}
     {% block head_extra %}{% endblock %}
   </head>
   <body>

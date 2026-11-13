@@ -22,13 +22,14 @@ COPY . .
 ARG SITEURL=
 ARG INSTAGRAM_SYNC=0
 ARG FACEBOOK_PIXEL_ID=
+ARG GOOGLE_ANALYTICS_ID=
 
 # Build static output for production. Instagram sync is optional to avoid flaky builds.
 RUN set -eux; \
     if [ "$INSTAGRAM_SYNC" = "1" ]; then \
         uv run python scripts/sync_instagram_feed.py; \
     fi; \
-    SITEURL="$SITEURL" FACEBOOK_PIXEL_ID="$FACEBOOK_PIXEL_ID" uv run pelican content -o output -s publishconf.py
+    SITEURL="$SITEURL" FACEBOOK_PIXEL_ID="$FACEBOOK_PIXEL_ID" GOOGLE_ANALYTICS_ID="$GOOGLE_ANALYTICS_ID" uv run pelican content -o output -s publishconf.py
 
 FROM nginx:1.27-alpine
 
