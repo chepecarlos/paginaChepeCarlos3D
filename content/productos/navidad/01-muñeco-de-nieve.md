@@ -10,6 +10,9 @@ precio: $5.00
 imagen: navidad/01-muñeco-de-nieve/muñeco_01.png
 galeria: navidad/01-muñeco-de-nieve
 resumen: Muñeco de nieve impreso en 3D con luz interior; cuélgalo en tu arbolito o úsalo de lamparita navideña
+autor: 
+  - nombre: Hank
+    link: https://www.printables.com/model/1494236-snowman-tea-light-ornament-3d-printed-holiday-glow
 variacion:
   nombre: Personalización
   lista:
