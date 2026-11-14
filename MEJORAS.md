@@ -59,9 +59,16 @@ Pixel `958042070611307` integrado en `base.html` (`FACEBOOK_PIXEL_ID` en `pelica
 
 ## Analítica
 
-- [ ] **Conectar Google Analytics (u otra herramienta)**
-  `GOOGLE_ANALYTICS` está comentado en `publishconf.py` línea 22 y no hay ningún script de analítica en el theme.
-  Sin esto no hay forma de saber qué productos generan más clics al botón de WhatsApp ni de dónde viene el tráfico.
+GA4 activo desde 2026-11-12 (ID `G-4D73J2SG7W`, build arg `GOOGLE_ANALYTICS_ID` en Dokploy). Script en `base.html`; registra `generate_lead` al hacer clic en WhatsApp. Medición mejorada activada (scroll, clics de salida, búsqueda interna con `?q=`). Confirmado en Tiempo real.
+
+- [ ] **Subir retención de datos a 14 meses** — por defecto GA4 guarda solo 2 meses. Administrar → Recogida y modificación de datos → Retención de datos → 14 meses. No es retroactivo: hacerlo cuanto antes.
+- [x] **Renombrar la propiedad** — hecho 2026-11-12.
+- [ ] **Marcar `generate_lead` como evento clave** — primero hacer clic en WhatsApp en el sitio y verificar que aparece en Tiempo real; luego Administrar → Eventos clave → Nuevo evento clave → `generate_lead`.
+- [ ] **Agregar UTM a los enlaces externos** para separar el tráfico por canal en Adquisición:
+  - Perfil de Negocio de Google: `https://chepecarlos3d.com/?utm_source=google&utm_medium=organic&utm_campaign=perfil_negocio`
+  - Bio de Instagram: `https://chepecarlos3d.com/?utm_source=instagram&utm_medium=social&utm_campaign=bio`
+- [ ] **Vincular Search Console con GA4** (después de verificar el sitio, ver sección Google Search Console) — Administrar → Vinculaciones de productos → Search Console. Muestra con qué búsquedas llegan al sitio.
+- [ ] *(Opcional)* **Excluir tráfico interno** — filtrar la IP propia si las visitas personales empiezan a inflar los números.
 
 ## Calidad de código
 
@@ -147,3 +154,9 @@ Detectado al corregir la ortografía; son datos, no ortografía, así que no se 
 - [ ] **Crear `DESIGN.md`** (`/impeccable document`) — documentar paleta, tipografía y componentes actuales; hoy hay ~127 colores escritos directo en `style.css` en vez de usar variables (`#334155`, `#0c2132`, `#113a56`, varios `rgba(...)`).
 - [ ] **Íconos de la barra de ventajas** — `index.html` usa emojis (📦 ✨ 📍 💬) mientras el resto del sitio usa íconos SVG. Reemplazarlos por SVG del mismo estilo.
 - [ ] **Zona de testimonios** — reservada en `PRODUCT.md`; llenar con reseñas reales cuando se consigan (no usar testimonios inventados).
+
+## Paginas para hacer 
+
+- [ ] **Crear pagina respondiendo preguntas de clientes**
+- [ ] Pagina de Google Analitic
+- [ ] 

@@ -9,7 +9,7 @@ slug: muñeco-nieve
 precio: $5.00
 imagen: navidad/01-muñeco-de-nieve/muñeco_01.png
 galeria: navidad/01-muñeco-de-nieve
-resumen: Figura impresa 3D navideña con luz para que le des vida a tu arbolito de Navidad
+resumen: Muñeco de nieve impreso en 3D con luz interior; cuélgalo en tu arbolito o úsalo de lamparita navideña
 variacion:
   nombre: Personalización
   lista:
@@ -24,10 +24,13 @@ variacion:
 ## Características
 
 - **Altura:** <span id="product-altura">10 cm</span>.
-- **Flexibilidad:** Cuello completamente articulable.
-- **Personalización:** Añade el nombre que desees por un extra de $1.50.
-
+- **Luz interior:** El cuerpo se ilumina y deja ver un patrón de rombos.
+- **Detalles:** Gorro con pompón y bufanda en rojo, ojos, nariz y botones.
+- **Versátil:** Cuélgalo del árbol o colócalo de pie en una mesa o repisa.
+- **Personalización:** Añade el nombre que desees por un extra de $1.00.
 
 ## Descripción
 
-Esta Navidad, ilumina tu arbolito con estilo.
+Esta Navidad, ilumina tu arbolito con estilo. Este muñeco de nieve tiene una luz por dentro que hace brillar su cuerpo con un patrón de rombos, y da un ambiente cálido a cualquier rincón.
+
+Cuélgalo entre las ramas o ponlo de pie en la mesa, una repisa o el nacimiento. Personalízalo con un nombre y conviértelo en el regalo perfecto para intercambios, compañeros de trabajo o los más pequeños de la casa.
