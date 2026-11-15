@@ -38,6 +38,12 @@ Puedes usar cualquiera de estas dos columnas:
 | modified      | modificado  |
 | lang          | idioma      |
 
+Nota: `categoria` acepta varias categorias separadas por coma. La **primera es la principal** (define la URL y el breadcrumb); las demas solo agregan el producto a esas categorias. Usa el mismo nombre que la categoria existente (ej. `Pokémon`, con tilde):
+
+```yaml
+categoria: Navidad, Pokémon
+```
+
 Nota: `autor` da credito al disenador del modelo (solo encabezado YAML con `---`):
 
 ```yaml

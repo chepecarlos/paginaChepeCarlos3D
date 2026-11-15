@@ -80,7 +80,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = False  # las plantillas listan todo; paginar solo duplica páginas
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

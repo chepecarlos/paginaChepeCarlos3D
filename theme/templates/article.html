@@ -70,7 +70,9 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
     <div class="product-detail-info">
       <h1>{{ article.title }}</h1>
       {% if article.category %}
-      <a href="{{ SITEURL }}/{{ article.category.url }}" class="product-category product-category-detail">{{ article.category }}</a>
+      <div class="product-categories-detail">
+        {% for c in [article.category] + (article.extra_categories or []) %}{% if not loop.first %}<span aria-hidden="true">·</span>{% endif %}<a href="{{ SITEURL }}/{{ c.url }}" class="product-category product-category-detail">{{ c }}</a>{% endfor %}
+      </div>
       {% endif %} {% if article.price %}
       <p class="product-price large" id="product-price" aria-live="polite">{{ article.price }}</p>
       {% endif %} {% if article.variation_groups %} {% for group in article.variation_groups %} {% set group_index = loop.index0 %} {% set group_prices = group.opciones | map(attribute='precio') | unique | list %}

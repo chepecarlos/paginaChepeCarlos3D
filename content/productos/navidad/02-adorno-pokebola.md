@@ -2,7 +2,7 @@
 titulo: Adorno de Pokebola Funcional
 fecha: 2026-11-13
 Date: 2026-11-13
-categoria: Navidad
+categoria: Navidad, Pokémon
 etiquetas: pokebola, pokemon, adorno
 producto: true
 slug: adorno-pokebola

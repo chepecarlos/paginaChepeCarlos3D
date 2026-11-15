@@ -125,6 +125,14 @@ def _normalize_reader_metadata(reader, metadata):
             if isinstance(value, str):
                 value = value.strip().lower() not in ("false", "0", "no", "")
 
+        if canonical_name == "category":
+            # `categoria: Navidad, Pokémon`: la primera es la principal (URL,
+            # breadcrumb); el resto se agrega en add_extra_categories().
+            names = value if isinstance(value, list) else str(value).split(",")
+            names = [str(n).strip() for n in names if str(n).strip()]
+            value = names[0]
+            normalized["extra_categories"] = names[1:]
+
         try:
             processed_value = reader.process_metadata(canonical_name, value)
         except Exception:
@@ -466,6 +474,40 @@ def enrich_articles_with_auto_gallery(generator):
         article.metadata["auto_gallery"] = ordered_images
 
 
+def add_extra_categories(generator):
+    """Agrega el artículo a las categorías después de la primera en `categoria`."""
+    from pelican.urlwrappers import Category
+
+    by_slug = {cat.slug: arts for cat, arts in generator.categories}
+    order = {id(a): i for i, a in enumerate(generator.articles)}
+    touched = []
+    for article in generator.articles:
+        names = article.metadata.get("extra_categories")
+        if not names:
+            continue
+        article.extra_categories = []
+        for name in names:
+            cat = Category(name, generator.settings)
+            _normalize_wrapper_casing(cat)
+            if cat == article.category:
+                continue
+            arts = by_slug.get(cat.slug)
+            if arts is None:
+                arts = by_slug[cat.slug] = []
+                generator.categories.append((cat, arts))
+            else:
+                cat = next(c for c, a in generator.categories if a is arts)
+            if article not in arts:
+                arts.append(article)
+                touched.append(arts)
+            article.extra_categories.append(cat)
+
+    for arts in touched:
+        arts.sort(key=lambda a: order[id(a)])
+    # Mutación in-place: el contexto apunta a la misma lista.
+    generator.categories.sort(reverse=generator.settings["REVERSE_CATEGORY_ORDER"])
+
+
 def _price_to_float(value):
     if not value:
         return None
@@ -721,6 +763,7 @@ def insert_product_mentions(generator):
 def register():
     signals.readers_init.connect(register_reader_aliases)
     signals.content_object_init.connect(normalize_bilingual_metadata)
+    signals.article_generator_finalized.connect(add_extra_categories)
     signals.article_generator_finalized.connect(enrich_articles_with_auto_gallery)
     signals.article_generator_finalized.connect(enrich_variation_galleries)
     signals.article_generator_finalized.connect(extract_first_image)

@@ -775,6 +775,20 @@ img {
     text-decoration: none;
 }
 
+.product-categories-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+    color: var(--color-primary);
+}
+
+.product-categories-detail .product-category-detail {
+    margin: 0;
+    padding: 10px 8px;
+}
+
 .product-category-detail:hover {
     text-decoration: underline;
 }

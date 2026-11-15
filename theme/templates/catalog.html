@@ -13,10 +13,12 @@
 
     {% set cat_ns = namespace(list=[]) %}
     {% for p in productos %}
-      {% set cat_str = p.category | string %}
+      {% for c in [p.category] + (p.extra_categories or []) %}
+      {% set cat_str = c | string %}
       {% if cat_str not in cat_ns.list %}
         {% set cat_ns.list = cat_ns.list + [cat_str] %}
       {% endif %}
+      {% endfor %}
     {% endfor %}
 
     {# Barra móvil: solo visible en pantallas pequeñas #}
@@ -117,7 +119,7 @@
         <div class="product-grid" id="product-grid">
           {% for product in productos %}
           <article class="product-card"
-                   data-category="{{ product.category | string }}"
+                   data-category="{{ ([product.category] + (product.extra_categories or [])) | join('|') }}"
                    data-name="{{ product.title | lower }}"
                    data-price="{{ (product.price_min or product.price) | replace('$', '') | replace(' ', '') if (product.price_min or product.price) else '0' }}"
                    data-price-max="{{ (product.price_max or product.price) | replace('$', '') | replace(' ', '') if (product.price_max or product.price) else '0' }}"
@@ -268,7 +270,7 @@
         const cat = card.dataset.category;
         const prices = (card.dataset.prices || card.dataset.price || "0").split(",").map(function (p) { return parseFloat(p) || 0; });
         const priceInRange = prices.some(function (price) { return price >= activeMin && price <= activeMax; });
-        const show = (activeCat === "all" || cat === activeCat) && priceInRange;
+        const show = (activeCat === "all" || cat.split("|").includes(activeCat)) && priceInRange;
         card.style.display = show ? "" : "none";
         if (show) visible++;
       });
