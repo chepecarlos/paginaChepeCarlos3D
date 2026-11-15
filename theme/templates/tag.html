@@ -1,7 +1,13 @@
 {% extends "base.html" %} {% block title %}Etiqueta: {{ tag }} — {{ SITENAME }}{% endblock %} {% block content %}
-<div class="container">
-  <h1 class="section-title">Etiqueta: {{ tag }}</h1>
-  {% set productos = articles | selectattr('product') | list %} {% if productos %}
+{% set productos = articles | selectattr('product') | list %}
+<section class="catalog-hero">
+  <div class="container">
+    <p class="catalog-hero-eyebrow">Etiqueta</p>
+    <h1>#{{ tag }}</h1>
+    {% if productos %}<p>{{ productos | length }} producto{{ 's' if productos | length != 1 }}</p>{% endif %}
+  </div>
+</section>
+<section class="catalog-section"><div class="container"> {% if productos %}
   <div class="product-grid">
     {% for product in productos %}
     <article class="product-card">
@@ -48,5 +54,5 @@
     {% endfor %}
   </div>
   {% endif %}
-</div>
+</div></section>
 {% endblock %}

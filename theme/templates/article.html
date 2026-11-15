@@ -198,9 +198,15 @@ ld.update({'offers': { '@type': 'AggregateOffer', 'url': SITEURL ~ '/' ~ article
   </div>
   {% endif %}
 
-  {# Category de Pelican no expone sus artículos: se filtra la lista global. Si la categoría tiene menos de 4, se completa con otros productos. #}
+  {# Category de Pelican no expone sus artículos: se filtra la lista global. Primero los que comparten la categoría principal, luego los que comparten cualquier otra; si son menos de 4, se completa con otros productos. #}
   {% set _products = articles | selectattr('product') | reject('equalto', article) | list %}
-  {% set _same = _products | selectattr('category', 'equalto', article.category) | list %}
+  {% set _cats = [article.category] + (article.extra_categories or []) %}
+  {% set _ns = namespace(main=[], other=[]) %}
+  {% for p in _products %}{% set _pcats = [p.category] + (p.extra_categories or []) %}
+    {% if article.category in _pcats %}{% set _ns.main = _ns.main + [p] %}
+    {% elif _pcats | select('in', _cats) | list %}{% set _ns.other = _ns.other + [p] %}{% endif %}
+  {% endfor %}
+  {% set _same = _ns.main + _ns.other %}
   {% set related = (_same + (_products | reject('in', _same) | list))[:4] %} {% if related %}
   <section class="related-products">
     <h2 class="related-products-title">También te puede interesar</h2>

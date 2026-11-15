@@ -1,7 +1,13 @@
 {% extends "base.html" %} {% block title %}{{ category }} — {{ SITENAME }}{% endblock %} {% block content %}
-<div class="container">
-  <h1 class="section-title">Categoría: {{ category }}</h1>
-  {% set productos = articles | selectattr('product') | list %} {% if productos %}
+{% set productos = articles | selectattr('product') | list %}
+<section class="catalog-hero">
+  <div class="container">
+    <p class="catalog-hero-eyebrow">Categoría</p>
+    <h1>{{ category }}</h1>
+    {% if productos %}<p>{{ productos | length }} producto{{ 's' if productos | length != 1 }}</p>{% endif %}
+  </div>
+</section>
+<section class="catalog-section"><div class="container"> {% if productos %}
   <div class="product-grid">
     {% for product in productos %}
     <article class="product-card">
@@ -19,7 +25,7 @@
           <a href="{{ SITEURL }}/{{ product.url }}">{{ product.title }}</a>
         </h2>
         <p class="product-meta">
-          <a href="{{ SITEURL }}/{{ product.category.url }}" class="product-category">{{ product.category }}</a>
+          <a href="{{ SITEURL }}/{{ category.url }}" class="product-category">{{ category }}</a>
         </p>
         {% if product.price_range or product.price %}
         <p class="product-price">{{ product.price_range or product.price }}</p>
@@ -48,5 +54,5 @@
     {% endfor %}
   </div>
   {% endif %}
-</div>
+</div></section>
 {% endblock %}
