@@ -2806,32 +2806,47 @@ mark {
         font-size: 1.7rem;
     }
 
+    /* Tarjetas compactas a 2 columnas en todas las listas: a 1 columna cabe ~1 producto por pantalla */
     .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Relacionados: 2 columnas compactas para no alargar la ficha (4 tarjetas a 1 columna ≈ 2200px) */
-    .related-products .product-grid {
         grid-template-columns: 1fr 1fr;
         gap: 12px;
     }
 
-    .related-products .product-body {
+    .product-body {
         padding: 12px;
         gap: 6px;
     }
 
-    .related-products .product-title {
+    .product-title {
         font-size: 0.92rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
-    .related-products .product-price {
+    .product-price {
         font-size: 1rem;
     }
 
-    /* Toda la tarjeta ya es enlace (imagen y título); el botón sobra en tamaño compacto */
-    .related-products .product-body .btn {
+    /* Imagen y título ya son enlace; botón y etiquetas no caben en tamaño compacto */
+    .product-body .btn,
+    .product-tags,
+    .category-page .product-meta {
         display: none;
+    }
+
+    .catalog-hero {
+        padding: 24px 0;
+    }
+
+    .catalog-hero h1 {
+        font-size: 1.6rem;
+        margin-bottom: 4px;
+    }
+
+    .catalog-section {
+        padding: 24px 0;
     }
 
     .nav-search {
