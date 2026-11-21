@@ -4,7 +4,7 @@ categoria: Mario Bros
 etiquetas: videojuegos, alcancia
 producto: true
 slug: alcancia-honguito
-precio: $13.00
+precio: $15.00
 imagen: alcancia/mariobros/alcancia-hongito/Hongito_01.png
 galeria: alcancia/mariobros/alcancia-hongito
 resumen: Figura impresa 3D con estilo de Honguito de Mario Bros, con excelente presencia para coleccionistas y ahorradores de la franquicia.
