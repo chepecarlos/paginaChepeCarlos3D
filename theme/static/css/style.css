@@ -1713,25 +1713,31 @@ img {
 .breadcrumb {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
+    width: fit-content;
+    max-width: 100%;
     font-size: 0.85rem;
     color: var(--color-gray);
-    padding-top: 16px;
-    margin-bottom: 20px;
+    background: var(--color-light);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 6px 16px;
+    margin: 20px 0 8px;
 }
 
 .breadcrumb a {
-    color: var(--color-gray);
+    color: var(--color-primary);
+    font-weight: 600;
 }
 
 .breadcrumb a:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-h);
 }
 
 .breadcrumb [aria-current="page"] {
-    color: var(--color-text);
-    font-weight: 500;
+    color: var(--color-dark);
+    font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
