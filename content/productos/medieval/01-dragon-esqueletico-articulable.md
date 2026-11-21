@@ -6,7 +6,7 @@ etiquetas: medieval, dragon, articulable
 producto: true
 slug: dragon-esqueletico-articulable
 resumen: Alcancía impresa en 3D con estilo de Masterbola, con excelente presencia para coleccionistas de Pokémon.
-id_dolibarr:
+id_dolibarr: 14
 variacion:
   - nombre: Color
     lista:

@@ -9,7 +9,7 @@ precio: $25.00
 imagen: displays/base-bts/01.Base-bts.png
 galeria: displays/base-bts/
 resumen: Soporte hecho en 3D para Nintendo Switch
-id_dolibarr:
+id_dolibarr: 59
 autor: 
   - nombre: R.ai 3D
     link: https://makerworld.com/es/models/2304485-tiny-tan-bts-stand-v3

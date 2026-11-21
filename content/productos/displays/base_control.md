@@ -10,7 +10,7 @@ precio: $5.00
 imagen: displays/base_control/Base_control_1.png
 galeria: displays/base_control/
 resumen: Soporte universal para control de PS4/PS5, Xbox o Switch Pro con logo de tu juego o personaje favorito, impreso en 3D.
-id_dolibarr: 63
+id_dolibarr: 61
 variacion:
   nombre: Personalización
   lista:

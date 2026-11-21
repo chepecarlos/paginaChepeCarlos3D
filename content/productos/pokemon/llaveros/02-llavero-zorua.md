@@ -9,7 +9,7 @@ precio: $3.00
 imagen: pokemon/zorua-llavero/01_Zorua-llavero.png
 galeria: pokemon/zorua-llavero
 resumen: Llavero impreso en 3D de Zorua de la franquicia de Pokémon
-id_dolibarr:
+id_dolibarr: 54
 variacion:
   - nombre: Personalización
     lista:
